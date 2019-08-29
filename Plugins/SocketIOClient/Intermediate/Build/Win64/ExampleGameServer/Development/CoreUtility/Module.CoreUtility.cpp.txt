@@ -1,0 +1,14 @@
+C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\ExampleGameServer\Development\CoreUtility\Definitions.CoreUtility.h
+C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\CoreUtility\Private\CoreUtilityBPLibrary.cpp
+C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\CoreUtility\Public\CoreUtilityBPLibrary.h
+C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\ExampleGameServer\Inc\CoreUtility\CoreUtilityBPLibrary.generated.h
+C:\UE4222_UETOPIA\Engine\Source\Runtime\ImageWrapper\Public\IImageWrapper.h
+C:\UE4222_UETOPIA\Engine\Source\Runtime\ImageWrapper\Public\IImageWrapperModule.h
+C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\CoreUtility\Public\LambdaRunnable.h
+C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\CoreUtility\Private\FCoreUtility.cpp
+C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\CoreUtility\Public\ICoreUtility.h
+C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\CoreUtility\Private\FileUtilityComponent.cpp
+C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\CoreUtility\Public\FileUtilityComponent.h
+C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\ExampleGameServer\Inc\CoreUtility\FileUtilityComponent.generated.h
+C:\UE4222_UETOPIA\Engine\Source\Runtime/Core/Public/HAL/PlatformFilemanager.h
+C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\CoreUtility\Private\LambdaRunnable.cpp

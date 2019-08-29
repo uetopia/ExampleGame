@@ -1,0 +1,14 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-SIOJEditorPlugin.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\UnrealEd\SharedPCH.UnrealEd.h.obj"
+"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJEditorPlugin\Module.SIOJEditorPlugin.cpp.obj"
+"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJEditorPlugin\Module.SIOJEditorPlugin.gen.cpp.obj"
+"C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Default.rc2.res"
+/OUT:"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJEditorPlugin\UE4Editor-SIOJEditorPlugin.lib"
+/INCLUDE:IMPLEMENT_MODULE_SIOJEditorPlugin
