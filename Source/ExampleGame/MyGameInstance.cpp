@@ -1499,7 +1499,9 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 				const UInputSettings* Settings = GetDefault<UInputSettings>();
 				if (!Settings) return;
 
-				const TArray<FInputActionKeyMapping>& KeyBindingsFromConfig = Settings->ActionMappings;
+				// This was made private in 4.23
+				//const TArray<FInputActionKeyMapping>& KeyBindingsFromConfig = Settings->ActionMappings;
+				const TArray<FInputActionKeyMapping>& KeyBindingsFromConfig = Settings->GetActionMappings();
 
 				//TArray<FVictoryInput> KeyBindingsFromConfig; // remapped keybindings are stored in ini files as well.
 				//playerC->VictoryGetAllActionKeyBindings(KeyBindingsFromConfig);
