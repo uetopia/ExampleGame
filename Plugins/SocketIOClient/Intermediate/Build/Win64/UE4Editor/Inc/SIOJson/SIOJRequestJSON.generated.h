@@ -20,7 +20,7 @@ enum class ESIORequestVerb : uint8;
 #endif
 #define SIOJSON_SIOJRequestJSON_generated_h
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_76_DELEGATE \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_76_DELEGATE \
 struct _Script_SIOJson_eventOnRequestFail_Parms \
 { \
 	USIOJRequestJSON* Request; \
@@ -33,7 +33,7 @@ static inline void FOnRequestFail_DelegateWrapper(const FMulticastScriptDelegate
 }
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_75_DELEGATE \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_75_DELEGATE \
 struct _Script_SIOJson_eventOnRequestComplete_Parms \
 { \
 	USIOJRequestJSON* Request; \
@@ -46,7 +46,7 @@ static inline void FOnRequestComplete_DelegateWrapper(const FMulticastScriptDele
 }
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_RPC_WRAPPERS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execHasTag) \
 	{ \
@@ -279,7 +279,7 @@ static inline void FOnRequestComplete_DelegateWrapper(const FMulticastScriptDele
 	}
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_RPC_WRAPPERS_NO_PURE_DECLS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execHasTag) \
 	{ \
@@ -512,7 +512,7 @@ static inline void FOnRequestComplete_DelegateWrapper(const FMulticastScriptDele
 	}
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_INCLASS_NO_PURE_DECLS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUSIOJRequestJSON(); \
 	friend struct Z_Construct_UClass_USIOJRequestJSON_Statics; \
@@ -521,7 +521,7 @@ public: \
 	DECLARE_SERIALIZER(USIOJRequestJSON)
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_INCLASS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_INCLASS \
 private: \
 	static void StaticRegisterNativesUSIOJRequestJSON(); \
 	friend struct Z_Construct_UClass_USIOJRequestJSON_Statics; \
@@ -530,7 +530,7 @@ public: \
 	DECLARE_SERIALIZER(USIOJRequestJSON)
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_STANDARD_CONSTRUCTORS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API USIOJRequestJSON(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USIOJRequestJSON) \
@@ -543,7 +543,7 @@ private: \
 public:
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_ENHANCED_CONSTRUCTORS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API USIOJRequestJSON(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -556,32 +556,32 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(USIOJRequestJSON); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USIOJRequestJSON)
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_PRIVATE_PROPERTY_OFFSET \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__RequestJsonObj() { return STRUCT_OFFSET(USIOJRequestJSON, RequestJsonObj); } \
 	FORCEINLINE static uint32 __PPO__RequestBytes() { return STRUCT_OFFSET(USIOJRequestJSON, RequestBytes); } \
 	FORCEINLINE static uint32 __PPO__BinaryContentType() { return STRUCT_OFFSET(USIOJRequestJSON, BinaryContentType); } \
 	FORCEINLINE static uint32 __PPO__ResponseJsonObj() { return STRUCT_OFFSET(USIOJRequestJSON, ResponseJsonObj); }
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_85_PROLOG
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_GENERATED_BODY_LEGACY \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_85_PROLOG
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_PRIVATE_PROPERTY_OFFSET \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_RPC_WRAPPERS \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_INCLASS \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_STANDARD_CONSTRUCTORS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_PRIVATE_PROPERTY_OFFSET \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_RPC_WRAPPERS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_INCLASS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_GENERATED_BODY \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_PRIVATE_PROPERTY_OFFSET \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_RPC_WRAPPERS_NO_PURE_DECLS \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_INCLASS_NO_PURE_DECLS \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_ENHANCED_CONSTRUCTORS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_PRIVATE_PROPERTY_OFFSET \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_RPC_WRAPPERS_NO_PURE_DECLS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_INCLASS_NO_PURE_DECLS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h_88_ENHANCED_CONSTRUCTORS \
 static_assert(false, "Unknown access specifier for GENERATED_BODY() macro in class SIOJRequestJSON."); \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -589,7 +589,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> SIOJSON_API UClass* StaticClass<class USIOJRequestJSON>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h
+#define CURRENT_FILE_ID ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJRequestJSON_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

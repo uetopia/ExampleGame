@@ -40,6 +40,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOMessageConvertUEtopia() {}
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USIOMessageConvertUEtopia_Statics::Class_MetaDataParams[] = {
+		{ "Comment", "/**\n * \n */" },
 		{ "IncludePath", "SIOMessageConvertUEtopia.h" },
 		{ "ModuleRelativePath", "Public/SIOMessageConvertUEtopia.h" },
 	};
@@ -71,7 +72,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOMessageConvertUEtopia() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USIOMessageConvertUEtopia, 799255071);
+	IMPLEMENT_CLASS(USIOMessageConvertUEtopia, 3431523792);
 	template<> ONLINESUBSYSTEMUETOPIA_API UClass* StaticClass<USIOMessageConvertUEtopia>()
 	{
 		return USIOMessageConvertUEtopia::StaticClass();

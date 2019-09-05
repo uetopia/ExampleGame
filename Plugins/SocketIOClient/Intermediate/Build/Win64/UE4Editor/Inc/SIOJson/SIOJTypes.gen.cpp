@@ -32,7 +32,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJTypes() {}
 		return ESIORequestStatus_StaticEnum();
 	}
 	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_ESIORequestStatus(ESIORequestStatus_StaticEnum, TEXT("/Script/SIOJson"), TEXT("ESIORequestStatus"), false, nullptr, nullptr);
-	uint32 Get_Z_Construct_UEnum_SIOJson_ESIORequestStatus_Hash() { return 714104993U; }
+	uint32 Get_Z_Construct_UEnum_SIOJson_ESIORequestStatus_Hash() { return 1372797860U; }
 	UEnum* Z_Construct_UEnum_SIOJson_ESIORequestStatus()
 	{
 #if WITH_HOT_RELOAD
@@ -53,11 +53,22 @@ void EmptyLinkFunctionForGeneratedCodeSIOJTypes() {}
 #if WITH_METADATA
 			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
 				{ "BlueprintType", "true" },
+				{ "Comment", "/** Enumerates the current state of an Http request */" },
+				{ "Failed.Comment", "/** Finished but failed */" },
+				{ "Failed.Name", "ESIORequestStatus::Failed" },
 				{ "Failed.ToolTip", "Finished but failed" },
+				{ "Failed_ConnectionError.Comment", "/** Failed because it was unable to connect (safe to retry) */" },
+				{ "Failed_ConnectionError.Name", "ESIORequestStatus::Failed_ConnectionError" },
 				{ "Failed_ConnectionError.ToolTip", "Failed because it was unable to connect (safe to retry)" },
 				{ "ModuleRelativePath", "Public/SIOJTypes.h" },
+				{ "NotStarted.Comment", "/** Has not been started via ProcessRequest() */" },
+				{ "NotStarted.Name", "ESIORequestStatus::NotStarted" },
 				{ "NotStarted.ToolTip", "Has not been started via ProcessRequest()" },
+				{ "Processing.Comment", "/** Currently being ticked and processed */" },
+				{ "Processing.Name", "ESIORequestStatus::Processing" },
 				{ "Processing.ToolTip", "Currently being ticked and processed" },
+				{ "Succeeded.Comment", "/** Finished and was successful */" },
+				{ "Succeeded.Name", "ESIORequestStatus::Succeeded" },
 				{ "Succeeded.ToolTip", "Finished and was successful" },
 				{ "ToolTip", "Enumerates the current state of an Http request" },
 			};
@@ -92,7 +103,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJTypes() {}
 		return ESIORequestContentType_StaticEnum();
 	}
 	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_ESIORequestContentType(ESIORequestContentType_StaticEnum, TEXT("/Script/SIOJson"), TEXT("ESIORequestContentType"), false, nullptr, nullptr);
-	uint32 Get_Z_Construct_UEnum_SIOJson_ESIORequestContentType_Hash() { return 2945790920U; }
+	uint32 Get_Z_Construct_UEnum_SIOJson_ESIORequestContentType_Hash() { return 1746648698U; }
 	UEnum* Z_Construct_UEnum_SIOJson_ESIORequestContentType()
 	{
 #if WITH_HOT_RELOAD
@@ -111,11 +122,16 @@ void EmptyLinkFunctionForGeneratedCodeSIOJTypes() {}
 			};
 #if WITH_METADATA
 			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+				{ "binary.Name", "ESIORequestContentType::binary" },
 				{ "BlueprintType", "true" },
+				{ "Comment", "/** Content type (json, urlencoded, etc.) used by the request */" },
+				{ "json.Name", "ESIORequestContentType::json" },
 				{ "ModuleRelativePath", "Public/SIOJTypes.h" },
 				{ "ToolTip", "Content type (json, urlencoded, etc.) used by the request" },
 				{ "x_www_form_urlencoded_body.DisplayName", "x-www-form-urlencoded (Request Body)" },
+				{ "x_www_form_urlencoded_body.Name", "ESIORequestContentType::x_www_form_urlencoded_body" },
 				{ "x_www_form_urlencoded_url.DisplayName", "x-www-form-urlencoded (URL)" },
+				{ "x_www_form_urlencoded_url.Name", "ESIORequestContentType::x_www_form_urlencoded_url" },
 			};
 #endif
 			static const UE4CodeGen_Private::FEnumParams EnumParams = {
@@ -148,7 +164,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJTypes() {}
 		return ESIORequestVerb_StaticEnum();
 	}
 	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_ESIORequestVerb(ESIORequestVerb_StaticEnum, TEXT("/Script/SIOJson"), TEXT("ESIORequestVerb"), false, nullptr, nullptr);
-	uint32 Get_Z_Construct_UEnum_SIOJson_ESIORequestVerb_Hash() { return 520932222U; }
+	uint32 Get_Z_Construct_UEnum_SIOJson_ESIORequestVerb_Hash() { return 4224942269U; }
 	UEnum* Z_Construct_UEnum_SIOJson_ESIORequestVerb()
 	{
 #if WITH_HOT_RELOAD
@@ -169,9 +185,16 @@ void EmptyLinkFunctionForGeneratedCodeSIOJTypes() {}
 #if WITH_METADATA
 			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
 				{ "BlueprintType", "true" },
+				{ "Comment", "/** Verb (GET, PUT, POST) used by the request */" },
+				{ "CUSTOM.Comment", "/** Set CUSTOM verb by SetCustomVerb() function */" },
+				{ "CUSTOM.Name", "ESIORequestVerb::CUSTOM" },
 				{ "CUSTOM.ToolTip", "Set CUSTOM verb by SetCustomVerb() function" },
 				{ "DEL.DisplayName", "DELETE" },
+				{ "DEL.Name", "ESIORequestVerb::DEL" },
+				{ "GET.Name", "ESIORequestVerb::GET" },
 				{ "ModuleRelativePath", "Public/SIOJTypes.h" },
+				{ "POST.Name", "ESIORequestVerb::POST" },
+				{ "PUT.Name", "ESIORequestVerb::PUT" },
 				{ "ToolTip", "Verb (GET, PUT, POST) used by the request" },
 			};
 #endif

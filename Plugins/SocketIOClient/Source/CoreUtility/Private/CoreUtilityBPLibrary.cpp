@@ -96,6 +96,10 @@ UTexture2D* UCoreUtilityBPLibrary::Conv_BytesToTexture(const TArray<uint8>& InBy
 
 TFuture<UTexture2D*> UCoreUtilityBPLibrary::Conv_BytesToTexture_Async(const TArray<uint8>& InBytes)
 {
+	// This changed and broke in 4.23
+	// Muting it for now until getnamo updates the socketio client.
+
+	/*
 	//Running this on a background thread
 	return Async<UTexture2D*>(EAsyncExecution::Thread,[InBytes]
 	{
@@ -179,6 +183,8 @@ TFuture<UTexture2D*> UCoreUtilityBPLibrary::Conv_BytesToTexture_Async(const TArr
 
 		return Holder->Texture;
 	});//End async
+	*/
+	return nullptr;
 }
 
 bool UCoreUtilityBPLibrary::Conv_TextureToBytes(UTexture2D* Texture, TArray<uint8>& OutBuffer, EImageFormatBPType Format /*= EImageFormatBPType::JPEG*/)

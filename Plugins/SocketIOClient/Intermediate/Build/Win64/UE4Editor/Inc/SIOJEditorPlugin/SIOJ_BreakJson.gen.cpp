@@ -34,7 +34,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJ_BreakJson() {}
 		return ESIOJ_JsonType_StaticEnum();
 	}
 	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_ESIOJ_JsonType(ESIOJ_JsonType_StaticEnum, TEXT("/Script/SIOJEditorPlugin"), TEXT("ESIOJ_JsonType"), false, nullptr, nullptr);
-	uint32 Get_Z_Construct_UEnum_SIOJEditorPlugin_ESIOJ_JsonType_Hash() { return 2622897046U; }
+	uint32 Get_Z_Construct_UEnum_SIOJEditorPlugin_ESIOJ_JsonType_Hash() { return 3896658425U; }
 	UEnum* Z_Construct_UEnum_SIOJEditorPlugin_ESIOJ_JsonType()
 	{
 #if WITH_HOT_RELOAD
@@ -54,11 +54,16 @@ void EmptyLinkFunctionForGeneratedCodeSIOJ_BreakJson() {}
 #if WITH_METADATA
 			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
 				{ "BlueprintType", "true" },
+				{ "JSON_Bool.Comment", "//JSON_Null UMETA(DisplayName = \"Null\"),\n" },
 				{ "JSON_Bool.DisplayName", "Boolean" },
+				{ "JSON_Bool.Name", "ESIOJ_JsonType::JSON_Bool" },
 				{ "JSON_Bool.ToolTip", "JSON_Null UMETA(DisplayName = \"Null\")," },
 				{ "JSON_Number.DisplayName", "Number" },
+				{ "JSON_Number.Name", "ESIOJ_JsonType::JSON_Number" },
 				{ "JSON_Object.DisplayName", "Object" },
+				{ "JSON_Object.Name", "ESIOJ_JsonType::JSON_Object" },
 				{ "JSON_String.DisplayName", "String" },
+				{ "JSON_String.Name", "ESIOJ_JsonType::JSON_String" },
 				{ "ModuleRelativePath", "Public/SIOJ_BreakJson.h" },
 			};
 #endif
@@ -267,7 +272,7 @@ static struct FScriptStruct_SIOJEditorPlugin_StaticRegisterNativesFSIOJ_NamedTyp
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USIOJ_BreakJson, 4283902466);
+	IMPLEMENT_CLASS(USIOJ_BreakJson, 316022818);
 	template<> SIOJEDITORPLUGIN_API UClass* StaticClass<USIOJ_BreakJson>()
 	{
 		return USIOJ_BreakJson::StaticClass();

@@ -15,7 +15,7 @@ enum class EImageFormatBPType : uint8;
 #endif
 #define COREUTILITY_CoreUtilityBPLibrary_generated_h
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_RPC_WRAPPERS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execGetLoginId) \
 	{ \
@@ -72,7 +72,7 @@ enum class EImageFormatBPType : uint8;
 	}
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_RPC_WRAPPERS_NO_PURE_DECLS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execGetLoginId) \
 	{ \
@@ -129,7 +129,7 @@ enum class EImageFormatBPType : uint8;
 	}
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_INCLASS_NO_PURE_DECLS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUCoreUtilityBPLibrary(); \
 	friend struct Z_Construct_UClass_UCoreUtilityBPLibrary_Statics; \
@@ -138,7 +138,7 @@ public: \
 	DECLARE_SERIALIZER(UCoreUtilityBPLibrary)
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_INCLASS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_INCLASS \
 private: \
 	static void StaticRegisterNativesUCoreUtilityBPLibrary(); \
 	friend struct Z_Construct_UClass_UCoreUtilityBPLibrary_Statics; \
@@ -147,7 +147,7 @@ public: \
 	DECLARE_SERIALIZER(UCoreUtilityBPLibrary)
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_STANDARD_CONSTRUCTORS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UCoreUtilityBPLibrary(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UCoreUtilityBPLibrary) \
@@ -160,7 +160,7 @@ private: \
 public:
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_ENHANCED_CONSTRUCTORS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UCoreUtilityBPLibrary(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -173,26 +173,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UCoreUtilityBPLibrary); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UCoreUtilityBPLibrary)
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_PRIVATE_PROPERTY_OFFSET
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_42_PROLOG
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_GENERATED_BODY_LEGACY \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_PRIVATE_PROPERTY_OFFSET
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_42_PROLOG
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_PRIVATE_PROPERTY_OFFSET \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_RPC_WRAPPERS \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_INCLASS \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_STANDARD_CONSTRUCTORS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_PRIVATE_PROPERTY_OFFSET \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_RPC_WRAPPERS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_INCLASS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_GENERATED_BODY \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_PRIVATE_PROPERTY_OFFSET \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_RPC_WRAPPERS_NO_PURE_DECLS \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_INCLASS_NO_PURE_DECLS \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_ENHANCED_CONSTRUCTORS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_PRIVATE_PROPERTY_OFFSET \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_RPC_WRAPPERS_NO_PURE_DECLS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_INCLASS_NO_PURE_DECLS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h_45_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -200,7 +200,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> COREUTILITY_API UClass* StaticClass<class UCoreUtilityBPLibrary>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID ExampleGame_4_22_2_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h
+#define CURRENT_FILE_ID ExampleGame_4_23_Plugins_SocketIOClient_Source_CoreUtility_Public_CoreUtilityBPLibrary_h
 
 
 #define FOREACH_ENUM_EIMAGEFORMATBPTYPE(op) \

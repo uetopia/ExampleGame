@@ -40,6 +40,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOMessageConvert() {}
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USIOMessageConvert_Statics::Class_MetaDataParams[] = {
+		{ "Comment", "/**\n * \n */" },
 		{ "IncludePath", "SIOMessageConvert.h" },
 		{ "ModuleRelativePath", "Public/SIOMessageConvert.h" },
 	};
@@ -71,7 +72,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOMessageConvert() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USIOMessageConvert, 17331576);
+	IMPLEMENT_CLASS(USIOMessageConvert, 3200753774);
 	template<> SOCKETIOCLIENT_API UClass* StaticClass<USIOMessageConvert>()
 	{
 		return USIOMessageConvert::StaticClass();

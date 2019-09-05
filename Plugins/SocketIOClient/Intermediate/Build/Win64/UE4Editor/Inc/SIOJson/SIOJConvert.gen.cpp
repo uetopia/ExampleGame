@@ -40,6 +40,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJConvert() {}
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USIOJConvert_Statics::Class_MetaDataParams[] = {
+		{ "Comment", "/**\n * \n */" },
 		{ "IncludePath", "SIOJConvert.h" },
 		{ "ModuleRelativePath", "Public/SIOJConvert.h" },
 	};
@@ -71,7 +72,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJConvert() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USIOJConvert, 537224713);
+	IMPLEMENT_CLASS(USIOJConvert, 3431697339);
 	template<> SIOJSON_API UClass* StaticClass<USIOJConvert>()
 	{
 		return USIOJConvert::StaticClass();

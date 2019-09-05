@@ -113,6 +113,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Create new Json object, cannot be pure  */" },
 		{ "DefaultToSelf", "WorldContextObject" },
 		{ "DisplayName", "Construct Json Object" },
 		{ "HidePin", "WorldContextObject" },
@@ -120,7 +121,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 		{ "ToolTip", "Create new Json object, cannot be pure" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "ConstructJsonObject", sizeof(SIOJsonObject_eventConstructJsonObject_Parms), Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "ConstructJsonObject", nullptr, nullptr, sizeof(SIOJsonObject_eventConstructJsonObject_Parms), Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -167,11 +168,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_DecodeJson_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Construct Json object from string */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Construct Json object from string" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_DecodeJson_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "DecodeJson", sizeof(SIOJsonObject_eventDecodeJson_Parms), Z_Construct_UFunction_USIOJsonObject_DecodeJson_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_DecodeJson_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_DecodeJson_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_DecodeJson_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_DecodeJson_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "DecodeJson", nullptr, nullptr, sizeof(SIOJsonObject_eventDecodeJson_Parms), Z_Construct_UFunction_USIOJsonObject_DecodeJson_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_DecodeJson_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_DecodeJson_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_DecodeJson_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_DecodeJson()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -201,11 +203,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_EncodeJson_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Serialize Json to string (formatted with line breaks) */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Serialize Json to string (formatted with line breaks)" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_EncodeJson_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "EncodeJson", sizeof(SIOJsonObject_eventEncodeJson_Parms), Z_Construct_UFunction_USIOJsonObject_EncodeJson_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_EncodeJson_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_EncodeJson_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_EncodeJson_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_EncodeJson_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "EncodeJson", nullptr, nullptr, sizeof(SIOJsonObject_eventEncodeJson_Parms), Z_Construct_UFunction_USIOJsonObject_EncodeJson_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_EncodeJson_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_EncodeJson_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_EncodeJson_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_EncodeJson()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -235,11 +238,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Serialize Json to string (single string without line breaks) */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Serialize Json to string (single string without line breaks)" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "EncodeJsonToSingleString", sizeof(SIOJsonObject_eventEncodeJsonToSingleString_Parms), Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "EncodeJsonToSingleString", nullptr, nullptr, sizeof(SIOJsonObject_eventEncodeJsonToSingleString_Parms), Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -284,11 +288,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Get the field named FieldName as a Json Array */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Get the field named FieldName as a Json Array" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetArrayField", sizeof(SIOJsonObject_eventGetArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetArrayField", nullptr, nullptr, sizeof(SIOJsonObject_eventGetArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_GetArrayField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -333,11 +338,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Get the field named FieldName as a binary buffer array. */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Get the field named FieldName as a binary buffer array." },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetBinaryField", sizeof(SIOJsonObject_eventGetBinaryField_Parms), Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetBinaryField", nullptr, nullptr, sizeof(SIOJsonObject_eventGetBinaryField_Parms), Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_GetBinaryField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -382,11 +388,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Get the field named FieldName as a Bool Array. Use it only if you're sure that array is uniform! */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Get the field named FieldName as a Bool Array. Use it only if you're sure that array is uniform!" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetBoolArrayField", sizeof(SIOJsonObject_eventGetBoolArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetBoolArrayField", nullptr, nullptr, sizeof(SIOJsonObject_eventGetBoolArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -433,11 +440,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetBoolField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Get the field named FieldName as a boolean. */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Get the field named FieldName as a boolean." },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetBoolField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetBoolField", sizeof(SIOJsonObject_eventGetBoolField_Parms), Z_Construct_UFunction_USIOJsonObject_GetBoolField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetBoolField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetBoolField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetBoolField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetBoolField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetBoolField", nullptr, nullptr, sizeof(SIOJsonObject_eventGetBoolField_Parms), Z_Construct_UFunction_USIOJsonObject_GetBoolField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetBoolField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetBoolField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetBoolField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_GetBoolField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -479,11 +487,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Get the field named FieldName as a JsonValue */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Get the field named FieldName as a JsonValue" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetField", sizeof(SIOJsonObject_eventGetField_Parms), Z_Construct_UFunction_USIOJsonObject_GetField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetField", nullptr, nullptr, sizeof(SIOJsonObject_eventGetField_Parms), Z_Construct_UFunction_USIOJsonObject_GetField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_GetField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -516,11 +525,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Returns a list of field names that exist in the object */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Returns a list of field names that exist in the object" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetFieldNames", sizeof(SIOJsonObject_eventGetFieldNames_Parms), Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetFieldNames", nullptr, nullptr, sizeof(SIOJsonObject_eventGetFieldNames_Parms), Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_GetFieldNames()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -565,11 +575,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Get the field named FieldName as a Number Array. Use it only if you're sure that array is uniform!\n\x09 * Attn.!! float used instead of double to make the function blueprintable! */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Get the field named FieldName as a Number Array. Use it only if you're sure that array is uniform!\nAttn.!! float used instead of double to make the function blueprintable!" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetNumberArrayField", sizeof(SIOJsonObject_eventGetNumberArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetNumberArrayField", nullptr, nullptr, sizeof(SIOJsonObject_eventGetNumberArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -611,11 +622,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetNumberField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Get the field named FieldName as a number. Ensures that the field is present and is of type Json number.\n\x09 * Attn.!! float used instead of double to make the function blueprintable! */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Get the field named FieldName as a number. Ensures that the field is present and is of type Json number.\nAttn.!! float used instead of double to make the function blueprintable!" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetNumberField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetNumberField", sizeof(SIOJsonObject_eventGetNumberField_Parms), Z_Construct_UFunction_USIOJsonObject_GetNumberField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetNumberField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetNumberField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetNumberField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetNumberField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetNumberField", nullptr, nullptr, sizeof(SIOJsonObject_eventGetNumberField_Parms), Z_Construct_UFunction_USIOJsonObject_GetNumberField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetNumberField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetNumberField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetNumberField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_GetNumberField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -660,11 +672,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Get the field named FieldName as an Object Array. Use it only if you're sure that array is uniform! */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Get the field named FieldName as an Object Array. Use it only if you're sure that array is uniform!" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetObjectArrayField", sizeof(SIOJsonObject_eventGetObjectArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetObjectArrayField", nullptr, nullptr, sizeof(SIOJsonObject_eventGetObjectArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -706,11 +719,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetObjectField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Get the field named FieldName as a Json object. */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Get the field named FieldName as a Json object." },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetObjectField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetObjectField", sizeof(SIOJsonObject_eventGetObjectField_Parms), Z_Construct_UFunction_USIOJsonObject_GetObjectField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetObjectField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetObjectField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetObjectField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetObjectField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetObjectField", nullptr, nullptr, sizeof(SIOJsonObject_eventGetObjectField_Parms), Z_Construct_UFunction_USIOJsonObject_GetObjectField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetObjectField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetObjectField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetObjectField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_GetObjectField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -755,11 +769,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Get the field named FieldName as a String Array. Use it only if you're sure that array is uniform! */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Get the field named FieldName as a String Array. Use it only if you're sure that array is uniform!" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetStringArrayField", sizeof(SIOJsonObject_eventGetStringArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetStringArrayField", nullptr, nullptr, sizeof(SIOJsonObject_eventGetStringArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_GetStringArrayField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -801,11 +816,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetStringField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Get the field named FieldName as a string. */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Get the field named FieldName as a string." },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetStringField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetStringField", sizeof(SIOJsonObject_eventGetStringField_Parms), Z_Construct_UFunction_USIOJsonObject_GetStringField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetStringField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetStringField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetStringField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_GetStringField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "GetStringField", nullptr, nullptr, sizeof(SIOJsonObject_eventGetStringField_Parms), Z_Construct_UFunction_USIOJsonObject_GetStringField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetStringField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_GetStringField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_GetStringField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_GetStringField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -852,11 +868,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_HasField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Checks to see if the FieldName exists in the object */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Checks to see if the FieldName exists in the object" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_HasField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "HasField", sizeof(SIOJsonObject_eventHasField_Parms), Z_Construct_UFunction_USIOJsonObject_HasField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_HasField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_HasField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_HasField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_HasField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "HasField", nullptr, nullptr, sizeof(SIOJsonObject_eventHasField_Parms), Z_Construct_UFunction_USIOJsonObject_HasField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_HasField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_HasField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_HasField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_HasField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -895,11 +912,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_MergeJsonObject_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Adds all of the fields from one json object to this one */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Adds all of the fields from one json object to this one" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_MergeJsonObject_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "MergeJsonObject", sizeof(SIOJsonObject_eventMergeJsonObject_Parms), Z_Construct_UFunction_USIOJsonObject_MergeJsonObject_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_MergeJsonObject_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_MergeJsonObject_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_MergeJsonObject_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_MergeJsonObject_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "MergeJsonObject", nullptr, nullptr, sizeof(SIOJsonObject_eventMergeJsonObject_Parms), Z_Construct_UFunction_USIOJsonObject_MergeJsonObject_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_MergeJsonObject_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_MergeJsonObject_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_MergeJsonObject_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_MergeJsonObject()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -937,11 +955,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_RemoveField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Remove field named FieldName */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Remove field named FieldName" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_RemoveField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "RemoveField", sizeof(SIOJsonObject_eventRemoveField_Parms), Z_Construct_UFunction_USIOJsonObject_RemoveField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_RemoveField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_RemoveField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_RemoveField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_RemoveField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "RemoveField", nullptr, nullptr, sizeof(SIOJsonObject_eventRemoveField_Parms), Z_Construct_UFunction_USIOJsonObject_RemoveField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_RemoveField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_RemoveField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_RemoveField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_RemoveField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -961,11 +980,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_Reset_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Reset all internal data */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Reset all internal data" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_Reset_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "Reset", 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_Reset_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_Reset_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_Reset_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "Reset", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_Reset_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_Reset_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_Reset()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -1018,11 +1038,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Set an ObjectField named FieldName and value of Json Array */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Set an ObjectField named FieldName and value of Json Array" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetArrayField", sizeof(SIOJsonObject_eventSetArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetArrayField", nullptr, nullptr, sizeof(SIOJsonObject_eventSetArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_SetArrayField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -1075,11 +1096,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Set an BinaryField named FieldName and binary buffer array */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Set an BinaryField named FieldName and binary buffer array" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetBinaryField", sizeof(SIOJsonObject_eventSetBinaryField_Parms), Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetBinaryField", nullptr, nullptr, sizeof(SIOJsonObject_eventSetBinaryField_Parms), Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_SetBinaryField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -1132,11 +1154,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Set an ObjectField named FieldName and value of Bool Array */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Set an ObjectField named FieldName and value of Bool Array" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetBoolArrayField", sizeof(SIOJsonObject_eventSetBoolArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetBoolArrayField", nullptr, nullptr, sizeof(SIOJsonObject_eventSetBoolArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -1183,11 +1206,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetBoolField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Set a boolean field named FieldName and value of InValue */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Set a boolean field named FieldName and value of InValue" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetBoolField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetBoolField", sizeof(SIOJsonObject_eventSetBoolField_Parms), Z_Construct_UFunction_USIOJsonObject_SetBoolField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBoolField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetBoolField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBoolField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetBoolField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetBoolField", nullptr, nullptr, sizeof(SIOJsonObject_eventSetBoolField_Parms), Z_Construct_UFunction_USIOJsonObject_SetBoolField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBoolField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetBoolField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBoolField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_SetBoolField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -1229,11 +1253,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Add a field named FieldName with a Value */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Add a field named FieldName with a Value" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetField", sizeof(SIOJsonObject_eventSetField_Parms), Z_Construct_UFunction_USIOJsonObject_SetField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetField", nullptr, nullptr, sizeof(SIOJsonObject_eventSetField_Parms), Z_Construct_UFunction_USIOJsonObject_SetField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_SetField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -1286,11 +1311,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Set an ObjectField named FieldName and value of Number Array\n\x09 * Attn.!! float used instead of double to make the function blueprintable! */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Set an ObjectField named FieldName and value of Number Array\nAttn.!! float used instead of double to make the function blueprintable!" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetNumberArrayField", sizeof(SIOJsonObject_eventSetNumberArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetNumberArrayField", nullptr, nullptr, sizeof(SIOJsonObject_eventSetNumberArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -1332,11 +1358,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetNumberField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Add a field named FieldName with Number as value\n\x09 * Attn.!! float used instead of double to make the function blueprintable! */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Add a field named FieldName with Number as value\nAttn.!! float used instead of double to make the function blueprintable!" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetNumberField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetNumberField", sizeof(SIOJsonObject_eventSetNumberField_Parms), Z_Construct_UFunction_USIOJsonObject_SetNumberField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetNumberField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetNumberField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetNumberField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetNumberField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetNumberField", nullptr, nullptr, sizeof(SIOJsonObject_eventSetNumberField_Parms), Z_Construct_UFunction_USIOJsonObject_SetNumberField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetNumberField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetNumberField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetNumberField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_SetNumberField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -1389,11 +1416,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Set an ObjectField named FieldName and value of Ob Array */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Set an ObjectField named FieldName and value of Ob Array" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetObjectArrayField", sizeof(SIOJsonObject_eventSetObjectArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetObjectArrayField", nullptr, nullptr, sizeof(SIOJsonObject_eventSetObjectArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -1435,11 +1463,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetObjectField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Set an ObjectField named FieldName and value of JsonObject */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Set an ObjectField named FieldName and value of JsonObject" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetObjectField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetObjectField", sizeof(SIOJsonObject_eventSetObjectField_Parms), Z_Construct_UFunction_USIOJsonObject_SetObjectField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetObjectField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetObjectField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetObjectField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetObjectField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetObjectField", nullptr, nullptr, sizeof(SIOJsonObject_eventSetObjectField_Parms), Z_Construct_UFunction_USIOJsonObject_SetObjectField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetObjectField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetObjectField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetObjectField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_SetObjectField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -1492,11 +1521,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Set an ObjectField named FieldName and value of String Array */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Set an ObjectField named FieldName and value of String Array" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetStringArrayField", sizeof(SIOJsonObject_eventSetStringArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetStringArrayField", nullptr, nullptr, sizeof(SIOJsonObject_eventSetStringArrayField_Parms), Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_SetStringArrayField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -1546,11 +1576,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetStringField_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Add a field named FieldName with value of StringValue */" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
 		{ "ToolTip", "Add a field named FieldName with value of StringValue" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetStringField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetStringField", sizeof(SIOJsonObject_eventSetStringField_Parms), Z_Construct_UFunction_USIOJsonObject_SetStringField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetStringField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetStringField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetStringField_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonObject_SetStringField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonObject, nullptr, "SetStringField", nullptr, nullptr, sizeof(SIOJsonObject_eventSetStringField_Parms), Z_Construct_UFunction_USIOJsonObject_SetStringField_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetStringField_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetStringField_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetStringField_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonObject_SetStringField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -1579,41 +1610,42 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_SIOJson,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_USIOJsonObject_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject, "ConstructJsonObject" }, // 2219118570
-		{ &Z_Construct_UFunction_USIOJsonObject_DecodeJson, "DecodeJson" }, // 2208189832
-		{ &Z_Construct_UFunction_USIOJsonObject_EncodeJson, "EncodeJson" }, // 2558982444
-		{ &Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString, "EncodeJsonToSingleString" }, // 3607999300
-		{ &Z_Construct_UFunction_USIOJsonObject_GetArrayField, "GetArrayField" }, // 1800030590
-		{ &Z_Construct_UFunction_USIOJsonObject_GetBinaryField, "GetBinaryField" }, // 438931683
-		{ &Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField, "GetBoolArrayField" }, // 2158473563
-		{ &Z_Construct_UFunction_USIOJsonObject_GetBoolField, "GetBoolField" }, // 2067927638
-		{ &Z_Construct_UFunction_USIOJsonObject_GetField, "GetField" }, // 3078302581
-		{ &Z_Construct_UFunction_USIOJsonObject_GetFieldNames, "GetFieldNames" }, // 3146876392
-		{ &Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField, "GetNumberArrayField" }, // 2404749470
-		{ &Z_Construct_UFunction_USIOJsonObject_GetNumberField, "GetNumberField" }, // 1215184771
-		{ &Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField, "GetObjectArrayField" }, // 2898608560
-		{ &Z_Construct_UFunction_USIOJsonObject_GetObjectField, "GetObjectField" }, // 2822006752
-		{ &Z_Construct_UFunction_USIOJsonObject_GetStringArrayField, "GetStringArrayField" }, // 1144394613
-		{ &Z_Construct_UFunction_USIOJsonObject_GetStringField, "GetStringField" }, // 1835430904
-		{ &Z_Construct_UFunction_USIOJsonObject_HasField, "HasField" }, // 4227044687
-		{ &Z_Construct_UFunction_USIOJsonObject_MergeJsonObject, "MergeJsonObject" }, // 1245599535
-		{ &Z_Construct_UFunction_USIOJsonObject_RemoveField, "RemoveField" }, // 3737244732
-		{ &Z_Construct_UFunction_USIOJsonObject_Reset, "Reset" }, // 3837764980
-		{ &Z_Construct_UFunction_USIOJsonObject_SetArrayField, "SetArrayField" }, // 729495404
-		{ &Z_Construct_UFunction_USIOJsonObject_SetBinaryField, "SetBinaryField" }, // 165062991
-		{ &Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField, "SetBoolArrayField" }, // 1000936084
-		{ &Z_Construct_UFunction_USIOJsonObject_SetBoolField, "SetBoolField" }, // 2380311118
-		{ &Z_Construct_UFunction_USIOJsonObject_SetField, "SetField" }, // 646602955
-		{ &Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField, "SetNumberArrayField" }, // 426930007
-		{ &Z_Construct_UFunction_USIOJsonObject_SetNumberField, "SetNumberField" }, // 1322384100
-		{ &Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField, "SetObjectArrayField" }, // 1872785999
-		{ &Z_Construct_UFunction_USIOJsonObject_SetObjectField, "SetObjectField" }, // 684380322
-		{ &Z_Construct_UFunction_USIOJsonObject_SetStringArrayField, "SetStringArrayField" }, // 2719905429
-		{ &Z_Construct_UFunction_USIOJsonObject_SetStringField, "SetStringField" }, // 1561042975
+		{ &Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject, "ConstructJsonObject" }, // 640785718
+		{ &Z_Construct_UFunction_USIOJsonObject_DecodeJson, "DecodeJson" }, // 496258628
+		{ &Z_Construct_UFunction_USIOJsonObject_EncodeJson, "EncodeJson" }, // 4231225792
+		{ &Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString, "EncodeJsonToSingleString" }, // 2534737085
+		{ &Z_Construct_UFunction_USIOJsonObject_GetArrayField, "GetArrayField" }, // 2010031602
+		{ &Z_Construct_UFunction_USIOJsonObject_GetBinaryField, "GetBinaryField" }, // 3221348995
+		{ &Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField, "GetBoolArrayField" }, // 2808235477
+		{ &Z_Construct_UFunction_USIOJsonObject_GetBoolField, "GetBoolField" }, // 2388225619
+		{ &Z_Construct_UFunction_USIOJsonObject_GetField, "GetField" }, // 167767612
+		{ &Z_Construct_UFunction_USIOJsonObject_GetFieldNames, "GetFieldNames" }, // 3815767807
+		{ &Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField, "GetNumberArrayField" }, // 2422656532
+		{ &Z_Construct_UFunction_USIOJsonObject_GetNumberField, "GetNumberField" }, // 3186652867
+		{ &Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField, "GetObjectArrayField" }, // 2177343856
+		{ &Z_Construct_UFunction_USIOJsonObject_GetObjectField, "GetObjectField" }, // 1769082128
+		{ &Z_Construct_UFunction_USIOJsonObject_GetStringArrayField, "GetStringArrayField" }, // 3439777193
+		{ &Z_Construct_UFunction_USIOJsonObject_GetStringField, "GetStringField" }, // 159143131
+		{ &Z_Construct_UFunction_USIOJsonObject_HasField, "HasField" }, // 262890345
+		{ &Z_Construct_UFunction_USIOJsonObject_MergeJsonObject, "MergeJsonObject" }, // 1901579807
+		{ &Z_Construct_UFunction_USIOJsonObject_RemoveField, "RemoveField" }, // 2596599265
+		{ &Z_Construct_UFunction_USIOJsonObject_Reset, "Reset" }, // 2975220261
+		{ &Z_Construct_UFunction_USIOJsonObject_SetArrayField, "SetArrayField" }, // 3517021196
+		{ &Z_Construct_UFunction_USIOJsonObject_SetBinaryField, "SetBinaryField" }, // 3947819856
+		{ &Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField, "SetBoolArrayField" }, // 1951683668
+		{ &Z_Construct_UFunction_USIOJsonObject_SetBoolField, "SetBoolField" }, // 845663031
+		{ &Z_Construct_UFunction_USIOJsonObject_SetField, "SetField" }, // 2601448323
+		{ &Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField, "SetNumberArrayField" }, // 1310139237
+		{ &Z_Construct_UFunction_USIOJsonObject_SetNumberField, "SetNumberField" }, // 1974936289
+		{ &Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField, "SetObjectArrayField" }, // 891356585
+		{ &Z_Construct_UFunction_USIOJsonObject_SetObjectField, "SetObjectField" }, // 112630766
+		{ &Z_Construct_UFunction_USIOJsonObject_SetStringArrayField, "SetStringArrayField" }, // 254677922
+		{ &Z_Construct_UFunction_USIOJsonObject_SetStringField, "SetStringField" }, // 2972990026
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USIOJsonObject_Statics::Class_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
+		{ "Comment", "/**\n * Blueprintable FJsonObject wrapper\n */" },
 		{ "IncludePath", "SIOJsonObject.h" },
 		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "Public/SIOJsonObject.h" },
@@ -1647,7 +1679,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USIOJsonObject, 3201359503);
+	IMPLEMENT_CLASS(USIOJsonObject, 354592617);
 	template<> SIOJSON_API UClass* StaticClass<USIOJsonObject>()
 	{
 		return USIOJsonObject::StaticClass();

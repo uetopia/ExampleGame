@@ -64,7 +64,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_SocketIOClient, nullptr, "SIOConnectionProblemSignature__DelegateSignature", sizeof(_Script_SocketIOClient_eventSIOConnectionProblemSignature_Parms), Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_SocketIOClient, nullptr, "SIOConnectionProblemSignature__DelegateSignature", nullptr, nullptr, sizeof(_Script_SocketIOClient_eventSIOConnectionProblemSignature_Parms), Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -100,7 +100,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventJsonSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_SocketIOClient, nullptr, "SIOCEventJsonSignature__DelegateSignature", sizeof(_Script_SocketIOClient_eventSIOCEventJsonSignature_Parms), Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventJsonSignature__DelegateSignature_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventJsonSignature__DelegateSignature_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventJsonSignature__DelegateSignature_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventJsonSignature__DelegateSignature_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventJsonSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_SocketIOClient, nullptr, "SIOCEventJsonSignature__DelegateSignature", nullptr, nullptr, sizeof(_Script_SocketIOClient_eventSIOCEventJsonSignature_Parms), Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventJsonSignature__DelegateSignature_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventJsonSignature__DelegateSignature_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventJsonSignature__DelegateSignature_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventJsonSignature__DelegateSignature_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventJsonSignature__DelegateSignature()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -132,7 +132,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_SocketIOClient_SIOCCloseEventSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_SocketIOClient, nullptr, "SIOCCloseEventSignature__DelegateSignature", sizeof(_Script_SocketIOClient_eventSIOCCloseEventSignature_Parms), Z_Construct_UDelegateFunction_SocketIOClient_SIOCCloseEventSignature__DelegateSignature_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCCloseEventSignature__DelegateSignature_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(Z_Construct_UDelegateFunction_SocketIOClient_SIOCCloseEventSignature__DelegateSignature_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCCloseEventSignature__DelegateSignature_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_SocketIOClient_SIOCCloseEventSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_SocketIOClient, nullptr, "SIOCCloseEventSignature__DelegateSignature", nullptr, nullptr, sizeof(_Script_SocketIOClient_eventSIOCCloseEventSignature_Parms), Z_Construct_UDelegateFunction_SocketIOClient_SIOCCloseEventSignature__DelegateSignature_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCCloseEventSignature__DelegateSignature_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(Z_Construct_UDelegateFunction_SocketIOClient_SIOCCloseEventSignature__DelegateSignature_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCCloseEventSignature__DelegateSignature_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UDelegateFunction_SocketIOClient_SIOCCloseEventSignature__DelegateSignature()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -173,7 +173,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_SocketIOClient_SIOCOpenEventSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_SocketIOClient, nullptr, "SIOCOpenEventSignature__DelegateSignature", sizeof(_Script_SocketIOClient_eventSIOCOpenEventSignature_Parms), Z_Construct_UDelegateFunction_SocketIOClient_SIOCOpenEventSignature__DelegateSignature_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCOpenEventSignature__DelegateSignature_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(Z_Construct_UDelegateFunction_SocketIOClient_SIOCOpenEventSignature__DelegateSignature_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCOpenEventSignature__DelegateSignature_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_SocketIOClient_SIOCOpenEventSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_SocketIOClient, nullptr, "SIOCOpenEventSignature__DelegateSignature", nullptr, nullptr, sizeof(_Script_SocketIOClient_eventSIOCOpenEventSignature_Parms), Z_Construct_UDelegateFunction_SocketIOClient_SIOCOpenEventSignature__DelegateSignature_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCOpenEventSignature__DelegateSignature_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(Z_Construct_UDelegateFunction_SocketIOClient_SIOCOpenEventSignature__DelegateSignature_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCOpenEventSignature__DelegateSignature_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UDelegateFunction_SocketIOClient_SIOCOpenEventSignature__DelegateSignature()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -205,7 +205,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_SocketIOClient, nullptr, "SIOCSocketEventSignature__DelegateSignature", sizeof(_Script_SocketIOClient_eventSIOCSocketEventSignature_Parms), Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_SocketIOClient, nullptr, "SIOCSocketEventSignature__DelegateSignature", nullptr, nullptr, sizeof(_Script_SocketIOClient_eventSIOCSocketEventSignature_Parms), Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -227,7 +227,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_SocketIOClient, nullptr, "SIOCEventSignature__DelegateSignature", 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventSignature__DelegateSignature_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventSignature__DelegateSignature_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_SocketIOClient, nullptr, "SIOCEventSignature__DelegateSignature", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventSignature__DelegateSignature_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventSignature__DelegateSignature_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventSignature__DelegateSignature()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -290,12 +290,13 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USocketIOClientComponent_BindEvent_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SocketIO Functions" },
+		{ "Comment", "/**\n\x09* Bind an event, then respond to it with 'On' multi-cast delegate\n\x09*\n\x09* @param EventName\x09""Event name\n\x09* @param Namespace\x09Optional namespace, defaults to default namespace\n\x09*/" },
 		{ "CPP_Default_Namespace", "/" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Bind an event, then respond to it with 'On' multi-cast delegate\n\n@param EventName      Event name\n@param Namespace      Optional namespace, defaults to default namespace" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USocketIOClientComponent_BindEvent_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocketIOClientComponent, nullptr, "BindEvent", sizeof(SocketIOClientComponent_eventBindEvent_Parms), Z_Construct_UFunction_USocketIOClientComponent_BindEvent_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_BindEvent_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USocketIOClientComponent_BindEvent_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_BindEvent_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USocketIOClientComponent_BindEvent_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocketIOClientComponent, nullptr, "BindEvent", nullptr, nullptr, sizeof(SocketIOClientComponent_eventBindEvent_Parms), Z_Construct_UFunction_USocketIOClientComponent_BindEvent_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_BindEvent_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USocketIOClientComponent_BindEvent_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_BindEvent_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USocketIOClientComponent_BindEvent()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -361,12 +362,13 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SocketIO Functions" },
+		{ "Comment", "/**\n\x09* Bind an event to a function with the given name.\n\x09* Expects a String message signature which can be decoded from JSON into SIOJsonObject\n\x09*\n\x09* @param EventName\x09\x09""Event name\n\x09* @param FunctionName\x09The function that gets called when the event is received\n\x09* @param Target\x09\x09\x09Optional, defaults to owner. Change to delegate to another class.\n\x09*/" },
 		{ "CPP_Default_Namespace", "/" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Bind an event to a function with the given name.\nExpects a String message signature which can be decoded from JSON into SIOJsonObject\n\n@param EventName              Event name\n@param FunctionName   The function that gets called when the event is received\n@param Target                 Optional, defaults to owner. Change to delegate to another class." },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocketIOClientComponent, nullptr, "BindEventToFunction", sizeof(SocketIOClientComponent_eventBindEventToFunction_Parms), Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocketIOClientComponent, nullptr, "BindEventToFunction", nullptr, nullptr, sizeof(SocketIOClientComponent_eventBindEventToFunction_Parms), Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -412,13 +414,14 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USocketIOClientComponent_Connect_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SocketIO Functions" },
+		{ "Comment", "/**\n\x09* Connect to a socket.io server, optional method if auto-connect is set to true.\n\x09* Query and headers are defined by a {'stringKey':'stringValue'} SIOJson Object\n\x09*\n\x09* @param AddressAndPort\x09the address in URL format with port\n\x09* @param Query http query as a SIOJsonObject with string keys and values\n\x09* @param Headers http header as a SIOJsonObject with string keys and values\n\x09*\n\x09*/" },
 		{ "CPP_Default_Headers", "None" },
 		{ "CPP_Default_Query", "None" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Connect to a socket.io server, optional method if auto-connect is set to true.\nQuery and headers are defined by a {'stringKey':'stringValue'} SIOJson Object\n\n@param AddressAndPort the address in URL format with port\n@param Query http query as a SIOJsonObject with string keys and values\n@param Headers http header as a SIOJsonObject with string keys and values" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USocketIOClientComponent_Connect_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocketIOClientComponent, nullptr, "Connect", sizeof(SocketIOClientComponent_eventConnect_Parms), Z_Construct_UFunction_USocketIOClientComponent_Connect_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_Connect_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USocketIOClientComponent_Connect_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_Connect_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USocketIOClientComponent_Connect_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocketIOClientComponent, nullptr, "Connect", nullptr, nullptr, sizeof(SocketIOClientComponent_eventConnect_Parms), Z_Construct_UFunction_USocketIOClientComponent_Connect_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_Connect_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USocketIOClientComponent_Connect_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_Connect_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USocketIOClientComponent_Connect()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -438,11 +441,12 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USocketIOClientComponent_Disconnect_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SocketIO Functions" },
+		{ "Comment", "/**\n\x09* Disconnect from current socket.io server. This is an asynchronous action,\n\x09* subscribe to OnDisconnected to know when you can safely continue from a \n\x09* disconnected state.\n\x09*\n\x09* @param AddressAndPort\x09the address in URL format with port\n\x09*/" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Disconnect from current socket.io server. This is an asynchronous action,\nsubscribe to OnDisconnected to know when you can safely continue from a\ndisconnected state.\n\n@param AddressAndPort the address in URL format with port" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USocketIOClientComponent_Disconnect_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocketIOClientComponent, nullptr, "Disconnect", 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USocketIOClientComponent_Disconnect_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_Disconnect_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USocketIOClientComponent_Disconnect_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocketIOClientComponent, nullptr, "Disconnect", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USocketIOClientComponent_Disconnect_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_Disconnect_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USocketIOClientComponent_Disconnect()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -496,13 +500,14 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USocketIOClientComponent_Emit_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SocketIO Functions" },
+		{ "Comment", "/**\n\x09* Emit an event with a JsonValue message\n\x09*\n\x09* @param Name\x09\x09""Event name\n\x09* @param Message\x09SIOJJsonValue\n\x09* @param Namespace\x09Namespace within socket.io\n\x09*/" },
 		{ "CPP_Default_Message", "None" },
 		{ "CPP_Default_Namespace", "/" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Emit an event with a JsonValue message\n\n@param Name           Event name\n@param Message        SIOJJsonValue\n@param Namespace      Namespace within socket.io" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USocketIOClientComponent_Emit_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocketIOClientComponent, nullptr, "Emit", sizeof(SocketIOClientComponent_eventEmit_Parms), Z_Construct_UFunction_USocketIOClientComponent_Emit_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_Emit_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USocketIOClientComponent_Emit_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_Emit_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USocketIOClientComponent_Emit_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocketIOClientComponent, nullptr, "Emit", nullptr, nullptr, sizeof(SocketIOClientComponent_eventEmit_Parms), Z_Construct_UFunction_USocketIOClientComponent_Emit_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_Emit_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USocketIOClientComponent_Emit_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_Emit_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USocketIOClientComponent_Emit()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -572,6 +577,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SocketIO Functions" },
+		{ "Comment", "/**\n\x09* Emit an event with a JsonValue message with a callback function defined by CallBackFunctionName\n\x09*\n\x09* @param Name\x09\x09\x09\x09\x09""Event name\n\x09* @param Message\x09\x09\x09\x09SIOJsonValue\n\x09* @param CallbackFunctionName\x09Name of the optional callback function with signature (String, SIOJsonValue)\n\x09* @param Target\x09\x09\x09\x09\x09""CallbackFunction target object, typically self where this is called.\n\x09* @param Namespace\x09\x09\x09\x09Namespace within socket.io\n\x09*/" },
 		{ "CPP_Default_CallbackFunctionName", "" },
 		{ "CPP_Default_Message", "None" },
 		{ "CPP_Default_Namespace", "/" },
@@ -580,7 +586,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 		{ "ToolTip", "Emit an event with a JsonValue message with a callback function defined by CallBackFunctionName\n\n@param Name                                   Event name\n@param Message                                SIOJsonValue\n@param CallbackFunctionName   Name of the optional callback function with signature (String, SIOJsonValue)\n@param Target                                 CallbackFunction target object, typically self where this is called.\n@param Namespace                              Namespace within socket.io" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocketIOClientComponent, nullptr, "EmitWithCallBack", sizeof(SocketIOClientComponent_eventEmitWithCallBack_Parms), Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocketIOClientComponent, nullptr, "EmitWithCallBack", nullptr, nullptr, sizeof(SocketIOClientComponent_eventEmitWithCallBack_Parms), Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -692,12 +698,12 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_SocketIOClient,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_USocketIOClientComponent_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_USocketIOClientComponent_BindEvent, "BindEvent" }, // 3018766862
-		{ &Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction, "BindEventToFunction" }, // 3989394601
-		{ &Z_Construct_UFunction_USocketIOClientComponent_Connect, "Connect" }, // 3439124411
-		{ &Z_Construct_UFunction_USocketIOClientComponent_Disconnect, "Disconnect" }, // 3274970405
-		{ &Z_Construct_UFunction_USocketIOClientComponent_Emit, "Emit" }, // 286537140
-		{ &Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack, "EmitWithCallBack" }, // 3100077099
+		{ &Z_Construct_UFunction_USocketIOClientComponent_BindEvent, "BindEvent" }, // 2781389598
+		{ &Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction, "BindEventToFunction" }, // 556028629
+		{ &Z_Construct_UFunction_USocketIOClientComponent_Connect, "Connect" }, // 3805406870
+		{ &Z_Construct_UFunction_USocketIOClientComponent_Disconnect, "Disconnect" }, // 494914388
+		{ &Z_Construct_UFunction_USocketIOClientComponent_Emit, "Emit" }, // 1880306015
+		{ &Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack, "EmitWithCallBack" }, // 2065083886
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::Class_MetaDataParams[] = {
@@ -721,6 +727,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_SessionId_MetaData[] = {
 		{ "Category", "SocketIO Connection Properties" },
+		{ "Comment", "/** When connected this session id will be valid and contain a unique Id. */" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "When connected this session id will be valid and contain a unique Id." },
 	};
@@ -740,6 +747,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_PluginScopedId_MetaData[] = {
 		{ "Category", "SocketIO Scope Properties" },
+		{ "Comment", "/** If you leave this as is all plugin scoped connection components will share same connection*/" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "If you leave this as is all plugin scoped connection components will share same connection" },
 	};
@@ -748,6 +756,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_bPluginScopedConnection_MetaData[] = {
 		{ "Category", "SocketIO Scope Properties" },
+		{ "Comment", "/** \n\x09* Toggle which enables plugin scoped connections. \n\x09* If you enable this the connection will remain until you manually call disconnect\n\x09* or close the app. The latest connection with the same PluginScopedId will use the same connection\n\x09* as the previous one and receive the same events.\n\x09*/" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Toggle which enables plugin scoped connections.\nIf you enable this the connection will remain until you manually call disconnect\nor close the app. The latest connection with the same PluginScopedId will use the same connection\nas the previous one and receive the same events." },
 	};
@@ -782,6 +791,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_ReconnectionTimeout_MetaData[] = {
 		{ "Category", "SocketIO Connection Properties" },
+		{ "Comment", "/** Optional parameter to limit reconnections by elapsed time. Default: infinity. */" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Optional parameter to limit reconnections by elapsed time. Default: infinity." },
 	};
@@ -790,6 +800,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_MaxReconnectionAttempts_MetaData[] = {
 		{ "Category", "SocketIO Connection Properties" },
+		{ "Comment", "/**\n\x09* Number of times the connection should try before giving up.\n\x09* Default: infinity, this means you never truly disconnect, just suffer connection problems \n\x09*/" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Number of times the connection should try before giving up.\nDefault: infinity, this means you never truly disconnect, just suffer connection problems" },
 	};
@@ -798,6 +809,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_ReconnectionDelayInMs_MetaData[] = {
 		{ "Category", "SocketIO Connection Properties" },
+		{ "Comment", "/** Delay between reconnection attempts */" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Delay between reconnection attempts" },
 	};
@@ -806,6 +818,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_bShouldAutoConnect_MetaData[] = {
 		{ "Category", "SocketIO Connection Properties" },
+		{ "Comment", "/** If true will auto-connect on begin play to address specified in AddressAndPort. */" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "If true will auto-connect on begin play to address specified in AddressAndPort." },
 	};
@@ -818,6 +831,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_AddressAndPort_MetaData[] = {
 		{ "Category", "SocketIO Connection Properties" },
+		{ "Comment", "/** Default connection address string in form e.g. http://localhost:80. */" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Default connection address string in form e.g. http://localhost:80." },
 	};
@@ -826,59 +840,66 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnFail_MetaData[] = {
 		{ "Category", "SocketIO Events" },
+		{ "Comment", "/** Received on connection failure. */" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Received on connection failure." },
 	};
 #endif
-	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnFail = { "OnFail", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::MulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnFail), Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnFail_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnFail_MetaData)) };
+	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnFail = { "OnFail", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnFail), Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnFail_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnFail_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceDisconnected_MetaData[] = {
 		{ "Category", "SocketIO Events" },
+		{ "Comment", "/** Received on having left namespace. */" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Received on having left namespace." },
 	};
 #endif
-	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceDisconnected = { "OnSocketNamespaceDisconnected", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::MulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnSocketNamespaceDisconnected), Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceDisconnected_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceDisconnected_MetaData)) };
+	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceDisconnected = { "OnSocketNamespaceDisconnected", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnSocketNamespaceDisconnected), Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceDisconnected_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceDisconnected_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceConnected_MetaData[] = {
 		{ "Category", "SocketIO Events" },
+		{ "Comment", "/** Received on having joined namespace. */" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Received on having joined namespace." },
 	};
 #endif
-	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceConnected = { "OnSocketNamespaceConnected", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::MulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnSocketNamespaceConnected), Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceConnected_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceConnected_MetaData)) };
+	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceConnected = { "OnSocketNamespaceConnected", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnSocketNamespaceConnected), Z_Construct_UDelegateFunction_SocketIOClient_SIOCSocketEventSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceConnected_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnSocketNamespaceConnected_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnectionProblems_MetaData[] = {
 		{ "Category", "SocketIO Events" },
+		{ "Comment", "/** \n\x09* Received when connection problems arise. In default settings the\n\x09* connection will keep repeating trying to reconnect an infinite\n\x09* amount of times and you may never get OnDisconnected callback\n\x09* unless you call it.\n\x09*/" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Received when connection problems arise. In default settings the\nconnection will keep repeating trying to reconnect an infinite\namount of times and you may never get OnDisconnected callback\nunless you call it." },
 	};
 #endif
-	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnectionProblems = { "OnConnectionProblems", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::MulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnConnectionProblems), Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnectionProblems_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnectionProblems_MetaData)) };
+	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnectionProblems = { "OnConnectionProblems", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnConnectionProblems), Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnectionProblems_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnectionProblems_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnDisconnected_MetaData[] = {
 		{ "Category", "SocketIO Events" },
+		{ "Comment", "/** \n\x09* Received on socket.io connection disconnected. This may never get \n\x09* called in default settings, see OnConnectionProblems event for details. \n\x09*/" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Received on socket.io connection disconnected. This may never get\ncalled in default settings, see OnConnectionProblems event for details." },
 	};
 #endif
-	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnDisconnected = { "OnDisconnected", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::MulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnDisconnected), Z_Construct_UDelegateFunction_SocketIOClient_SIOCCloseEventSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnDisconnected_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnDisconnected_MetaData)) };
+	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnDisconnected = { "OnDisconnected", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnDisconnected), Z_Construct_UDelegateFunction_SocketIOClient_SIOCCloseEventSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnDisconnected_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnDisconnected_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnected_MetaData[] = {
 		{ "Category", "SocketIO Events" },
+		{ "Comment", "/** Received on socket.io connection established. */" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "Received on socket.io connection established." },
 	};
 #endif
-	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnected = { "OnConnected", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::MulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnConnected), Z_Construct_UDelegateFunction_SocketIOClient_SIOCOpenEventSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnected_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnected_MetaData)) };
+	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnected = { "OnConnected", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnConnected), Z_Construct_UDelegateFunction_SocketIOClient_SIOCOpenEventSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnected_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnConnected_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnEvent_MetaData[] = {
 		{ "Category", "SocketIO Events" },
+		{ "Comment", "/** On bound event received. */" },
 		{ "ModuleRelativePath", "Public/SocketIOClientComponent.h" },
 		{ "ToolTip", "On bound event received." },
 	};
 #endif
-	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnEvent = { "OnEvent", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::MulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnEvent), Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventJsonSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnEvent_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnEvent_MetaData)) };
+	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnEvent = { "OnEvent", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USocketIOClientComponent, OnEvent), Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventJsonSignature__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnEvent_MetaData, ARRAY_COUNT(Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_OnEvent_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_USocketIOClientComponent_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_bIsHavingConnectionProblems,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USocketIOClientComponent_Statics::NewProp_SessionId,
@@ -927,7 +948,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USocketIOClientComponent, 403777085);
+	IMPLEMENT_CLASS(USocketIOClientComponent, 191079627);
 	template<> SOCKETIOCLIENT_API UClass* StaticClass<USocketIOClientComponent>()
 	{
 		return USocketIOClientComponent::StaticClass();

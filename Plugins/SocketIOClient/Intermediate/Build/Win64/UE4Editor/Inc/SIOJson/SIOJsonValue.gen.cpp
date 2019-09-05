@@ -52,7 +52,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 		return ESIOJson_StaticEnum();
 	}
 	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_ESIOJson(ESIOJson_StaticEnum, TEXT("/Script/SIOJson"), TEXT("ESIOJson"), false, nullptr, nullptr);
-	uint32 Get_Z_Construct_UEnum_SIOJson_ESIOJson_Hash() { return 248772013U; }
+	uint32 Get_Z_Construct_UEnum_SIOJson_ESIOJson_Hash() { return 4053974460U; }
 	UEnum* Z_Construct_UEnum_SIOJson_ESIOJson()
 	{
 #if WITH_HOT_RELOAD
@@ -75,8 +75,17 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 			};
 #if WITH_METADATA
 			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+				{ "Array.Name", "ESIOJson::Array" },
+				{ "Binary.Name", "ESIOJson::Binary" },
 				{ "BlueprintType", "true" },
+				{ "Boolean.Name", "ESIOJson::Boolean" },
+				{ "Comment", "/**\n * Represents all the types a Json Value can be.\n */" },
 				{ "ModuleRelativePath", "Public/SIOJsonValue.h" },
+				{ "None.Name", "ESIOJson::None" },
+				{ "Null.Name", "ESIOJson::Null" },
+				{ "Number.Name", "ESIOJson::Number" },
+				{ "Object.Name", "ESIOJson::Object" },
+				{ "String.Name", "ESIOJson::String" },
 				{ "ToolTip", "Represents all the types a Json Value can be." },
 			};
 #endif
@@ -143,11 +152,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_AsArray_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Returns this value as an array, throwing an error if this is not an Json Array */" },
 		{ "ModuleRelativePath", "Public/SIOJsonValue.h" },
 		{ "ToolTip", "Returns this value as an array, throwing an error if this is not an Json Array" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_AsArray_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "AsArray", sizeof(SIOJsonValue_eventAsArray_Parms), Z_Construct_UFunction_USIOJsonValue_AsArray_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsArray_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_AsArray_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsArray_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_AsArray_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "AsArray", nullptr, nullptr, sizeof(SIOJsonValue_eventAsArray_Parms), Z_Construct_UFunction_USIOJsonValue_AsArray_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsArray_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_AsArray_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsArray_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_AsArray()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -180,11 +190,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_AsBinary_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "//todo: add basic binary e.g. tarray<byte>\n" },
 		{ "ModuleRelativePath", "Public/SIOJsonValue.h" },
 		{ "ToolTip", "todo: add basic binary e.g. tarray<byte>" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_AsBinary_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "AsBinary", sizeof(SIOJsonValue_eventAsBinary_Parms), Z_Construct_UFunction_USIOJsonValue_AsBinary_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsBinary_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_AsBinary_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsBinary_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_AsBinary_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "AsBinary", nullptr, nullptr, sizeof(SIOJsonValue_eventAsBinary_Parms), Z_Construct_UFunction_USIOJsonValue_AsBinary_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsBinary_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_AsBinary_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsBinary_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_AsBinary()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -219,11 +230,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_AsBool_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Returns this value as a boolean, throwing an error if this is not an Json Bool */" },
 		{ "ModuleRelativePath", "Public/SIOJsonValue.h" },
 		{ "ToolTip", "Returns this value as a boolean, throwing an error if this is not an Json Bool" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_AsBool_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "AsBool", sizeof(SIOJsonValue_eventAsBool_Parms), Z_Construct_UFunction_USIOJsonValue_AsBool_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsBool_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_AsBool_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsBool_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_AsBool_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "AsBool", nullptr, nullptr, sizeof(SIOJsonValue_eventAsBool_Parms), Z_Construct_UFunction_USIOJsonValue_AsBool_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsBool_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_AsBool_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsBool_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_AsBool()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -253,11 +265,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_AsNumber_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Returns this value as a double, throwing an error if this is not an Json Number\n\x09 * Attn.!! float used instead of double to make the function blueprintable! */" },
 		{ "ModuleRelativePath", "Public/SIOJsonValue.h" },
 		{ "ToolTip", "Returns this value as a double, throwing an error if this is not an Json Number\nAttn.!! float used instead of double to make the function blueprintable!" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_AsNumber_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "AsNumber", sizeof(SIOJsonValue_eventAsNumber_Parms), Z_Construct_UFunction_USIOJsonValue_AsNumber_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsNumber_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_AsNumber_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsNumber_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_AsNumber_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "AsNumber", nullptr, nullptr, sizeof(SIOJsonValue_eventAsNumber_Parms), Z_Construct_UFunction_USIOJsonValue_AsNumber_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsNumber_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_AsNumber_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsNumber_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_AsNumber()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -287,11 +300,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_AsObject_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Returns this value as an object, throwing an error if this is not an Json Object */" },
 		{ "ModuleRelativePath", "Public/SIOJsonValue.h" },
 		{ "ToolTip", "Returns this value as an object, throwing an error if this is not an Json Object" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_AsObject_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "AsObject", sizeof(SIOJsonValue_eventAsObject_Parms), Z_Construct_UFunction_USIOJsonValue_AsObject_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsObject_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_AsObject_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsObject_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_AsObject_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "AsObject", nullptr, nullptr, sizeof(SIOJsonValue_eventAsObject_Parms), Z_Construct_UFunction_USIOJsonValue_AsObject_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsObject_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_AsObject_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsObject_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_AsObject()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -321,11 +335,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_AsString_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Returns this value as a number, throwing an error if this is not an Json String */" },
 		{ "ModuleRelativePath", "Public/SIOJsonValue.h" },
 		{ "ToolTip", "Returns this value as a number, throwing an error if this is not an Json String" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_AsString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "AsString", sizeof(SIOJsonValue_eventAsString_Parms), Z_Construct_UFunction_USIOJsonValue_AsString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_AsString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsString_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_AsString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "AsString", nullptr, nullptr, sizeof(SIOJsonValue_eventAsString_Parms), Z_Construct_UFunction_USIOJsonValue_AsString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_AsString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_AsString_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_AsString()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -374,6 +389,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Create new Json Array value */" },
 		{ "DefaultToSelf", "WorldContextObject" },
 		{ "DisplayName", "Construct Json Array Value" },
 		{ "HidePin", "WorldContextObject" },
@@ -381,7 +397,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 		{ "ToolTip", "Create new Json Array value" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ConstructJsonValueArray", sizeof(SIOJsonValue_eventConstructJsonValueArray_Parms), Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14422401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ConstructJsonValueArray", nullptr, nullptr, sizeof(SIOJsonValue_eventConstructJsonValueArray_Parms), Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14422401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -422,6 +438,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Create new Json Binary value */" },
 		{ "DefaultToSelf", "WorldContextObject" },
 		{ "DisplayName", "Construct Json Binary Value" },
 		{ "HidePin", "WorldContextObject" },
@@ -429,7 +446,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 		{ "ToolTip", "Create new Json Binary value" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ConstructJsonValueBinary", sizeof(SIOJsonValue_eventConstructJsonValueBinary_Parms), Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ConstructJsonValueBinary", nullptr, nullptr, sizeof(SIOJsonValue_eventConstructJsonValueBinary_Parms), Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -472,6 +489,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Create new Json Bool value */" },
 		{ "DefaultToSelf", "WorldContextObject" },
 		{ "DisplayName", "Construct Json Bool Value" },
 		{ "HidePin", "WorldContextObject" },
@@ -479,7 +497,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 		{ "ToolTip", "Create new Json Bool value" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ConstructJsonValueBool", sizeof(SIOJsonValue_eventConstructJsonValueBool_Parms), Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ConstructJsonValueBool", nullptr, nullptr, sizeof(SIOJsonValue_eventConstructJsonValueBool_Parms), Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -517,6 +535,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Create new Json Number value\n\x09 * Attn.!! float used instead of double to make the function blueprintable! */" },
 		{ "DefaultToSelf", "WorldContextObject" },
 		{ "DisplayName", "Construct Json Number Value" },
 		{ "HidePin", "WorldContextObject" },
@@ -524,7 +543,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 		{ "ToolTip", "Create new Json Number value\nAttn.!! float used instead of double to make the function blueprintable!" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ConstructJsonValueNumber", sizeof(SIOJsonValue_eventConstructJsonValueNumber_Parms), Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ConstructJsonValueNumber", nullptr, nullptr, sizeof(SIOJsonValue_eventConstructJsonValueNumber_Parms), Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -562,6 +581,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Create new Json Object value */" },
 		{ "DefaultToSelf", "WorldContextObject" },
 		{ "DisplayName", "Construct Json Object Value" },
 		{ "HidePin", "WorldContextObject" },
@@ -569,7 +589,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 		{ "ToolTip", "Create new Json Object value" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ConstructJsonValueObject", sizeof(SIOJsonValue_eventConstructJsonValueObject_Parms), Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ConstructJsonValueObject", nullptr, nullptr, sizeof(SIOJsonValue_eventConstructJsonValueObject_Parms), Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -615,6 +635,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Create new Json String value */" },
 		{ "DefaultToSelf", "WorldContextObject" },
 		{ "DisplayName", "Construct Json String Value" },
 		{ "HidePin", "WorldContextObject" },
@@ -622,7 +643,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 		{ "ToolTip", "Create new Json String value" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ConstructJsonValueString", sizeof(SIOJsonValue_eventConstructJsonValueString_Parms), Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ConstructJsonValueString", nullptr, nullptr, sizeof(SIOJsonValue_eventConstructJsonValueString_Parms), Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -655,7 +676,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 		{ "ModuleRelativePath", "Public/SIOJsonValue.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_EncodeJson_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "EncodeJson", sizeof(SIOJsonValue_eventEncodeJson_Parms), Z_Construct_UFunction_USIOJsonValue_EncodeJson_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_EncodeJson_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_EncodeJson_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_EncodeJson_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_EncodeJson_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "EncodeJson", nullptr, nullptr, sizeof(SIOJsonValue_eventEncodeJson_Parms), Z_Construct_UFunction_USIOJsonValue_EncodeJson_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_EncodeJson_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_EncodeJson_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_EncodeJson_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_EncodeJson()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -685,11 +706,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_GetType_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Get type of Json value (Enum) */" },
 		{ "ModuleRelativePath", "Public/SIOJsonValue.h" },
 		{ "ToolTip", "Get type of Json value (Enum)" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_GetType_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "GetType", sizeof(SIOJsonValue_eventGetType_Parms), Z_Construct_UFunction_USIOJsonValue_GetType_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_GetType_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_GetType_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_GetType_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_GetType_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "GetType", nullptr, nullptr, sizeof(SIOJsonValue_eventGetType_Parms), Z_Construct_UFunction_USIOJsonValue_GetType_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_GetType_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_GetType_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_GetType_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_GetType()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -719,11 +741,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_GetTypeString_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Get type of Json value (String) */" },
 		{ "ModuleRelativePath", "Public/SIOJsonValue.h" },
 		{ "ToolTip", "Get type of Json value (String)" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_GetTypeString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "GetTypeString", sizeof(SIOJsonValue_eventGetTypeString_Parms), Z_Construct_UFunction_USIOJsonValue_GetTypeString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_GetTypeString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_GetTypeString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_GetTypeString_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_GetTypeString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "GetTypeString", nullptr, nullptr, sizeof(SIOJsonValue_eventGetTypeString_Parms), Z_Construct_UFunction_USIOJsonValue_GetTypeString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_GetTypeString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_GetTypeString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_GetTypeString_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_GetTypeString()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -758,11 +781,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_IsNull_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Returns true if this value is a 'null' */" },
 		{ "ModuleRelativePath", "Public/SIOJsonValue.h" },
 		{ "ToolTip", "Returns true if this value is a 'null'" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_IsNull_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "IsNull", sizeof(SIOJsonValue_eventIsNull_Parms), Z_Construct_UFunction_USIOJsonValue_IsNull_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_IsNull_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_IsNull_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_IsNull_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_IsNull_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "IsNull", nullptr, nullptr, sizeof(SIOJsonValue_eventIsNull_Parms), Z_Construct_UFunction_USIOJsonValue_IsNull_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_IsNull_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_IsNull_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_IsNull_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_IsNull()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -808,6 +832,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SIOJ|Json" },
+		{ "Comment", "/** Create new Json value from JSON encoded string*/" },
 		{ "DefaultToSelf", "WorldContextObject" },
 		{ "DisplayName", "Value From Json String" },
 		{ "HidePin", "WorldContextObject" },
@@ -815,7 +840,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 		{ "ToolTip", "Create new Json value from JSON encoded string" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ValueFromJsonString", sizeof(SIOJsonValue_eventValueFromJsonString_Parms), Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USIOJsonValue, nullptr, "ValueFromJsonString", nullptr, nullptr, sizeof(SIOJsonValue_eventValueFromJsonString_Parms), Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -844,27 +869,28 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_SIOJson,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_USIOJsonValue_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_USIOJsonValue_AsArray, "AsArray" }, // 2607848165
-		{ &Z_Construct_UFunction_USIOJsonValue_AsBinary, "AsBinary" }, // 1280370453
-		{ &Z_Construct_UFunction_USIOJsonValue_AsBool, "AsBool" }, // 1646902014
-		{ &Z_Construct_UFunction_USIOJsonValue_AsNumber, "AsNumber" }, // 695736669
-		{ &Z_Construct_UFunction_USIOJsonValue_AsObject, "AsObject" }, // 4192153456
-		{ &Z_Construct_UFunction_USIOJsonValue_AsString, "AsString" }, // 3787998775
-		{ &Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray, "ConstructJsonValueArray" }, // 1603221980
-		{ &Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary, "ConstructJsonValueBinary" }, // 3180666329
-		{ &Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool, "ConstructJsonValueBool" }, // 3581736664
-		{ &Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber, "ConstructJsonValueNumber" }, // 4036571271
-		{ &Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject, "ConstructJsonValueObject" }, // 1965928865
-		{ &Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString, "ConstructJsonValueString" }, // 1392605453
-		{ &Z_Construct_UFunction_USIOJsonValue_EncodeJson, "EncodeJson" }, // 1995823458
-		{ &Z_Construct_UFunction_USIOJsonValue_GetType, "GetType" }, // 1472410403
-		{ &Z_Construct_UFunction_USIOJsonValue_GetTypeString, "GetTypeString" }, // 2996886605
-		{ &Z_Construct_UFunction_USIOJsonValue_IsNull, "IsNull" }, // 4152951002
-		{ &Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString, "ValueFromJsonString" }, // 3535675874
+		{ &Z_Construct_UFunction_USIOJsonValue_AsArray, "AsArray" }, // 3925873316
+		{ &Z_Construct_UFunction_USIOJsonValue_AsBinary, "AsBinary" }, // 2739118104
+		{ &Z_Construct_UFunction_USIOJsonValue_AsBool, "AsBool" }, // 2813436131
+		{ &Z_Construct_UFunction_USIOJsonValue_AsNumber, "AsNumber" }, // 589241636
+		{ &Z_Construct_UFunction_USIOJsonValue_AsObject, "AsObject" }, // 2137172525
+		{ &Z_Construct_UFunction_USIOJsonValue_AsString, "AsString" }, // 1745851649
+		{ &Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueArray, "ConstructJsonValueArray" }, // 3968470224
+		{ &Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBinary, "ConstructJsonValueBinary" }, // 2090995431
+		{ &Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueBool, "ConstructJsonValueBool" }, // 1313319007
+		{ &Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueNumber, "ConstructJsonValueNumber" }, // 3120116644
+		{ &Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueObject, "ConstructJsonValueObject" }, // 877328029
+		{ &Z_Construct_UFunction_USIOJsonValue_ConstructJsonValueString, "ConstructJsonValueString" }, // 974677911
+		{ &Z_Construct_UFunction_USIOJsonValue_EncodeJson, "EncodeJson" }, // 208726126
+		{ &Z_Construct_UFunction_USIOJsonValue_GetType, "GetType" }, // 1319527181
+		{ &Z_Construct_UFunction_USIOJsonValue_GetTypeString, "GetTypeString" }, // 640253826
+		{ &Z_Construct_UFunction_USIOJsonValue_IsNull, "IsNull" }, // 1526581085
+		{ &Z_Construct_UFunction_USIOJsonValue_ValueFromJsonString, "ValueFromJsonString" }, // 637664258
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USIOJsonValue_Statics::Class_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
+		{ "Comment", "/**\n * Blueprintable FJsonValue wrapper\n */" },
 		{ "IncludePath", "SIOJsonValue.h" },
 		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "Public/SIOJsonValue.h" },
@@ -898,7 +924,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonValue() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USIOJsonValue, 2597109417);
+	IMPLEMENT_CLASS(USIOJsonValue, 2098239399);
 	template<> SIOJSON_API UClass* StaticClass<USIOJsonValue>()
 	{
 		return USIOJsonValue::StaticClass();

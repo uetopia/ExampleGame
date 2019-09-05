@@ -40,7 +40,7 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 		return EImageFormatBPType_StaticEnum();
 	}
 	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EImageFormatBPType(EImageFormatBPType_StaticEnum, TEXT("/Script/CoreUtility"), TEXT("EImageFormatBPType"), false, nullptr, nullptr);
-	uint32 Get_Z_Construct_UEnum_CoreUtility_EImageFormatBPType_Hash() { return 2802703043U; }
+	uint32 Get_Z_Construct_UEnum_CoreUtility_EImageFormatBPType_Hash() { return 479392454U; }
 	UEnum* Z_Construct_UEnum_CoreUtility_EImageFormatBPType()
 	{
 #if WITH_HOT_RELOAD
@@ -63,14 +63,31 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 			};
 #if WITH_METADATA
 			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+				{ "BMP.Comment", "/** Windows Bitmap. */" },
+				{ "BMP.Name", "EImageFormatBPType::BMP" },
 				{ "BMP.ToolTip", "Windows Bitmap." },
+				{ "Comment", "/* Wrapper for EImageFormat::Type for BP*/" },
+				{ "EXR.Comment", "/** OpenEXR (HDR) image file format. */" },
+				{ "EXR.Name", "EImageFormatBPType::EXR" },
 				{ "EXR.ToolTip", "OpenEXR (HDR) image file format." },
+				{ "GrayscaleJPEG.Comment", "/** Single channel JPEG. */" },
+				{ "GrayscaleJPEG.Name", "EImageFormatBPType::GrayscaleJPEG" },
 				{ "GrayscaleJPEG.ToolTip", "Single channel JPEG." },
+				{ "ICNS.Comment", "/** Mac icon. */" },
+				{ "ICNS.Name", "EImageFormatBPType::ICNS" },
 				{ "ICNS.ToolTip", "Mac icon." },
+				{ "ICO.Comment", "/** Windows Icon resource. */" },
+				{ "ICO.Name", "EImageFormatBPType::ICO" },
 				{ "ICO.ToolTip", "Windows Icon resource." },
+				{ "Invalid.Comment", "/** Invalid or unrecognized format. */" },
+				{ "Invalid.Name", "EImageFormatBPType::Invalid" },
 				{ "Invalid.ToolTip", "Invalid or unrecognized format." },
+				{ "JPEG.Comment", "/** Joint Photographic Experts Group. */" },
+				{ "JPEG.Name", "EImageFormatBPType::JPEG" },
 				{ "JPEG.ToolTip", "Joint Photographic Experts Group." },
 				{ "ModuleRelativePath", "Public/CoreUtilityBPLibrary.h" },
+				{ "PNG.Comment", "/** Portable Network Graphics. */" },
+				{ "PNG.Name", "EImageFormatBPType::PNG" },
 				{ "PNG.ToolTip", "Portable Network Graphics." },
 				{ "ToolTip", "Wrapper for EImageFormat::Type for BP" },
 			};
@@ -140,12 +157,13 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::Function_MetaDataParams[] = {
 		{ "BlueprintAutocast", "" },
 		{ "Category", "CoreUtility|Conversion" },
+		{ "Comment", "//Convert any unicode bytes to string\n" },
 		{ "DisplayName", "To String (Bytes)" },
 		{ "ModuleRelativePath", "Public/CoreUtilityBPLibrary.h" },
 		{ "ToolTip", "Convert any unicode bytes to string" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCoreUtilityBPLibrary, nullptr, "Conv_BytesToString", sizeof(CoreUtilityBPLibrary_eventConv_BytesToString_Parms), Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14422401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCoreUtilityBPLibrary, nullptr, "Conv_BytesToString", nullptr, nullptr, sizeof(CoreUtilityBPLibrary_eventConv_BytesToString_Parms), Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14422401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -191,12 +209,13 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::Function_MetaDataParams[] = {
 		{ "BlueprintAutocast", "" },
 		{ "Category", "CoreUtility|Conversion" },
+		{ "Comment", "//Convert bytes to UTexture2D using auto-detection - optimized, but can still have performance implication\n" },
 		{ "DisplayName", "To Texture2D (Bytes)" },
 		{ "ModuleRelativePath", "Public/CoreUtilityBPLibrary.h" },
 		{ "ToolTip", "Convert bytes to UTexture2D using auto-detection - optimized, but can still have performance implication" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCoreUtilityBPLibrary, nullptr, "Conv_BytesToTexture", sizeof(CoreUtilityBPLibrary_eventConv_BytesToTexture_Parms), Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14422401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCoreUtilityBPLibrary, nullptr, "Conv_BytesToTexture", nullptr, nullptr, sizeof(CoreUtilityBPLibrary_eventConv_BytesToTexture_Parms), Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14422401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -234,12 +253,13 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::Function_MetaDataParams[] = {
 		{ "BlueprintAutocast", "" },
 		{ "Category", "CoreUtility|Conversion" },
+		{ "Comment", "//Convert string to UTF8 bytes\n" },
 		{ "DisplayName", "To Bytes (String)" },
 		{ "ModuleRelativePath", "Public/CoreUtilityBPLibrary.h" },
 		{ "ToolTip", "Convert string to UTF8 bytes" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCoreUtilityBPLibrary, nullptr, "Conv_StringToBytes", sizeof(CoreUtilityBPLibrary_eventConv_StringToBytes_Parms), Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCoreUtilityBPLibrary, nullptr, "Conv_StringToBytes", nullptr, nullptr, sizeof(CoreUtilityBPLibrary_eventConv_StringToBytes_Parms), Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -293,13 +313,14 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::Function_MetaDataParams[] = {
 		{ "BlueprintAutocast", "" },
 		{ "Category", "CoreUtility|Conversion" },
+		{ "Comment", "//Convert UTexture2D to bytes in given format - can have performance implication\n" },
 		{ "CPP_Default_Format", "PNG" },
 		{ "DisplayName", "To Bytes (Texture2D)" },
 		{ "ModuleRelativePath", "Public/CoreUtilityBPLibrary.h" },
 		{ "ToolTip", "Convert UTexture2D to bytes in given format - can have performance implication" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCoreUtilityBPLibrary, nullptr, "Conv_TextureToBytes", sizeof(CoreUtilityBPLibrary_eventConv_TextureToBytes_Parms), Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14422401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCoreUtilityBPLibrary, nullptr, "Conv_TextureToBytes", nullptr, nullptr, sizeof(CoreUtilityBPLibrary_eventConv_TextureToBytes_Parms), Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14422401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -329,11 +350,12 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId_Statics::Function_MetaDataParams[] = {
 		{ "Category", "CoreUtility|Conversion" },
+		{ "Comment", "//Hardware ID\n" },
 		{ "ModuleRelativePath", "Public/CoreUtilityBPLibrary.h" },
 		{ "ToolTip", "Hardware ID" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCoreUtilityBPLibrary, nullptr, "GetLoginId", sizeof(CoreUtilityBPLibrary_eventGetLoginId_Parms), Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCoreUtilityBPLibrary, nullptr, "GetLoginId", nullptr, nullptr, sizeof(CoreUtilityBPLibrary_eventGetLoginId_Parms), Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -363,11 +385,12 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString_Statics::Function_MetaDataParams[] = {
 		{ "Category", "CoreUtility|Conversion" },
+		{ "Comment", "//Current UTC time in string format\n" },
 		{ "ModuleRelativePath", "Public/CoreUtilityBPLibrary.h" },
 		{ "ToolTip", "Current UTC time in string format" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCoreUtilityBPLibrary, nullptr, "NowUTCString", sizeof(CoreUtilityBPLibrary_eventNowUTCString_Parms), Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCoreUtilityBPLibrary, nullptr, "NowUTCString", nullptr, nullptr, sizeof(CoreUtilityBPLibrary_eventNowUTCString_Parms), Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -396,15 +419,16 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_CoreUtility,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_UCoreUtilityBPLibrary_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString, "Conv_BytesToString" }, // 2906907654
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture, "Conv_BytesToTexture" }, // 1453680813
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes, "Conv_StringToBytes" }, // 885343747
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes, "Conv_TextureToBytes" }, // 1904898377
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId, "GetLoginId" }, // 2677606211
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString, "NowUTCString" }, // 3250111432
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString, "Conv_BytesToString" }, // 3640053494
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture, "Conv_BytesToTexture" }, // 2808593871
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes, "Conv_StringToBytes" }, // 3225014862
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes, "Conv_TextureToBytes" }, // 120403339
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId, "GetLoginId" }, // 1394658553
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString, "NowUTCString" }, // 732532220
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UCoreUtilityBPLibrary_Statics::Class_MetaDataParams[] = {
+		{ "Comment", "/**\n * Useful generic blueprint functions, mostly conversion\n */" },
 		{ "IncludePath", "CoreUtilityBPLibrary.h" },
 		{ "ModuleRelativePath", "Public/CoreUtilityBPLibrary.h" },
 		{ "ToolTip", "Useful generic blueprint functions, mostly conversion" },
@@ -437,7 +461,7 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UCoreUtilityBPLibrary, 1538744956);
+	IMPLEMENT_CLASS(UCoreUtilityBPLibrary, 1872082247);
 	template<> COREUTILITY_API UClass* StaticClass<UCoreUtilityBPLibrary>()
 	{
 		return UCoreUtilityBPLibrary::StaticClass();

@@ -898,8 +898,8 @@ void FOnlineSubsystemUEtopia::SetupCallbacks()
 		const FString& partyKeyIdConst = partyKeyId;
 		TSharedRef<const FOnlinePartyIdUEtopia> PartyIdPtr = MakeShareable(new FOnlinePartyIdUEtopia(partyKeyIdConst));
 
-
-		this->GetPartyInterface()->TriggerOnPartyDataReceivedDelegates(*localUNetId, *PartyIdPtr, PartyData);
+		// Changed in 4.23
+		this->GetPartyInterface()->TriggerOnPartyDataReceivedDelegates(*localUNetId, *PartyIdPtr, *PartyData);
 
 
 	}, FString("/"));

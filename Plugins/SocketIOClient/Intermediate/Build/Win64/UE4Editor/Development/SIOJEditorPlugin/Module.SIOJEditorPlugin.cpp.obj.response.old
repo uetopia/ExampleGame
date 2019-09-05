@@ -28,7 +28,7 @@
 /wd4838
 /we4668
 /I .
-/I C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Source\SIOJEditorPlugin\Private
+/I C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\SIOJEditorPlugin\Private
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\CoreUObject
 /I Runtime
 /I Runtime\CoreUObject\Public
@@ -438,13 +438,13 @@
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\CurveEditor
 /I Editor\CurveEditor\Public
 /I Editor\CurveEditor
-/I C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Inc\SIOJEditorPlugin
-/I C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Source
-/I C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Source\SIOJEditorPlugin\Public
-/I C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Source\SIOJson\Public
-/I C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Source\SIOJEditorPlugin
-/I C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Inc\SIOJson
-/I C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Source\SIOJson
+/I C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Inc\SIOJEditorPlugin
+/I C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source
+/I C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\SIOJEditorPlugin\Public
+/I C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\SIOJson\Public
+/I C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\SIOJEditorPlugin
+/I C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Inc\SIOJson
+/I C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\SIOJson
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\JsonUtilities
 /I Runtime\JsonUtilities\Public
 /I Runtime\JsonUtilities
@@ -457,9 +457,9 @@
 /FI"C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\UnrealEd\SharedPCH.UnrealEd.h"
 /Yu"C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\UnrealEd\SharedPCH.UnrealEd.h"
 /Fp"C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\UnrealEd\SharedPCH.UnrealEd.h.pch"
-"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJEditorPlugin\Module.SIOJEditorPlugin.cpp"
-/FI"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJEditorPlugin\Definitions.SIOJEditorPlugin.h"
-/Fo"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJEditorPlugin\Module.SIOJEditorPlugin.cpp.obj"
+"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJEditorPlugin\Module.SIOJEditorPlugin.cpp"
+/FI"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJEditorPlugin\Definitions.SIOJEditorPlugin.h"
+/Fo"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJEditorPlugin\Module.SIOJEditorPlugin.cpp.obj"
 /TP
 /GR-
 /W4

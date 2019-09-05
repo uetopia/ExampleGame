@@ -28,7 +28,7 @@
 /wd4838
 /we4668
 /I .
-/I C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Source\CoreUtility\Private
+/I C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\CoreUtility\Private
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\CoreUObject
 /I Runtime
 /I Runtime\CoreUObject\Public
@@ -427,10 +427,10 @@
 /I ThirdParty
 /I ThirdParty\libSampleRate\Public
 /I ThirdParty\libSampleRate
-/I C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Inc\CoreUtility
-/I C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Source
-/I C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Source\CoreUtility\Public
-/I C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Source\CoreUtility
+/I C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Inc\CoreUtility
+/I C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source
+/I C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\CoreUtility\Public
+/I C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Source\CoreUtility
 /I "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE"
 /I "C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.2\include\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"
@@ -440,9 +440,9 @@
 /FI"C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
 /Yu"C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
 /Fp"C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.pch"
-"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\CoreUtility\Module.CoreUtility.cpp"
-/FI"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\CoreUtility\Definitions.CoreUtility.h"
-/Fo"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\CoreUtility\Module.CoreUtility.cpp.obj"
+"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\CoreUtility\Module.CoreUtility.cpp"
+/FI"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\CoreUtility\Definitions.CoreUtility.h"
+/Fo"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\CoreUtility\Module.CoreUtility.cpp.obj"
 /TP
 /GR-
 /W4

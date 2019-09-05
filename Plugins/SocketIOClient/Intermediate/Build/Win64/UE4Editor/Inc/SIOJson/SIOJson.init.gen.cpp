@@ -29,7 +29,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJson_init() {}
 				SingletonFuncArray,
 				ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0x4C38D02D,
+				0x5B34C228,
 				0xA53D2226,
 				METADATA_PARAMS(nullptr, 0)
 			};

@@ -21,7 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeOnlineSubsystemUEtopia_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x87EB72F4,
+				0xA4019320,
 				0x2C9B8BA7,
 				METADATA_PARAMS(nullptr, 0)
 			};

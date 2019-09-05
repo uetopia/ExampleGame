@@ -7,8 +7,8 @@
 /IGNORE:4221
 /NODEFAULTLIB
 "C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
-"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJson\Module.SIOJson.cpp.obj"
-"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJson\Module.SIOJson.gen.cpp.obj"
+"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJson\Module.SIOJson.cpp.obj"
+"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJson\Module.SIOJson.gen.cpp.obj"
 "C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Default.rc2.res"
-/OUT:"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJson\UE4Editor-SIOJson.lib"
+/OUT:"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJson\UE4Editor-SIOJson.lib"
 /INCLUDE:IMPLEMENT_MODULE_SIOJson

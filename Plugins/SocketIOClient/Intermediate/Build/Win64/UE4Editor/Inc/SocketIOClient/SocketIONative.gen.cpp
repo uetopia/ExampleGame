@@ -30,7 +30,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIONative() {}
 		return ESIOConnectionCloseReason_StaticEnum();
 	}
 	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_ESIOConnectionCloseReason(ESIOConnectionCloseReason_StaticEnum, TEXT("/Script/SocketIOClient"), TEXT("ESIOConnectionCloseReason"), false, nullptr, nullptr);
-	uint32 Get_Z_Construct_UEnum_SocketIOClient_ESIOConnectionCloseReason_Hash() { return 2604996341U; }
+	uint32 Get_Z_Construct_UEnum_SocketIOClient_ESIOConnectionCloseReason_Hash() { return 1820278874U; }
 	UEnum* Z_Construct_UEnum_SocketIOClient_ESIOConnectionCloseReason()
 	{
 #if WITH_HOT_RELOAD
@@ -48,6 +48,8 @@ void EmptyLinkFunctionForGeneratedCodeSocketIONative() {}
 #if WITH_METADATA
 			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
 				{ "BlueprintType", "true" },
+				{ "CLOSE_REASON_DROP.Name", "CLOSE_REASON_DROP" },
+				{ "CLOSE_REASON_NORMAL.Name", "CLOSE_REASON_NORMAL" },
 				{ "ModuleRelativePath", "Public/SocketIONative.h" },
 			};
 #endif

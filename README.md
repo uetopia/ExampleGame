@@ -25,8 +25,10 @@ Server management
 # Requirements
 This project uses Rama Save System to persist server state across downtime.  Copy the plugin into the plugins folder.  If you use a different solution, or do not want to use it, you can comment it out.  
 
+This project uses UETOPIA engine modifications.  You must use the patched engine with this project.
+
 # Branches
-This is the Master branch, and is compatible with the current Unreal Engine release branch:  4.22.2
+This is the Master branch, and is compatible with the current Unreal Engine branch:  4.23
 
 # Disclaimer
 This code, and the backend are in Beta, and are under active development.

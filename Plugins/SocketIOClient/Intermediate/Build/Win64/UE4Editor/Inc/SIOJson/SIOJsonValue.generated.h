@@ -16,7 +16,7 @@ class UObject;
 #endif
 #define SIOJSON_SIOJsonValue_generated_h
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execEncodeJson) \
 	{ \
@@ -169,7 +169,7 @@ class UObject;
 	}
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS_NO_PURE_DECLS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execEncodeJson) \
 	{ \
@@ -322,7 +322,7 @@ class UObject;
 	}
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS_NO_PURE_DECLS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUSIOJsonValue(); \
 	friend struct Z_Construct_UClass_USIOJsonValue_Statics; \
@@ -331,7 +331,7 @@ public: \
 	DECLARE_SERIALIZER(USIOJsonValue)
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS \
 private: \
 	static void StaticRegisterNativesUSIOJsonValue(); \
 	friend struct Z_Construct_UClass_USIOJsonValue_Statics; \
@@ -340,7 +340,7 @@ public: \
 	DECLARE_SERIALIZER(USIOJsonValue)
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_STANDARD_CONSTRUCTORS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API USIOJsonValue(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USIOJsonValue) \
@@ -353,7 +353,7 @@ private: \
 public:
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_ENHANCED_CONSTRUCTORS \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API USIOJsonValue(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -366,26 +366,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(USIOJsonValue); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USIOJsonValue)
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_PRIVATE_PROPERTY_OFFSET
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_70_PROLOG
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_GENERATED_BODY_LEGACY \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_PRIVATE_PROPERTY_OFFSET
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_70_PROLOG
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_PRIVATE_PROPERTY_OFFSET \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_STANDARD_CONSTRUCTORS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_PRIVATE_PROPERTY_OFFSET \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_GENERATED_BODY \
+#define ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_PRIVATE_PROPERTY_OFFSET \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS_NO_PURE_DECLS \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS_NO_PURE_DECLS \
-	ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_ENHANCED_CONSTRUCTORS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_PRIVATE_PROPERTY_OFFSET \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS_NO_PURE_DECLS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS_NO_PURE_DECLS \
+	ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_ENHANCED_CONSTRUCTORS \
 static_assert(false, "Unknown access specifier for GENERATED_BODY() macro in class SIOJsonValue."); \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -393,7 +393,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> SIOJSON_API UClass* StaticClass<class USIOJsonValue>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID ExampleGame_4_22_2_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h
+#define CURRENT_FILE_ID ExampleGame_4_23_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h
 
 
 #define FOREACH_ENUM_ESIOJSON(op) \

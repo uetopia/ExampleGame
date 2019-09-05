@@ -33,8 +33,8 @@
 /NODEFAULTLIB:"LIBCPD"
 /FUNCTIONPADMIN
 "C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
-"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\CoreUtility\Module.CoreUtility.cpp.obj"
-"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\CoreUtility\Module.CoreUtility.gen.cpp.obj"
+"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\CoreUtility\Module.CoreUtility.cpp.obj"
+"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\CoreUtility\Module.CoreUtility.gen.cpp.obj"
 "C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Default.rc2.res"
 "delayimp.lib"
 "wininet.lib"
@@ -65,8 +65,8 @@
 "C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\RHI\UE4Editor-RHI.lib"
 "C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\RenderCore\UE4Editor-RenderCore.lib"
 "C:\UE4222_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Core\UE4Editor-Core.lib"
-/OUT:"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Binaries\Win64\UE4Editor-CoreUtility.dll"
-/IMPLIB:"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\CoreUtility\UE4Editor-CoreUtility.suppressed.lib"
-/PDB:"C:\ue_project_build_tests\ProMMO-4.22.2\Plugins\SocketIOClient\Binaries\Win64\UE4Editor-CoreUtility.pdb"
+/OUT:"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Binaries\Win64\UE4Editor-CoreUtility.dll"
+/IMPLIB:"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\CoreUtility\UE4Editor-CoreUtility.suppressed.lib"
+/PDB:"C:\ue_project_build_tests\ExampleGame_4.22.2\Plugins\SocketIOClient\Binaries\Win64\UE4Editor-CoreUtility.pdb"
 /ignore:4078
 /INCLUDE:IMPLEMENT_MODULE_CoreUtility

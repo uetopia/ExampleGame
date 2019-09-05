@@ -35,7 +35,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClient_init() {}
 				SingletonFuncArray,
 				ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0xD14FC84E,
+				0xFF0C5B50,
 				0xE35D980B,
 				METADATA_PARAMS(nullptr, 0)
 			};
