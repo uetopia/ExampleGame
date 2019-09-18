@@ -2,10 +2,11 @@
 
 
 #include "SocketIOClientComponent.h"
-#include "LambdaRunnable.h"
 #include "SIOJConvert.h"
+#include "SIOJRequestJSON.h"
 #include "SocketIOClient.h"
 #include "Engine/Engine.h"
+
 
 USocketIOClientComponent::USocketIOClientComponent(const FObjectInitializer &init) : UActorComponent(init)
 {
@@ -25,27 +26,53 @@ USocketIOClientComponent::USocketIOClientComponent(const FObjectInitializer &ini
 	MaxReconnectionAttempts = -1.f;
 	ReconnectionDelayInMs = 5000;
 
+	bStaticallyInitialized = false;
+
 	ClearCallbacks();
+}
+
+void USocketIOClientComponent::StaticInitialization(UObject* WorldContextObject, bool bValidOwnerWorld /*= false*/)
+{
+	bStaticallyInitialized = true;
+
+	if (!bValidOwnerWorld)
+	{
+		//Need to allow connections to non-owner worlds.
+		bLimitConnectionToGameWorld = false;
+
+		//The auto-connect will never happen in this case, so disable for clarity
+		bShouldAutoConnect = false;
+	}
+
+	//We statically initialize for all cases
+	InitializeNative();
 }
 
 void USocketIOClientComponent::InitializeComponent()
 {
 	Super::InitializeComponent();
+
+	if (!bStaticallyInitialized)
 	{
-		//Because our connections can last longer than game world 
-		//end, we let plugin-scoped structures manage our memory
-		if (bPluginScopedConnection)
-		{
-			NativeClient = ISocketIOClientModule::Get().ValidSharedNativePointer(PluginScopedId);
-		}
-		else
-		{
-			NativeClient = ISocketIOClientModule::Get().NewValidNativePointer();
-		}
-		
-		SetupCallbacks();
+		InitializeNative();
+	}
+}
+
+void USocketIOClientComponent::InitializeNative()
+{
+	if (bPluginScopedConnection)
+	{
+		NativeClient = ISocketIOClientModule::Get().ValidSharedNativePointer(PluginScopedId);
+
+		//Enforcement: This is the default FSocketIONative option value, but this component depends on it being true.
+		NativeClient->bCallbackOnGameThread = true;
+	}
+	else
+	{
+		NativeClient = ISocketIOClientModule::Get().NewValidNativePointer();
 	}
 
+	SetupCallbacks();
 }
 
 void USocketIOClientComponent::BeginPlay()
@@ -56,6 +83,18 @@ void USocketIOClientComponent::BeginPlay()
 	if (bShouldAutoConnect && !bIsConnected)
 	{
 		Connect(AddressAndPort);
+	}
+}
+
+USocketIOClientComponent::~USocketIOClientComponent()
+{
+	ClearCallbacks();
+
+	//If we're a regular connection we should close and release when we quit
+	if (!bPluginScopedConnection && NativeClient.IsValid())
+	{
+		ISocketIOClientModule::Get().ReleaseNativePointer(NativeClient);
+		NativeClient = nullptr;
 	}
 }
 
@@ -90,58 +129,49 @@ void USocketIOClientComponent::SetupCallbacks()
 
 	NativeClient->OnConnectedCallback = [this](const FString& InSessionId)
 	{
-		FLambdaRunnable::RunShortLambdaOnGameThread([this, InSessionId]
+		if (NativeClient.IsValid())
 		{
-			if (this)
-			{
-				bIsConnected = true;
-				SessionId = InSessionId;
-				OnConnected.Broadcast(SessionId, bIsHavingConnectionProblems);
-				bIsHavingConnectionProblems = false;
-			}
-		});
+			bIsConnected = true;
+			SessionId = InSessionId;
+			bool bIsReconnection = bIsHavingConnectionProblems;
+			bIsHavingConnectionProblems = false;
+			OnConnected.Broadcast(SessionId, bIsReconnection);
+			
+		}
 	};
 
 	const FSIOCCloseEventSignature OnDisconnectedSafe = OnDisconnected;
 
 	NativeClient->OnDisconnectedCallback = [OnDisconnectedSafe, this](const ESIOConnectionCloseReason Reason)
 	{
-		FLambdaRunnable::RunShortLambdaOnGameThread([OnDisconnectedSafe, this, Reason]
+		if (NativeClient.IsValid())
 		{
-			if (this && OnDisconnectedSafe.IsBound())
-			{
-				bIsConnected = false;
-				OnDisconnectedSafe.Broadcast(Reason);
-			}
-		});
+			bIsConnected = false;
+			OnDisconnectedSafe.Broadcast(Reason);
+		}
 	};
 
 	NativeClient->OnNamespaceConnectedCallback = [this](const FString& Namespace)
 	{
-		FLambdaRunnable::RunShortLambdaOnGameThread([this, Namespace]
+		if (NativeClient.IsValid())
 		{
-			if (this && OnSocketNamespaceConnected.IsBound())
-			{
-				OnSocketNamespaceConnected.Broadcast(Namespace);
-			}
-		});
+			OnSocketNamespaceConnected.Broadcast(Namespace);
+		}
 	};
 
 	const FSIOCSocketEventSignature OnSocketNamespaceDisconnectedSafe = OnSocketNamespaceDisconnected;
 
 	NativeClient->OnNamespaceDisconnectedCallback = [this, OnSocketNamespaceDisconnectedSafe](const FString& Namespace)
 	{
-		FLambdaRunnable::RunShortLambdaOnGameThread([OnSocketNamespaceDisconnectedSafe, this, Namespace]
+
+		if (NativeClient.IsValid())
 		{
-			if (this && OnSocketNamespaceDisconnectedSafe.IsBound())
-			{
-				OnSocketNamespaceDisconnectedSafe.Broadcast(Namespace);
-			}
-		});
+			OnSocketNamespaceDisconnectedSafe.Broadcast(Namespace);
+		}
 	};
 	NativeClient->OnReconnectionCallback = [this](const uint32 AttemptCount, const uint32 DelayInMs)
 	{
-		FLambdaRunnable::RunShortLambdaOnGameThread([this, AttemptCount, DelayInMs]
+		if (NativeClient.IsValid())
 		{
 			//First time we know about this problem?
 			if (!bIsHavingConnectionProblems)
@@ -153,25 +183,22 @@ void USocketIOClientComponent::SetupCallbacks()
 			FTimespan Difference = FDateTime::Now() - TimeWhenConnectionProblemsStarted;
 			float ElapsedInSec = Difference.GetTotalSeconds();
 
-			if (ReconnectionTimeout > 0 && ElapsedInSec>ReconnectionTimeout)
+			if (ReconnectionTimeout > 0 && ElapsedInSec > ReconnectionTimeout)
 			{
 				//Let's stop trying and disconnect if we're using timeouts
 				Disconnect();
 			}
 
-			if (this && OnConnectionProblems.IsBound())
-			{
-				OnConnectionProblems.Broadcast(AttemptCount, DelayInMs, ElapsedInSec);
-			}
-		});
+			OnConnectionProblems.Broadcast(AttemptCount, DelayInMs, ElapsedInSec);
+		}
 	};
 
 	NativeClient->OnFailCallback = [this]()
 	{
-		FLambdaRunnable::RunShortLambdaOnGameThread([this]
+		if(NativeClient.IsValid())
 		{
 			OnFail.Broadcast();
-		});
+		};
 	};
 }
 
@@ -182,6 +209,8 @@ void USocketIOClientComponent::ClearCallbacks()
 		NativeClient->ClearCallbacks();
 	}
 }
+
+
 
 bool USocketIOClientComponent::CallBPFunctionWithResponse(UObject* Target, const FString& FunctionName, TArray<TSharedPtr<FJsonValue>> Response)
 {
@@ -404,13 +433,13 @@ void USocketIOClientComponent::Emit(const FString& EventName, USIOJsonValue* Mes
 	NativeClient->Emit(EventName, JsonMessage, nullptr, Namespace);
 }
 
-void USocketIOClientComponent::EmitWithCallBack(const FString& EventName, USIOJsonValue* Message /*= nullptr*/, const FString& CallbackFunctionName /*= FString(TEXT(""))*/, UObject* Target /*= nullptr*/, const FString& Namespace /*= FString(TEXT("/"))*/)
+void USocketIOClientComponent::EmitWithCallBack(const FString& EventName, USIOJsonValue* Message /*= nullptr*/, const FString& CallbackFunctionName /*= FString(TEXT(""))*/, UObject* Target /*= nullptr*/, const FString& Namespace /*= FString(TEXT("/"))*/, UObject* WorldContextObject /*= nullptr*/)
 {
 	if (!CallbackFunctionName.IsEmpty())
 	{
 		if (Target == nullptr)
 		{
-			Target = GetOwner();
+			Target = WorldContextObject;
 		}
 
 		//Set the message is not null
@@ -432,6 +461,52 @@ void USocketIOClientComponent::EmitWithCallBack(const FString& EventName, USIOJs
 	else 
 	{
 		EmitNative(EventName, Message->GetRootValue(),nullptr,Namespace);
+	}
+}
+
+void USocketIOClientComponent::EmitWithGraphCallBack(const FString& EventName, struct FLatentActionInfo LatentInfo, USIOJsonValue*& Result, USIOJsonValue* Message /*= nullptr*/, const FString& Namespace /*= FString(TEXT("/"))*/)
+{
+	//Set the message is not null
+	TSharedPtr<FJsonValue> JsonMessage = nullptr;
+	if (Message != nullptr)
+	{
+		JsonMessage = Message->GetRootValue();
+	}
+	else
+	{
+		JsonMessage = MakeShareable(new FJsonValueNull);
+	}
+
+	if (UWorld* World = GEngine->GetWorldFromContextObject(this, EGetWorldErrorMode::LogAndReturnNull))
+	{
+		FLatentActionManager& LatentActionManager = World->GetLatentActionManager();
+		int32 UUID = LatentInfo.UUID;
+
+		FCorePendingLatentAction *LatentAction = LatentActionManager.FindExistingAction<FCorePendingLatentAction>(LatentInfo.CallbackTarget, UUID);
+
+		//It's safe to use raw new as actions get deleted by the manager
+		LatentAction = new FCorePendingLatentAction(LatentInfo);
+
+		LatentAction->OnCancelNotification = [this, UUID]()
+		{
+			UE_LOG(LogTemp, Log, TEXT("%d graph callback cancelled."), UUID);
+		};
+
+		LatentActionManager.AddNewAction(LatentInfo.CallbackTarget, LatentInfo.UUID, LatentAction);
+
+		//emit the message and pass the LatentAction, we also pass the result reference through lambda capture
+		NativeClient->Emit(EventName, JsonMessage, [this, LatentAction, &Result](const TArray<TSharedPtr<FJsonValue>>& Response)
+		{
+			// Finish the latent action
+			if (LatentAction)
+			{
+				TSharedPtr<FJsonValue> FirstResponseValue = Response[0];
+				USIOJsonValue* ResultObj = NewObject<USIOJsonValue>();
+				ResultObj->SetRootValue(FirstResponseValue);
+				Result = ResultObj;		//update the output value
+				LatentAction->Call();	//resume the latent action
+			}
+		}, Namespace);
 	}
 }
 
@@ -475,6 +550,11 @@ void USocketIOClientComponent::EmitNative(const FString& EventName, UStruct* Str
 	EmitNative(EventName, USIOJConvert::ToJsonObject(Struct, (void*)StructPtr), CallbackFunction, Namespace);
 }
 
+void USocketIOClientComponent::EmitNative(const FString& EventName, const SIO_TEXT_TYPE StringMessage /*= TEXT("")*/, TFunction< void(const TArray<TSharedPtr<FJsonValue>>&)> CallbackFunction /*= nullptr*/, const FString& Namespace /*= FString(TEXT("/"))*/)
+{
+	EmitNative(EventName, MakeShareable(new FJsonValueString(FString(StringMessage))), CallbackFunction, Namespace);
+}
+
 #if PLATFORM_WINDOWS
 #pragma endregion Emit
 #pragma region OnEvents
@@ -482,27 +562,32 @@ void USocketIOClientComponent::EmitNative(const FString& EventName, UStruct* Str
 
 void USocketIOClientComponent::BindEvent(const FString& EventName, const FString& Namespace)
 {
-	NativeClient->OnRawEvent(EventName, [&](const FString& Event, const sio::message::ptr& RawMessage) {
+	NativeClient->OnEvent(EventName, [&](const FString& Event, const TSharedPtr<FJsonValue>& EventValue)
+	{
 		USIOJsonValue* NewValue = NewObject<USIOJsonValue>();
-		auto Value = USIOMessageConvert::ToJsonValue(RawMessage);
-		NewValue->SetRootValue(Value);
+		TSharedPtr<FJsonValue> NonConstValue = EventValue;
+		NewValue->SetRootValue(NonConstValue);
 		OnEvent.Broadcast(Event, NewValue);
-
 	}, Namespace);
 }
 
-void USocketIOClientComponent::BindEventToFunction(const FString& EventName, const FString& FunctionName, UObject* Target, const FString& Namespace /*= FString(TEXT("/"))*/)
+void USocketIOClientComponent::BindEventToFunction(const FString& EventName,
+	const FString& FunctionName,
+	UObject* Target, 
+	const FString& Namespace /*= FString(TEXT("/"))*/,
+	ESIOThreadOverrideOption ThreadOverride /*= USE_DEFAULT*/,
+	UObject* WorldContextObject /*= nullptr*/)
 {
 	if (!FunctionName.IsEmpty())
 	{
 		if (Target == nullptr)
 		{
-			Target = GetOwner();
+			Target = WorldContextObject;
 		}
 		OnNativeEvent(EventName, [&, FunctionName, Target](const FString& Event, const TSharedPtr<FJsonValue>& Message)
 		{
 			CallBPFunctionWithMessage(Target, FunctionName, Message);
-		}, Namespace);
+		}, Namespace, ThreadOverride);
 	}
 	else
 	{
@@ -511,9 +596,12 @@ void USocketIOClientComponent::BindEventToFunction(const FString& EventName, con
 	}
 }
 
-void USocketIOClientComponent::OnNativeEvent(const FString& EventName, TFunction< void(const FString&, const TSharedPtr<FJsonValue>&)> CallbackFunction, const FString& Namespace /*= FString(TEXT("/"))*/)
+void USocketIOClientComponent::OnNativeEvent(const FString& EventName,
+	TFunction< void(const FString&, const TSharedPtr<FJsonValue>&)> CallbackFunction,
+	const FString& Namespace /*= FString(TEXT("/"))*/,
+	ESIOThreadOverrideOption ThreadOverride /*= USE_DEFAULT*/)
 {
-	NativeClient->OnEvent(EventName, CallbackFunction, Namespace);
+	NativeClient->OnEvent(EventName, CallbackFunction, Namespace, ThreadOverride);
 }
 
 #if PLATFORM_WINDOWS

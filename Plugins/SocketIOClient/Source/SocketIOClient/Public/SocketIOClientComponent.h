@@ -5,6 +5,7 @@
 
 #include "Components/ActorComponent.h"
 #include "SocketIONative.h"
+#include "Runtime/Engine/Classes/Engine/LatentActionManager.h"
 #include "SocketIOClientComponent.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FSIOCEventSignature);
@@ -14,7 +15,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSIOCCloseEventSignature, TEnumAsByt
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSIOCEventJsonSignature, FString, Event, class USIOJsonValue*, MessageJson);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FSIOConnectionProblemSignature, int32, Attempts, int32,  NextAttemptInMs, float, TimeSinceConnected);
 
-UCLASS(ClassGroup = "Networking", meta = (BlueprintSpawnableComponent))
+UCLASS(BlueprintType, ClassGroup = "Networking", meta = (BlueprintSpawnableComponent))
 class SOCKETIOCLIENT_API USocketIOClientComponent : public UActorComponent
 {
 	GENERATED_UCLASS_BODY()
@@ -114,6 +115,10 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "SocketIO Connection Properties")
 	bool bIsHavingConnectionProblems;
 
+	/** If this component has been statically initialized. Largely exposed for traceability. */
+	UPROPERTY(BlueprintReadOnly, Category = "SocketIO Connection Properties")
+	bool bStaticallyInitialized;
+
 	/**
 	* Connect to a socket.io server, optional method if auto-connect is set to true.
 	* Query and headers are defined by a {'stringKey':'stringValue'} SIOJson Object
@@ -152,7 +157,7 @@ public:
 	* @param Namespace	Namespace within socket.io
 	*/
 	UFUNCTION(BlueprintCallable, Category = "SocketIO Functions")
-	void Emit(const FString& EventName, USIOJsonValue* Message = nullptr, const FString& Namespace = FString(TEXT("/")));
+	void Emit(const FString& EventName, USIOJsonValue* Message = nullptr, const FString& Namespace = TEXT("/"));
 
 	/**
 	* Emit an event with a JsonValue message with a callback function defined by CallBackFunctionName
@@ -160,24 +165,42 @@ public:
 	* @param Name					Event name
 	* @param Message				SIOJsonValue
 	* @param CallbackFunctionName	Name of the optional callback function with signature (String, SIOJsonValue)
-	* @param Target					CallbackFunction target object, typically self where this is called.
+	* @param Target					Optional, defaults to caller self. Change to delegate function callback to another class.
 	* @param Namespace				Namespace within socket.io
 	*/
-	UFUNCTION(BlueprintCallable, Category = "SocketIO Functions")
+	UFUNCTION(BlueprintCallable, Category = "SocketIO Functions", meta = (WorldContext = "WorldContextObject"))
 	void EmitWithCallBack(	const FString& EventName,
 							USIOJsonValue* Message = nullptr,
 							const FString& CallbackFunctionName = FString(""),
 							UObject* Target = nullptr,
-							const FString& Namespace = FString(TEXT("/")));
+							const FString& Namespace = TEXT("/"),
+							UObject* WorldContextObject = nullptr);
+
 
 	/**
-	* Bind an event, then respond to it with 'On' multi-cast delegate
+	* Emit an event with a JsonValue message with a result callback directly into the event graph. This cannot be called from within blueprint functions.
+	*
+	* @param Name					Event name
+	* @param LatentInfo				Graph callback reference
+	* @param Result					Graph callback result SIOJsonValue
+	* @param Message				SIOJsonValue
+	* @param Namespace				Namespace within socket.io
+	*/
+	UFUNCTION(BlueprintCallable, meta = (Latent, LatentInfo = "LatentInfo"), Category = "SocketIO Functions")
+	void EmitWithGraphCallBack(	const FString& EventName,
+								struct FLatentActionInfo LatentInfo,
+								USIOJsonValue*& Result,
+								USIOJsonValue* Message = nullptr,
+								const FString& Namespace = TEXT("/"));
+
+	/**
+	* Bind an event, then respond to it with 'OnEvent' multi-cast delegate
 	*
 	* @param EventName	Event name
 	* @param Namespace	Optional namespace, defaults to default namespace
 	*/
 	UFUNCTION(BlueprintCallable, Category = "SocketIO Functions")
-	void BindEvent(const FString& EventName, const FString& Namespace = FString(TEXT("/")));
+	void BindEvent(const FString& EventName, const FString& Namespace = TEXT("/"));
 
 
 	/**
@@ -186,13 +209,17 @@ public:
 	*
 	* @param EventName		Event name
 	* @param FunctionName	The function that gets called when the event is received
-	* @param Target			Optional, defaults to owner. Change to delegate to another class.
+	* @param Target			Optional, defaults to caller self. Change to delegate to another class.
+	* @param Namespace		Optional namespace, defaults to default namespace
+	* @param ThreadOverride	Optional override to receive event on specified thread. Note NETWORK thread is lower latency but unsafe for a lot of blueprint use. Use with CAUTION.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "SocketIO Functions")
+	UFUNCTION(BlueprintCallable, Category = "SocketIO Functions", meta = (WorldContext = "WorldContextObject"))
 	void BindEventToFunction(	const FString& EventName,
 								const FString& FunctionName,
 								UObject* Target,
-								const FString& Namespace = FString(TEXT("/")));
+								const FString& Namespace = TEXT("/"),
+								ESIOThreadOverrideOption ThreadOverride = USE_DEFAULT,
+								UObject* WorldContextObject = nullptr);
 	//
 	//C++ functions
 	//
@@ -222,7 +249,7 @@ public:
 	void EmitNative(const FString& EventName,
 					const TSharedPtr<FJsonValue>& Message = nullptr,
 					TFunction< void(const TArray<TSharedPtr<FJsonValue>>&)> CallbackFunction = nullptr,
-					const FString& Namespace = FString(TEXT("/")));
+					const FString& Namespace = TEXT("/"));
 
 	/**
 	* (Overloaded) Emit an event with a Json Object message
@@ -235,7 +262,7 @@ public:
 	void EmitNative(const FString& EventName,
 					const TSharedPtr<FJsonObject>& ObjectMessage = nullptr,
 					TFunction< void(const TArray<TSharedPtr<FJsonValue>>&)> CallbackFunction = nullptr,
-					const FString& Namespace = FString(TEXT("/")));
+					const FString& Namespace = TEXT("/"));
 
 	/**
 	* (Overloaded) Emit an event with a string message
@@ -248,7 +275,20 @@ public:
 	void EmitNative(const FString& EventName,
 					const FString& StringMessage = FString(),
 					TFunction< void(const TArray<TSharedPtr<FJsonValue>>&)> CallbackFunction = nullptr,
-					const FString& Namespace = FString(TEXT("/")));
+					const FString& Namespace = TEXT("/"));
+
+	/**
+	* (Overloaded) Emit an event with a string message
+	*
+	* @param EventName				Event name
+	* @param StringMessage			Message in string format
+	* @param CallbackFunction		Optional callback TFunction
+	* @param Namespace				Optional Namespace within socket.io
+	*/
+	void EmitNative(const FString& EventName,
+		const SIO_TEXT_TYPE StringMessage = TEXT(""),
+		TFunction< void(const TArray<TSharedPtr<FJsonValue>>&)> CallbackFunction = nullptr,
+		const FString& Namespace = TEXT("/"));
 
 	/**
 	* (Overloaded) Emit an event with a number (double) message
@@ -261,7 +301,7 @@ public:
 	void EmitNative(const FString& EventName,
 					double NumberMessage,
 					TFunction< void(const TArray<TSharedPtr<FJsonValue>>&)> CallbackFunction = nullptr,
-					const FString& Namespace = FString(TEXT("/")));
+					const FString& Namespace = TEXT("/"));
 
 	/**
 	* (Overloaded) Emit an event with a bool message
@@ -274,7 +314,7 @@ public:
 	void EmitNative(const FString& EventName,
 					bool BooleanMessage,
 					TFunction< void(const TArray<TSharedPtr<FJsonValue>>&)> CallbackFunction = nullptr,
-					const FString& Namespace = FString(TEXT("/")));
+					const FString& Namespace = TEXT("/"));
 
 	/**
 	* (Overloaded) Emit an event with a binary message
@@ -287,7 +327,7 @@ public:
 	void EmitNative(const FString& EventName,
 					const TArray<uint8>& BinaryMessage,
 					TFunction< void(const TArray<TSharedPtr<FJsonValue>>&)> CallbackFunction = nullptr,
-					const FString& Namespace = FString(TEXT("/")));
+					const FString& Namespace = TEXT("/"));
 
 	/**
 	* (Overloaded) Emit an event with an array message
@@ -300,7 +340,7 @@ public:
 	void EmitNative(const FString& EventName,
 					const TArray<TSharedPtr<FJsonValue>>& ArrayMessage,
 					TFunction< void(const TArray<TSharedPtr<FJsonValue>>&)> CallbackFunction = nullptr,
-					const FString& Namespace = FString(TEXT("/")));
+					const FString& Namespace = TEXT("/"));
 
 	/**
 	* (Overloaded) Emit an event with an UStruct message
@@ -315,7 +355,7 @@ public:
 					UStruct* Struct,
 					const void* StructPtr,
 					TFunction< void(const TArray<TSharedPtr<FJsonValue>>&)> CallbackFunction = nullptr,
-					const FString& Namespace = FString(TEXT("/")));
+					const FString& Namespace = TEXT("/"));
 
 	/**
 	* Call function callback on receiving socket event. C++ only.
@@ -323,10 +363,12 @@ public:
 	* @param EventName	Event name
 	* @param TFunction	Lambda callback, JSONValue
 	* @param Namespace	Optional namespace, defaults to default namespace
+	* @param ThreadOverride	Optional override to receive event on specified thread. Note NETWORK thread is lower latency but unsafe for a lot of blueprint use. Use with CAUTION.
 	*/
 	void OnNativeEvent(	const FString& EventName,
 						TFunction< void(const FString&, const TSharedPtr<FJsonValue>&)> CallbackFunction,
-						const FString& Namespace = FString(TEXT("/")));
+						const FString& Namespace = TEXT("/"),
+		ESIOThreadOverrideOption ThreadOverride = USE_DEFAULT);
 
 	/**
 	* Call function callback on receiving binary event. C++ only.
@@ -337,15 +379,22 @@ public:
 	*/
 	void OnBinaryEvent(	const FString& EventName,
 						TFunction< void(const FString&, const TArray<uint8>&)> CallbackFunction,
-						const FString& Namespace = FString(TEXT("/")));
+						const FString& Namespace = TEXT("/"));
+
+	
+	/** Called by SocketIOFunctionLibrary to initialize statically constructed components. */
+	void StaticInitialization(UObject* WorldContextObject, bool bValidOwnerWorld);
 
 	virtual void InitializeComponent() override;
 	virtual void UninitializeComponent() override;
 	virtual void BeginPlay() override;
+
+	~USocketIOClientComponent();
 	
 protected:
 	void SetupCallbacks();
 	void ClearCallbacks();
+	void InitializeNative();
 
 	bool CallBPFunctionWithResponse(UObject* Target, const FString& FunctionName, TArray<TSharedPtr<FJsonValue>> Response);
 	bool CallBPFunctionWithMessage(UObject* Target, const FString& FunctionName, TSharedPtr<FJsonValue> Message);

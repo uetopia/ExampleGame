@@ -16,6 +16,14 @@ enum ESIOConnectionCloseReason
 	CLOSE_REASON_DROP
 };
 
+UENUM(BlueprintType)
+enum ESIOThreadOverrideOption
+{
+	USE_DEFAULT,
+	USE_GAME_THREAD,
+	USE_NETWORK_THREAD
+};
+
 //Wrapper function for TFunctions which can be hashed based on pointers. I.e. no duplicate functions allowed
 //NB: Not currently used
 template <typename T>
@@ -40,6 +48,13 @@ struct TSetFunctionWrapper
 	}
 };
 
+//used for early binds
+struct FSIOBoundEvent
+{
+	TFunction< void(const FString&, const TSharedPtr<FJsonValue>&)> Function;
+	FString Namespace;
+};
+
 
 class SOCKETIOCLIENT_API FSocketIONative
 {
@@ -54,7 +69,7 @@ public:
 	TFunction<void()> OnFailCallback;			
 
 	//Map for all native functions bound to this socket
-	TMap<FString, TFunction< void(const FString&, const TSharedPtr<FJsonValue>&)>> EventFunctionMap;
+	TMap<FString, FSIOBoundEvent> EventFunctionMap;
 
 	/** Default connection address string in form e.g. http://localhost:80. */
 	FString AddressAndPort;
@@ -65,7 +80,7 @@ public:
 	/** in milliseconds, default is 5000 */
 	uint32 ReconnectionDelay;
 
-	/** If true will auto-connect on begin play to address specified in AddressAndPort. */
+	/** Whether this instance has a currently live connection to the server. */
 	bool bIsConnected;
 
 	/** When connected this session id will be valid and contain a unique Id. */
@@ -76,6 +91,9 @@ public:
 
 	/** If set to true, each state change callback will log to console*/
 	bool VerboseLog;
+
+	/** If true, all callbacks and events will occur on game thread. Default true. */
+	bool bCallbackOnGameThread;
 
 	FSocketIONative();
 
@@ -152,6 +170,30 @@ public:
 	void Emit(
 		const FString& EventName,
 		const FString& StringMessage = FString(),
+		TFunction< void(const TArray<TSharedPtr<FJsonValue>>&)> CallbackFunction = nullptr,
+		const FString& Namespace = TEXT("/"));
+
+
+//flexible type allowing TEXT() passed as second param for overloaded emit
+#if !defined(SIO_TEXT_TYPE)
+	#if PLATFORM_TCHAR_IS_CHAR16
+		#define SIO_TEXT_TYPE char16_t*
+	#else
+		#define SIO_TEXT_TYPE wchar_t*
+	#endif
+#endif
+
+	/**
+	* (Overloaded) Emit an event with a string literal message
+	*
+	* @param EventName				Event name
+	* @param StringMessage			Message in string format
+	* @param CallbackFunction		Optional callback TFunction
+	* @param Namespace				Optional Namespace within socket.io
+	*/
+	void Emit(
+		const FString& EventName,
+		const SIO_TEXT_TYPE StringMessage = TEXT(""),
 		TFunction< void(const TArray<TSharedPtr<FJsonValue>>&)> CallbackFunction = nullptr,
 		const FString& Namespace = TEXT("/"));
 
@@ -276,11 +318,13 @@ public:
 	* @param EventName	Event name
 	* @param TFunction	Lambda callback, JSONValue
 	* @param Namespace	Optional namespace, defaults to default namespace
+	* @param CallbackThread Override default bCallbackOnGameThread option to specified option for this event
 	*/
 	void OnEvent(
 		const FString& EventName,
 		TFunction< void(const FString&, const TSharedPtr<FJsonValue>&)> CallbackFunction,
-		const FString& Namespace = TEXT("/"));
+		const FString& Namespace = TEXT("/"),
+		ESIOThreadOverrideOption CallbackThread = USE_DEFAULT);
 
 	/**
 	* Call function callback on receiving raw event. C++ only.
@@ -288,11 +332,13 @@ public:
 	* @param EventName	Event name
 	* @param TFunction	Lambda callback, raw flavor
 	* @param Namespace	Optional namespace, defaults to default namespace
+	* @param CallbackThread Override default bCallbackOnGameThread option to specified option for this event
 	*/
 	void OnRawEvent(
 		const FString& EventName,
 		TFunction< void(const FString&, const sio::message::ptr&)> CallbackFunction,
-		const FString& Namespace = TEXT("/"));
+		const FString& Namespace = TEXT("/"),
+		ESIOThreadOverrideOption CallbackThread = USE_DEFAULT);
 	/**
 	* Call function callback on receiving binary event. C++ only.
 	*

@@ -11,6 +11,7 @@
 #include "Runtime/Json/Public/Dom/JsonObject.h"
 #include "Runtime/Json/Public/Dom/JsonValue.h"
 #include "LatentActions.h"
+#include "LambdaRunnable.h"
 #include "Engine/LatentActionManager.h"
 #include "SIOJTypes.h"
 #include "SIOJRequestJSON.generated.h"
@@ -18,7 +19,7 @@
 /**
  * @author Original latent action class by https://github.com/unktomi
  */
-template <class T> class FSIOJLatentAction : public FPendingLatentAction
+template <class T> class SIOJSON_API FSIOJLatentAction : public FPendingLatentAction
 {
 public:
 	virtual void Call(const T &Value) 

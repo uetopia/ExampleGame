@@ -15,9 +15,10 @@ Recommended socket.io server version: 1.4+.
 
 ### Contribute! Current Main Issues:
 
-Missing static libraries and support for platforms:
+Current platform issues:
 
-* iOS untested - see [issue 19](https://github.com/getnamo/socketio-client-ue4/issues/19)
+* Xbox/PS4 platform untested - see [issue 117](https://github.com/getnamo/socketio-client-ue4/issues/117)
+* Lumin platform untested - see [issue 114](https://github.com/getnamo/socketio-client-ue4/issues/114)
 
 HTTPS currently not yet supported
 * OpenSSL Support - [issue39](https://github.com/getnamo/socketio-client-ue4/issues/39), temporary [workaround available](https://github.com/getnamo/socketio-client-ue4/issues/72#issuecomment-371956821).
@@ -31,7 +32,7 @@ HTTPS currently not yet supported
  4. Copy *Plugins* folder into your Project root.
  5. Plugin should be now ready to use.
  
- ### Via Unreal Engine Marketplace
+ ### Via Unreal Engine Marketplace (helps support plugin development and maintenance)
  
  Available at this link: [Socket.IO Client - Marketplace](https://www.unrealengine.com/marketplace/socket-io-client)
  
@@ -168,11 +169,11 @@ Supported auto-conversion
 
 ### Emit with Callback
 
-You can have a callback when, for example, you need an acknowledgement or if you're fetching data from the server. You can respond to this callback straight in your blueprint.
+You can have a callback when, for example, you need an acknowledgement or if you're fetching data from the server. You can respond to this callback straight in your blueprint. Keep in mind that the server can only use the callback *once* per emit.
 
 ![IMG](http://i.imgur.com/Ed01Jq0.png)
 
-Instead of using *Emit* you use *Emit With Callback* and by default the target is the owning actor blueprint so you can leave that parameter blank and simply type your function name e.g. *OnEcho* function.
+Instead of using *Emit* you use *Emit With Callback* and by default the target is the calling blueprint so you can leave that parameter blank and simply type your function name e.g. *OnEcho* function.
 
 ![IMG](http://i.imgur.com/hXMXDd2.png)
 
@@ -193,6 +194,39 @@ Supported Signatures:
 - Bool
 - Byte Array
 
+#### Emit With Graph Callback
+
+Since v1.1.0 you can get results directly to your calling graph function. Use the ```Emit with Graph Callback``` method and simply drag off from the completed node to receive your result when your server uses the callback. This feature should be useful for fetching data from the server without breaking your graph flow.
+
+![graph callback](https://i.imgur.com/CbFHxRj.png)
+
+Limitations:
+- Can only be used in Event Graphs (BP functions don't support latent actions)
+
+#### Emit with Callback node.js server example
+
+If you're unsure how the callbacks look like on the server side, here is a basic example:
+
+```javascript
+const io = require('socket.io')(http);
+
+io.on('connection', (socket) => {
+	
+	//...
+
+	socket.on('getData', (msg, callback) => {
+		//let's say your data is an object
+		let result = {};
+	
+		/* do something here to get your data */
+		
+		//callback with the results, this will call your bound function inside your blueprint
+		callback(result);
+	});
+};
+```
+
+See https://socket.io/docs/server-api/#socket-on-eventName-callback for detailed API.
 
 ### Binding Events to Functions
 
@@ -218,6 +252,22 @@ If you want your connection to survive level transitions, you can tick the class
 ![plugin scoped connection](https://i.imgur.com/lE8BHbN.png)
 
 This does mean that you may not receive events during times your actor does not have a world (such as a level transition without using a persistent parent map to which the socket.io component actor belongs). If this doesn't work for you consider switching to C++ and using [FSocketIONative](https://github.com/getnamo/socketio-client-ue4#c-fsocketionative), which doesn't doesn't depend on using an actor component.
+
+### Statically Constructed SocketIOClient Component
+
+Since v1.1.0 there is a BPFunctionLibrary method ```Construct SocketIOComponent``` which creates and correctly initializes the component in various execution contexts. This allows you to add and reference a SocketIOClient component inside a non-actor blueprint. Below is an example use pattern. It's important to save the result from the construct function into a member variable of your blueprint or the component will be garbage collected.
+
+![static example](https://i.imgur.com/EX4anxd.png)
+
+#### Note on Auto-connect
+
+Game modes do have actor owners and will correctly respect ```bShouldAutoConnect```. The connection happens one tick after construction so you can disable the toggle and connect at own time.
+
+Game Instances do *not* have actor owners and therefore cannot register and initialize the component. The only drawback is that you must manually connect. ```bShouldAutoConnect``` is disabled in this context.
+
+#### Note on Emit with Graph Callback
+
+Non actor-owners such as Game Instances cannot receive the graph callbacks due to invalid world context. This only affects this one callback method, other methods work as usual.
 
 ## How to use - C++
 
@@ -285,7 +335,8 @@ To receive events call _OnNativeEvent_ and pass in your expected event name and 
 ```c++
 SIOClientComponent->OnNativeEvent(FString("MyEvent"), [](const FString& Event, const TSharedPtr<FJsonValue>& Message)
 {
-	//Called when the event is received
+	//Called when the event is received. We can e.g. log what we got
+	UE_LOG(LogTemp, Log, TEXT("Received: %s"), *USIOJConvert::ToJsonString(Message));
 });
 ```
 
@@ -449,6 +500,57 @@ SIOClientComponent->EmitNative(FString("callbackTest"),  FTestCppStruct::StaticS
 
 If you do not wish to use UE4 AActors or UObjects, you can use the native base class [FSocketIONative](https://github.com/getnamo/socketio-client-ue4/blob/master/Source/SocketIOClient/Public/SocketIONative.h). Please see the class header for API. It generally follows a similar pattern to ```USocketIOClientComponent``` with the exception of native callbacks which you can for example see in use here: https://github.com/getnamo/socketio-client-ue4/blob/master/Source/SocketIOClient/Private/SocketIOClientComponent.cpp#L81
 
+### Example FSocketIONative Custom Game Instance
+
+SIOTestGameInstance.h
+```c++
+#include "CoreMinimal.h"
+#include "Engine/GameInstance.h"
+#include "SocketIONative.h"
+#include "SIOTestGameInstance.generated.h"
+UCLASS()
+class SIOCLIENT_API USIOTestGameInstance : public UGameInstance
+{
+	GENERATED_BODY()
+
+	virtual void Init() override;
+	virtual void Shutdown() override;
+	
+	TSharedPtr<FSocketIONative> Socket;
+};
+```
+SIOTestGameInstance.cpp
+```c++
+#include "SIOTestGameInstance.h"
+#include "SocketIOClient.h"
+void USIOTestGameInstance::Init()
+{
+	Super::Init();
+
+	Socket= ISocketIOClientModule::Get().NewValidNativePointer();
+	
+	Socket->Connect("http://localhost:3000", nullptr, nullptr);
+
+	Socket->OnEvent(TEXT("MyEvent"), [this](const FString& Event, const TSharedPtr<FJsonValue>& Message)
+		{
+			UE_LOG(LogTemp, Log, TEXT("Received: %s"), *USIOJConvert::ToJsonString(Message));
+		});
+
+	Socket->Emit(TEXT("MyEmit"), FString("hi"));
+}
+
+void USIOTestGameInstance::Shutdown()
+{
+	Super::Shutdown();
+
+	if (Socket.IsValid())
+	{
+		ISocketIOClientModule::Get().ReleaseNativePointer(Socket);
+		Socket = nullptr;
+	}
+}
+```
+
 ## Alternative Raw C++ Complex message using sio::message
 
 see [sio::message](https://github.com/socketio/socket.io-client-cpp/blob/master/src/sio_message.h) for how to form a raw message. Generally it supports a lot of std:: variants e.g. std::string or more complex messages e.g. [socket.io c++ emit readme](https://github.com/socketio/socket.io-client-cpp#emit-an-event). Note that there are static helper functions attached to the component class to convert from std::string to FString and the reverse.
@@ -528,13 +630,42 @@ NativeClient->OnRawEvent([&](const FString& Name, const sio::message::ptr& Messa
 			
 		}, FString(TEXT("myArbitraryReceiveEvent")));
 ```
+
+## Http JSON requests
+
+Using e.g. https://gist.github.com/getnamo/ced1e6fbee122b640169f5fb867ed540 server
+
+You can post simple JSON requests using the SIOJRequest (this is the same architecture as [VARest](https://github.com/ufna/VaRest)). 
+
+![Sending a JSON post request](https://i.imgur.com/UOJHcP0.png)
+
+These request functions are available globally.
+
 ## Packaging
 
 ### C++
 Works out of the box.
 
 ### Blueprint
+
+#### Marketplace
+Works out of the box.
+
+#### Github
 If you're using this as a project plugin you will need to convert your blueprint only project to mixed (bp and C++). Follow these instructions to do that: https://allarsblog.com/2015/11/04/converting-bp-project-to-cpp/
+
+### iOS
+
+If you're using non-ssl connections (which as of 1.0 is all that is supported), then you need to enable ```Allow web connections to non-HTTPS websites```
+
+![IOS platform setting](https://i.imgur.com/J7Xzy2j.png)
+
+Its possible you may also need to convert your IP4 to IP6, see https://github.com/getnamo/socketio-client-ue4/issues/136#issuecomment-515337500
+
+### Android
+
+Minimum/Target SDK 21 or higher is recommended, but not required.
+
 
 ## License
 

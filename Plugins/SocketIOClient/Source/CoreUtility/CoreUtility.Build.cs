@@ -38,7 +38,9 @@ public class CoreUtility : ModuleRules
                 "CoreUObject",
                 "Engine",
 				"RHI",
-				"RenderCore"
+				"RenderCore",
+				"libOpus",
+				"UEOgg",
 			}
             );
 

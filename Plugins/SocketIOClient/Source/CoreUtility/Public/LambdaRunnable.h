@@ -2,7 +2,75 @@
 
 
 #pragma once
+#include "Runtime/Engine/Classes/Engine/LatentActionManager.h"
+#include "Runtime/Engine/Public/LatentActions.h"
 #include "Runtime/Core/Public/Async/TaskGraphInterfaces.h"
+
+//A simpler latent action where we don't hold the value
+class COREUTILITY_API FCorePendingLatentAction : public FPendingLatentAction
+{
+public:
+	TFunction<void()> OnCancelNotification = nullptr;
+
+	FCorePendingLatentAction(const FLatentActionInfo& LatentInfo) :
+		ExecutionFunction(LatentInfo.ExecutionFunction),
+		OutputLink(LatentInfo.Linkage),
+		CallbackTarget(LatentInfo.CallbackTarget),
+		Called(false)
+	{
+	}
+
+	virtual void UpdateOperation(FLatentResponse& Response) override
+	{
+		Response.FinishAndTriggerIf(Called, ExecutionFunction, OutputLink, CallbackTarget);
+	}
+
+	void Call()
+	{
+		Called = true;
+	}
+
+	void Cancel()
+	{
+		if (OnCancelNotification)
+		{
+			OnCancelNotification();
+		}
+	}
+
+	virtual void NotifyObjectDestroyed() override
+	{
+		Cancel();
+	}
+
+	virtual void NotifyActionAborted() override
+	{
+		Cancel();
+	}
+
+
+#if WITH_EDITOR
+	virtual FString GetDescription() const override
+	{
+		if (Called)
+		{
+			return TEXT("Done.");
+		}
+		else
+		{
+			return TEXT("Pending.");
+		}
+	};
+#endif
+
+
+	const FName ExecutionFunction;
+	const int32 OutputLink;
+	const FWeakObjectPtr CallbackTarget;
+
+private:
+	bool Called;
+};
 
 /*
 *	Convenience wrappers for common thread/task work flow. Run background task on thread, callback via task graph on game thread
@@ -25,4 +93,12 @@ public:
 	Runs a short lambda on the game thread via task graph system
 	*/
 	static FGraphEventRef RunShortLambdaOnGameThread(TFunction< void()> InFunction);
+
+	/*
+	Runs a short lambda on background thread via task graph system
+	*/
+	static FGraphEventRef RunShortLambdaOnBackGroundTask(TFunction< void()> InFunction);
+
+	/** Runs a thread with idle for duration*/
+	static void SetTimeout(TFunction<void()>OnDone, float DurationInSec);
 };

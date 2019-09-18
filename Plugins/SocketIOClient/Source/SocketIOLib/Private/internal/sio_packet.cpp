@@ -507,7 +507,7 @@ namespace sio
                 }
                 else
                 {
-                    break;
+					break;//return;
                 }
             }
             else if(packet::is_binary_message(payload))
@@ -524,7 +524,9 @@ namespace sio
             else
             {
                 p.reset(new packet());
-                p->parse(payload);
+				p->parse(payload);
+                /*if (!p->parse(payload))
+                    return;*/
                 break;
             }
             return;
