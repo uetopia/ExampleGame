@@ -94,10 +94,13 @@ class EXAMPLEGAME_API AUEtopiaPersistCharacter : public ACharacter, public IAbil
 	/* true if a player is looking at a portal */
 	bool CanTravel();
 
-	/* returns true if player has space for cubes in inventory and has money to afford it */
+	/* returns true if player can interact with a vendor */
 	bool CanInteractWithVendor();
 
-	/** player pressed buy action */
+	/* returns true if player can interact with a vendor */
+	bool CanInteractWithGameStore();
+
+	/** player pressed Interact button */
 	void OnInteractWithVendor();
 
 	/** player pressed buy action */
@@ -219,5 +222,6 @@ public:
 
 	class AMyServerPortalActor* GetPortalFocus();
 	class AMyBaseVendor* GetVendorFocus();
+	class AMyGameStore* GetGameStoreFocus();
 
 };

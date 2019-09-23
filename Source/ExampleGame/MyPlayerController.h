@@ -15,6 +15,7 @@
 #include "ILoginFlowManager.h"
 #include "MyBasePickup.h"
 #include "MyBaseVendor.h"
+#include "MyGameStore.h"
 #include "GameplayAbilitySpec.h"
 #include "MyTypes.h"
 #include "MyPlayerController.generated.h"
@@ -51,6 +52,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGetCharacterListCompleteDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGetServerClustersCompleteDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnSelectServerClusterCompleteDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGetServersCompleteDelegate);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGameStoreInteractDisplayUIDelegate, AMyGameStore*, GameStoreRef);
 
 /**
 * Info associated with a party identifier
@@ -396,7 +398,7 @@ public:
 	UFUNCTION(Server, Reliable, WithValidation)
 		void ServerRemoveItemFromVendor(const FString& vendorKeyId, const FString& vendorItemKeyId);
 
-	// This is the blueprint function used to add an item into a vendor
+	// This is the blueprint function used to buy an item from a vendor
 	// It will ultimately perform the function on the server, and replicate the data back to the client(s)
 	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
 		bool BuyItemFromVendor(const FString& vendorKeyId, const FString& vendorItemKeyId, int32 quantity);
@@ -431,6 +433,31 @@ public:
 	// This is the function that gets called on the server
 	UFUNCTION(Server, Reliable, WithValidation)
 		void ServerClaimItemFromVendor(const FString& vendorKeyId, const FString& vendorItemKeyId);
+
+	///////////////////////////
+	// GAME STORE RELATED FUNCTIONS
+	///////////////////////////
+
+	UFUNCTION(Server, Reliable, WithValidation)
+		void ServerAttemptSetGameStoreInteract(AMyGameStore* GameStoreRef);
+
+	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
+		void AttemptGameStoreInteract(AMyGameStore* GameStoreRef);
+
+	UPROPERTY(BlueprintReadWrite, Replicated, Category = "UETOPIA")
+		bool bInteractingWithGameStore;
+
+	UPROPERTY(BlueprintReadWrite, Replicated, Category = "UETOPIA")
+		AMyGameStore* InteractingWithGameStore;
+
+	// This is the blueprint function used to buy an item from a game store
+	// It will ultimately perform the function on the server, and replicate the data back to the client(s)
+	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
+		bool BuyItemFromGameStore(AMyGameStore* GameStoreRef, int32 itemIndex, int32 quantity);
+
+	// This is the function that gets called on the server
+	UFUNCTION(Server, Reliable, WithValidation)
+		void ServerBuyItemFromGameStore(AMyGameStore* GameStoreRef, int32 itemIndex, int32 quantity);
 
 	////////////////////////////
 	// Ability Related Functions
@@ -642,6 +669,11 @@ public:
 	// Delegate which signals that a vendor Infor request has finished, and we need to update the vendor UI
 	UPROPERTY(BlueprintAssignable, Category = "UETOPIA")
 	FOnVendorInfoCompleteDelegate FOnVendorInfoComplete;
+
+
+	//Delegate which signals that a game store interaction has occurred and we need to display the Game Store UI
+	UPROPERTY(BlueprintAssignable, Category = "UETOPIA")
+	FOnGameStoreInteractDisplayUIDelegate FOnGameStoreInteractDisplayUI;
 
 	// This is the delegate to grab on to in the UI
 	// When it fires, it signals that you should refresh the abilities

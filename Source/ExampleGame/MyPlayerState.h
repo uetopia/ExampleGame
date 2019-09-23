@@ -67,6 +67,7 @@ private:
 
 public:
 
+
 	UAbilitySystemComponent* GetAbilitySystemComponent() const override
 	{
 		//return AbilitySystem;

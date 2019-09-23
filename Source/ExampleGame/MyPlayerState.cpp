@@ -57,6 +57,7 @@ void AMyPlayerState::ClientInitialize(AController* C)
 
 
 
+
 void AMyPlayerState::OnGameplayEffectAppliedToSelf(class UAbilitySystemComponent* FromInstigator, const FGameplayEffectSpec& Spec, FActiveGameplayEffectHandle Handle)
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerState::OnGameplayEffectAppliedToSelf"));

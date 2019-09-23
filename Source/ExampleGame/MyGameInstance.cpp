@@ -123,6 +123,13 @@ UMyGameInstance::UMyGameInstance(const FObjectInitializer& ObjectInitializer)
 
 	metaMatchCustom = "";
 
+	// Load the data table
+	// DataTable'/Game/Data/EG_Items_-_Sheet1.EG_Items_-_Sheet1'
+	static ConstructorHelpers::FObjectFinder<UDataTable>
+		ItemsDataTable_BP(TEXT("DataTable'/Game/Data/EG_Items_-_Sheet1.EG_Items_-_Sheet1'"));
+	ItemsDataTable = ItemsDataTable_BP.Object;
+
+
 
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] GAME INSTANCE CONSTRUCTOR - DONE"));
 }
@@ -1055,12 +1062,44 @@ bool UMyGameInstance::GetGamePlayer(FString playerKeyId, bool bAttemptLock)
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] GetGamePlayer"));
 
-	FMyActivePlayer* ActivePlayer = getPlayerByPlayerKey(playerKeyId);
-
-	if (ActivePlayer)
+	// WE want slightlly different behavior if it is competitive.
+	if (UEtopiaMode == "competitive")
 	{
-		if (!ActivePlayer->gamePlayerDataLoaded)
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayer] - Mode set to competitive"));
+
+		FMyActivePlayer* ActivePlayer = getPlayerByPlayerKey(playerKeyId);
+
+		if (ActivePlayer)
 		{
+			if (!ActivePlayer->gamePlayerDataLoaded)
+			{
+
+				FString access_token = ActivePlayer->PlayerController->CurrentAccessTokenFromOSS;
+
+				FString nonceString = "10951350917635";
+				FString encryption = "off";  // Allowing unencrypted on sandbox for now.  
+				FString OutputString = "nonce=" + nonceString + "&encryption=" + encryption;
+
+				if (bAttemptLock) {
+					OutputString = OutputString + "&lock=True";
+				}
+
+				FString APIURI = "/api/v1/game/player/" + ActivePlayer->gamePlayerKeyId;
+				bool requestSuccess = PerformHttpRequest(&UMyGameInstance::GetGamePlayerRequestComplete, APIURI, OutputString, access_token);
+				return requestSuccess;
+			}
+		}
+		return true;
+	}
+	else
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayer] - Mode set to continuous"));
+
+		FMyActivePlayer* ActivePlayer = getPlayerByPlayerKey(playerKeyId);
+
+		if (ActivePlayer)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayer] - Got ActivePlayer"));
 
 			FString access_token = ActivePlayer->PlayerController->CurrentAccessTokenFromOSS;
 
@@ -1075,9 +1114,11 @@ bool UMyGameInstance::GetGamePlayer(FString playerKeyId, bool bAttemptLock)
 			FString APIURI = "/api/v1/game/player/" + ActivePlayer->gamePlayerKeyId;
 			bool requestSuccess = PerformHttpRequest(&UMyGameInstance::GetGamePlayerRequestComplete, APIURI, OutputString, access_token);
 			return requestSuccess;
+
 		}
+		return true;
 	}
-	return true;
+
 }
 
 void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded)
@@ -1499,8 +1540,6 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 				const UInputSettings* Settings = GetDefault<UInputSettings>();
 				if (!Settings) return;
 
-				// This was made private in 4.23
-				//const TArray<FInputActionKeyMapping>& KeyBindingsFromConfig = Settings->ActionMappings;
 				const TArray<FInputActionKeyMapping>& KeyBindingsFromConfig = Settings->GetActionMappings();
 
 				//TArray<FVictoryInput> KeyBindingsFromConfig; // remapped keybindings are stored in ini files as well.
@@ -1739,6 +1778,7 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 						auto inventorySlotObj = inventorySlot->AsObject();
 						if (inventorySlotObj.IsValid())
 						{
+							// TODO - Use data tables for this instead.  Results in a smaller save file, and is easier to maintain.
 							UClass* LoadedActorOwnerClass;
 							LoadedActorOwnerClass = LoadClassFromPath(inventorySlotObj->GetStringField(FString("ItemClass")));
 
@@ -2955,6 +2995,287 @@ void UMyGameInstance::TransferPlayerRequestComplete(FHttpRequestPtr HttpRequest,
 }
 
 
+
+bool UMyGameInstance::GameStorePurchase(AMyPlayerController* playerController, AMyGameStore* GameStoreRef, int32 itemIndex, int32 quantity)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] GameStorePurchase"));
+
+	FString nonceString = "10951350917635";
+	FString encryption = "off";  // Allowing unencrypted on sandbox for now.
+
+	AMyPlayerState* myPlayerState = Cast<AMyPlayerState>(playerController->PlayerState);
+
+	if (myPlayerState)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] GameStorePurchase got myPlayerState"));
+
+		if (GameStoreRef->StoreItems.IsValidIndex(itemIndex))
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] GameStorePurchase index is  valid"));
+
+			// Check to see if it is an inventory upgrade that the player cannot use or already has purchased.
+			// Get the blueprint object from the data table
+			FMyInventorySlot itemSlot;
+
+			if (GameStoreRef->StoreItems[itemIndex].DataTableId)
+			{
+				UE_LOG(LogTemp, Log, TEXT("Found DataTableId"));
+
+				static const FString ContextString(TEXT("GENERAL"));
+				// o-- Search using FindRow. It returns a handle to the row.
+				// Access the variables like GOLookupRow->Blueprint_Class, GOLookupRow->Usecode
+				FIngredientsTable* GOLookupRow = ItemsDataTable->FindRow<FIngredientsTable>(
+					*FString::Printf(
+						TEXT("%d"),
+						GameStoreRef->StoreItems[itemIndex].DataTableId),
+					ContextString
+					);
+
+				if (GOLookupRow)
+				{
+					// from Data Table
+					UE_LOG(LogTemp, Log, TEXT("Found GOLookupRow"));
+
+					UClass* LoadedActorOwnerClass;
+					LoadedActorOwnerClass = LoadClassFromPath(GOLookupRow->ClassPath);
+
+					if (LoadedActorOwnerClass)
+					{
+						UE_LOG(LogTemp, Log, TEXT("Found LoadedActorOwnerClass"));
+
+						// First Check to see if it is an inventory Upgrade item - In this case we don't need to stick it in the inventory at all, just use it right away.
+
+						AInventorySlotUpgrade* basePickupBPInvUpgrade = Cast<AInventorySlotUpgrade>(LoadedActorOwnerClass->GetDefaultObject());
+						if (basePickupBPInvUpgrade) {
+							UE_LOG(LogTemp, Log, TEXT("Found basePickupBPInvUpgrade"));
+
+							if (myPlayerState->InventoryCapacity >= basePickupBPInvUpgrade->inventorySlotsAfterUse)
+							{
+								playerController->SendLocalChatMessage("You are already at or above this upgrade's level.  Aborting purchase.");
+								return false;
+							}
+
+							if (myPlayerState->InventoryCapacity < basePickupBPInvUpgrade->requiredInventorySlotsToUse)
+							{
+								playerController->SendLocalChatMessage("You do not meet the requirements.  Aborting purchase.");
+								return false;
+							}
+
+						}
+					}
+				}
+			}
+
+			// Get the data table Id from the Game store, and convert to string
+			FString DataTableIdString = FString::FromInt(GameStoreRef->StoreItems[itemIndex].DataTableId);
+
+
+			TSharedPtr<FJsonObject> PlayerJsonObj = MakeShareable(new FJsonObject);
+			PlayerJsonObj->SetStringField("nonce", "nonceString");
+			PlayerJsonObj->SetStringField("encryption", encryption);
+			PlayerJsonObj->SetStringField("itemName", DataTableIdString);
+			PlayerJsonObj->SetStringField("description", "Unused");
+			PlayerJsonObj->SetNumberField("amount", GameStoreRef->StoreItems[itemIndex].credPrice);
+
+			FString JsonOutputString;
+			TSharedRef< TJsonWriter<> > Writer = TJsonWriterFactory<>::Create(&JsonOutputString);
+			FJsonSerializer::Serialize(PlayerJsonObj.ToSharedRef(), Writer);
+
+			FString APIURI = "/api/v1/server/player/" + myPlayerState->playerKeyId + "/purchase";
+
+			FMyActivePlayer* ActivePlayer = getPlayerByPlayerKey(myPlayerState->playerKeyId);
+			if (ActivePlayer)
+			{
+				FString access_token = ActivePlayer->PlayerController->CurrentAccessTokenFromOSS;
+				bool requestSuccess = PerformJsonHttpRequest(&UMyGameInstance::GameStorePurchaseRequestComplete, APIURI, JsonOutputString, access_token);
+				return requestSuccess;
+			}
+		}
+
+		
+	}
+
+	return false;
+}
+
+void UMyGameInstance::GameStorePurchaseRequestComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded)
+{
+	if (!HttpResponse.IsValid())
+	{
+		UE_LOG(LogTemp, Log, TEXT("Test failed. NULL response"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Log, TEXT("Completed test [%s] Url=[%s] Response=[%d] [%s]"),
+			*HttpRequest->GetVerb(),
+			*HttpRequest->GetURL(),
+			HttpResponse->GetResponseCode(),
+			*HttpResponse->GetContentAsString());
+		FString JsonRaw = *HttpResponse->GetContentAsString();
+		TSharedPtr<FJsonObject> JsonParsed;
+		TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(JsonRaw);
+		if (FJsonSerializer::Deserialize(JsonReader, JsonParsed))
+		{
+			bool Authorization = JsonParsed->GetBoolField("authorization");
+			UE_LOG(LogTemp, Log, TEXT("Authorization"));
+			if (Authorization)
+			{
+				UE_LOG(LogTemp, Log, TEXT("Authorization True"));
+				bool Success = JsonParsed->GetBoolField("success");
+				if (Success) {
+					UE_LOG(LogTemp, Log, TEXT("Success True"));
+					FString userKeyId = JsonParsed->GetStringField("userKeyId");
+					FString itemName = JsonParsed->GetStringField("itemName");
+					int32 purchaseAmount = JsonParsed->GetNumberField("amount");
+
+					FMyActivePlayer* playerRecord = getPlayerByPlayerKey(userKeyId);
+					if (playerRecord == nullptr)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] TransferPlayer - Player NOT found by Key"));
+						return;
+					}
+
+					APlayerController* pc = Cast<AMyPlayerController>(playerRecord->PlayerController);
+					APlayerState* thisPlayerState = pc->PlayerState;
+					AMyPlayerState* playerS = Cast<AMyPlayerState>(thisPlayerState);
+
+					if (playerS)
+					{
+						// Convert ItemName back to Int, which is our Data Table Reference
+						int32 DataTableId = FCString::Atoi(*itemName);
+
+						// Get the blueprint object from the data table
+						FMyInventorySlot itemSlot;
+
+						if (DataTableId)
+						{
+							UE_LOG(LogTemp, Log, TEXT("Found DataTableId"));
+
+							static const FString ContextString(TEXT("GENERAL"));
+							// o-- Search using FindRow. It returns a handle to the row.
+							// Access the variables like GOLookupRow->Blueprint_Class, GOLookupRow->Usecode
+							FIngredientsTable* GOLookupRow = ItemsDataTable->FindRow<FIngredientsTable>(
+								*FString::Printf(
+									TEXT("%d"),
+									DataTableId),
+								ContextString
+								);
+
+							if (GOLookupRow)
+							{
+								// from Data Table
+								UE_LOG(LogTemp, Log, TEXT("Found GOLookupRow"));
+
+								UClass* LoadedActorOwnerClass;
+								LoadedActorOwnerClass = LoadClassFromPath(GOLookupRow->ClassPath);
+
+								if (LoadedActorOwnerClass)
+								{
+									UE_LOG(LogTemp, Log, TEXT("Found LoadedActorOwnerClass"));
+
+									// First Check to see if it is an inventory Upgrade item - In this case we don't need to stick it in the inventory at all, just use it right away.
+
+									AInventorySlotUpgrade* basePickupBPInvUpgrade = Cast<AInventorySlotUpgrade>(LoadedActorOwnerClass->GetDefaultObject());
+									if (basePickupBPInvUpgrade) {
+										UE_LOG(LogTemp, Log, TEXT("Found basePickupBPInvUpgrade"));
+
+										// we need to keep track of how many new slots were added so we can fill them with empty later
+										int32 newSlotsAdded = basePickupBPInvUpgrade->inventorySlotsAfterUse - playerS->InventoryCapacity;
+
+										// update the capacity
+										playerS->InventoryCapacity = basePickupBPInvUpgrade->inventorySlotsAfterUse;
+
+										// Fill with empties
+										// This is confusing becasue we are doing another Load Actor lookup.  but here, we are just setting up a junk empty inventory slot.
+
+										FMyInventorySlot emptySlot;
+										FString JunkActorClassFullPath = "/Game/UI/Inventory/Blueprints/ItemClasses/ItemHealthPotion.ItemHealthPotion_C";
+										UClass* JunkLoadedActorOwnerClass;
+
+										JunkLoadedActorOwnerClass = LoadClassFromPath(JunkActorClassFullPath);
+
+										if (JunkLoadedActorOwnerClass)
+										{
+											UE_LOG(LogTemp, Log, TEXT("Found LoadedActorOwnerClass"));
+
+											AMyBasePickup* basePickupBP = Cast<AMyBasePickup>(JunkLoadedActorOwnerClass->GetDefaultObject());
+											if (basePickupBP) {
+												UE_LOG(LogTemp, Log, TEXT("Found basePickupBP"));
+												//emptySlot.itemClass = basePickupBP->GetClass();
+												//emptySlot.itemClass = basePickupBP;
+												emptySlot.itemClassTitle = basePickupBP->GetName();
+												emptySlot.itemClassPath = JunkActorClassFullPath;
+												emptySlot.Icon = basePickupBP->Icon;
+												emptySlot.itemTitle = basePickupBP->Title.ToString();
+												emptySlot.quantity = 0;
+
+												// Add 
+												for (int32 inventoryIndex = 0; inventoryIndex < newSlotsAdded; inventoryIndex++)
+												{
+													playerS->InventorySlots.Add(emptySlot);
+												}
+											}
+
+										}
+										else {
+											UE_LOG(LogTemp, Log, TEXT("Did not find LoadedActorOwnerClass"));
+										}
+
+									}
+									else
+									{
+										UE_LOG(LogTemp, Log, TEXT("NOT A basePickupBPInvUpgrade"));
+
+										AMyBasePickup* basePickupBP = Cast<AMyBasePickup>(LoadedActorOwnerClass->GetDefaultObject());
+										if (basePickupBP) {
+											UE_LOG(LogTemp, Log, TEXT("Found basePickupBP"));
+
+											itemSlot.itemClassTitle = basePickupBP->GetName();  
+											// The name is not consistent
+											// [2017.11.21-04.31.36:264][655]LogTemp: InventorySlots[i].itemClassTitle: Default__ItemHealthPotion_C
+											// [2017.11.21 - 04.31.36:264][655]LogTemp: ClassTypeIn->GetName() : ItemHealthPotion2_2
+
+											FString unwantedTitlePrefix = TEXT("Default__");
+											FString unwantedTitlePostfix = TEXT("_C");
+											itemSlot.itemClassTitle.RemoveFromStart(unwantedTitlePrefix);
+											itemSlot.itemClassTitle.RemoveFromEnd(unwantedTitlePostfix);
+
+											itemSlot.itemTitle = basePickupBP->Title.ToString();
+											itemSlot.Icon = basePickupBP->Icon;
+											itemSlot.Attributes = basePickupBP->Attributes;
+											itemSlot.quantity = 1;
+											itemSlot.itemId = itemName;
+											itemSlot.bCanBeUsed = basePickupBP->bCanBeUsed;
+											itemSlot.UseText = basePickupBP->UseText;
+											itemSlot.bCanBeStacked = basePickupBP->bCanBeStacked;
+											itemSlot.MaxStackSize = basePickupBP->MaxStackSize;
+											itemSlot.itemClassPath = GOLookupRow->ClassPath;
+											itemSlot.DataTableId = DataTableId;
+
+											//int32 slotIndex = playerS->InventorySlots.Add(itemSlot);
+
+											// not add we want find Character->AddItem
+											playerRecord->PlayerController->AddItem(basePickupBP, 1, false);
+										}
+									}
+
+
+									
+								}
+							}
+						}
+
+
+						
+						// update player currency balance
+						playerRecord->currencyCurrent = playerRecord->currencyCurrent - purchaseAmount;
+						playerS->Currency = playerS->Currency - purchaseAmount;
+					}
+				}
+			}
+		}
+	}
+}
 
 
 bool UMyGameInstance::Purchase(FString playerKeyId, FString itemName, FString description, int32 amount)

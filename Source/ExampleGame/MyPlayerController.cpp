@@ -1786,6 +1786,31 @@ void AMyPlayerController::AttemptVendorUpdate(const FString& Title, const FStrin
 
 }
 
+// GAME STORE
+
+bool AMyPlayerController::ServerAttemptSetGameStoreInteract_Validate(AMyGameStore* GameStoreRef)
+{
+	//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [ServerAttemptSpawnActor_Validate]  "));
+	return true;
+}
+
+void AMyPlayerController::ServerAttemptSetGameStoreInteract_Implementation(AMyGameStore* GameStoreRef)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerAttemptSetGameStoreInteract_Implementation"));
+
+	bInteractingWithGameStore = true;
+	InteractingWithGameStore = GameStoreRef;
+}
+
+void AMyPlayerController::AttemptGameStoreInteract(AMyGameStore* GameStoreRef)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::AttemptGameStoreInteract"));
+
+	// TODO check to see if in range
+	FOnGameStoreInteractDisplayUI.Broadcast(GameStoreRef);
+}
+
+
 bool AMyPlayerController::FindServerClusters()
 {
 	// Running on Client
@@ -2280,7 +2305,7 @@ void AMyPlayerController::ServerRemoveItemFromVendor_Implementation(const FStrin
 
 bool AMyPlayerController::BuyItemFromVendor(const FString& vendorKeyId, const FString& vendorItemKeyId, int32 quantity)
 {
-	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::RemoveItemFromVendor"));
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::BuyItemFromVendor"));
 	// this is executing on the client, not server.
 	// TODO Make sure that the user has space in inventory
 	ServerBuyItemFromVendor(vendorKeyId, vendorItemKeyId, quantity);
@@ -2372,6 +2397,32 @@ void AMyPlayerController::ServerClaimItemFromVendor_Implementation(const FString
 	return;
 }
 
+// GAME STORE
+
+bool AMyPlayerController::BuyItemFromGameStore(AMyGameStore* GameStoreRef, int32 itemIndex, int32 quantity)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::BuyItemFromGameStore"));
+	// this is executing on the client, not server.
+	// TODO Make sure that the user has space in inventory
+	ServerBuyItemFromGameStore(GameStoreRef, itemIndex, quantity);
+	return true;
+}
+
+bool AMyPlayerController::ServerBuyItemFromGameStore_Validate(AMyGameStore* GameStoreRef, int32 itemIndex, int32 quantity)
+{
+	//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [ServerAttemptSpawnActor_Validate]  "));
+	return true;
+}
+
+void AMyPlayerController::ServerBuyItemFromGameStore_Implementation(AMyGameStore* GameStoreRef, int32 itemIndex, int32 quantity)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerBuyItemFromGameStore_Implementation"));
+	UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+	TheGameInstance->GameStorePurchase(this, GameStoreRef, itemIndex, quantity);
+	return;
+}
+
+
 /////////////
 // CHARACTERS
 /////////////
@@ -2428,7 +2479,7 @@ void AMyPlayerController::GetCharacterListComplete(FHttpRequestPtr HttpRequest, 
 				if (CharactersJson->Num() > 0)
 				{
 					for (auto characterJson : *CharactersJson) {
-						UE_LOG(LogTemp, Log, TEXT("Found Vendor Item "));
+						UE_LOG(LogTemp, Log, TEXT("Found Character "));
 						auto CharacterObj = characterJson->AsObject();
 						if (CharacterObj.IsValid())
 						{
@@ -3046,6 +3097,8 @@ void AMyPlayerController::GetLifetimeReplicatedProps(TArray< FLifetimeProperty >
 	//DOREPLIFETIME(AMyPlayerController, CurrencyAvailable);
 	DOREPLIFETIME(AMyPlayerController, bInteractingWithVendor);
 	DOREPLIFETIME(AMyPlayerController, InteractingWithVendorKeyId);
+	DOREPLIFETIME(AMyPlayerController, InteractingWithGameStore);
+	
 	//DOREPLIFETIME(AMyPlayerController, Experience);
 	//DOREPLIFETIME(AMyPlayerController, ExperienceThisLevel);
 	DOREPLIFETIME(AMyPlayerController, bIsShardedServer);

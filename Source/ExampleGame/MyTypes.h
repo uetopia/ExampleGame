@@ -6,7 +6,9 @@
 #include "GameplayEffect.h"
 #include "GameplayAbilitiesModule.h"
 #include "Online.h"
+#include "MyBasePickup.h"
 #include "MyTypes.generated.h"
+
 
 UENUM()
 enum class EMyActorFilterMatchType : uint8
@@ -741,4 +743,82 @@ struct FScoreboardKOTH {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		bool bIsContested;
 
+};
+
+USTRUCT(BlueprintType)
+struct FStoreItem {
+
+	GENERATED_USTRUCT_BODY()
+
+		UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString Title;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString Description;
+
+		UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString PrerequisiteDescription;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		bool bAutoActivate;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		int32 credPrice;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		int32 gameCurrencyPrice;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		int32 DataTableId;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		int32 Quantity;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		TArray<float> Attributes;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		UTexture2D* Icon;
+
+};
+
+/** Structure to store the lookup of GameObjects for use in a UDataTable */
+USTRUCT(BlueprintType)
+struct FIngredientsTable : public FTableRowBase
+{
+	GENERATED_BODY()
+
+		UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
+		FString Title;
+
+	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
+		FString Description;
+
+	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA", meta = (MakeStructureDefaultValue = "Empty"))
+		FString ClassPath;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		TAssetPtr<UTexture2D> Icon;
+
+	//UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
+	//	FString Category;
+
+	//UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
+	//	FString Subcategory;
+
+	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
+		bool bCanBeUsed;
+
+	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
+		FString UseText;
+
+	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
+		bool bCanBeStacked;
+
+	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
+		int32 MaxStackSize;
+
+	// Might want to use this for crafting
+	//UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
+	//	bool bCanBeMixed;
 };

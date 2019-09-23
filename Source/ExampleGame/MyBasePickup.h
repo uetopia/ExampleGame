@@ -12,7 +12,25 @@ class EXAMPLEGAME_API AMyBasePickup : public AActor
 {
 	GENERATED_BODY()
 
+
 public:
+	//*************************
+	//TEMPLATE Load Obj From Path (thanks Rama!)
+	//*************************
+		static FORCEINLINE UClass* LoadClassFromPath(const FString& Path)
+	{
+		if (Path == "") return NULL;
+
+		return StaticLoadClass(UObject::StaticClass(), NULL, *Path, NULL, LOAD_None, NULL);
+	}
+
+	//Get Path
+	static FORCEINLINE FString GetClassPath(UClass* ClassPtr)
+	{
+		return FStringClassReference(ClassPtr).ToString();
+	}
+
+
 	// Sets default values for this actor's properties
 	AMyBasePickup();
 

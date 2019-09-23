@@ -16,7 +16,9 @@
 #include "MyServerPortalActorParallelPart.h"
 #include "MyServerPortalActorParallelGrou.h"
 #include "MyBasePickup.h"
+#include "InventorySlotUpgrade.h"
 #include "MyPlayerState.h"
+#include "MyGameStore.h"
 #include "MyTypes.h"
 #include "MyGameInstance.generated.h"
 
@@ -510,8 +512,12 @@ public:
 	bool VendorItemClaim(AMyPlayerController* playerController, FString VendorKeyId, FString VendorItemKeyId);
 	void VendorItemClaimRequestComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
 
+	// GAME STORE
+	bool GameStorePurchase(AMyPlayerController* playerController, AMyGameStore* GameStoreRef, int32 itemIndex, int32 quantity);
+	void GameStorePurchaseRequestComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
+
 	// Generic microtransaction functions - not vendor related
-	// Use these for quest rewards, or for purchases from server store or NPCs
+	// Use these for quest rewards, or for purchases from NPCs
 
 	bool Purchase(FString playerKeyId, FString itemName, FString description, int32 amount);
 	void PurchaseRequestComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
@@ -700,6 +706,8 @@ private:
 	// Custom texture url string.
 	FString customTexture;
 
+	// Data table for referencing inventory items.
+	UDataTable* ItemsDataTable;
 	
 
 protected:

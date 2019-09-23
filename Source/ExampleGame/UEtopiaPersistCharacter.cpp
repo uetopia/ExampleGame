@@ -5,6 +5,7 @@
 #include "MySpawnableObject.h"
 #include "MyServerPortalActor.h"
 #include "MyBaseVendor.h"
+#include "MyGameStore.h"
 #include "MyPlayerState.h"
 #include "MyPlayerController.h"
 #include "UnrealNetwork.h"
@@ -554,6 +555,15 @@ bool AUEtopiaPersistCharacter::CanInteractWithVendor()
 	return true;
 }
 
+bool AUEtopiaPersistCharacter::CanInteractWithGameStore()
+{
+	AMyGameStore* StoreInFocus = GetGameStoreFocus();
+	if (StoreInFocus) {
+		return true;
+	}
+	return false;
+}
+
 void AUEtopiaPersistCharacter::OnInteractWithVendor()
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [OnInteractWithVendor] "));
@@ -561,12 +571,20 @@ void AUEtopiaPersistCharacter::OnInteractWithVendor()
 	if (VendorInFocus) {
 		if (CanInteractWithVendor())
 		{
-			// Fire the delegate to tell BP to display the inventory interface
+			// Fire the delegate to tell BP to display the vendor interface
 			AMyPlayerController* myPC = Cast<AMyPlayerController>(Controller);
-			//myPC->FOnVendorInteractDisplayUI.Broadcast(VendorInFocus->VendorKeyId);
-			//myPC->FOnVendorInteractChanged.Broadcast(VendorInFocus->VendorKeyId, true);
 			myPC->AttemptVendorInteract(VendorInFocus);
 			myPC->ServerAttemptSetVendorInteract(VendorInFocus);
+		}
+	}
+	AMyGameStore* GameStoreInFocus = GetGameStoreFocus();
+	if (GameStoreInFocus) {
+		if (CanInteractWithGameStore())
+		{
+			// Fire the delegate to tell BP to display the vendor interface
+			AMyPlayerController* myPC = Cast<AMyPlayerController>(Controller);
+			myPC->AttemptGameStoreInteract(GameStoreInFocus);
+			myPC->ServerAttemptSetGameStoreInteract(GameStoreInFocus);
 		}
 	}
 	
@@ -793,25 +811,26 @@ AMyServerPortalActor* AUEtopiaPersistCharacter::GetPortalFocus() {
 
 AMyBaseVendor* AUEtopiaPersistCharacter::GetVendorFocus() {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [GetVendorFocus]  "));
-	// Attempt to use Raycasts to view an object and echo it back
-
 	FVector Direction = this->FollowCamera->GetForwardVector();
 	FVector StartTrace = GetActorLocation();
-	const FVector EndTrace = StartTrace + Direction * 3000.0f; //where 300 is the distance it checks
-
+	const FVector EndTrace = StartTrace + Direction * 3000.0f; 
 	FCollisionQueryParams TraceParams(FName(TEXT("")), true, this);
-
-	// Removed in 4.22
-	//TraceParams.bTraceAsyncScene = true;
 	TraceParams.bReturnPhysicalMaterial = true;
-
 	FHitResult Hit(ForceInit);
 	GetWorld()->LineTraceSingleByChannel(Hit, StartTrace, EndTrace, COLLISION_VIEW, TraceParams);
-
-	// We only want portal type actors
-	//GetWorld()->LineTraceSingleByObjectType(Hit, StartTrace, EndTrace, COLLISION_VIEW, TraceParams)
-
 	return Cast<AMyBaseVendor>(Hit.GetActor());
+}
+
+AMyGameStore* AUEtopiaPersistCharacter::GetGameStoreFocus() {
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [GetGameStoreFocus]  "));
+	FVector Direction = this->FollowCamera->GetForwardVector();
+	FVector StartTrace = GetActorLocation();
+	const FVector EndTrace = StartTrace + Direction * 3000.0f;
+	FCollisionQueryParams TraceParams(FName(TEXT("")), true, this);
+	TraceParams.bReturnPhysicalMaterial = true;
+	FHitResult Hit(ForceInit);
+	GetWorld()->LineTraceSingleByChannel(Hit, StartTrace, EndTrace, COLLISION_VIEW, TraceParams);
+	return Cast<AMyGameStore>(Hit.GetActor());
 }
 
 
