@@ -2258,7 +2258,7 @@ bool UMyGameInstance::SaveGamePlayer(FString playerKeyId, bool bAttemptUnLock)
 								bRequestBeginPlayStarted = false;
 
 								// Tell the backend that it's safe to bring this server down.
-								NotifyDownReady();
+								//NotifyDownReady();
 							}
 						}
 
@@ -2467,7 +2467,7 @@ bool UMyGameInstance::SaveGamePlayer(FString playerKeyId, bool bAttemptUnLock)
 			bRequestBeginPlayStarted = false;
 
 			// Tell the backend that it's safe to bring this server down.
-			NotifyDownReady();
+			//NotifyDownReady();
 		}
 	}
 	return false;
@@ -2496,6 +2496,29 @@ void UMyGameInstance::SaveGamePlayerRequestComplete(FHttpRequestPtr HttpRequest,
 			if (Authorization)
 			{
 				UE_LOG(LogTemp, Log, TEXT("Authorization True"));
+
+				// Check to see if there are any more players, if not...  Save and prepare for server shutdown
+				// Only if continuous
+				if (UEtopiaMode == "continuous")
+				{
+					int32 authorizedPlayerCount = getActivePlayerCount();
+					if (authorizedPlayerCount > 0)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] DeActivatePlayer - There are still players authorized on this server."));
+					}
+					else 
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] DeActivatePlayer - No Authorized players found - moving to save."));
+
+						// Reset our playstarted flag
+						bRequestBeginPlayStarted = false;
+
+						// Tell the backend that it's safe to bring this server down after a short delay
+						NotifyDownReadyTimerDel.BindUFunction(this, FName("NotifyDownReady"), true);
+						GetWorld()->GetTimerManager().SetTimer(NotifyDownReadyDelayHandle, NotifyDownReadyTimerDel, 10.f, false);
+
+					}
+				}
 			}
 		}
 	}

@@ -550,8 +550,13 @@ public:
 		bool RecordMatchWin(int32 winnerTeamID);
 
 	// THis is called when the last player leaves the server to notify the backend that it is safe to destroy this server.
+	UFUNCTION()
 	bool NotifyDownReady();
 	void NotifyDownReadyComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
+
+	// We need a timer delegate for this
+	FTimerHandle NotifyDownReadyDelayHandle;
+	FTimerDelegate NotifyDownReadyTimerDel;
 
 	// How many items are allowed to be dropped into this level
 	int32 maxPickupItemCount;
