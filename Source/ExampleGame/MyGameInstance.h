@@ -124,49 +124,6 @@ struct FMyActivePlayers {
 
 };
 
-// Matchmaker specific structs.  These are used with uetopia matchmaker functionality.
-USTRUCT(BlueprintType)
-struct FMyMatchPlayer {
-
-	GENERATED_USTRUCT_BODY()
-		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 playerID;
-	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-	//	FString platformID;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		FString userKeyId;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		FString userTitle;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool joined;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 teamId;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		FString teamKeyId;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		FString teamTitle;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool win;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		TArray<FString> killed;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 roundKills;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 roundDeaths;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool currentRoundAlive;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 rank;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 score;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 experience;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		FString gamePlayerKeyId;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		FUniqueNetIdRepl UniqueId;
-
-};
 
 USTRUCT(BlueprintType)
 struct FMyMatchInfo {
