@@ -1761,8 +1761,6 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 				{
 					UE_LOG(LogTemp, Log, TEXT("InventoryParseSuccess"));
 
-
-
 					// TODO - set up player controller inventory.
 					playerS->InventoryCapacity = InventoryCapacity;
 
@@ -1778,138 +1776,150 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 						auto inventorySlotObj = inventorySlot->AsObject();
 						if (inventorySlotObj.IsValid())
 						{
-							// TODO - Use data tables for this instead.  Results in a smaller save file, and is easier to maintain.
-							UClass* LoadedActorOwnerClass;
-							LoadedActorOwnerClass = LoadClassFromPath(inventorySlotObj->GetStringField(FString("ItemClass")));
 
-							if (LoadedActorOwnerClass)
+							// use the data table ID instead.  Look up the Item class from the data table
+							// Smaller save file, and we need the DT ID anyway.
+							int32 DataTableId = 0;
+							inventorySlotObj->TryGetNumberField("DTID", DataTableId);
+
+							if (DataTableId)
 							{
-								//UE_LOG(LogTemp, Log, TEXT("Found LoadedActorOwnerClass"));
+								UE_LOG(LogTemp, Log, TEXT("Found DataTableId"));
 
-								AMyBasePickup* basePickupBP = Cast<AMyBasePickup>(LoadedActorOwnerClass->GetDefaultObject());
-								if (basePickupBP) {
-									//UE_LOG(LogTemp, Log, TEXT("Found basePickupBP"));
+								static const FString ContextString(TEXT("GENERAL"));
+								// o-- Search using FindRow. It returns a handle to the row.
+								// Access the variables like GOLookupRow->Blueprint_Class, GOLookupRow->Usecode
+								FIngredientsTable* GOLookupRow = ItemsDataTable->FindRow<FIngredientsTable>(
+									*FString::Printf(
+										TEXT("%d"),
+										DataTableId),
+									ContextString
+									);
 
-									itemSlot.itemClassTitle = basePickupBP->GetName();  // FFS - we can't use the name because it's not consistent
-									// [2017.11.21-04.31.36:264][655]LogTemp: InventorySlots[i].itemClassTitle: Default__ItemHealthPotion_C
-									// [2017.11.21 - 04.31.36:264][655]LogTemp: ClassTypeIn->GetName() : ItemHealthPotion2_2
+								if (GOLookupRow)
+								{
+									// from Data Table
+									UE_LOG(LogTemp, Log, TEXT("Found GOLookupRow"));
 
-									FString savedAttributes;
+									UClass* LoadedActorOwnerClass;
+									LoadedActorOwnerClass = LoadClassFromPath(GOLookupRow->ClassPath);
 
-									itemSlot.itemTitle = basePickupBP->Title.ToString();
-									itemSlot.itemClassPath = inventorySlotObj->GetStringField(FString("ItemClass"));
-									itemSlot.Icon = basePickupBP->Icon;
+									if (LoadedActorOwnerClass)
+									{
+										UE_LOG(LogTemp, Log, TEXT("Found LoadedActorOwnerClass"));
 
-									inventorySlotObj->TryGetNumberField("Quantity", itemSlot.quantity);
-									inventorySlotObj->TryGetStringField("ItemId", itemSlot.itemId);
-									inventorySlotObj->TryGetStringField("ItemTitle", itemSlot.itemTitle);
+										AMyBasePickup* basePickupBP = Cast<AMyBasePickup>(LoadedActorOwnerClass->GetDefaultObject());
+										if (basePickupBP) {
+											UE_LOG(LogTemp, Log, TEXT("Found basePickupBP"));
 
-									// For inventory we just use a plain array field, becuase inventory already is a json encoded test string.  We don't need to do it again.
+											itemSlot.itemClassTitle = basePickupBP->GetName();  
+											//  we can't use the name because it's not consistent
+											// [2017.11.21-04.31.36:264][655]LogTemp: InventorySlots[i].itemClassTitle: Default__ItemHealthPotion_C
+											// [2017.11.21 - 04.31.36:264][655]LogTemp: ClassTypeIn->GetName() : ItemHealthPotion2_2
 
-									//bool AttributeParseSuccess;
-									//const TArray <TSharedPtr<FJsonValue>> *AttributesJson;
-									const JsonValPtrArray* AttributesJson;
-									inventorySlotObj->TryGetArrayField("attributes", AttributesJson);
+											FString unwantedTitlePrefix = TEXT("Default__");
+											FString unwantedTitlePostfix = TEXT("_C");
+											itemSlot.itemClassTitle.RemoveFromStart(unwantedTitlePrefix);
+											itemSlot.itemClassTitle.RemoveFromEnd(unwantedTitlePostfix);
 
-									int32 currentIndex = 0;
-									int32 referenceIndex = 0;
-									FString JsonIndexName = "0";
-									double JsonValue = 0.0f;
+											FString savedAttributes;
 
-									// TODO rework this - it's possible that somewhow the attributes get messed up and out of sequence
-									// like if it is saved, and an index is skipped.
-									for (auto attributeJsonRaw : *AttributesJson) {
-										UE_LOG(LogTemp, Log, TEXT("Found attribute "));
-										JsonValue = 0.0f;
-										auto attributeObj = attributeJsonRaw->AsObject();
-										if (attributeObj.IsValid())
-										{
-											JsonIndexName = FString::FromInt(currentIndex);
+											itemSlot.itemTitle = basePickupBP->Title.ToString();
+											itemSlot.Icon = basePickupBP->Icon;
+											inventorySlotObj->TryGetNumberField("Quantity", itemSlot.quantity);
+											inventorySlotObj->TryGetStringField("ItemId", itemSlot.itemId);
+											inventorySlotObj->TryGetStringField("ItemTitle", itemSlot.itemTitle);
+											const JsonValPtrArray* AttributesJson;
+											inventorySlotObj->TryGetArrayField("attributes", AttributesJson);
 
-											attributeObj->TryGetNumberField(JsonIndexName, JsonValue);
+											int32 currentIndex = 0;
+											int32 referenceIndex = 0;
+											FString JsonIndexName = "0";
+											double JsonValue = 0.0f;
 
-											itemSlot.Attributes.Add(JsonValue);
+											// TODO rework this - it's possible that somewhow the attributes get messed up and out of sequence
+											// like if it is saved, and an index is skipped.
+											for (auto attributeJsonRaw : *AttributesJson) {
+												//UE_LOG(LogTemp, Log, TEXT("Found attribute "));
+												JsonValue = 0.0f;
+												auto attributeObj = attributeJsonRaw->AsObject();
+												if (attributeObj.IsValid())
+												{
+													JsonIndexName = FString::FromInt(currentIndex);
+
+													attributeObj->TryGetNumberField(JsonIndexName, JsonValue);
+
+													itemSlot.Attributes.Add(JsonValue);
+												}
+												currentIndex++;
+											}
+
+											itemSlot.bCanBeUsed = basePickupBP->bCanBeUsed;
+											itemSlot.UseText = basePickupBP->UseText;
+											itemSlot.bCanBeStacked = basePickupBP->bCanBeStacked;
+											itemSlot.MaxStackSize = basePickupBP->MaxStackSize;
+											itemSlot.itemClassPath = GOLookupRow->ClassPath;
+											itemSlot.DataTableId = DataTableId;
+											
+											int32 slotIndex = playerS->InventorySlots.Add(itemSlot);
+
+											slotsFilledSuccessfully++;
 										}
-										currentIndex++;
-									}
-
-
-									/*
-									//TArray<TSharedPtr<FJsonValue> > JsonFriends = JsonObject->GetArrayField(TEXT("data"));
-
-									inventorySlotObj->TryGetStringField("attributes", savedAttributes);
-
-									TSharedPtr<FJsonObject> AttributesJsonParsed;
-									TSharedRef<TJsonReader<TCHAR>> AttributesJsonReader = TJsonReaderFactory<TCHAR>::Create(savedAttributes);
-
-
-
-									if (FJsonSerializer::Deserialize(AttributesJsonReader, AttributesJsonParsed))
-									{
-									UE_LOG(LogTemp, Log, TEXT("AttributesJsonParsed"));
-									//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayerRequestComplete] InventoryJsonRaw: %s"), *InventoryJsonRaw);
-
-									for (auto currObject = AttributesJsonParsed->Values.CreateConstIterator(); currObject; ++currObject)
-									{
-									UE_LOG(LogTemp, Log, TEXT("Found Attribute: %s"), *currObject->Key);
-									currObject->Key;
-									if (currObject->Value->AsNumber())
-									{
-									itemSlot.Attributes.Add(currObject->Value->AsNumber());
-									}
 
 									}
-
+									else {
+										UE_LOG(LogTemp, Log, TEXT("Did not find LoadedActorOwnerClass"));
 									}
-									*/
-
-
-
-									itemSlot.bCanBeUsed = basePickupBP->bCanBeUsed;
-									itemSlot.UseText = basePickupBP->UseText;
-									itemSlot.bCanBeStacked = basePickupBP->bCanBeStacked;
-									itemSlot.MaxStackSize = basePickupBP->MaxStackSize;
-
-									//playerC->InventorySlots.Add(itemSlot);
-									LocalInventorySlots.Add(itemSlot);
-
-									slotsFilledSuccessfully++;
 								}
+							}
+							////////////////////////////////
 
-							}
-							else {
-								UE_LOG(LogTemp, Log, TEXT("Did not find LoadedActorOwnerClass"));
-							}
 						}
 					}
 
-					// Fill remainder slots with empty
+					// Fill remainder slots with empty - use data table
 
 					int32 remainingSlotsToFill = InventoryCapacity - slotsFilledSuccessfully;
 					FMyInventorySlot emptySlot;
-					FString ActorClassFullPath = "/Game/UI/Inventory/Blueprints/ItemClasses/ItemHealthPotion.ItemHealthPotion_C";
-					UClass* LoadedActorOwnerClass;
 
-					LoadedActorOwnerClass = LoadClassFromPath(ActorClassFullPath);
+					int32 DataTableId = 1002;
+					static const FString ContextString(TEXT("GENERAL"));
+					// o-- Search using FindRow. It returns a handle to the row.
+					// Access the variables like GOLookupRow->Blueprint_Class, GOLookupRow->Usecode
+					FIngredientsTable* GOLookupRow = ItemsDataTable->FindRow<FIngredientsTable>(
+						*FString::Printf(
+							TEXT("%d"),
+							DataTableId),
+						ContextString
+						);
 
-					if (LoadedActorOwnerClass)
+					if (GOLookupRow)
 					{
-						UE_LOG(LogTemp, Log, TEXT("Found LoadedActorOwnerClass"));
+						//UE_LOG(LogTemp, Log, TEXT("Found GOLookupRow"));
 
-						AMyBasePickup* basePickupBP = Cast<AMyBasePickup>(LoadedActorOwnerClass->GetDefaultObject());
-						if (basePickupBP) {
-							UE_LOG(LogTemp, Log, TEXT("Found basePickupBP"));
-							//emptySlot.itemClass = basePickupBP->GetClass();
-							//emptySlot.itemClass = basePickupBP;
-							emptySlot.itemClassTitle = basePickupBP->GetName();
-							emptySlot.itemClassPath = ActorClassFullPath;
-							emptySlot.Icon = basePickupBP->Icon;
-							emptySlot.itemTitle = basePickupBP->Title.ToString();
+						UClass* LoadedActorOwnerClass;
+						LoadedActorOwnerClass = LoadClassFromPath(GOLookupRow->ClassPath);
+
+						if (LoadedActorOwnerClass)
+						{
+							//UE_LOG(LogTemp, Log, TEXT("Found LoadedActorOwnerClass"));
+
+							AMyBasePickup* basePickupBP = Cast<AMyBasePickup>(LoadedActorOwnerClass->GetDefaultObject());
+							if (basePickupBP) {
+								//UE_LOG(LogTemp, Log, TEXT("Found basePickupBP"));
+								emptySlot.itemClassTitle = basePickupBP->GetName();
+								emptySlot.itemClassPath = GOLookupRow->ClassPath;
+								emptySlot.Icon = basePickupBP->Icon;
+								emptySlot.itemTitle = basePickupBP->Title.ToString();
+								emptySlot.DataTableId = DataTableId;
+
+
+							}
+
 						}
-
-					}
-					else {
-						UE_LOG(LogTemp, Log, TEXT("Did not find LoadedActorOwnerClass"));
+						else {
+							UE_LOG(LogTemp, Log, TEXT("Did not find LoadedActorOwnerClass"));
+						}
 					}
 
 					emptySlot.itemId = 0;
@@ -1919,17 +1929,17 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 					for (int32 inventoryIndex = 0; inventoryIndex < remainingSlotsToFill; inventoryIndex++)
 					{
 						//playerC->InventorySlots.Add(emptySlot);
-						LocalInventorySlots.Add(emptySlot);
+						playerS->InventorySlots.Add(emptySlot);
 					}
-
-					// Trigger the inventory changed delegate
-					playerS->InventorySlots = LocalInventorySlots;
-					//playerC->DoRep_InventoryChanged = !playerC->DoRep_InventoryChanged;
 
 				}
 				else
 				{
 					UE_LOG(LogTemp, Log, TEXT("InventoryJson Parse FAIL"));
+
+					// If you are here, you have a new player or character, and they do not yet have any inventory.
+					// You can add default starting items here if you want.
+					// We are just going to insert empty items here.
 
 					playerS->InventoryCapacity = InventoryCapacity;
 
@@ -1938,30 +1948,44 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 					// loop over the InventoryBlueprintClasses array and grab the match
 					// Rama to the rescue:  https://answers.unrealengine.com/questions/330309/an-issue-with-runtime-savingloading-of-blueprint-c.html
 
-					FString ActorClassFullPath = "/Game/UI/Inventory/Blueprints/ItemClasses/ItemHealthPotion.ItemHealthPotion_C";
-					UClass* LoadedActorOwnerClass;
+					static const FString ContextString(TEXT("GENERAL"));
+					int32 DataTableId = 1002;
+					//static const FString ContextString(TEXT("GENERAL"));
+					// o-- Search using FindRow. It returns a handle to the row.
+					// Access the variables like GOLookupRow->Blueprint_Class, GOLookupRow->Usecode
+					FIngredientsTable* GOLookupRow = ItemsDataTable->FindRow<FIngredientsTable>(
+						*FString::Printf(
+							TEXT("%d"),
+							DataTableId),
+						ContextString
+						);
 
-					LoadedActorOwnerClass = LoadClassFromPath(ActorClassFullPath);
-
-					if (LoadedActorOwnerClass)
+					if (GOLookupRow)
 					{
-						UE_LOG(LogTemp, Log, TEXT("Found LoadedActorOwnerClass"));
+						UE_LOG(LogTemp, Log, TEXT("Found GOLookupRow"));
 
-						AMyBasePickup* basePickupBP = Cast<AMyBasePickup>(LoadedActorOwnerClass->GetDefaultObject());
-						if (basePickupBP) {
-							UE_LOG(LogTemp, Log, TEXT("Found basePickupBP"));
-							//emptySlot.itemClass = basePickupBP->GetClass();
-							//emptySlot.itemClass = basePickupBP;
-							emptySlot.itemClassTitle = basePickupBP->GetName();
-							emptySlot.itemClassPath = ActorClassFullPath;
-							emptySlot.Icon = basePickupBP->Icon;
-							emptySlot.itemTitle = basePickupBP->Title.ToString();
+						UClass* LoadedActorOwnerClass;
+						LoadedActorOwnerClass = LoadClassFromPath(GOLookupRow->ClassPath);
+
+						if (LoadedActorOwnerClass)
+						{
+							UE_LOG(LogTemp, Log, TEXT("Found LoadedActorOwnerClass"));
+
+							AMyBasePickup* basePickupBP = Cast<AMyBasePickup>(LoadedActorOwnerClass->GetDefaultObject());
+							if (basePickupBP) {
+								//UE_LOG(LogTemp, Log, TEXT("Found basePickupBP"));
+								emptySlot.itemClassTitle = basePickupBP->GetName();
+								emptySlot.itemClassPath = GOLookupRow->ClassPath;
+								emptySlot.Icon = basePickupBP->Icon;
+								emptySlot.itemTitle = basePickupBP->Title.ToString();
+								emptySlot.DataTableId = DataTableId;
+							}
+
 						}
-
-					}
-					else {
-						UE_LOG(LogTemp, Log, TEXT("Did not find LoadedActorOwnerClass"));
-						emptySlot.itemTitle = "Empty";
+						else {
+							UE_LOG(LogTemp, Log, TEXT("Did not find LoadedActorOwnerClass"));
+							emptySlot.itemTitle = "Empty";
+						}
 					}
 
 					emptySlot.itemId = 0;
@@ -1970,12 +1994,9 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 
 					for (int32 inventoryIndex = 0; inventoryIndex < 16; inventoryIndex++)
 					{
-						LocalInventorySlots.Add(emptySlot);
-						//playerC->InventorySlots.Add(emptySlot);
+						playerS->InventorySlots.Add(emptySlot);
 					}
 
-					// Trigger the inventory changed delegate
-					playerS->InventorySlots = LocalInventorySlots;
 				}
 
 				// set loaded state
@@ -2020,6 +2041,9 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 
 					PlayerController->ClientChangeUIState(EConnectUIState::Play);
 				}
+
+				// Get the drops for this player
+				GetPlayerDrops(activePlayer->userKeyId);
 
 			}
 		}
@@ -2151,7 +2175,7 @@ bool UMyGameInstance::SaveGamePlayer(FString playerKeyId, bool bAttemptUnLock)
 								SlotObj->SetStringField("ItemTitle", playerS->InventorySlots[InventorySlotIndex].itemTitle);
 								SlotObj->SetStringField("ItemDescription", playerS->InventorySlots[InventorySlotIndex].itemDescription);
 								SlotObj->SetNumberField("Quantity", playerS->InventorySlots[InventorySlotIndex].quantity);
-								SlotObj->SetStringField("ItemClass", playerS->InventorySlots[InventorySlotIndex].itemClassPath);
+								SlotObj->SetNumberField("DTID", playerS->InventorySlots[InventorySlotIndex].DataTableId);
 
 								// Deal with attributes
 								FString AttributesOutputString;
@@ -4648,9 +4672,67 @@ void UMyGameInstance::ClaimPlayerDropRequestComplete(FHttpRequestPtr HttpRequest
 						if (FJsonSerializer::Deserialize(DropDataJsonReader, DropDataJsonParsed))
 						{
 							UE_LOG(LogTemp, Log, TEXT("DropDataJsonParsed"));
-							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayerRequestComplete] DropDataJsonRaw: %s"), *DropDataJsonRaw);
+							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ClaimPlayerDropRequestComplete] DropDataJsonRaw: %s"), *DropDataJsonRaw);
 
-							// TODO  - add the drop to your inventory.  I use data tables for this.  Ping me if you want to see my code.
+							// add the drop to your inventory. 
+							FMyInventorySlot itemSlot = GetInventorySlotByDTID(DropDataJsonParsed->GetNumberField("DTID")); // STRING
+
+							// set attributes
+							const JsonValPtrArray* AttributesJson;
+							DropDataJsonParsed->TryGetArrayField("attributes", AttributesJson);
+
+							//TArray<TSharedPtr<FJsonValue>> AttributesJson = DataObj->GetArrayField("attributes");
+
+							int32 currentIndex = 0;
+							FString JsonIndexName = "0";
+							double JsonValue = 0.0f;
+
+							for (auto attributeJsonRaw : *AttributesJson) {
+								//UE_LOG(LogTemp, Log, TEXT("Found attribute "));
+								JsonValue = 0.0f;
+								auto attributeObj = attributeJsonRaw->AsObject();
+								if (attributeObj.IsValid())
+								{
+									JsonIndexName = FString::FromInt(currentIndex);
+
+									attributeObj->TryGetNumberField(JsonIndexName, JsonValue);
+
+									itemSlot.Attributes.Add(JsonValue);
+								}
+								currentIndex++;
+							}
+
+							itemSlot.quantity = 1;
+
+							// add the item to inventory
+							AMyPlayerController* thisMyPlayer = Cast<AMyPlayerController>(playerRecord->PlayerController);
+							if (thisMyPlayer)
+							{
+								UE_LOG(LogTemp, Log, TEXT("Found player controller "));
+
+								// find an empty slot
+								int32 emptyInventorySlotIndex = thisMyPlayer->SearchEmptySlot();
+
+								if (emptyInventorySlotIndex == -1)
+								{
+									UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::GetPlayerDropsRequestComplete NO Space in inventory"));
+									return;
+								}
+
+								APlayerState* thisPlayerState = playerRecord->PlayerController->PlayerState;
+								AMyPlayerState* playerS = Cast<AMyPlayerState>(thisPlayerState);
+
+
+								if (playerS)
+								{
+									UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] GetPlayerDropsRequestComplete Got player state"));
+
+									// copy the loot into the inventory
+									playerS->InventorySlots[emptyInventorySlotIndex] = itemSlot;
+
+								}
+
+							}
 
 							// refresh the drop list
 							GetPlayerDrops(JsonParsed->GetStringField("userKeyId"));
@@ -6319,4 +6401,51 @@ void UMyGameInstance::NotifyDownReadyComplete(FHttpRequestPtr HttpRequest, FHttp
 			}
 		}
 	}
+}
+
+
+FMyInventorySlot UMyGameInstance::GetInventorySlotByDTID(int32 DTID)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetInventorySlotByDTID] "));
+
+	// Take a DTID and return an inventory slot object
+
+	FMyInventorySlot InventorySlot;
+
+	static const FString ContextString(TEXT("GENERAL"));
+	// o-- Search using FindRow. It returns a handle to the row.
+	// Access the variables like GOLookupRow->Blueprint_Class, GOLookupRow->Usecode
+	FIngredientsTable* GOLookupRow = ItemsDataTable->FindRow<FIngredientsTable>(
+		*FString::Printf(
+			TEXT("%d"),
+			DTID),
+		ContextString
+		);
+
+	if (GOLookupRow)
+	{
+		// from Data Table
+		UE_LOG(LogTemp, Log, TEXT("Found GOLookupRow"));
+
+		UClass* LoadedActorOwnerClass;
+		LoadedActorOwnerClass = LoadClassFromPath(GOLookupRow->ClassPath);
+
+		if (LoadedActorOwnerClass)
+		{
+			UE_LOG(LogTemp, Log, TEXT("Found LoadedActorOwnerClass"));
+
+			AMyBasePickup* basePickupBP = Cast<AMyBasePickup>(LoadedActorOwnerClass->GetDefaultObject());
+			if (basePickupBP) {
+				InventorySlot.DataTableId = DTID;
+				InventorySlot.bCanBeStacked = basePickupBP->bCanBeStacked;
+				InventorySlot.bCanBeUsed = basePickupBP->bCanBeUsed;
+				InventorySlot.Icon = basePickupBP->Icon;
+				InventorySlot.itemTitle = basePickupBP->Title.ToString();
+				InventorySlot.MaxStackSize = basePickupBP->MaxStackSize;
+				InventorySlot.UseText = basePickupBP->UseText;
+				InventorySlot.itemClassTitle = basePickupBP->GetName();
+			}
+		}
+	}
+	return InventorySlot;
 }

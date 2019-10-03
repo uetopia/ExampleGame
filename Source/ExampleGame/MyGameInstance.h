@@ -248,6 +248,8 @@ class EXAMPLEGAME_API UMyGameInstance : public UGameInstance
 	//int32 RoundWinsNeededToWinMatch;
 	FZoneDetails ZoneDetail;
 
+	FMyInventorySlot GetInventorySlotByDTID(int32 DTID);
+
 	bool PerformHttpRequest(void(UMyGameInstance::*delegateCallback)(FHttpRequestPtr, FHttpResponsePtr, bool), FString APIURI, FString ArgumentString, FString AccessToken);
 	bool PerformJsonHttpRequest(void(UMyGameInstance::*delegateCallback)(FHttpRequestPtr, FHttpResponsePtr, bool), FString APIURI, FString ArgumentString, FString AccessToken);
 
