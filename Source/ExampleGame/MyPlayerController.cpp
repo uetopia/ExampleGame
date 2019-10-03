@@ -219,21 +219,48 @@ void AMyPlayerController::ServerSetCurrentAccessTokenFromOSS_Implementation(cons
 		CurrentAccessTokenFromOSS = CurrentAccessTokenFromOSSIn;
 
 		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+
+
 		// Check to see if they have already been activated.  If not, activate.
 		FMyActivePlayer* activePlayer = TheGameInstance->getPlayerByPlayerKey(playerKeyId);
-		if (activePlayer && activePlayer->gamePlayerDataLoaded)
-		{
-			UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerSetCurrentAccessTokenFromOSS_Implementation found gamePlayerDataLoaded player - running reconnect"));
 
-			//  reconnect player
-			TheGameInstance->ReconnectPlayer(this, playerKeyId, playerIDTemp, UniqueId);
+		if (activePlayer)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerSetCurrentAccessTokenFromOSS_Implementation found  player"));
+
+			if (!activePlayer->gamePlayerDataLoaded)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerSetCurrentAccessTokenFromOSS_Implementation Player is not marked as game player data loaded."));
+
+			}
+
+			if (!activePlayer->authorized)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerSetCurrentAccessTokenFromOSS_Implementation Player is not marked as authorized.  Activating."));
+				TheGameInstance->ActivatePlayer(this, playerKeyId, playerIDTemp, UniqueId);
+				return;
+			}
+
+			// edge case here - the player was connected, and left the server, changed weapons, then comes back.
+			// WE have the active player, and the game player data - but it's wrong.
+			// We want to do a re-auth in this case.
+
+			if (activePlayer->bWasConnected && !activePlayer->bIsConnected)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerSetCurrentAccessTokenFromOSS_Implementation Player was previously conencted, but are not currently connected.  Activating."));
+				TheGameInstance->ActivatePlayer(this, playerKeyId, playerIDTemp, UniqueId);
+				return;
+			}
 
 		}
 		else
 		{
-			UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerSetCurrentAccessTokenFromOSS_Implementation new player - activating"));
+			// Not doing reconnect anymore.  just activate always
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerSetCurrentAccessTokenFromOSS_Implementation player not found - activating"));
 			TheGameInstance->ActivatePlayer(this, playerKeyId, playerIDTemp, UniqueId);
+			return;
 		}
+
 	}
 	return;
 }
