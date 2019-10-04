@@ -53,7 +53,7 @@ public:
 	//FDataTableRowHandle  ObjectInfo;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		FString DataTableRowName;
+		int32 DataTableId;
 
 	// Variables that exist inside the Data table but we need them for other things
 	// Using simple variables for these because they will be persistent objects in the world, and Rama save can't deal with a struct

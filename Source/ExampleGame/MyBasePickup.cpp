@@ -37,7 +37,7 @@ AMyBasePickup::AMyBasePickup()
 
 	// Rama Save
 	OurSaveComponent = CreateDefaultSubobject<URamaSaveComponent>(TEXT("Save System"));
-	OurSaveComponent->RamaSave_OwningActorVarsToSave.Add("DataTableRowName");
+	OurSaveComponent->RamaSave_OwningActorVarsToSave.Add("DataTableId");
 	OurSaveComponent->RamaSave_OwningActorVarsToSave.Add("Icon");
 	OurSaveComponent->RamaSave_OwningActorVarsToSave.Add("Title");
 	OurSaveComponent->RamaSave_OwningActorVarsToSave.Add("Description");

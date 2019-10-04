@@ -1210,6 +1210,7 @@ bool AMyPlayerController::AddItem( AMyBasePickup* ClassTypeIn, int32 quantity, b
 							myPlayerState->InventorySlots[availableEmptySlot].bCanBeStacked = ClassTypeIn->bCanBeStacked;
 							myPlayerState->InventorySlots[availableEmptySlot].MaxStackSize = ClassTypeIn->MaxStackSize;
 							myPlayerState->InventorySlots[availableEmptySlot].Attributes = ClassTypeIn->Attributes;
+							myPlayerState->InventorySlots[availableEmptySlot].DataTableId = ClassTypeIn->DataTableId;
 
 							// TODO all the other vars
 						}

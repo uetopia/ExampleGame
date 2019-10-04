@@ -2258,33 +2258,31 @@ bool UMyGameInstance::SaveGamePlayer(FString playerKeyId, bool bAttemptUnLock)
 						if (UEtopiaMode == "continuous")
 						{
 							int32 authorizedPlayerCount = getActivePlayerCount();
+
 							if (authorizedPlayerCount > 0)
 							{
-								UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] DeActivatePlayer - There are still players authorized on this server."));
+								UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] SaveGamePlayer - There are still players authorized on this server."));
 							}
 							else {
-								UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] DeActivatePlayer - No Authorized players found - moving to save."));
+								UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] SaveGamePlayer - No Authorized players found - moving to save."));
 
-								/*
 								bool FileIOSuccess;
 								bool allComponentsSaved;
 								FString FileName = "serversavedata.dat";
 								URamaSaveLibrary::RamaSave_SaveToFile(GetWorld(), FileName, FileIOSuccess, allComponentsSaved);
 								if (FileIOSuccess) {
-								UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] File IO Success."));
+									UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] File IO Success."));
 								}
 								else {
-								UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] File IO FAIL."));
+									UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] File IO FAIL."));
 								}
-								*/
 
 								// Reset our playstarted flag
 								bRequestBeginPlayStarted = false;
-
-								// Tell the backend that it's safe to bring this server down.
-								//NotifyDownReady();
 							}
 						}
+
+						
 
 						
 
@@ -2467,14 +2465,14 @@ bool UMyGameInstance::SaveGamePlayer(FString playerKeyId, bool bAttemptUnLock)
 	if (UEtopiaMode == "continuous")
 	{
 		int32 authorizedPlayerCount = getActivePlayerCount();
+
 		if (authorizedPlayerCount > 0)
 		{
-			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] DeActivatePlayer - There are still players authorized on this server."));
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] SaveGamePlayer - There are still players authorized on this server."));
 		}
 		else {
-			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] DeActivatePlayer - No Authorized players found - moving to save."));
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] SaveGamePlayer - No Authorized players found - moving to save."));
 
-			/*
 			bool FileIOSuccess;
 			bool allComponentsSaved;
 			FString FileName = "serversavedata.dat";
@@ -2485,13 +2483,9 @@ bool UMyGameInstance::SaveGamePlayer(FString playerKeyId, bool bAttemptUnLock)
 			else {
 			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] File IO FAIL."));
 			}
-			*/
-
+			
 			// Reset our playstarted flag
 			bRequestBeginPlayStarted = false;
-
-			// Tell the backend that it's safe to bring this server down.
-			//NotifyDownReady();
 		}
 	}
 	return false;
@@ -2528,11 +2522,11 @@ void UMyGameInstance::SaveGamePlayerRequestComplete(FHttpRequestPtr HttpRequest,
 					int32 authorizedPlayerCount = getActivePlayerCount();
 					if (authorizedPlayerCount > 0)
 					{
-						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] DeActivatePlayer - There are still players authorized on this server."));
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] SaveGamePlayerRequestComplete - There are still players authorized on this server."));
 					}
 					else 
 					{
-						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] DeActivatePlayer - No Authorized players found - moving to save."));
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] SaveGamePlayerRequestComplete - No Authorized players found."));
 
 						// Reset our playstarted flag
 						bRequestBeginPlayStarted = false;
