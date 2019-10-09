@@ -198,7 +198,6 @@ void AMyGameMode::RecordKill(int32 killerPlayerID, int32 victimPlayerID)
 	{
 		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyGameMode] [RecordKill] Got game instance"));
 
-		// TODO EXAMPLE GAME - move this all to GameMode
 		if (TheGameInstance->UEtopiaMode == "competitive") {
 			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyGameMode] RecordKill - Mode set to competitive"));
 			/*
@@ -212,7 +211,6 @@ void AMyGameMode::RecordKill(int32 killerPlayerID, int32 victimPlayerID)
 			int32 roundKillsTotal = 0;
 
 			// NOT refactoring to use get by function becaseu we do want to loop through them in this case to count round kills.
-			//FMyActivePlayer* KillerPlayer = TheGameInstance->getPlayerByPlayerId(killerPlayerID);
 
 			for (int32 b = 0; b < TheGameInstance->MatchInfo.players.Num(); b++)
 			{
@@ -348,6 +346,16 @@ void AMyGameMode::RecordKill(int32 killerPlayerID, int32 victimPlayerID)
 
 				TheGameInstance->TeamList.teams[TeamStillAliveTeamListIndex].roundWinCount = TheGameInstance->TeamList.teams[TeamStillAliveTeamListIndex].roundWinCount + 1;
 
+				// Simple check to see if the match is over
+				// You'll probably want something more complex in your implementation
+				if (TheGameInstance->TeamList.teams[TeamStillAliveTeamListIndex].roundWinCount >= 3)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyGameMode] [RecordKill] - Detected match winner"));
+					TheGameInstance->RecordMatchWin(TheGameInstance->TeamList.teams[TeamStillAliveTeamListIndex].number);
+
+					TheGameInstance->EndMatchDelegatesAndTravel();
+				}
+
 			}
 		}
 		else {
@@ -413,7 +421,7 @@ void AMyGameMode::RecordKill(int32 killerPlayerID, int32 victimPlayerID)
 				}
 
 				// create an event also
-				FString eventSummary = "killed " + TheGameInstance->MatchInfo.players[victimPlayerIndex].playerTitle;
+				FString eventSummary = "killed " + TheGameInstance->MatchInfo.players[victimPlayerIndex].userTitle;
 				TheGameInstance->RecordEvent(killerPlayerID, eventSummary, "location_searching", "Kill");  // look at https://material.io/icons/ for other icons
 
 				// Increase the killer's kill count

@@ -167,10 +167,11 @@ void AUEtopiaPersistCharacter::SetupPlayerInputComponent(class UInputComponent* 
 	InputComponentIn->BindTouch(IE_Released, this, &AUEtopiaPersistCharacter::TouchStopped);
 
 	// Map the "InputIDs" to the ability system
-	if (GetAbilitySystemComponent())
-	{
-		GetAbilitySystemComponent()->BindAbilityActivationToInputComponent(InputComponentIn, FGameplayAbilityInputBinds("ConfirmInput", "CancelInput", "AbilityInput"));
-	}
+	// This has been moved to playerState.
+	//if (GetAbilitySystemComponent())
+	//{
+	//	GetAbilitySystemComponent()->BindAbilityActivationToInputComponent(InputComponentIn, FGameplayAbilityInputBinds("ConfirmInput", "CancelInput", "AbilityInput"));
+	//}
 	
 
 }
@@ -208,6 +209,18 @@ void AUEtopiaPersistCharacter::Restart()
 		//ServerSetUpEquipmentEffects();
 
 		
+	}
+	else
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaCompetitiveCharacter] [Restart] - Client "));
+
+		AMyPlayerController* PlayerC = Cast<AMyPlayerController>(Controller);
+		if (PlayerC)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaCompetitiveCharacter] [Restart] - got PlayerC "));
+			PlayerC->OnAbilitiesChanged.Broadcast();
+			
+		}
 	}
 
 }
@@ -375,7 +388,7 @@ bool AUEtopiaPersistCharacter::CanPickUp()
 			}
 		}
 	}
-	PlayerC->SendLocalChatMessage("Pickup not permitted.  This could be due to server settings, or group permissions.");
+	//PlayerC->SendLocalChatMessage("Pickup not permitted.  This could be due to server settings, or group permissions.");
 	
 	return false;
 }
@@ -863,17 +876,24 @@ void AUEtopiaPersistCharacter::RemapAbilities_Implementation()
 		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [RemapAbilities] - Client "));
 	}
 	AMyPlayerController* playerC = Cast<AMyPlayerController>(Controller);
+
+	if (playerC)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [RemapAbilities] - Got playerC "));
+		// Don't do this here. it causes a loop
+		//playerC->GrantCachedAbilities();
+	}
 	AMyPlayerState* playerS = Cast<AMyPlayerState>(playerC->PlayerState);
 
 	FGameplayAbilitySpec* Spec;
 
 
-	for (int32 abilitySlotIndex = 0; abilitySlotIndex < playerC->MyAbilitySlots.Num(); abilitySlotIndex++)
+	for (int32 abilitySlotIndex = 0; abilitySlotIndex < playerS->MyAbilitySlots.Num(); abilitySlotIndex++)
 	{
-		Spec = GetAbilitySystemComponent()->FindAbilitySpecFromHandle(playerC->MyAbilitySlots[abilitySlotIndex].GrantedAbility.AbilityHandle);
+		Spec = GetAbilitySystemComponent()->FindAbilitySpecFromHandle(playerS->MyAbilitySlots[abilitySlotIndex].GrantedAbility.AbilityHandle);
 		if (Spec)
 		{
-			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [RemapAbilities] classPath: %s "), *playerC->MyAbilitySlots[abilitySlotIndex].GrantedAbility.classPath);
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [RemapAbilities] classPath: %s "), *playerS->MyAbilitySlots[abilitySlotIndex].GrantedAbility.classPath);
 			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [RemapAbilities] Spec->InputID: %d "), Spec->InputID);
 			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [RemapAbilities] abilitySlotIndex: %d "), abilitySlotIndex);
 			Spec->InputID = abilitySlotIndex;

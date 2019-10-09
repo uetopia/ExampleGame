@@ -26,6 +26,10 @@ AMyPlayerState::AMyPlayerState(const FObjectInitializer& ObjectInitializer)
 	AbilitySystem->SetIsReplicated(true);
 	AttributeSet = CreateDefaultSubobject<UMyAttributeSet>(TEXT("AttributeSet"));
 
+	// Prevent pickups on all maps unless specifically authorized
+	allowPickup = false;
+
+	AbilitySlotsPerRow = 6;
 }
 
 void AMyPlayerState::BeginPlay()
@@ -35,13 +39,52 @@ void AMyPlayerState::BeginPlay()
 
 	// Bind to delegates inside ability system
 	AbilitySystem->OnActiveGameplayEffectAddedDelegateToSelf.AddUObject(this, &AMyPlayerState::OnGameplayEffectAppliedToSelf);
+
+	AActor* thisOwner = GetOwner();
+
+	// Only on the server, grant cached abilities
+	if (IsRunningDedicatedServer())
+	{
+		AMyPlayerController* playerController = Cast<AMyPlayerController>(thisOwner);
+		if (playerController)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerState] BeginPlay got playerController"));
+			// This does not work because at this stage, the Character does not have access to the controller
+			//playerController->GrantCachedAbilities();
+		}
+		
+	}
+
+	// On the client only - bind the ability system
+	// Retry if it fails
+	if (!IsRunningDedicatedServer())
+	{
+
+		AUEtopiaPersistCharacter* playerChar = Cast<AUEtopiaPersistCharacter>(thisOwner);
+		if (playerChar)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerState] BeginPlay - found playerChar"));
+
+			AbilitySystem->BindAbilityActivationToInputComponent(playerChar->InputComponent, FGameplayAbilityInputBinds("ConfirmInput", "CancelInput", "AbilityInput"));
+		}
+		else
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerState] BeginPlay - DID NOT FIND playerChar->InputComponent"));
+
+			AttemptBindInputToASCDel.BindUFunction(this, FName("AttemptBindInputToASC"), true);
+			GetWorld()->GetTimerManager().SetTimer(AttemptBindInputToASCHandle, AttemptBindInputToASCDel, 1.f, false);
+		}
+	}
 }
 
 
 void AMyPlayerState::ClientInitialize(AController* C)
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerState] ClientInitialize"));
+	Super::ClientInitialize(C);
 	SetOwner(C);
+	// Testing putting this is begin play instead
+	/*
 	AUEtopiaPersistCharacter* playerChar = Cast<AUEtopiaPersistCharacter>(C->GetPawn());
 	if (playerChar)
 	{
@@ -51,7 +94,28 @@ void AMyPlayerState::ClientInitialize(AController* C)
 	}
 	else
 	{
-		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerState] ClientInitialize - DID NOT FIND playerChar - ERROR THIS SHOULD NOT HAPPEN"));
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerState] ClientInitialize - DID NOT FIND playerChar->InputComponent"));
+
+		AttemptBindInputToASCDel.BindUFunction(this, FName("AttemptBindInputToASC"), true);
+		GetWorld()->GetTimerManager().SetTimer(AttemptBindInputToASCHandle, AttemptBindInputToASCDel, 1.f, false);
+	}
+	*/
+
+	// Abilities are still not working after map travel
+	// testing
+	AMyPlayerController* playerController = Cast<AMyPlayerController>(C);
+	if (playerController)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerState] ClientInitialize - found playerController"));
+		playerController->GrantCachedAbilities();
+		
+	}
+
+	AUEtopiaPersistCharacter* playerChar = Cast<AUEtopiaPersistCharacter>(C->GetPawn());
+	if (playerChar)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerState] ClientInitialize - found playerChar"));
+		playerChar->RemapAbilities();
 	}
 }
 
@@ -89,6 +153,66 @@ void AMyPlayerState::TriggerShowMatchResults_Implementation()
 
 	// just trigger the delegate
 	FOnShowMatchResultsDelegate.Broadcast();
+}
+
+void AMyPlayerState::OnRep_OnAbilityInterfaceChange_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerState::OnRep_OnAbilityInterfaceChange"));
+	AUEtopiaPersistCharacter* playerChar = Cast<AUEtopiaPersistCharacter>(GetPawn());
+	if (playerChar)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerState::OnRep_OnAbilityInterfaceChange got playerChar"));
+		playerChar->RemapAbilities();
+	}
+	
+
+	OnAbilityInterfaceChanged.Broadcast();
+}
+
+void AMyPlayerState::AttemptBindInputToASC()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerState::AttemptBindInputToASC"));
+
+	APawn* thisPawn = GetPawn();
+	if (thisPawn)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerState::AttemptBindInputToASC got pawn"));
+
+		if (thisPawn->IsLocallyControlled())
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerState::AttemptBindInputToASC pawn is locally controlled"));
+			AUEtopiaPersistCharacter* playerChar = Cast<AUEtopiaPersistCharacter>(thisPawn);
+
+			if (playerChar)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerState::AttemptBindInputToASC got player char"));
+
+				if (playerChar->InputComponent)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerState] AttemptBindInputToASC - found playerChar->InputComponent"));
+					AbilitySystem->BindAbilityActivationToInputComponent(playerChar->InputComponent, FGameplayAbilityInputBinds("ConfirmInput", "CancelInput", "AbilityInput"));
+					return;
+				}
+				else
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerState] AttemptBindInputToASC - DID NOT FIND playerChar->InputComponent"));
+
+				}
+
+			}
+		}
+		else
+		{
+			// not local
+			return;
+		}
+		
+	}
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerState] AttemptBindInputToASC - FAIL - Retrying"));
+
+	AttemptBindInputToASCDel.BindUFunction(this, FName("AttemptBindInputToASC"), true);
+	GetWorld()->GetTimerManager().SetTimer(AttemptBindInputToASCHandle, AttemptBindInputToASCDel, 1.f, false);
+
 }
 
 void AMyPlayerState::OnRep_OnCustomTextureChange_Implementation()
@@ -424,6 +548,19 @@ FMyGrantedAbility AMyPlayerState::RemoveGrantedAbilityByClassPath(FString classP
 	return NotFoundAbility;
 }
 
+void AMyPlayerState::OnRep_OnAbilitiesChange_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerState::OnRep_OnAbilitiesChange"));
+	AActor* ActorOwner = GetOwner();
+	AMyPlayerController* playerController = Cast<AMyPlayerController>(ActorOwner);
+	if (playerController)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerState::OnRep_OnAbilitiesChange_Implementation Got Controller"));
+
+		playerController->OnAbilitiesChanged.Broadcast();
+	}
+}
+
 void AMyPlayerState::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
@@ -443,6 +580,8 @@ void AMyPlayerState::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & Ou
 	DOREPLIFETIME(AMyPlayerState, Level);
 	DOREPLIFETIME(AMyPlayerState, Experience);
 	DOREPLIFETIME(AMyPlayerState, ExperienceThisLevel);
+	DOREPLIFETIME(AMyPlayerState, MyAbilitySlots);
+	DOREPLIFETIME(AMyPlayerState, AbilitySlotsPerRow);
 
 	DOREPLIFETIME(AMyPlayerState, ServerLinksAuthorized);
 	
@@ -450,6 +589,8 @@ void AMyPlayerState::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & Ou
 	DOREPLIFETIME(AMyPlayerState, allowDrop);
 	DOREPLIFETIME(AMyPlayerState, MyDrops);
 	DOREPLIFETIME(AMyPlayerState, bCombatEnabled);
+	DOREPLIFETIME(AMyPlayerState, GrantedAbilities);
+	
 	
 }
 
@@ -462,7 +603,7 @@ void AMyPlayerState::CopyProperties(class APlayerState* PlayerState)
 
 	if (MyPlayerState)
 	{
-		//MyPlayerState->InventoryCubes = InventoryCubes;
+		MyPlayerState->playerTitle = playerTitle;
 		MyPlayerState->playerKeyId = playerKeyId;
 		MyPlayerState->Currency = Currency;
 		MyPlayerState->TeamId = TeamId;
@@ -476,12 +617,16 @@ void AMyPlayerState::CopyProperties(class APlayerState* PlayerState)
 		MyPlayerState->winningTeamTitle = winningTeamTitle;
 		MyPlayerState->InventorySlots = InventorySlots;
 		MyPlayerState->MyEquipment = MyEquipment;
+		MyPlayerState->MyAbilitySlots = MyAbilitySlots;
+		MyPlayerState->AbilityCapacity = AbilityCapacity;
+		MyPlayerState->AbilitySlotsPerRow = AbilitySlotsPerRow;
 
 		MyPlayerState->allowPickup = allowPickup;
 		MyPlayerState->allowDrop = allowDrop;
 		MyPlayerState->MyDrops = MyDrops;
 		MyPlayerState->bCombatEnabled = bCombatEnabled;
-		
+		MyPlayerState->GrantedAbilities = GrantedAbilities;
+		MyPlayerState->CachedAbilities = CachedAbilities;
 	}
 
 }

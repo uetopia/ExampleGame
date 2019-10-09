@@ -48,6 +48,7 @@ void AMyGameState::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutL
 	DOREPLIFETIME(AMyGameState, ServerShards);
 	DOREPLIFETIME(AMyGameState, bCombatEnabled);
 	//DOREPLIFETIME(AMyGameState, bIsShardedServer);
+	DOREPLIFETIME(AMyGameState, MatchTitle);
 
 }
 

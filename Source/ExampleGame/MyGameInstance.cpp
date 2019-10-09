@@ -129,7 +129,7 @@ UMyGameInstance::UMyGameInstance(const FObjectInitializer& ObjectInitializer)
 		ItemsDataTable_BP(TEXT("DataTable'/Game/Data/EG_Items_-_Sheet1.EG_Items_-_Sheet1'"));
 	ItemsDataTable = ItemsDataTable_BP.Object;
 
-
+	MatchMakerResultsSubmitted = false;
 
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] GAME INSTANCE CONSTRUCTOR - DONE"));
 }
@@ -537,6 +537,18 @@ void UMyGameInstance::GetMatchInfoComplete(FHttpRequestPtr HttpRequest, FHttpRes
 
 				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetMatchInfo] MatchTitle: %s"), *MatchTitle);
 
+				// Loop over the sponsors and add the URLs to the native TArray
+				// This super simple example is just for demonstration purposes.
+				// The "sponsors" field is an array of whatever the group has entered into the group game custom texture field.
+				// You could request that sponsors return a json file instead of just a link to a png, where they could specify other things to use in game
+				// Promotional messages, additional textures, etc.  
+				// If you did use a custom json file instead, you'd probably want to do some additional work here, setting values in game state perhaps?
+
+				for (int32 b = 0; b < MatchInfo.sponsors.Num(); b++) {
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetMatchInfoComplete] sponsor_texture: %s"), *MatchInfo.sponsors[b]);
+					customTextures.Add(MatchInfo.sponsors[b]);
+				}
+
 			}
 			else
 			{
@@ -803,7 +815,7 @@ bool UMyGameInstance::ActivatePlayer(class AMyPlayerController* NewPlayerControl
 			activeplayer.playerID = playerID; // UE internal player reference
 			activeplayer.userKeyId = playerKeyId; // UEtopia player reference
 													//activeplayer.playerKeyId = nullptr;
-			activeplayer.playerTitle = nullptr;
+			activeplayer.userTitle = nullptr;
 			activeplayer.authorized = false;
 			activeplayer.roundDeaths = 0;
 			activeplayer.roundKills = 0;
@@ -887,7 +899,7 @@ void UMyGameInstance::ActivateRequestComplete(FHttpRequestPtr HttpRequest, FHttp
 						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] ActivateRequestComplete - Found ActiveMatchPlayer"));
 						ActivePlayer->authorized = true;
 						ActivePlayer->deactivateStarted = false;
-						ActivePlayer->playerTitle = JsonParsed->GetStringField("player_name");
+						ActivePlayer->userTitle = JsonParsed->GetStringField("player_name");
 						ActivePlayer->userKeyId = JsonParsed->GetStringField("user_key_id");
 						ActivePlayer->currencyCurrent = JsonParsed->GetIntegerField("player_currency");
 						ActivePlayer->rank = JsonParsed->GetIntegerField("player_rank");
@@ -986,9 +998,12 @@ void UMyGameInstance::ActivateMatchPlayerRequestComplete(FHttpRequestPtr HttpReq
 					FMyActivePlayer* ActivePlayer = getPlayerByPlayerKey(JsonParsed->GetStringField("player_userid"));
 					if (ActivePlayer)
 					{
+						ActivePlayer->authorized = true;
 						ActivePlayer->joined = true;
 						ActivePlayer->currentRoundAlive = true;
 						ActivePlayer->bIsConnected = true;
+						ActivePlayer->userTitle = JsonParsed->GetStringField("player_name");
+						ActivePlayer->gamePlayerKeyId = JsonParsed->GetStringField("game_player_key_id");
 
 						APlayerState* thisPlayerState = ActivePlayer->PlayerController->PlayerState;
 						AMyPlayerState* playerS = Cast<AMyPlayerState>(thisPlayerState);
@@ -1002,8 +1017,12 @@ void UMyGameInstance::ActivateMatchPlayerRequestComplete(FHttpRequestPtr HttpReq
 							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ActivateMatchPlayerRequestComplete] - playerS->TeamId %d"), playerS->TeamId);
 
 							playerS->TeamPlayerIndex = ActivePlayer->teamPlayerIndex;
-							playerS->SetPlayerName(ActivePlayer->playerTitle);
-							playerS->playerTitle = ActivePlayer->playerTitle;
+							playerS->SetPlayerName(ActivePlayer->userTitle);
+							playerS->playerTitle = ActivePlayer->userTitle;
+							// Currency does not exist in matchmaker/competitive.
+							// Matchmaker servers do not have authority to interact with stores or vendors at this time.
+							//playerS->Currency = JsonParsed->GetIntegerField("player_currency");
+
 
 							// Also set the character customization bool we got from match info
 							playerS->CharacterSetup = ActivePlayer->characterCustomized;
@@ -1437,19 +1456,18 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 								}
 							}
 
-							// trigger the delegate
-							// We don't want to do this anymore.
-							// The delegate needs to be triggered later, in order to facilitate giving abilities again after respawn
-							//playerC->MyGrantedAbilities = LocalGrantedAbilities;
-							playerS->CachedAbilities = LocalGrantedAbilities;
-
-							// tell player controller to convert cached to granted
-							PlayerController->GrantCachedAbilities();
-
-							//playerS->GrantedAbilities = LocalGrantedAbilities;
-							//playerC->DoRep_AbilitiesChanged = !playerC->DoRep_AbilitiesChanged;
+							
 						}
 					}
+
+					// save to player state
+					playerS->CachedAbilities = LocalGrantedAbilities;
+
+					// tell player controller to convert cached to granted
+					PlayerController->GrantCachedAbilities();
+
+					//playerS->GrantedAbilities = LocalGrantedAbilities;
+					//playerC->DoRep_AbilitiesChanged = !playerC->DoRep_AbilitiesChanged;
 
 				}
 				else
@@ -1554,10 +1572,11 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 				// Go through all of the key bindings.  Find the ones that match our naming convention, and put them in order.
 				for (int32 ActionBindingIndex = 1; ActionBindingIndex <= AbilityCapacity; ActionBindingIndex++)
 				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayerRequestComplete] Checking ActionBinding "));
 					ActionNameTarget = ActionNameBase + FString::FromInt(ActionBindingIndex);
 					for (int32 keyBindIndex = 0; keyBindIndex < KeyBindingsFromConfig.Num(); keyBindIndex++)
 					{
-
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayerRequestComplete] Checking KeyBinding "));
 						if (ActionNameTarget == KeyBindingsFromConfig[keyBindIndex].ActionName.ToString())
 						{
 							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayerRequestComplete] KeyBindingFromConfig.ActionName: %s"), *KeyBindingsFromConfig[keyBindIndex].ActionName.ToString());
@@ -1580,8 +1599,8 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 					{
 						UE_LOG(LogTemp, Log, TEXT("InterfaceParseSuccess"));
 
-						PlayerController->AbilityCapacity = AbilityCapacity;
-						PlayerController->AbilitySlotsPerRow = AbilitySlotsPerRow;
+						playerS->AbilityCapacity = AbilityCapacity;
+						playerS->AbilitySlotsPerRow = AbilitySlotsPerRow;
 
 						// Keep track of slots that were successfully filled
 						int32 abilitySlotsFilledSuccessfully = 0;
@@ -1607,9 +1626,10 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 								int32 matchingGrantedAbilityIndex = -1;
 
 								// go though granted abilities and find by Class
-								for (int32 grantedAIndex = 0; grantedAIndex < PlayerController->MyGrantedAbilities.Num(); grantedAIndex++)
+								//for (int32 grantedAIndex = 0; grantedAIndex < PlayerController->MyGrantedAbilities.Num(); grantedAIndex++)
+								for (int32 grantedAIndex = 0; grantedAIndex < playerS->GrantedAbilities.Num(); grantedAIndex++)
 								{
-									if (AbilityClassPath == PlayerController->MyGrantedAbilities[grantedAIndex].classPath)
+									if (AbilityClassPath == playerS->GrantedAbilities[grantedAIndex].classPath)
 									{
 										UE_LOG(LogTemp, Log, TEXT("Found matching granted ability"));
 										matchingGrantedAbilityIndex = grantedAIndex;
@@ -1625,12 +1645,12 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 									FMyAbilitySlot AbilityTemp;
 
 									AbilityTemp.Key = KeyBindingsForAbilities[currentSlotIndex].Key;
-									AbilityTemp.GrantedAbility = PlayerController->MyGrantedAbilities[matchingGrantedAbilityIndex];
+									AbilityTemp.GrantedAbility = playerS->GrantedAbilities[matchingGrantedAbilityIndex];
 									AbilityTemp.bIsValid = true;
-									AbilityTemp.title = PlayerController->MyGrantedAbilities[matchingGrantedAbilityIndex].title;
-									AbilityTemp.description = PlayerController->MyGrantedAbilities[matchingGrantedAbilityIndex].description;
-									AbilityTemp.Icon = PlayerController->MyGrantedAbilities[matchingGrantedAbilityIndex].Icon;
-									AbilityTemp.classPath = PlayerController->MyGrantedAbilities[matchingGrantedAbilityIndex].classPath;
+									AbilityTemp.title = playerS->GrantedAbilities[matchingGrantedAbilityIndex].title;
+									AbilityTemp.description = playerS->GrantedAbilities[matchingGrantedAbilityIndex].description;
+									AbilityTemp.Icon = playerS->GrantedAbilities[matchingGrantedAbilityIndex].Icon;
+									AbilityTemp.classPath = playerS->GrantedAbilities[matchingGrantedAbilityIndex].classPath;
 									LocalAbilitySlots.Add(AbilityTemp);
 
 									abilitySlotsFilledSuccessfully++;
@@ -1686,9 +1706,9 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 						}
 
 						// trigger the delegate so we can build the UI
-						PlayerController->AbilityCapacity = AbilityCapacity;
-						PlayerController->AbilitySlotsPerRow = AbilitySlotsPerRow;
-						PlayerController->MyAbilitySlots = LocalAbilitySlots;
+						playerS->AbilityCapacity = AbilityCapacity;
+						playerS->AbilitySlotsPerRow = AbilitySlotsPerRow;
+						playerS->MyAbilitySlots = LocalAbilitySlots;
 						//playerC->DoRep_AbilityInterfaceChanged = !playerC->DoRep_AbilityInterfaceChanged;
 
 					}
@@ -1716,9 +1736,9 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 						}
 
 						// trigger the delegate so we can build the UI
-						PlayerController->AbilityCapacity = AbilityCapacity;
-						PlayerController->AbilitySlotsPerRow = AbilitySlotsPerRow;
-						PlayerController->MyAbilitySlots = LocalAbilitySlots;
+						playerS->AbilityCapacity = AbilityCapacity;
+						playerS->AbilitySlotsPerRow = AbilitySlotsPerRow;
+						playerS->MyAbilitySlots = LocalAbilitySlots;
 						//playerC->DoRep_AbilityInterfaceChanged = !playerC->DoRep_AbilityInterfaceChanged;
 
 
@@ -2123,12 +2143,12 @@ bool UMyGameInstance::SaveGamePlayer(FString playerKeyId, bool bAttemptUnLock)
 						// Convert player granted ability slots to json friendly array
 						TSharedPtr<FJsonObject> AbilitiesJsonObject = MakeShareable(new FJsonObject);
 						TArray< TSharedPtr<FJsonValue> > GrantedAbilityArray;
-						for (int32 GrantedAbilityIndex = 0; GrantedAbilityIndex < PlayerController->MyGrantedAbilities.Num(); GrantedAbilityIndex++)
+						for (int32 GrantedAbilityIndex = 0; GrantedAbilityIndex < playerS->GrantedAbilities.Num(); GrantedAbilityIndex++)
 						{
 							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [SaveGamePlayer] - Found GrantedAbilityIndex"));
 							// all of them should be valid.
 							TSharedPtr< FJsonObject > AbilityObj = MakeShareable(new FJsonObject);
-							AbilityObj->SetStringField("AbilityClass", PlayerController->MyGrantedAbilities[GrantedAbilityIndex].classPath);
+							AbilityObj->SetStringField("AbilityClass", playerS->GrantedAbilities[GrantedAbilityIndex].classPath);
 							TSharedRef< FJsonValueObject > JsonValue = MakeShareable(new FJsonValueObject(AbilityObj));
 							GrantedAbilityArray.Add(JsonValue);
 						}
@@ -2140,15 +2160,15 @@ bool UMyGameInstance::SaveGamePlayer(FString playerKeyId, bool bAttemptUnLock)
 						///////////////////////////////////////////////////////////
 						// Convert player Interface settings to json friendly array
 						TSharedPtr<FJsonObject> InterfaceJsonObject = MakeShareable(new FJsonObject);
-						InterfaceJsonObject->SetNumberField("AbilityCapacity", PlayerController->AbilityCapacity);
-						InterfaceJsonObject->SetNumberField("AbilitySlotsPerRow", PlayerController->AbilitySlotsPerRow);
+						InterfaceJsonObject->SetNumberField("AbilityCapacity", playerS->AbilityCapacity);
+						InterfaceJsonObject->SetNumberField("AbilitySlotsPerRow", playerS->AbilitySlotsPerRow);
 						TArray< TSharedPtr<FJsonValue> > AbilitySlotsArray;
-						for (int32 AbilitySlotIndex = 0; AbilitySlotIndex < PlayerController->MyAbilitySlots.Num(); AbilitySlotIndex++)
+						for (int32 AbilitySlotIndex = 0; AbilitySlotIndex < playerS->MyAbilitySlots.Num(); AbilitySlotIndex++)
 						{
 							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [SaveGamePlayer] - Found AbilitySlotIndex"));
 							// just adding them all for now.  TODO - maybe optimize this?
 							TSharedPtr< FJsonObject > AbilitySlotObj = MakeShareable(new FJsonObject);
-							AbilitySlotObj->SetStringField("AbilityClass", PlayerController->MyAbilitySlots[AbilitySlotIndex].classPath);
+							AbilitySlotObj->SetStringField("AbilityClass", playerS->MyAbilitySlots[AbilitySlotIndex].classPath);
 							TSharedRef< FJsonValueObject > JsonValue = MakeShareable(new FJsonValueObject(AbilitySlotObj));
 							AbilitySlotsArray.Add(JsonValue);
 						}
@@ -4876,15 +4896,20 @@ void UMyGameInstance::RequestBeginPlay()
 
 bool UMyGameInstance::SubmitMatchMakerResults()
 {
-	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] SubmitMatchMakerResults"));
-	MatchInfo.encryption = "off";
-	MatchInfo.nonce = "10951350917635";
-	FString json_string;
-	FJsonObjectConverter::UStructToJsonObjectString(MatchInfo.StaticStruct(), &MatchInfo, json_string, 0, 0);
-	UE_LOG(LogTemp, Log, TEXT("json_string: %s"), *json_string);
-	FString APIURI = "/api/v1/matchmaker/results";
-	bool requestSuccess = PerformJsonHttpRequest(&UMyGameInstance::SubmitMatchMakerResultsComplete, APIURI, json_string, "");  // NO AccessToken
-	return requestSuccess;
+	if (!MatchMakerResultsSubmitted)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] SubmitMatchMakerResults"));
+		MatchInfo.encryption = "off";
+		MatchInfo.nonce = "10951350917635";
+		FString json_string;
+		FJsonObjectConverter::UStructToJsonObjectString(MatchInfo.StaticStruct(), &MatchInfo, json_string, 0, 0);
+		UE_LOG(LogTemp, Log, TEXT("json_string: %s"), *json_string);
+		FString APIURI = "/api/v1/matchmaker/results";
+		bool requestSuccess = PerformJsonHttpRequest(&UMyGameInstance::SubmitMatchMakerResultsComplete, APIURI, json_string, "");  // NO AccessToken
+		MatchMakerResultsSubmitted = true;
+		return requestSuccess;
+	}
+	return false;
 }
 
 
@@ -5811,7 +5836,20 @@ bool UMyGameInstance::RecordKill(int32 killerPlayerID, int32 victimPlayerID)
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [RecordKill] killerPlayerID: %i"), killerPlayerID);
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [RecordKill] victimPlayerID: %i "), victimPlayerID);
 
-	
+	// Notify the game mode that a kill has occurred.
+	// You will likely want different behavior depending on the mode.
+	UWorld* const World = GetWorld();
+	if (World)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] World Found"));
+		AMyGameMode* const GameMode = Cast<AMyGameMode>(World->GetAuthGameMode());
+		if (GameMode)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] GameMode Found"));
+			GameMode->RecordKill(killerPlayerID, victimPlayerID);
+			return true;
+		}
+	}
 
 
 	return true;
@@ -6085,6 +6123,7 @@ bool UMyGameInstance::RecordMatchWin(int32 winnerTeamID) {
 		}
 	}
 
+	// submit here?
 	bool gamesubmitted = SubmitMatchMakerResults();
 
 	//Deauthorize everyone later.  first show results and loot screen.
@@ -6183,6 +6222,35 @@ void UMyGameInstance::AttemptStartMatch()
 
 		GetWorld()->GetAuthGameMode()->bUseSeamlessTravel = true;
 		GetWorld()->ServerTravel(UrlString);
+
+		// Set up a timer here to set the CustomTexture In the playerstate - for some reason it's not working on begin play.
+		GetWorld()->GetTimerManager().SetTimer(ReplicateCustomTexturesTimerHandle, this, &UMyGameInstance::ReplicateCustomTexturesToClients, 10.0f, false);
+
+	}
+}
+
+
+void UMyGameInstance::ReplicateCustomTexturesToClients()
+{
+	if (IsRunningDedicatedServer())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ReplicateCustomTexturesToClients] "));
+
+		for (int32 b = 0; b < MatchInfo.players.Num(); b++)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ReplicateCustomTexturesToClients] Found Match Player"));
+
+			AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(MatchInfo.players[b].PlayerController->PlayerState);
+			if (thisMyPlayerState)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ReplicateCustomTexturesToClients] Found Match Player State"));
+
+				thisMyPlayerState->customTextures = customTextures;
+			}
+
+			// And this is also a convenient place to Get the Drops
+			//GetPlayerDrops(MatchInfo.players[b].userKeyId);
+		}
 	}
 }
 
@@ -6442,4 +6510,72 @@ FMyInventorySlot UMyGameInstance::GetInventorySlotByDTID(int32 DTID)
 		}
 	}
 	return InventorySlot;
+}
+
+void UMyGameInstance::EndMatchDelegatesAndTravel()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [EndMatchDelegatesAndTravel] "));
+
+
+	// Bind the timer delegate
+	SubmitMMResultsTimerDel.BindUFunction(this, FName("SubmitMatchMakerResults"));
+	// Set the timer
+	GetWorld()->GetTimerManager().SetTimer(SubmitMMResultsDelayHandle, SubmitMMResultsTimerDel, 10.f, false, 10.f);
+
+	// find the winning team title
+	// TODO revisit this.  This should really be in game state.
+
+	FString WinningTeamTitle;
+
+	for (int32 b = 0; b < MatchInfo.players.Num(); b++)
+	{
+		if (MatchInfo.players[b].win)
+		{
+			AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(MatchInfo.players[b].PlayerController->PlayerState);
+			if (thisMyPlayerState)
+			{
+				WinningTeamTitle = MatchInfo.players[b].teamTitle;
+				//thisMyPlayerState->winningTeamTitle = MatchInfo.players[b].teamTitle;
+			}
+		}
+	}
+
+	// Set the winning team title into all playerstates
+	for (int32 b = 0; b < MatchInfo.players.Num(); b++)
+	{
+		if (MatchInfo.players[b].bIsConnected)
+		{
+			AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(MatchInfo.players[b].PlayerController->PlayerState);
+			if (thisMyPlayerState)
+			{
+				thisMyPlayerState->winningTeamTitle = WinningTeamTitle;
+			}
+		}
+
+
+		// Tell HUD to change UI state
+		//AUEtopiaCompetitiveCharacter* playerChar = Cast<AUEtopiaCompetitiveCharacter>(MatchInfo.players[b].PlayerController->GetPawn());
+		//if (playerChar)
+		//{
+		//	playerChar->ClientChangeUIState(EConnectUIState::MatchResults);
+		//}
+	}
+
+
+	// Bind the timer delegate to switch UI state
+	ShowMatchResultsTimerDel.BindUFunction(this, FName("ShowMatchResults"));
+	// Set the timer
+	GetWorld()->GetTimerManager().SetTimer(ShowMatchResultsDelayHandle, ShowMatchResultsTimerDel, 3.f, false, 3.f);
+
+
+	// This kick player functionality needs to happen later.
+	// Setting it up on a timer now
+
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [EndMatchDelegatesAndTravel] Queuing KickPlayersFromServer to run in 30 seconds"));
+	// Bind the timer delegate
+	KickPlayersTimerDel.BindUFunction(this, FName("KickPlayersFromServer"));
+	// Set the timer
+	GetWorld()->GetTimerManager().SetTimer(KickPlayersDelayHandle, KickPlayersTimerDel, 30.f, false, 30.f);
+
+
 }

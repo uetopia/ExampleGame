@@ -104,7 +104,7 @@ AMyPlayerController::AMyPlayerController()
 	bInteractingWithVendor = false;
 	InteractingWithVendorKeyId = "empty";
 
-	AbilitySlotsPerRow = 6;
+	//AbilitySlotsPerRow = 6;
 
 	PlayerDataLoaded = false;
 
@@ -114,6 +114,8 @@ AMyPlayerController::AMyPlayerController()
 void AMyPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+
+	GrantCachedAbilities();
 
 	if (PIE_Bypass)
 	{
@@ -1064,7 +1066,7 @@ void AMyPlayerController::OnLoginStatusChanged(int32 LocalUserNum, ELoginStatus:
 
 	if (OnlineSub)
 	{
-		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] PerformHttpRequest found OnlineSub"));
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] OnLoginStatusChanged found OnlineSub"));
 		FString CurrentAccessTokenFromOSSCache = OnlineSub->GetIdentityInterface()->GetAuthToken(0);
 		ServerSetCurrentAccessTokenFromOSS(CurrentAccessTokenFromOSSCache);
 	}
@@ -2755,13 +2757,11 @@ void AMyPlayerController::ServerAttemptRemoveAbilityFromBar_Implementation(int32
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerAttemptRemoveAbilityFromBar_Implementation"));
 
-	MyAbilitySlots[index].bIsValid = false;
-
-	// Trigger the delegate.
-	// Note: this function should only be used as a "throw away a skill" function, and not used in combination with AddAbility
-	// TODO - consider adding a bool to determine if the delegate should be triggered or not.
-
-	//DoRep_AbilityInterfaceChanged = !DoRep_AbilityInterfaceChanged;
+	AMyPlayerState* playerS = Cast<AMyPlayerState>(this->PlayerState);
+	if (playerS)
+	{
+		playerS->MyAbilitySlots[index].bIsValid = false;
+	}
 
 	return;
 }
@@ -2790,35 +2790,39 @@ void AMyPlayerController::ServerAttemptAddAbilityToBar_Implementation(int32 inde
 
 	// TODO Make sure that this ability is not already in the bar.
 	// Can't have an ability assigned to more than one hotkey
-
-	for (int32 abilitySlotIndex = 0; abilitySlotIndex < MyAbilitySlots.Num(); abilitySlotIndex++)
+	AMyPlayerState* playerS = Cast<AMyPlayerState>(this->PlayerState);
+	if (playerS)
 	{
-		if (MyAbilitySlots[abilitySlotIndex].bIsValid)
+
+		for (int32 abilitySlotIndex = 0; abilitySlotIndex < playerS->MyAbilitySlots.Num(); abilitySlotIndex++)
 		{
-			if (MyAbilitySlots[abilitySlotIndex].GrantedAbility.AbilityHandle == GrantedAbility.AbilityHandle)
+			if (playerS->MyAbilitySlots[abilitySlotIndex].bIsValid)
 			{
-				if (index == abilitySlotIndex)
+				if (playerS->MyAbilitySlots[abilitySlotIndex].GrantedAbility.AbilityHandle == GrantedAbility.AbilityHandle)
 				{
-					// same slot - we don't need to do anything.
-					return;
+					if (index == abilitySlotIndex)
+					{
+						// same slot - we don't need to do anything.
+						return;
+					}
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerAttemptAddAbilityToBar_Implementation - found duplicate handle in ability bar - removing it"));
+					playerS->MyAbilitySlots[abilitySlotIndex].bIsValid = false;
 				}
-				UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerAttemptAddAbilityToBar_Implementation - found duplicate handle in ability bar - removing it"));
-				MyAbilitySlots[abilitySlotIndex].bIsValid = false;
 			}
 		}
-	}
 
-	MyAbilitySlots[index].bIsValid = true;
+		playerS->MyAbilitySlots[index].bIsValid = true;
 		//MyAbilitySlots[index].bCanBeUsed = GrantedAbility.
-	MyAbilitySlots[index].classPath = GrantedAbility.classPath;
+		playerS->MyAbilitySlots[index].classPath = GrantedAbility.classPath;
 		//MyAbilitySlots[index].classTitle = GrantedAbility.
-	MyAbilitySlots[index].description = GrantedAbility.description;
-	MyAbilitySlots[index].Icon = GrantedAbility.Icon;
+		playerS->MyAbilitySlots[index].description = GrantedAbility.description;
+		playerS->MyAbilitySlots[index].Icon = GrantedAbility.Icon;
 		//MyAbilitySlots[index].Key = GrantedAbility.
-	MyAbilitySlots[index].title = GrantedAbility.title;
+		playerS->MyAbilitySlots[index].title = GrantedAbility.title;
 		//MyAbilitySlots[index].UseText = GrantedAbility.
-	MyAbilitySlots[index].GrantedAbility = GrantedAbility;
+		playerS->MyAbilitySlots[index].GrantedAbility = GrantedAbility;
 
+	}
 	return;
 }
 
@@ -2844,31 +2848,33 @@ void AMyPlayerController::ServerAttemptSwapAbilityBarLocations_Implementation(in
 
 	// We need to do something with the array in player state in order to get the keybindings to stick
 
-	FMyAbilitySlot TempSlotData = MyAbilitySlots[indexFrom];
+	AMyPlayerState* playerS = Cast<AMyPlayerState>(this->PlayerState);
+	if (playerS)
+	{
 
-	MyAbilitySlots[indexFrom].bCanBeUsed = MyAbilitySlots[indexTo].bCanBeUsed;
-	MyAbilitySlots[indexFrom].bIsValid = MyAbilitySlots[indexTo].bIsValid;
-	MyAbilitySlots[indexFrom].classPath = MyAbilitySlots[indexTo].classPath;
-	MyAbilitySlots[indexFrom].classTitle = MyAbilitySlots[indexTo].classTitle;
-	MyAbilitySlots[indexFrom].description = MyAbilitySlots[indexTo].description;
-	MyAbilitySlots[indexFrom].GrantedAbility = MyAbilitySlots[indexTo].GrantedAbility;
-	MyAbilitySlots[indexFrom].Icon = MyAbilitySlots[indexTo].Icon;
-	MyAbilitySlots[indexFrom].title = MyAbilitySlots[indexTo].title;
-	MyAbilitySlots[indexFrom].UseText = MyAbilitySlots[indexTo].UseText;
+		FMyAbilitySlot TempSlotData = playerS->MyAbilitySlots[indexFrom];
 
-	MyAbilitySlots[indexTo].bCanBeUsed = TempSlotData.bCanBeUsed;
-	MyAbilitySlots[indexTo].bIsValid = TempSlotData.bIsValid;
-	MyAbilitySlots[indexTo].classPath = TempSlotData.classPath;
-	MyAbilitySlots[indexTo].classTitle = TempSlotData.classTitle;
-	MyAbilitySlots[indexTo].description = TempSlotData.description;
-	MyAbilitySlots[indexTo].GrantedAbility = TempSlotData.GrantedAbility;
-	MyAbilitySlots[indexTo].Icon = TempSlotData.Icon;
-	MyAbilitySlots[indexTo].title = TempSlotData.title;
-	MyAbilitySlots[indexTo].UseText = TempSlotData.UseText;
+		playerS->MyAbilitySlots[indexFrom].bCanBeUsed = playerS->MyAbilitySlots[indexTo].bCanBeUsed;
+		playerS->MyAbilitySlots[indexFrom].bIsValid = playerS->MyAbilitySlots[indexTo].bIsValid;
+		playerS->MyAbilitySlots[indexFrom].classPath = playerS->MyAbilitySlots[indexTo].classPath;
+		playerS->MyAbilitySlots[indexFrom].classTitle = playerS->MyAbilitySlots[indexTo].classTitle;
+		playerS->MyAbilitySlots[indexFrom].description = playerS->MyAbilitySlots[indexTo].description;
+		playerS->MyAbilitySlots[indexFrom].GrantedAbility = playerS->MyAbilitySlots[indexTo].GrantedAbility;
+		playerS->MyAbilitySlots[indexFrom].Icon = playerS->MyAbilitySlots[indexTo].Icon;
+		playerS->MyAbilitySlots[indexFrom].title = playerS->MyAbilitySlots[indexTo].title;
+		playerS->MyAbilitySlots[indexFrom].UseText = playerS->MyAbilitySlots[indexTo].UseText;
 
-	//MyAbilitySlots[indexTo] = TempSlotData;
+		playerS->MyAbilitySlots[indexTo].bCanBeUsed = TempSlotData.bCanBeUsed;
+		playerS->MyAbilitySlots[indexTo].bIsValid = TempSlotData.bIsValid;
+		playerS->MyAbilitySlots[indexTo].classPath = TempSlotData.classPath;
+		playerS->MyAbilitySlots[indexTo].classTitle = TempSlotData.classTitle;
+		playerS->MyAbilitySlots[indexTo].description = TempSlotData.description;
+		playerS->MyAbilitySlots[indexTo].GrantedAbility = TempSlotData.GrantedAbility;
+		playerS->MyAbilitySlots[indexTo].Icon = TempSlotData.Icon;
+		playerS->MyAbilitySlots[indexTo].title = TempSlotData.title;
+		playerS->MyAbilitySlots[indexTo].UseText = TempSlotData.UseText;
 
-	//DoRep_AbilityInterfaceChanged = !DoRep_AbilityInterfaceChanged;
+	}
 
 	return;
 }
@@ -2877,75 +2883,100 @@ bool AMyPlayerController::GrantCachedAbilities_Validate()
 {
 	return true;
 }
+
 void AMyPlayerController::GrantCachedAbilities_Implementation()
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::GrantCachedAbilities_Implementation"));
 
 	AMyPlayerState* playerS = Cast<AMyPlayerState>(this->PlayerState);
-	AUEtopiaPersistCharacter* playerChar = Cast<AUEtopiaPersistCharacter>(GetPawn());
-	FGameplayAbilitySpecHandle AbilityHandle;
-	UClass* LoadedActorOwnerClass;
-	UMyBaseGameplayAbility* LoadedObjectClass;
-
-	// empty the granted abilities array in player state and here
-	MyGrantedAbilities.Empty();
-	playerS->GrantedAbilities.Empty();
-
-	// Create a local copy of the array
-	TArray<FMyGrantedAbility> LocalGrantedAbilities;
-	FMyGrantedAbility grantedAbility;
-
-	for (int32 Index = 0; Index < playerS->CachedAbilities.Num(); Index++)
+	if (playerS)
 	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::GrantCachedAbilities_Implementation got playerS"));
 
-		LoadedActorOwnerClass = LoadClassFromPath(playerS->CachedAbilities[Index].classPath);
+		AUEtopiaPersistCharacter* playerChar = Cast<AUEtopiaPersistCharacter>(GetPawn());
 
-		if (LoadedActorOwnerClass)
+		if (playerChar)
 		{
-			LoadedObjectClass = Cast<UMyBaseGameplayAbility>(LoadedActorOwnerClass->GetDefaultObject());
-			AbilityHandle = playerChar->AttemptGiveAbility(LoadedObjectClass);
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::GrantCachedAbilities_Implementation got playerChar"));
+			FGameplayAbilitySpecHandle AbilityHandle;
+			UClass* LoadedActorOwnerClass;
+			UMyBaseGameplayAbility* LoadedObjectClass;
 
-			grantedAbility.AbilityHandle = AbilityHandle;
-			grantedAbility.classPath = playerS->CachedAbilities[Index].classPath;
-			grantedAbility.Icon = LoadedObjectClass->Icon;
-			grantedAbility.title = LoadedObjectClass->Title.ToString();
-			grantedAbility.description = LoadedObjectClass->Description.ToString();
-			//UGameplayAbility* AbilityClassRef = Cast<UGameplayAbility>(LoadedObjectClass);
-			grantedAbility.Ability = LoadedObjectClass->GetClass();
+			// empty the granted abilities array in player state and here
+			//MyGrantedAbilities.Empty();
+			playerS->GrantedAbilities.Empty();
 
-			LocalGrantedAbilities.Add(grantedAbility);
-		}
+			// Create a local copy of the array
+			TArray<FMyGrantedAbility> LocalGrantedAbilities;
+			FMyGrantedAbility grantedAbility;
 
-
-	}
-	playerS->GrantedAbilities = LocalGrantedAbilities;
-	MyGrantedAbilities = LocalGrantedAbilities;
-
-	// WE need to update MyAbilitySlots as well with the new ability
-	for (int32 Index = 0; Index < MyAbilitySlots.Num(); Index++)
-	{
-		int32 matchingGrantedAbilityIndex = -1;
-		// go though granted abilities and find by Class
-		for (int32 grantedAIndex = 0; grantedAIndex < MyGrantedAbilities.Num(); grantedAIndex++)
-		{
-			if (MyAbilitySlots[Index].classPath == MyGrantedAbilities[grantedAIndex].classPath)
+			for (int32 Index = 0; Index < playerS->CachedAbilities.Num(); Index++)
 			{
-				UE_LOG(LogTemp, Log, TEXT("Found matching granted ability"));
-				matchingGrantedAbilityIndex = grantedAIndex;
-				break;
+
+				LoadedActorOwnerClass = LoadClassFromPath(playerS->CachedAbilities[Index].classPath);
+
+				if (LoadedActorOwnerClass)
+				{
+					LoadedObjectClass = Cast<UMyBaseGameplayAbility>(LoadedActorOwnerClass->GetDefaultObject());
+					AbilityHandle = playerChar->AttemptGiveAbility(LoadedObjectClass);
+
+					grantedAbility.AbilityHandle = AbilityHandle;
+					grantedAbility.classPath = playerS->CachedAbilities[Index].classPath;
+					grantedAbility.Icon = LoadedObjectClass->Icon;
+					grantedAbility.title = LoadedObjectClass->Title.ToString();
+					grantedAbility.description = LoadedObjectClass->Description.ToString();
+					//UGameplayAbility* AbilityClassRef = Cast<UGameplayAbility>(LoadedObjectClass);
+					grantedAbility.Ability = LoadedObjectClass->GetClass();
+
+					LocalGrantedAbilities.Add(grantedAbility);
+
+					// Also send out a chat notification
+					FString AbilityAddedMessage = grantedAbility.title + " - Ability Added";
+					SendLocalChatMessage(AbilityAddedMessage);
+				}
+
+
 			}
+			playerS->GrantedAbilities = LocalGrantedAbilities;
+			//MyGrantedAbilities = LocalGrantedAbilities;
+
+			// WE need to update MyAbilitySlots as well with the new ability
+			for (int32 Index = 0; Index < playerS->MyAbilitySlots.Num(); Index++)
+			{
+				int32 matchingGrantedAbilityIndex = -1;
+				// go though granted abilities and find by Class
+				for (int32 grantedAIndex = 0; grantedAIndex < playerS->GrantedAbilities.Num(); grantedAIndex++)
+				{
+					if (playerS->MyAbilitySlots[Index].classPath == playerS->GrantedAbilities[grantedAIndex].classPath)
+					{
+						UE_LOG(LogTemp, Log, TEXT("Found matching granted ability"));
+						matchingGrantedAbilityIndex = grantedAIndex;
+						break;
+					}
+				}
+				// If a match was found, replace the link to the granted ability.
+				if (matchingGrantedAbilityIndex >= 0)
+				{
+					UE_LOG(LogTemp, Log, TEXT("Adding found ability to ability slots"));
+					playerS->MyAbilitySlots[Index].GrantedAbility = playerS->GrantedAbilities[matchingGrantedAbilityIndex];
+				}
+
+			}
+
+
 		}
-		// If a match was found, replace the link to the granted ability.
-		if (matchingGrantedAbilityIndex >= 0)
+		else
 		{
-			UE_LOG(LogTemp, Log, TEXT("Adding found ability to ability slots"));
-			MyAbilitySlots[Index].GrantedAbility = MyGrantedAbilities[matchingGrantedAbilityIndex];
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::GrantCachedAbilities_Implementation FAIL - DID NOT get playerChar"));
 		}
 
+		
 	}
+	
 	return;
 }
 
+/*
 void AMyPlayerController::OnRep_OnAbilitiesChange_Implementation()
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::OnRep_OnAbilitiesChange"));
@@ -2953,7 +2984,8 @@ void AMyPlayerController::OnRep_OnAbilitiesChange_Implementation()
 	//playerChar->RemapAbilities();
 	OnAbilitiesChanged.Broadcast();
 }
-
+*/
+/*
 void AMyPlayerController::OnRep_OnAbilityInterfaceChange_Implementation()
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::OnRep_OnAbilityInterfaceChange"));
@@ -2961,7 +2993,7 @@ void AMyPlayerController::OnRep_OnAbilityInterfaceChange_Implementation()
 	playerChar->RemapAbilities();
 	OnAbilityInterfaceChanged.Broadcast();
 }
-
+*/
 void AMyPlayerController::UnFreeze()
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::UnFreeze"));
@@ -2969,10 +3001,11 @@ void AMyPlayerController::UnFreeze()
 
 	// Tell the UI to refresh
 	OnAbilitiesChanged.Broadcast();
-	OnAbilityInterfaceChanged.Broadcast();
+	//OnAbilityInterfaceChanged.Broadcast();
 	OnChatChannelsChangedUETopia.Broadcast();
 	OnFriendsChanged.Broadcast();
 	//OnInventoryChanged.Broadcast();
+	OnInventoryChangedBP();
 	OnPartyDataReceivedUETopiaDisplayUI.Broadcast();
 	OnRecentPlayersChanged.Broadcast();
 }
@@ -3119,9 +3152,9 @@ void AMyPlayerController::GetLifetimeReplicatedProps(TArray< FLifetimeProperty >
 	//DOREPLIFETIME(AMyPlayerController, DoRep_AbilitiesChanged);
 	//DOREPLIFETIME(AMyPlayerController, DoRep_AbilityInterfaceChanged);
 	//DOREPLIFETIME(AMyPlayerController, InventorySlots);
-	DOREPLIFETIME(AMyPlayerController, MyAbilitySlots);
-	DOREPLIFETIME(AMyPlayerController, MyGrantedAbilities);
-	DOREPLIFETIME(AMyPlayerController, AbilitySlotsPerRow);
+	//DOREPLIFETIME(AMyPlayerController, MyAbilitySlots);
+	//DOREPLIFETIME(AMyPlayerController, MyGrantedAbilities);
+	//DOREPLIFETIME(AMyPlayerController, AbilitySlotsPerRow);
 	//DOREPLIFETIME(AMyPlayerController, CurrencyAvailable);
 	DOREPLIFETIME(AMyPlayerController, bInteractingWithVendor);
 	DOREPLIFETIME(AMyPlayerController, InteractingWithVendorKeyId);

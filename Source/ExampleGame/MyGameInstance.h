@@ -35,7 +35,7 @@ struct FMyActivePlayer {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString userKeyId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		FString playerTitle;
+		FString userTitle;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		bool authorized;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
@@ -258,6 +258,7 @@ class EXAMPLEGAME_API UMyGameInstance : public UGameInstance
 	FTimerHandle RewardSpawnTimerHandle;
 	FTimerHandle AttemptStartMatchTimerHandle;
 	FTimerHandle SubmitReportTimerHandle;
+	FTimerHandle ReplicateCustomTexturesTimerHandle;
 
 	//*************************
 	//TEMPLATE Load Obj From Path (thanks Rama!)
@@ -353,6 +354,14 @@ public:
 
 	void AttemptSpawnReward();
 
+	// Custom texture url strings.
+	// This is populated from the get match info complete function, and reads tournament sponsor textures as set on the backend.
+	TArray<FString> customTextures;
+
+	// Sets the custom texture in the player states
+	// FOr some reason it was not working 100% of the time in Activate player, so trying it here so it can be delayed.
+	void ReplicateCustomTexturesToClients();
+
 
 
 	UPROPERTY(BlueprintReadOnly)
@@ -406,6 +415,7 @@ public:
 	void SubmitReport();
 	void SubmitReportComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
 
+	UFUNCTION()
 	bool SubmitMatchMakerResults();
 	void SubmitMatchMakerResultsComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
 
@@ -568,6 +578,8 @@ public:
 
 	void CalculateNewRank(int32 WinnerPlayerIndex, int32 LoserPlayerIndex, bool penalizeLoser);
 
+	void EndMatchDelegatesAndTravel();
+
 private:
 	UPROPERTY(config)
 		FString WelcomeScreenMap;
@@ -672,6 +684,8 @@ private:
 
 	// Data table for referencing inventory items.
 	UDataTable* ItemsDataTable;
+
+	
 	
 
 protected:

@@ -41,7 +41,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGameplayEffectChangedDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPlayerEquipmentChange);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPlayerTitleChange);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnShowMatchResults);
-
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAbilityInterfaceChangedDelegate);
 
 
 
@@ -74,6 +74,14 @@ public:
 		UAbilitySystemComponent* aSC = Cast<UAbilitySystemComponent>(AbilitySystem);
 		return aSC;
 	}
+
+	// Since the ASC lives on player state, but input is connected to the character, there are edge cases where binding does not work
+	// As a workaround if it fails, retry after a delay.
+	UFUNCTION()
+	void AttemptBindInputToASC();
+	// We need a timer delegate for this
+	FTimerHandle AttemptBindInputToASCHandle;
+	FTimerDelegate AttemptBindInputToASCDel;
 
 	// We need something to track when the player has successfully gone through the login and character selection process
 	// Because on respawn, we want to skip loading screens and go immediately back to the spawn room.
@@ -182,6 +190,25 @@ public:
 
 	// ABILITIES
 
+	// Moved in from controller
+
+	// This is the delegate to grab on to in the UI
+	// When it fires, it signals that you should refresh the hotbar
+	UPROPERTY(BlueprintAssignable, Category = "UETOPIA")
+	FOnAbilityInterfaceChangedDelegate OnAbilityInterfaceChanged;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		int32 AbilityCapacity;
+
+	UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_OnAbilityInterfaceChange, Category = "UETOPIA")
+		TArray<FMyAbilitySlot> MyAbilitySlots;
+
+	UFUNCTION(Client, Reliable)
+		void OnRep_OnAbilityInterfaceChange();
+
+	UPROPERTY(BlueprintReadOnly, Replicated, Category = "UETOPIA")
+		int32 AbilitySlotsPerRow;
+
 	// when this fires, refresh the character attribute UI
 	UPROPERTY(BlueprintAssignable, Category = "UETOPIA")
 		FOnGameplayEffectChangedDelegate OnGameplayEffectChangedDelegate;
@@ -233,9 +260,14 @@ public:
 
 	// Once they are granted, they are stored here.
 	// Additionally, they are copied over to the playerController so that the UI/HUD can be updated.
+	UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_OnAbilitiesChange, Category = "UETOPIA")
 	TArray< FMyGrantedAbility > GrantedAbilities;
 
+	UFUNCTION(Client, Reliable)
+		void OnRep_OnAbilitiesChange();
+
 	// DEPRECATED - TODO delete
+	// Is it though?  We are using it to re-apply abilites after map travel
 	TArray< FMyGrantedAbility > CachedAbilities;
 
 	// Return a granted ability from an Ability Class PAth

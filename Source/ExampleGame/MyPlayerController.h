@@ -47,7 +47,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnVendorInteractDisplayUIDelegate, 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnVendorInfoCompleteDelegate);
 //DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnVendorInteractChangedDelegate, FString, VendorKeyId, bool, bIsInteracting);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAbilitiesChangedDelegate);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAbilityInterfaceChangedDelegate);
+//DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAbilityInterfaceChangedDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGetCharacterListCompleteDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGetServerClustersCompleteDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnSelectServerClusterCompleteDelegate);
@@ -683,8 +683,9 @@ public:
 
 	// This is the delegate to grab on to in the UI
 	// When it fires, it signals that you should refresh the hotbar
-	UPROPERTY(BlueprintAssignable, Category = "UETOPIA")
-	FOnAbilityInterfaceChangedDelegate OnAbilityInterfaceChanged;
+	// Moved to player state
+	//UPROPERTY(BlueprintAssignable, Category = "UETOPIA")
+	//FOnAbilityInterfaceChangedDelegate OnAbilityInterfaceChanged;
 
 	// Rep notify to tell the client to load the new inventory
 	//UPROPERTY(ReplicatedUsing = OnRep_OnAbilityInterfaceChange)
@@ -822,8 +823,7 @@ public:
 	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Replicated, Category = "UETOPIA")
 	//	TArray<FMyAbilitySlot> AbilitySlots;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 AbilityCapacity;
+	
 
 	//UPROPERTY(BlueprintReadOnly, Replicated, Category = "UETOPIA")
 	//	int32 CurrencyAvailable;
@@ -849,15 +849,18 @@ public:
 		TArray<FMyVendorItem> MyCurrentVendorInventory;
 
 	// Abilities
-	// This should move to PS too
-	UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_OnAbilityInterfaceChange, Category = "UETOPIA")
-		TArray<FMyAbilitySlot> MyAbilitySlots;
+	// This should move to PS 
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+	//	int32 AbilityCapacity;
 
-	UFUNCTION(Client, Reliable)
-		void OnRep_OnAbilityInterfaceChange();
+	//UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_OnAbilityInterfaceChange, Category = "UETOPIA")
+	//	TArray<FMyAbilitySlot> MyAbilitySlots;
 
-	UPROPERTY(BlueprintReadOnly, Replicated, Category = "UETOPIA")
-		int32 AbilitySlotsPerRow;
+	//UFUNCTION(Client, Reliable)
+	//	void OnRep_OnAbilityInterfaceChange();
+
+	//UPROPERTY(BlueprintReadOnly, Replicated, Category = "UETOPIA")
+	//	int32 AbilitySlotsPerRow;
 
 	// THis is confusing, but neccesary.
 	// This array of granted abilities exists for the client to set up the UI
@@ -865,9 +868,11 @@ public:
 	// The reason is that we need to re-grant the abilities on respawn, which happens server side.
 	// After abilities have been granted, this array is updated, which triggers the UI refresh client side.
 
-	UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_OnAbilitiesChange, Category = "UETOPIA")
-		TArray<FMyGrantedAbility> MyGrantedAbilities;
+	// moved to player state
+	//UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_OnAbilitiesChange, Category = "UETOPIA")
+	//	TArray<FMyGrantedAbility> MyGrantedAbilities;
 
+	// TODO move this to player state too
 	UFUNCTION(Server, Reliable, WithValidation)
 		void GrantCachedAbilities();
 
@@ -876,8 +881,8 @@ public:
 	//	bool DoRep_AbilitiesChanged;
 
 	// this function activates after replication
-	UFUNCTION(Client, Reliable)
-		void OnRep_OnAbilitiesChange();
+	//UFUNCTION(Client, Reliable)
+	//	void OnRep_OnAbilitiesChange();
 
 	// Characters
 	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
