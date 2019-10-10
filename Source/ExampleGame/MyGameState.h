@@ -53,12 +53,12 @@ public:
 
 	// Day/Night Cycle 
 	// Rep notify to tell the client to load the new inventory
-	UPROPERTY(ReplicatedUsing = OnRep_OnSunAngleChange)
-		float sunAngle;
+	//UPROPERTY(ReplicatedUsing = OnRep_OnSunAngleChange)
+	//	float sunAngle;
 
 	// this function just calls the delegate.
-	UFUNCTION()
-		virtual void OnRep_OnSunAngleChange();
+	//UFUNCTION()
+	//	virtual void OnRep_OnSunAngleChange();
 
 	float deltaSecondsElapsed = 0.0f;
 

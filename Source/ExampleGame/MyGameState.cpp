@@ -98,7 +98,7 @@ void AMyGameState::LoadLevel()
 	}
 }
 
-void AMyGameState::OnRep_OnSunAngleChange()
-{
-	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyGameState] OnRep_OnSunAngleChange."));
-}
+//void AMyGameState::OnRep_OnSunAngleChange()
+//{
+//	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyGameState] OnRep_OnSunAngleChange."));
+//}

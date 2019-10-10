@@ -743,39 +743,76 @@ void AMyPlayerController::OnPartyDataReceivedComplete(const FUniqueNetId& LocalU
 	OnPartyDataReceivedUETopiaDisplayUI.Broadcast();
 }
 
+void AMyPlayerController::ClientRequestChatChannelRefresh_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] ClientRequestChatChannelRefresh_Implementation"));
+
+	//if (CurrentUIState != EConnectUIState::Loading)
+	//{
+		//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] ClientRequestChatChannelRefresh_Implementation CurrentUIState != EConnectUIState::Loading"));
+		RefreshChatChannelList();
+	//}
+}
+
+void AMyPlayerController::RefreshChatChannelList()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::RefreshChatChannelList"));
+
+	const auto OnlineSub = IOnlineSubsystem::Get();
+
+	if (OnlineSub)
+	{
+		// Creating a local player where we can get the UserID from
+		ULocalPlayer* LocalPlayer = Cast<ULocalPlayer>(Player);
+		TSharedPtr<const FUniqueNetId> UserId = OnlineSub->GetIdentityInterface()->GetUniquePlayerId(LocalPlayer->GetControllerId());
+
+		if (UserId)
+		{
+			RefreshChatChannelList(*UserId);
+		}
+		
+	}
+
+	
+}
 
 void AMyPlayerController::RefreshChatChannelList(const FUniqueNetId& LocalUserId)
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::RefreshChatChannelList"));
 	const auto OnlineSub = IOnlineSubsystem::Get();
 
-	// Dump our cached arrays
-	MyCachedChatChannels.MyChatChannels.Empty();
-
-	// Creating a local player where we can get the UserID from
-	//ULocalPlayer* LocalPlayer = Cast<ULocalPlayer>(Player);
-	//TSharedPtr<const FUniqueNetId> UserId = OnlineSub->GetIdentityInterface()->GetUniquePlayerId(LocalPlayer->GetControllerId());
-
-	TArray<FChatRoomId> CachedRooms;
-
-	OnlineSub->GetChatInterface()->GetJoinedRooms(LocalUserId, CachedRooms);
-
-	// Loop over them and get the room info
-	for (int32 Index = 0; Index < CachedRooms.Num(); Index++)
+	if (OnlineSub)
 	{
-		TSharedPtr<FChatRoomInfo> CachedChatRoomInfo = OnlineSub->GetChatInterface()->GetRoomInfo(LocalUserId, *CachedRooms[Index]);
+		// Dump our cached arrays
+		MyCachedChatChannels.MyChatChannels.Empty();
 
-		FMyChatChannel CachedChatInstance;
-		CachedChatInstance.chatChannelKeyId = CachedChatRoomInfo->GetRoomId();
-		CachedChatInstance.chatChannelTitle = CachedChatRoomInfo->GetSubject();
+		// Creating a local player where we can get the UserID from
+		//ULocalPlayer* LocalPlayer = Cast<ULocalPlayer>(Player);
+		//TSharedPtr<const FUniqueNetId> UserId = OnlineSub->GetIdentityInterface()->GetUniquePlayerId(LocalPlayer->GetControllerId());
 
-		// Populate our USTRUCT
-		MyCachedChatChannels.MyChatChannels.Add(CachedChatInstance);
+		TArray<FChatRoomId> CachedRooms;
 
+		OnlineSub->GetChatInterface()->GetJoinedRooms(LocalUserId, CachedRooms);
+
+		// Loop over them and get the room info
+		for (int32 Index = 0; Index < CachedRooms.Num(); Index++)
+		{
+			TSharedPtr<FChatRoomInfo> CachedChatRoomInfo = OnlineSub->GetChatInterface()->GetRoomInfo(LocalUserId, *CachedRooms[Index]);
+
+			FMyChatChannel CachedChatInstance;
+			CachedChatInstance.chatChannelKeyId = CachedChatRoomInfo->GetRoomId();
+			CachedChatInstance.chatChannelTitle = CachedChatRoomInfo->GetSubject();
+
+			// Populate our USTRUCT
+			MyCachedChatChannels.MyChatChannels.Add(CachedChatInstance);
+
+		}
+
+		//DELEGATE
+		OnChatChannelsChangedUETopia.Broadcast();
 	}
 
-	//DELEGATE
-	OnChatChannelsChangedUETopia.Broadcast();
+	
 
 }
 
@@ -844,6 +881,18 @@ void AMyPlayerController::ExitChatChannel(int32 CurrentChannelIndex)
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ExitChatChannel"));
 	const auto OnlineSub = IOnlineSubsystem::Get();
+
+	// prevent crashing on invalid channel index
+	if (!MyCachedChatChannels.MyChatChannels.IsValidIndex(CurrentChannelIndex))
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ExitChatChannel Invalid chat channel index"));
+
+		FString Message = "Invalid chat channel.";
+		SendLocalChatMessage(Message);
+
+		return;
+	}
+
 	// Creating a local player where we can get the UserID from
 	ULocalPlayer* LocalPlayer = Cast<ULocalPlayer>(Player);
 	TSharedPtr<const FUniqueNetId> UserId = OnlineSub->GetIdentityInterface()->GetUniquePlayerId(LocalPlayer->GetControllerId());

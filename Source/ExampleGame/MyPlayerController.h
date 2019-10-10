@@ -249,8 +249,8 @@ public:
 	// Chat related Functions
 	/////////////////////////
 
-	//UFUNCTION(BlueprintCallable, Category = "UETOPIA")
-		void RefreshChatChannelList(const FUniqueNetId& LocalUserId);
+	void RefreshChatChannelList(); // this one fabricates the uniqueid on the fly
+	void RefreshChatChannelList(const FUniqueNetId& LocalUserId);
 
 	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
 		void CreateChatChannel(const FString& ChatChannelTitle);
@@ -267,6 +267,9 @@ public:
 	// this function sends a local chat message - does not go through the server or backend.
 	UFUNCTION(Client, Reliable)
 		void SendLocalChatMessage(const FString& ChatMessageIn);
+
+	UFUNCTION(Client, Reliable, BlueprintCallable, Category = "UETOPIA")
+		void ClientRequestChatChannelRefresh();
 
 	///////////////////////////////
 	// TOURNAMENT related Functions
@@ -737,6 +740,8 @@ public:
 	FOnCreateTournamentComplete OnCreateTournamentCompleteDelegate;
 
 	// CACHED DATA FOR PASSING IN TO UI
+	// This is data that exists only locally via the online subsystem
+	// Because of this, it needs to be manually refreshed after a map travel, or respawn.
 
 	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
 	TArray<FMyFriend> MyCachedFriends;
@@ -899,14 +904,21 @@ public:
 	virtual void ClearHUDWidgets_Implementation();
 
 
+	// This is fired by the Online subsystem after it polls the friend list.
+	// It is also used after map travel to relaod the friends list from the actual friends data inside the OSS
+	void OnReadFriendsComplete(int32 LocalPlayer, bool bWasSuccessful, const FString& ListName, const FString& ErrorStr);
+
+	// This is fired by the Online subsystem after it polls the recent players list.
+	// It is also used after map travel to relaod the recent player list from the actual friends data inside the OSS
+	void OnReadRecentPlayersComplete(const FUniqueNetId& UserId, const FString& ListName, bool bWasSuccessful, const FString& ErrorStr);
+
 private:
 
 	TSharedPtr<ILoginFlowManager> LoginFlowManager;
 	TSharedPtr<SWidget> DisplayWidgetRef;
 
 
-	// This is fired by the Online subsystem after it polls the friend list.
-	void OnReadFriendsComplete(int32 LocalPlayer, bool bWasSuccessful, const FString& ListName, const FString& ErrorStr);
+	
 
 	// This function is called by a delegate whenever the friends list changes.
 	// The purpose of this is to emit a delegate which we can grab onto in the UI
@@ -918,7 +930,7 @@ private:
 	// This is fired by the Online subsystem after it polls the recent players list.
 	//(FOnQueryRecentPlayersComplete, const FUniqueNetId& /*UserId*/, const FString& /*Namespace*/, bool /*bWasSuccessful*/, const FString& /*Error*/);
 	//UFUNCTION()
-	void OnReadRecentPlayersComplete(const FUniqueNetId& UserId, const FString& ListName, bool bWasSuccessful, const FString& ErrorStr);
+	//void OnReadRecentPlayersComplete(const FUniqueNetId& UserId, const FString& ListName, bool bWasSuccessful, const FString& ErrorStr);
 
 	// This function is called by a delegate whenever the RecentPlayers list changes.
 	// The purpose of this is to emit a delegate which we can grab onto in the UI

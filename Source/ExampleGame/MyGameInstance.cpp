@@ -357,7 +357,7 @@ void UMyGameInstance::GetServerInfoComplete(FHttpRequestPtr HttpRequest, FHttpRe
 				AMyGameState* uetopiaGameState = Cast<AMyGameState>(gameState);
 				//AMyPlayerState* playerS = Cast<AMyPlayerState>(thisPlayerState);
 				uetopiaGameState->serverTitle = ServerTitle;
-				uetopiaGameState->sunAngle = sunRotation;
+				//uetopiaGameState->sunAngle = sunRotation;
 
 				if (JsonParsed->GetBoolField("sharded")) {
 					UE_LOG(LogTemp, Log, TEXT("Found Sharded Server."));

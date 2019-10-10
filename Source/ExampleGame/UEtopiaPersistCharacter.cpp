@@ -93,6 +93,10 @@ void AUEtopiaPersistCharacter::PossessedBy(AController* NewController)
 	AMyPlayerController* playerC = Cast<AMyPlayerController>(Controller);
 	playerC->GrantCachedAbilities();
 	RemapAbilities();
+	playerC->ClientRequestChatChannelRefresh();
+	playerC->OnReadFriendsComplete(0, true, "default", "Success");
+
+	//playerC->OnReadRecentPlayersComplete(&playerC->UniqueId.GetUniqueNetId(), "default", true, "Success");
 }
 
 void AUEtopiaPersistCharacter::InitAbilitySystemClient_Implementation()
