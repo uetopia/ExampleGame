@@ -1,0 +1,4 @@
+,Title,Description,ClassPath,Icon,bCanBeUsed,UseText,bCanBeStacked,MaxStackSize
+1002,Health Potion,Health Pot,Blueprint'/Game/UI/Inventory/Blueprints/ItemClasses/ItemHealthPotion.ItemHealthPotion_C',Texture2D'/Game/UI/Inventory/Icons/icon1.icon1',TRUE,Use,TRUE,100
+1003,Map,Info,Blueprint'/Game/UI/Inventory/Blueprints/ItemClasses/ItemMap.ItemMap_C',Texture2D'/Game/UI/Inventory/Icons/icon1.icon1',FALSE,,FALSE,
+1004,InventoryUpgrade20,Upgrade,Blueprint'/Game/UI/Inventory/Blueprints/ItemClasses/InventoryUpgrade20.InventoryUpgrade20_C',Texture2D'/Game/UI/Inventory/Icons/icon1.icon1',TRUE,Use,FALSE,
