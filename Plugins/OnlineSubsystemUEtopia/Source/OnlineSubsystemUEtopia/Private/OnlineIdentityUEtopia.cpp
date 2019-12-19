@@ -96,7 +96,7 @@ void FOnlineIdentityUEtopia::Tick(float DeltaTime)
 void FOnlineIdentityUEtopia::TickLogin(float DeltaTime)
 {
 
-#if !UE_EDITOR
+#if UE_GAME
 	if (bHasLoginOutstanding)
 	{
 		UE_LOG_ONLINE(Display, TEXT("FOnlineIdentityUEtopia::TickLogin bHasLoginOutstanding"));
