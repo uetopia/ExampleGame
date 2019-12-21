@@ -5,6 +5,9 @@
 #include "OnlineExternalUIUEtopiaCommon.h"
 #include "OnlineSubsystemUEtopiaTypes.h"
 #include "IPAddress.h"
+#if UE_GAME
+#include "WindowsPlatformApplicationMisc.h"
+#endif
 //#include "SocketSubsystem.h"
 //#include "HttpModule.h"
 //#include "Interfaces/IHttpResponse.h"
@@ -81,9 +84,10 @@ inline FString GenerateRandomUserId(int32 LocalUserNum)
 */
 void FOnlineIdentityUEtopia::Tick(float DeltaTime)
 {
-	// Only tick once per frame
-	//  As of 4.16 this does not exist anymore
+	// Only tick once per frame for client
+#if UE_GAME
 	TickLogin(DeltaTime);
+#endif
 	TickRefreshToken(DeltaTime);
 }
 

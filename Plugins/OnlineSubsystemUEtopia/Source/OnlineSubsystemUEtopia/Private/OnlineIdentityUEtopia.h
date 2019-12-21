@@ -4,7 +4,6 @@
 
 #include "OnlineJsonSerializer.h"
 #include "OnlineIdentityInterface.h"
-#include "WindowsPlatformApplicationMisc.h"
 #include "OnlineSharingInterface.h"
 
 /**
