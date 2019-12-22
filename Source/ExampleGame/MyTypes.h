@@ -780,6 +780,9 @@ struct FStoreItem {
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		UTexture2D* Icon;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString consignmentId;
+
 };
 
 /** Structure to store the lookup of GameObjects for use in a UDataTable */

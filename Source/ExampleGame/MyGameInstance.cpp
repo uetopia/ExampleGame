@@ -3135,7 +3135,8 @@ bool UMyGameInstance::GameStorePurchase(AMyPlayerController* playerController, A
 			PlayerJsonObj->SetStringField("nonce", "nonceString");
 			PlayerJsonObj->SetStringField("encryption", encryption);
 			PlayerJsonObj->SetStringField("itemName", DataTableIdString);
-			PlayerJsonObj->SetStringField("description", "Unused");
+			PlayerJsonObj->SetStringField("description", GameStoreRef->StoreItems[itemIndex].Title);
+			PlayerJsonObj->SetStringField("consignmentId", GameStoreRef->StoreItems[itemIndex].consignmentId);
 			PlayerJsonObj->SetNumberField("amount", GameStoreRef->StoreItems[itemIndex].credPrice);
 
 			FString JsonOutputString;
