@@ -56,7 +56,7 @@ AMyBaseVendor::AMyBaseVendor()
 	OurSaveComponent->RamaSave_OwningActorVarsToSave.Add("bAnyoneCanPickUp");
 	*/
 	
-	OurSaveComponent->RamaSave_OwningActorVarsToSave.Add("VendorKeyId");
+	//OurSaveComponent->RamaSave_OwningActorVarsToSave.Add("VendorKeyId");
 
 
 	// data table setup

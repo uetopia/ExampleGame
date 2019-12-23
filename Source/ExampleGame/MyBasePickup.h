@@ -3,7 +3,7 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
-#include "RamaSaveComponent.h"
+//#include "RamaSaveComponent.h"
 #include "MyObjectLookupTable.h"
 #include "MyBasePickup.generated.h"
 
@@ -47,7 +47,7 @@ public:
 
 	//UParticleSystemComponent* OurParticleSystem;
 
-	URamaSaveComponent* OurSaveComponent;
+	//URamaSaveComponent* OurSaveComponent;
 
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UETOPIA")
 	//FDataTableRowHandle  ObjectInfo;

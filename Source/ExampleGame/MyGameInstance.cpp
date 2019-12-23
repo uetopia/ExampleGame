@@ -2286,6 +2286,8 @@ bool UMyGameInstance::SaveGamePlayer(FString playerKeyId, bool bAttemptUnLock)
 							else {
 								UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] SaveGamePlayer - No Authorized players found - moving to save."));
 
+								// Rama Save
+								/*
 								bool FileIOSuccess;
 								bool allComponentsSaved;
 								FString FileName = "serversavedata.dat";
@@ -2296,6 +2298,7 @@ bool UMyGameInstance::SaveGamePlayer(FString playerKeyId, bool bAttemptUnLock)
 								else {
 									UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] File IO FAIL."));
 								}
+								*/
 
 								// Reset our playstarted flag
 								bRequestBeginPlayStarted = false;
@@ -2493,6 +2496,8 @@ bool UMyGameInstance::SaveGamePlayer(FString playerKeyId, bool bAttemptUnLock)
 		else {
 			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] SaveGamePlayer - No Authorized players found - moving to save."));
 
+			// Rama Save
+			/*
 			bool FileIOSuccess;
 			bool allComponentsSaved;
 			FString FileName = "serversavedata.dat";
@@ -2503,6 +2508,7 @@ bool UMyGameInstance::SaveGamePlayer(FString playerKeyId, bool bAttemptUnLock)
 			else {
 			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] File IO FAIL."));
 			}
+			*/
 			
 			// Reset our playstarted flag
 			bRequestBeginPlayStarted = false;

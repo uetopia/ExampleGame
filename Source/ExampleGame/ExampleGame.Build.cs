@@ -20,11 +20,12 @@ public class ExampleGame : ModuleRules
                 "GameplayAbilities",
                 "GameplayTasks",
 	            "GameplayTags",
-                "RamaSaveSystem"
+                //"RamaSaveSystem"
          });
 
-        PrivateDependencyModuleNames.AddRange(new string[] { "LoginFlow", "RamaSaveSystem", "Slate", "SlateCore" });
-        PrivateIncludePathModuleNames.AddRange(new string[] { "RamaSaveSystem" });
+        //PrivateDependencyModuleNames.AddRange(new string[] { "LoginFlow", "RamaSaveSystem", "Slate", "SlateCore" });
+        PrivateDependencyModuleNames.AddRange(new string[] { "LoginFlow",  "Slate", "SlateCore" });
+        //PrivateIncludePathModuleNames.AddRange(new string[] { "RamaSaveSystem" });
 
     }
 }

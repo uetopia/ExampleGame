@@ -36,6 +36,7 @@ AMyBasePickup::AMyBasePickup()
 
 
 	// Rama Save
+	/*
 	OurSaveComponent = CreateDefaultSubobject<URamaSaveComponent>(TEXT("Save System"));
 	OurSaveComponent->RamaSave_OwningActorVarsToSave.Add("DataTableId");
 	OurSaveComponent->RamaSave_OwningActorVarsToSave.Add("Icon");
@@ -52,7 +53,7 @@ AMyBasePickup::AMyBasePickup()
 	OurSaveComponent->RamaSave_OwningActorVarsToSave.Add("bAnyoneCanPickUp");
 	OurSaveComponent->RamaSave_OwningActorVarsToSave.Add("bOwnerCanPickUp");
 	OurSaveComponent->RamaSave_OwningActorVarsToSave.Add("Attributes");
-	
+	*/
 	
 	
 

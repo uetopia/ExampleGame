@@ -4,7 +4,7 @@
 
 #include "GameFramework/Actor.h"
 #include "Engine.h"
-#include "RamaSaveComponent.h"
+//#include "RamaSaveComponent.h"
 #include "MySpawnableObject.generated.h"
 
 UCLASS()
@@ -40,8 +40,8 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "UETOPIA")
 	class UBoxComponent* Cube1;
 
-	UPROPERTY(Category = "Rama Save Component", EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	URamaSaveComponent* OurSaveComponent;
+	//UPROPERTY(Category = "Rama Save Component", EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	//URamaSaveComponent* OurSaveComponent;
 
 
 

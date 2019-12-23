@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{015ACB6B-41D9-7BC3-D812-ECA833CC9399}",
+	"EngineAssociation": "{C340E44B-4836-D4D7-4B5C-54B1E50A0078}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -24,11 +24,6 @@
 		{
 			"Name": "GameplayAbilities",
 			"Enabled": true
-		},
-		{
-			"Name": "RamaSaveSystem",
-			"Enabled": true,
-			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/6c81d0b2b68f445cb24616fa39a462c2"
 		},
 		{
 			"Name": "OnlineSubsystemGooglePlay",

@@ -82,7 +82,8 @@ void AMyGameState::LoadLevel()
 	if (IsRunningDedicatedServer()) {
 		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyGameState] LoadLevel - Dedicated server found."));
 
-		// Load our old data
+		// Load our old data via Rama Save
+		/*
 		bool FileIOSuccess;
 		TArray<FString> StreamingLevelsStates;
 		FString FileName = "serversavedata.dat";
@@ -95,6 +96,7 @@ void AMyGameState::LoadLevel()
 		else {
 			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyGameState] LoadLevel File IO FAIL."));
 		}
+		*/
 	}
 }
 

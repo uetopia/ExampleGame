@@ -78,7 +78,7 @@ AMySpawnableObject::AMySpawnableObject(const FObjectInitializer& ObjectInitializ
 	bReplicateMovement = true;
 
 	// Rama Save
-	OurSaveComponent = CreateDefaultSubobject<URamaSaveComponent>(TEXT("Save System"));
+	//OurSaveComponent = CreateDefaultSubobject<URamaSaveComponent>(TEXT("Save System"));
 
 }
 
