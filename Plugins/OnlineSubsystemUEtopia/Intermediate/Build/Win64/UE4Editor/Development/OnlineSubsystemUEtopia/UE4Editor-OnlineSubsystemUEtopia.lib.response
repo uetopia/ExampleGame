@@ -1,0 +1,14 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-OnlineSubsystemUEtopia.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\UE424_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
+"C:\ue_project_build_tests\ExampleGame-4.24-tb2\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UE4Editor\Development\OnlineSubsystemUEtopia\Module.OnlineSubsystemUEtopia.cpp.obj"
+"C:\ue_project_build_tests\ExampleGame-4.24-tb2\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UE4Editor\Development\OnlineSubsystemUEtopia\Module.OnlineSubsystemUEtopia.gen.cpp.obj"
+"C:\UE424_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Default.rc2.res"
+/OUT:"C:\ue_project_build_tests\ExampleGame-4.24-tb2\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UE4Editor\Development\OnlineSubsystemUEtopia\UE4Editor-OnlineSubsystemUEtopia.lib"
+/INCLUDE:IMPLEMENT_MODULE_OnlineSubsystemUEtopia

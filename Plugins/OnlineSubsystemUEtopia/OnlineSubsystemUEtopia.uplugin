@@ -1,7 +1,7 @@
 {
   "FileVersion": 3,
   "Version": 9,
-  "VersionName": "2.24",
+  "VersionName": "4.24",
   "FriendlyName": "UETOPIA",
   "Description": "Online Subsystem functionality. Connects games with the uetopia.com backend.",
   "Category": "Networking",
