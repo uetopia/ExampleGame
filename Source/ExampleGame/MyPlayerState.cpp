@@ -343,7 +343,9 @@ void AMyPlayerState::ReadCustomTexture_HttpRequestComplete(FHttpRequestPtr HttpR
 						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] ReadCustomTexture_HttpRequestComplete. ImageWrapper->GetRaw "));
 						int32 LoadedTextureIndex;
 						LoadedTextureIndex = LoadedTextures.Add(UTexture2D::CreateTransient(ImageWrapper->GetWidth(), ImageWrapper->GetHeight(), PF_B8G8R8A8));
-						LoadedTextures[LoadedTextureIndex]->PlatformData->NumSlices = 1;
+						// Changed in 4.24
+						//LoadedTextures[LoadedTextureIndex]->PlatformData->NumSlices = 1;
+						LoadedTextures[LoadedTextureIndex]->PlatformData->SetNumSlices(1);
 						LoadedTextures[LoadedTextureIndex]->NeverStream = true;
 						void* TextureData = LoadedTextures[LoadedTextureIndex]->PlatformData->Mips[0].BulkData.Lock(LOCK_READ_WRITE);
 						FMemory::Memcpy(TextureData, UncompressedBGRA->GetData(), UncompressedBGRA->Num());

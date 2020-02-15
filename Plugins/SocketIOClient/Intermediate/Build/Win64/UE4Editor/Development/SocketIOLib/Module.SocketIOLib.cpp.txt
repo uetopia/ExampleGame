@@ -1,0 +1,1162 @@
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SocketIOLib\Definitions.SocketIOLib.h
+C:/ue_project_build_tests/ExampleGame-4.24/Plugins/SocketIOClient/Source/SocketIOLib/Private/internal/sio_client_impl.cpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\SocketIOLib\Private\internal\sio_client_impl.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cstdint
+C:\UE424_UETOPIA\Engine\Source\Runtime\Core\Public\Windows/WindowsHWrapper.h
+C:\UE424_UETOPIA\Engine\Source\Runtime\Core\Public\Windows/PreWindowsApi.h
+C:\UE424_UETOPIA\Engine\Source\Runtime\Core\Public\Windows/MinWindows.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\Windows.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\sdkddkver.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\excpt.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\windef.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\minwindef.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\winnt.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\kernelspecs.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\basetsd.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\guiddef.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack4.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack4.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack4.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack8.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\apiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\ktmtypes.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\winbase.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\apisetcconv.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\minwinbase.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\apiquery2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\processenv.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\fileapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\debugapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\utilapiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\handleapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\errhandlingapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\fibersapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\namedpipeapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\profileapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\heapapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\ioapiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\synchapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\interlockedapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\processthreadsapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\sysinfoapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\memoryapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\enclaveapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\threadpoollegacyapiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\threadpoolapiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\jobapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\jobapi2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\wow64apiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\libloaderapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\securitybaseapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\namespaceapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\systemtopologyapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\processtopologyapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\securityappcontainer.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\realtimeapiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\winerror.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\timezoneapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\wingdi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack4.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack4.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\winuser.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\pshpack2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\tvout.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\winnls.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\datetimeapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\stringapiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\winnls.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\wincon.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\wincontypes.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\consoleapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\consoleapi2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\consoleapi3.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\winver.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\verrsrc.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\winreg.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\reason.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\winnetwk.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\wnnc.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\stralign.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\imm.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\ime_cmodes.h
+C:\UE424_UETOPIA\Engine\Source\Runtime\Core\Public\Windows/PostWindowsApi.h
+C:\UE424_UETOPIA\Engine\Source\Runtime\Core\Public\Windows/AllowWindowsPlatformAtomics.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/client.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/roles/client_endpoint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/endpoint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/connection.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/close.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/error.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\string
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xstring
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\iosfwd
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cstdio
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cstring
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cwchar
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xmemory
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\limits
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cfloat
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\climits
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xatomic.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xutility
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\utility
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cctype
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/cpp11.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/system_error.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\system_error
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cerrno
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\stdexcept
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xcall_once.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xerrc.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/network.hpp
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\winsock2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\ws2def.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\inaddr.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\qos.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/stdint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/utf8_validator.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/frame.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\algorithm
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/utilities.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\locale
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xlocbuf
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\streambuf
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xiosbase
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\share.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xlocale
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\memory
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\typeinfo
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\vcruntime_typeinfo.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xfacet
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xlocinfo
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xlocinfo.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\locale.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xlocmes
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xlocmon
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xlocnum
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cmath
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xtgmath.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xloctime
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\ctime
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\time.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/impl/utilities_impl.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/logger/levels.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/processors/processor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/processors/base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/uri.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/memory.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\sstream
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\istream
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\ostream
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\ios
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\vector
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/transport/base/connection.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/connection_hdl.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/functional.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\functional
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\tuple
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/http/constants.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\map
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\xtree
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\queue
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\deque
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/impl/connection_impl.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/processors/hybi00.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/md5.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/platforms.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/processors/hybi07.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/processors/hybi08.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/processors/hybi13.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/sha1/sha1.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/base64/base64.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cassert
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\assert.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/version.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/impl/endpoint_impl.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/system_timer.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/config.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_waitable_timer.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_io_object.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/io_context.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/async_result.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/type_traits.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/handler_type.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/noncopyable.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/wrapped_handler.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/bind_handler.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/associated_allocator.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/associated_executor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/is_executor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/is_executor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/system_executor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/system_executor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/executor_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/fenced_block.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/std_fenced_block.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\atomic
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/handler_alloc_helpers.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/memory.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/recycling_allocator.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/thread_context.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/call_stack.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/tss_ptr.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_tss_ptr.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/socket_types.hpp
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\ws2tcpip.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\ws2ipdef.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\in6addr.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um\mswsock.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared\mswsockdef.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/old_win_sdk_compat.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/win_tss_ptr.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/throw_error.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/error_code.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/error_code.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/local_free_on_block_exit.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/throw_error.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/throw_exception.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/system_error.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/error.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/error.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/thread_info_base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/handler_alloc_hook.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/handler_alloc_hook.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/handler_invoke_helpers.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/handler_invoke_hook.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/scheduler_operation.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/handler_tracking.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/handler_tracking.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/op_queue.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/global.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_global.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/static_mutex.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_static_mutex.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/scoped_lock.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/win_static_mutex.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/system_context.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/scheduler.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/execution_context.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/variadic_templates.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/execution_context.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/handler_type_requirements.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/scoped_ptr.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/service_registry.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/mutex.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_mutex.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/win_mutex.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/service_registry.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/service_registry.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/execution_context.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/atomic_count.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/conditionally_enabled_event.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/conditionally_enabled_mutex.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/event.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_event.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/assert.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cassert
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\assert.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/win_event.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/null_event.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/null_event.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/reactor_fwd.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/scheduler.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/concurrency_hint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/limits.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/reactor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/null_reactor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/scheduler_thread_info.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/thread_group.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/thread.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_thread.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/win_thread.ipp
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\process.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\corecrt_startup.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\math.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\vcruntime_startup.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/system_context.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/system_context.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/handler_cont_helpers.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/handler_continuation_hook.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/chrono.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\chrono
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\ratio
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\thr/xtimec.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/winsock_init.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/winsock_init.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/io_context.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/completion_handler.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/handler_work.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/operation.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_operation.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_io_context.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/timer_queue_base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/timer_queue_set.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/timer_queue_set.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/wait_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_thread_info.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/win_iocp_io_context.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/win_iocp_io_context.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/cstdint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/io_context.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/wait_traits.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/chrono_time_traits.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/deadline_timer_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/socket_ops.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/socket_ops.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/timer_queue.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/date_time_fwd.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/timer_queue_ptime.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/timer_scheduler.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/timer_scheduler_fwd.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/wait_handler.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/config/asio_no_tls_client.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/config/core_client.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/concurrency/basic.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/thread.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\thread
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\thr/xthreads.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\mutex
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\condition_variable
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/transport/iostream/endpoint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/transport/base/endpoint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/transport/iostream/connection.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/transport/iostream/base.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\iostream
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/http/request.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/http/parser.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/http/impl/parser.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/http/impl/request.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/http/response.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/http/impl/response.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/message_buffer/message.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/message_buffer/alloc.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/logger/basic.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/time.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\iomanip
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/random/random_device.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/random.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\random
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/endpoint_base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/connection_base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/extensions/permessage_deflate/disabled.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/extensions/extension.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/transport/asio/endpoint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/transport/asio/connection.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/transport/asio/base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/asio.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/version.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_datagram_socket.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_socket.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/post.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/post.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/work_dispatcher.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/executor_work_guard.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/socket_base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/io_control.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/socket_option.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_socket_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/buffer_sequence_adapter.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/buffer.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/array_fwd.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\array
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\iterator
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/string_view.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/is_buffer_sequence.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/buffer_sequence_adapter.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/reactor_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/select_reactor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/fd_set_adapter.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/posix_fd_set_adapter.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_fd_set_adapter.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/reactor_op_queue.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/hash_map.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\list
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/select_interrupter.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/socket_select_interrupter.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/socket_select_interrupter.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/socket_holder.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/select_reactor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/select_reactor.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/signal_blocker.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/null_signal_blocker.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_null_buffers_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_socket_accept_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_socket_service_base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_socket_connect_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_socket_send_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_socket_recv_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_socket_recvmsg_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_wait_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/win_iocp_socket_service_base.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_socket_recvfrom_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_deadline_timer.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_raw_socket.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_seq_packet_socket.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_serial_port.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_signal_set.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_socket_acceptor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_socket_iostream.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_socket_streambuf.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_stream_socket.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/steady_timer.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_streambuf.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/basic_streambuf_fwd.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/bind_executor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/uses_executor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/buffered_read_stream_fwd.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/buffered_read_stream.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/buffer_resize_guard.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/buffered_stream_storage.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/buffered_read_stream.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/buffered_stream_fwd.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/buffered_stream.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/buffered_write_stream.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/buffered_write_stream_fwd.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/completion_condition.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/write.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/write.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/base_from_completion_cond.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/consuming_buffers.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/dependent_type.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/buffered_write_stream.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/buffers_iterator.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/connect.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/connect.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/coroutine.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/datagram_socket_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/deadline_timer_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/deadline_timer.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/defer.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/defer.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/dispatch.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/dispatch.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/executor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/cstddef.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/executor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/executor_function.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/executor.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/generic/basic_endpoint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/generic/detail/endpoint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/generic/detail/impl/endpoint.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/generic/datagram_protocol.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/generic/raw_protocol.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/generic/seq_packet_protocol.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/generic/stream_protocol.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/high_resolution_timer.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/io_context_strand.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/strand_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/strand_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/strand_service.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/io_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/io_service_strand.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/address.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/address_v4.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/array.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/impl/address_v4.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/impl/address_v4.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/address_v6.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/impl/address_v6.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/impl/address_v6.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/bad_address_cast.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/impl/address.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/impl/address.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/address_v4_iterator.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/address_v4_range.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/address_v6_iterator.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/address_v6_range.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/basic_endpoint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/detail/endpoint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/detail/impl/endpoint.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/impl/basic_endpoint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/basic_resolver.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/basic_resolver_iterator.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/basic_resolver_entry.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/basic_resolver_query.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/resolver_query_base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/resolver_base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/basic_resolver_results.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/resolver_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/resolve_endpoint_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/resolve_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/resolve_query_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/resolver_service_base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/resolver_service_base.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/host_name.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/impl/host_name.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/icmp.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/multicast.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/detail/socket_option.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/resolver_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/tcp.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/udp.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/unicast.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/ip/v6_only.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/is_read_buffered.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/is_write_buffered.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/local/basic_endpoint.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/local/connect_pair.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/local/datagram_protocol.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/local/stream_protocol.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/packaged_task.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/future.hpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\future
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\ppltasks.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\pplwin.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\pplinterface.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\ppltaskscheduler.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\crtdefs.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\pplcancellation_token.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/placeholders.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/posix/basic_descriptor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/posix/basic_stream_descriptor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/posix/descriptor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/posix/descriptor_base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/posix/stream_descriptor.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/posix/stream_descriptor_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/raw_socket_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/read.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/read.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/read_at.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/read_at.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/read_until.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/regex_fwd.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/read_until.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/seq_packet_socket_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/serial_port.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/serial_port_base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/serial_port_base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/serial_port_base.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_serial_port_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_handle_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_handle_read_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_handle_write_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/win_iocp_handle_service.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/win_iocp_serial_port_service.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/serial_port_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/signal_set.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/signal_set_service.hpp
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\signal.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/signal_handler.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/signal_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/signal_set_service.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/signal_set_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/socket_acceptor_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/strand.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/strand_executor_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/strand_executor_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/strand_executor_service.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/stream_socket_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/streambuf.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/thread.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/thread_pool.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/thread_pool.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/thread_pool.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/time_traits.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/use_future.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/use_future.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/waitable_timer_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/windows/basic_handle.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/windows/basic_object_handle.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/windows/basic_random_access_handle.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/windows/basic_stream_handle.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/windows/object_handle.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_object_handle_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/impl/win_object_handle_service.ipp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/windows/object_handle_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/windows/overlapped_handle.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/windows/overlapped_ptr.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_overlapped_ptr.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/win_iocp_overlapped_op.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/windows/random_access_handle.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/windows/random_access_handle_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/windows/stream_handle.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/windows/stream_handle_service.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/write_at.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/impl/write_at.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/push_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include\asio/detail/pop_options.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/chrono.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/common/type_traits.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/transport/asio/security/none.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp\websocketpp/transport/asio/security/base.hpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\SocketIOLib\Public\sio_client.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\SocketIOLib\Public\sio_message.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cassert
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\assert.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\SocketIOLib\Public\sio_socket.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\SocketIOLib\Private\internal\sio_packet.h
+C:\UE424_UETOPIA\Engine\Source\Runtime\Core\Public\Windows/HideWindowsPlatformAtomics.h
+C:/ue_project_build_tests/ExampleGame-4.24/Plugins/SocketIOClient/Source/SocketIOLib/Private/internal/sio_packet.cpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson/document.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\reader.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\allocators.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\rapidjson.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\inttypes.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cassert
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\assert.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\stream.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\encodings.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\encodedstream.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\stream.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\memorystream.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\stream.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\internal/meta.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\internal/stack.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\internal\swap.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\internal/strtod.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\internal\ieee754.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\internal\biginteger.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\internal\diyfp.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\internal\pow10.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\error/error.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\internal/strfunc.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\internal\../stream.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson/writer.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\stream.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\internal/dtoa.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\internal\itoa.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\stringbuffer.h
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include\rapidjson\stream.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cassert
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\assert.h
+C:/ue_project_build_tests/ExampleGame-4.24/Plugins/SocketIOClient/Source/SocketIOLib/Private/sio_client.cpp
+C:/ue_project_build_tests/ExampleGame-4.24/Plugins/SocketIOClient/Source/SocketIOLib/Private/sio_socket.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\INCLUDE\cstdarg
+C:/ue_project_build_tests/ExampleGame-4.24/Plugins/SocketIOClient/Source/SocketIOLib/Private/SocketIOLib.cpp
+C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\SocketIOLib\Public\SocketIOLib.h
