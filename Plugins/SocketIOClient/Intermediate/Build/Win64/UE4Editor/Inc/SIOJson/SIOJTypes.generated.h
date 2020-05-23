@@ -1,4 +1,4 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Copyright Epic Games, Inc. All Rights Reserved.
 /*===========================================================================
 	Generated code exported from UnrealHeaderTool.
 	DO NOT modify this manually! Edit the corresponding .h files instead!
@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define SIOJSON_SIOJTypes_generated_h
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJTypes_h
+#define CURRENT_FILE_ID ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJTypes_h
 
 
 #define FOREACH_ENUM_ESIOREQUESTSTATUS(op) \

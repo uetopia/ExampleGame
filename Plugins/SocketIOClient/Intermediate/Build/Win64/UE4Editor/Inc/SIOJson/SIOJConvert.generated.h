@@ -1,4 +1,4 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Copyright Epic Games, Inc. All Rights Reserved.
 /*===========================================================================
 	Generated code exported from UnrealHeaderTool.
 	DO NOT modify this manually! Edit the corresponding .h files instead!
@@ -13,10 +13,10 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define SIOJSON_SIOJConvert_generated_h
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_SPARSE_DATA
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_RPC_WRAPPERS
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_RPC_WRAPPERS_NO_PURE_DECLS
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_INCLASS_NO_PURE_DECLS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_SPARSE_DATA
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_RPC_WRAPPERS
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_RPC_WRAPPERS_NO_PURE_DECLS
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUSIOJConvert(); \
 	friend struct Z_Construct_UClass_USIOJConvert_Statics; \
@@ -25,7 +25,7 @@ public: \
 	DECLARE_SERIALIZER(USIOJConvert)
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_INCLASS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_INCLASS \
 private: \
 	static void StaticRegisterNativesUSIOJConvert(); \
 	friend struct Z_Construct_UClass_USIOJConvert_Statics; \
@@ -34,7 +34,7 @@ public: \
 	DECLARE_SERIALIZER(USIOJConvert)
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_STANDARD_CONSTRUCTORS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API USIOJConvert(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USIOJConvert) \
@@ -47,7 +47,7 @@ private: \
 public:
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_ENHANCED_CONSTRUCTORS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API USIOJConvert(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -60,28 +60,28 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(USIOJConvert); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USIOJConvert)
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_PRIVATE_PROPERTY_OFFSET
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_24_PROLOG
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_GENERATED_BODY_LEGACY \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_PRIVATE_PROPERTY_OFFSET
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_24_PROLOG
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_PRIVATE_PROPERTY_OFFSET \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_SPARSE_DATA \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_RPC_WRAPPERS \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_INCLASS \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_STANDARD_CONSTRUCTORS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_PRIVATE_PROPERTY_OFFSET \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_SPARSE_DATA \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_RPC_WRAPPERS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_INCLASS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_GENERATED_BODY \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_PRIVATE_PROPERTY_OFFSET \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_SPARSE_DATA \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_RPC_WRAPPERS_NO_PURE_DECLS \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_INCLASS_NO_PURE_DECLS \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_ENHANCED_CONSTRUCTORS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_PRIVATE_PROPERTY_OFFSET \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_SPARSE_DATA \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_RPC_WRAPPERS_NO_PURE_DECLS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_INCLASS_NO_PURE_DECLS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h_27_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -89,7 +89,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> SIOJSON_API UClass* StaticClass<class USIOJConvert>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h
+#define CURRENT_FILE_ID ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJConvert_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

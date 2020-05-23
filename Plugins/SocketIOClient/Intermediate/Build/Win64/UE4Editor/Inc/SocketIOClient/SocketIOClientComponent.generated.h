@@ -1,4 +1,4 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Copyright Epic Games, Inc. All Rights Reserved.
 /*===========================================================================
 	Generated code exported from UnrealHeaderTool.
 	DO NOT modify this manually! Edit the corresponding .h files instead!
@@ -17,7 +17,7 @@ class USIOJsonObject;
 #endif
 #define SOCKETIOCLIENT_SocketIOClientComponent_generated_h
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_16_DELEGATE \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_16_DELEGATE \
 struct _Script_SocketIOClient_eventSIOConnectionProblemSignature_Parms \
 { \
 	int32 Attempts; \
@@ -34,7 +34,7 @@ static inline void FSIOConnectionProblemSignature_DelegateWrapper(const FMultica
 }
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_15_DELEGATE \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_15_DELEGATE \
 struct _Script_SocketIOClient_eventSIOCEventJsonSignature_Parms \
 { \
 	FString Event; \
@@ -49,7 +49,7 @@ static inline void FSIOCEventJsonSignature_DelegateWrapper(const FMulticastScrip
 }
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_14_DELEGATE \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_14_DELEGATE \
 struct _Script_SocketIOClient_eventSIOCCloseEventSignature_Parms \
 { \
 	TEnumAsByte<ESIOConnectionCloseReason> Reason; \
@@ -62,7 +62,7 @@ static inline void FSIOCCloseEventSignature_DelegateWrapper(const FMulticastScri
 }
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_13_DELEGATE \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_13_DELEGATE \
 struct _Script_SocketIOClient_eventSIOCOpenEventSignature_Parms \
 { \
 	FString SessionId; \
@@ -77,7 +77,7 @@ static inline void FSIOCOpenEventSignature_DelegateWrapper(const FMulticastScrip
 }
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_12_DELEGATE \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_12_DELEGATE \
 struct _Script_SocketIOClient_eventSIOCSocketEventSignature_Parms \
 { \
 	FString Namespace; \
@@ -90,183 +90,37 @@ static inline void FSIOCSocketEventSignature_DelegateWrapper(const FMulticastScr
 }
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_11_DELEGATE \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_11_DELEGATE \
 static inline void FSIOCEventSignature_DelegateWrapper(const FMulticastScriptDelegate& SIOCEventSignature) \
 { \
 	SIOCEventSignature.ProcessMulticastDelegate<UObject>(NULL); \
 }
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_SPARSE_DATA
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_RPC_WRAPPERS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_SPARSE_DATA
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_RPC_WRAPPERS \
  \
-	DECLARE_FUNCTION(execBindEventToFunction) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_EventName); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_FunctionName); \
-		P_GET_OBJECT(UObject,Z_Param_Target); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_Namespace); \
-		P_GET_PROPERTY(UByteProperty,Z_Param_ThreadOverride); \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->BindEventToFunction(Z_Param_EventName,Z_Param_FunctionName,Z_Param_Target,Z_Param_Namespace,ESIOThreadOverrideOption(Z_Param_ThreadOverride),Z_Param_WorldContextObject); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execBindEvent) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_EventName); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_Namespace); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->BindEvent(Z_Param_EventName,Z_Param_Namespace); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execEmitWithGraphCallBack) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_EventName); \
-		P_GET_STRUCT(FLatentActionInfo,Z_Param_LatentInfo); \
-		P_GET_OBJECT_REF(USIOJsonValue,Z_Param_Out_Result); \
-		P_GET_OBJECT(USIOJsonValue,Z_Param_Message); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_Namespace); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->EmitWithGraphCallBack(Z_Param_EventName,Z_Param_LatentInfo,Z_Param_Out_Result,Z_Param_Message,Z_Param_Namespace); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execEmitWithCallBack) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_EventName); \
-		P_GET_OBJECT(USIOJsonValue,Z_Param_Message); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_CallbackFunctionName); \
-		P_GET_OBJECT(UObject,Z_Param_Target); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_Namespace); \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->EmitWithCallBack(Z_Param_EventName,Z_Param_Message,Z_Param_CallbackFunctionName,Z_Param_Target,Z_Param_Namespace,Z_Param_WorldContextObject); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execEmit) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_EventName); \
-		P_GET_OBJECT(USIOJsonValue,Z_Param_Message); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_Namespace); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->Emit(Z_Param_EventName,Z_Param_Message,Z_Param_Namespace); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execDisconnect) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->Disconnect(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConnect) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_InAddressAndPort); \
-		P_GET_OBJECT(USIOJsonObject,Z_Param_Query); \
-		P_GET_OBJECT(USIOJsonObject,Z_Param_Headers); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->Connect(Z_Param_InAddressAndPort,Z_Param_Query,Z_Param_Headers); \
-		P_NATIVE_END; \
-	}
+	DECLARE_FUNCTION(execBindEventToFunction); \
+	DECLARE_FUNCTION(execBindEvent); \
+	DECLARE_FUNCTION(execEmitWithGraphCallBack); \
+	DECLARE_FUNCTION(execEmitWithCallBack); \
+	DECLARE_FUNCTION(execEmit); \
+	DECLARE_FUNCTION(execDisconnect); \
+	DECLARE_FUNCTION(execConnect);
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
  \
-	DECLARE_FUNCTION(execBindEventToFunction) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_EventName); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_FunctionName); \
-		P_GET_OBJECT(UObject,Z_Param_Target); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_Namespace); \
-		P_GET_PROPERTY(UByteProperty,Z_Param_ThreadOverride); \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->BindEventToFunction(Z_Param_EventName,Z_Param_FunctionName,Z_Param_Target,Z_Param_Namespace,ESIOThreadOverrideOption(Z_Param_ThreadOverride),Z_Param_WorldContextObject); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execBindEvent) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_EventName); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_Namespace); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->BindEvent(Z_Param_EventName,Z_Param_Namespace); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execEmitWithGraphCallBack) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_EventName); \
-		P_GET_STRUCT(FLatentActionInfo,Z_Param_LatentInfo); \
-		P_GET_OBJECT_REF(USIOJsonValue,Z_Param_Out_Result); \
-		P_GET_OBJECT(USIOJsonValue,Z_Param_Message); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_Namespace); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->EmitWithGraphCallBack(Z_Param_EventName,Z_Param_LatentInfo,Z_Param_Out_Result,Z_Param_Message,Z_Param_Namespace); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execEmitWithCallBack) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_EventName); \
-		P_GET_OBJECT(USIOJsonValue,Z_Param_Message); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_CallbackFunctionName); \
-		P_GET_OBJECT(UObject,Z_Param_Target); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_Namespace); \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->EmitWithCallBack(Z_Param_EventName,Z_Param_Message,Z_Param_CallbackFunctionName,Z_Param_Target,Z_Param_Namespace,Z_Param_WorldContextObject); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execEmit) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_EventName); \
-		P_GET_OBJECT(USIOJsonValue,Z_Param_Message); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_Namespace); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->Emit(Z_Param_EventName,Z_Param_Message,Z_Param_Namespace); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execDisconnect) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->Disconnect(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConnect) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_InAddressAndPort); \
-		P_GET_OBJECT(USIOJsonObject,Z_Param_Query); \
-		P_GET_OBJECT(USIOJsonObject,Z_Param_Headers); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->Connect(Z_Param_InAddressAndPort,Z_Param_Query,Z_Param_Headers); \
-		P_NATIVE_END; \
-	}
+	DECLARE_FUNCTION(execBindEventToFunction); \
+	DECLARE_FUNCTION(execBindEvent); \
+	DECLARE_FUNCTION(execEmitWithGraphCallBack); \
+	DECLARE_FUNCTION(execEmitWithCallBack); \
+	DECLARE_FUNCTION(execEmit); \
+	DECLARE_FUNCTION(execDisconnect); \
+	DECLARE_FUNCTION(execConnect);
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_INCLASS_NO_PURE_DECLS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUSocketIOClientComponent(); \
 	friend struct Z_Construct_UClass_USocketIOClientComponent_Statics; \
@@ -275,7 +129,7 @@ public: \
 	DECLARE_SERIALIZER(USocketIOClientComponent)
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_INCLASS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_INCLASS \
 private: \
 	static void StaticRegisterNativesUSocketIOClientComponent(); \
 	friend struct Z_Construct_UClass_USocketIOClientComponent_Statics; \
@@ -284,7 +138,7 @@ public: \
 	DECLARE_SERIALIZER(USocketIOClientComponent)
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_STANDARD_CONSTRUCTORS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API USocketIOClientComponent(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USocketIOClientComponent) \
@@ -297,7 +151,7 @@ private: \
 public:
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_ENHANCED_CONSTRUCTORS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API USocketIOClientComponent(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -310,28 +164,28 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(USocketIOClientComponent); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USocketIOClientComponent)
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_PRIVATE_PROPERTY_OFFSET
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_18_PROLOG
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_GENERATED_BODY_LEGACY \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_PRIVATE_PROPERTY_OFFSET
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_18_PROLOG
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_PRIVATE_PROPERTY_OFFSET \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_SPARSE_DATA \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_RPC_WRAPPERS \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_INCLASS \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_STANDARD_CONSTRUCTORS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_PRIVATE_PROPERTY_OFFSET \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_SPARSE_DATA \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_RPC_WRAPPERS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_INCLASS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_GENERATED_BODY \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_PRIVATE_PROPERTY_OFFSET \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_SPARSE_DATA \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_INCLASS_NO_PURE_DECLS \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_ENHANCED_CONSTRUCTORS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_PRIVATE_PROPERTY_OFFSET \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_SPARSE_DATA \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_INCLASS_NO_PURE_DECLS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h_21_ENHANCED_CONSTRUCTORS \
 static_assert(false, "Unknown access specifier for GENERATED_BODY() macro in class SocketIOClientComponent."); \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -339,7 +193,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> SOCKETIOCLIENT_API UClass* StaticClass<class USocketIOClientComponent>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID ExampleGame_4_24_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h
+#define CURRENT_FILE_ID ExampleGame_425_Plugins_SocketIOClient_Source_SocketIOClient_Public_SocketIOClientComponent_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

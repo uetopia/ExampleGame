@@ -13,7 +13,11 @@ AMyProjectile::AMyProjectile(const FObjectInitializer& ObjectInitializer)
 {
 	CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("CollisionBlockComp0"));
 	CollisionComponent->InitSphereRadius(0.0f);
-	CollisionComponent->bAbsoluteScale = true;
+
+	// changed in 4.25
+	//CollisionComponent->bAbsoluteScale = true;
+	CollisionComponent->SetAbsolute(false, false, true);
+
 	CollisionComponent->SetCanEverAffectNavigation(false);
 	//CollisionComponent->BodyInstance.SetCollisionProfileName("Projectile");
 	RootComponent = CollisionComponent;
@@ -37,11 +41,16 @@ void AMyProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (Role == ROLE_Authority)
+	// changed in 4.25
+	//if (Role == ROLE_Authority)
+	
+	if (GetRemoteRole() == ROLE_Authority)
 	{
-		if (Instigator)
+		//changed in 4.25
+		//if (Instigator)
+		if (GetInstigator() )
 		{
-			SetActorTransform( Instigator->GetActorTransform(), false);
+			SetActorTransform(GetInstigator()->GetActorTransform(), false);
 		}
 
 		SpawnOrigin = GetActorLocation();

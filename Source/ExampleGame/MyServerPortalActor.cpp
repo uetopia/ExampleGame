@@ -61,7 +61,9 @@ AMyServerPortalActor::AMyServerPortalActor(const FObjectInitializer& ObjectIniti
 
 
 	bReplicates = true;
-	bReplicateMovement = true;
+	// changed in 4.25
+	//bReplicateMovement = true;
+	SetReplicateMovement(true);
 }
 
 

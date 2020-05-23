@@ -76,7 +76,10 @@ FString AMyGameMode::InitNewPlayer(APlayerController* NewPlayerController, const
 	if (IsRunningDedicatedServer())
 	{
 		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] AMyGameMode::InitNewPlayer RUNNING ON DEDICATED SERVER!"));
-		int32 playerId = PlayerS->PlayerId; // NewPlayerController->PlayerState->PlayerId;
+
+		// changed in 4.25
+		//int32 playerId = PlayerS->PlayerId; 
+		int32 playerId = PlayerS->GetPlayerId();
 
 		// This number is always 0 even with multiple players logged in...  
 
@@ -96,7 +99,10 @@ FString AMyGameMode::InitNewPlayer(APlayerController* NewPlayerController, const
 
 		// Moving the activate routine below register allows us to use the actual UE playerID instead of 0
 
-		playerId = PlayerS->PlayerId; // NewPlayerController->PlayerState->PlayerId;
+		// changed in 4.25
+		//playerId = PlayerS->PlayerId;
+		playerId = PlayerS->GetPlayerId();
+
 		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyGameMode] InitNewPlayer playerId: %d"), playerId);
 
 		// WE need to move this...  We don't have the player access token yet.
@@ -111,7 +117,9 @@ FString AMyGameMode::InitNewPlayer(APlayerController* NewPlayerController, const
 		FString InName = UGameplayStatics::ParseOption(Options, TEXT("Name")).Left(20);
 		if (InName.IsEmpty())
 		{
-			InName = FString::Printf(TEXT("%s%i"), *DefaultPlayerName.ToString(), NewPlayerController->PlayerState->PlayerId);
+			// changed in 4.25
+			//InName = FString::Printf(TEXT("%s%i"), *DefaultPlayerName.ToString(), NewPlayerController->PlayerState->PlayerId);
+			InName = FString::Printf(TEXT("%s%i"), *DefaultPlayerName.ToString(), NewPlayerController->PlayerState->GetPlayerId());
 		}
 
 		ChangeName(NewPlayerController, InName, false);
@@ -474,7 +482,10 @@ void AMyGameMode::Logout(AController* Exiting)
 	Super::Logout(Exiting);
 
 	AMyPlayerState* ExitingPlayerState = Cast<AMyPlayerState>(Exiting->PlayerState);
-	int ExitingPlayerId = ExitingPlayerState->PlayerId;
+
+	// changed in 4.25
+	//int ExitingPlayerId = ExitingPlayerState->PlayerId;
+	int ExitingPlayerId = ExitingPlayerState->GetPlayerId();
 
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyGameMode] [Logout] ExitingPlayerId: %i"), ExitingPlayerId);
 

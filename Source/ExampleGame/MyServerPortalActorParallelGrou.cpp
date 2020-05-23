@@ -45,5 +45,7 @@ AMyServerPortalActorParallelGrou::AMyServerPortalActorParallelGrou(const FObject
 
 	}
 	bReplicates = true;
-	bReplicateMovement = true;
+	// changed in 4.25
+	//bReplicateMovement = true;
+	SetReplicateMovement(true);
 }

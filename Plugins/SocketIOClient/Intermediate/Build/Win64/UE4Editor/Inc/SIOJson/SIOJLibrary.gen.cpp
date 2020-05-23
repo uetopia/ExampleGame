@@ -1,4 +1,4 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Copyright Epic Games, Inc. All Rights Reserved.
 /*===========================================================================
 	Generated code exported from UnrealHeaderTool.
 	DO NOT modify this manually! Edit the corresponding .h files instead!
@@ -21,33 +21,11 @@ void EmptyLinkFunctionForGeneratedCodeSIOJLibrary() {}
 	SIOJSON_API UClass* Z_Construct_UClass_USIOJLibrary_NoRegister();
 	SIOJSON_API UClass* Z_Construct_UClass_USIOJLibrary();
 	ENGINE_API UClass* Z_Construct_UClass_UBlueprintFunctionLibrary();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Base64Decode();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Base64Encode();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_CallURL();
 	SIOJSON_API UClass* Z_Construct_UClass_USIOJsonObject_NoRegister();
 	SIOJSON_API UEnum* Z_Construct_UEnum_SIOJson_ESIORequestContentType();
 	SIOJSON_API UEnum* Z_Construct_UEnum_SIOJson_ESIORequestVerb();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Conv_ArrayToJsonValue();
 	SIOJSON_API UClass* Z_Construct_UClass_USIOJsonValue_NoRegister();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Conv_BoolToJsonValue();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Conv_BytesToJsonValue();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Conv_FloatToJsonValue();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Conv_IntToJsonValue();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Conv_JsonObjectToJsonValue();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Conv_JsonObjectToString();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToBool();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToBytes();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToFloat();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToInt();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToJsonObject();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_Conv_StringToJsonValue();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_JsonObjectToStruct();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UProperty();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_LoadJsonFileToStruct();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_PercentEncode();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_SaveStructToJsonFile();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_StringToJsonValueArray();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJLibrary_StructToJsonObject();
 // End Cross Module References
 	struct Z_Construct_UDelegateFunction_SIOJson_SIOJCallDelegate__DelegateSignature_Statics
 	{
@@ -185,6 +163,157 @@ static struct FScriptStruct_SIOJson_StaticRegisterNativesFSIOJCallResponse
 		return ReturnStruct;
 	}
 	uint32 Get_Z_Construct_UScriptStruct_FSIOJCallResponse_Hash() { return 2290275911U; }
+	DEFINE_FUNCTION(USIOJLibrary::execCallURL)
+	{
+		P_GET_OBJECT(UObject,Z_Param_WorldContextObject);
+		P_GET_PROPERTY(FStrProperty,Z_Param_URL);
+		P_GET_ENUM(ESIORequestVerb,Z_Param_Verb);
+		P_GET_ENUM(ESIORequestContentType,Z_Param_ContentType);
+		P_GET_OBJECT(USIOJsonObject,Z_Param_SIOJJson);
+		P_GET_PROPERTY_REF(FDelegateProperty,Z_Param_Out_Callback);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		USIOJLibrary::CallURL(Z_Param_WorldContextObject,Z_Param_URL,ESIORequestVerb(Z_Param_Verb),ESIORequestContentType(Z_Param_ContentType),Z_Param_SIOJJson,FSIOJCallDelegate(Z_Param_Out_Callback));
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execConv_JsonValueToJsonObject)
+	{
+		P_GET_OBJECT(USIOJsonValue,Z_Param_InValue);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJsonObject**)Z_Param__Result=USIOJLibrary::Conv_JsonValueToJsonObject(Z_Param_InValue);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execConv_JsonObjectToString)
+	{
+		P_GET_OBJECT(USIOJsonObject,Z_Param_InObject);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(FString*)Z_Param__Result=USIOJLibrary::Conv_JsonObjectToString(Z_Param_InObject);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execConv_JsonValueToBytes)
+	{
+		P_GET_OBJECT(USIOJsonValue,Z_Param_InValue);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<uint8>*)Z_Param__Result=USIOJLibrary::Conv_JsonValueToBytes(Z_Param_InValue);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execConv_JsonValueToBool)
+	{
+		P_GET_OBJECT(USIOJsonValue,Z_Param_InValue);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=USIOJLibrary::Conv_JsonValueToBool(Z_Param_InValue);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execConv_JsonValueToFloat)
+	{
+		P_GET_OBJECT(USIOJsonValue,Z_Param_InValue);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(float*)Z_Param__Result=USIOJLibrary::Conv_JsonValueToFloat(Z_Param_InValue);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execConv_JsonValueToInt)
+	{
+		P_GET_OBJECT(USIOJsonValue,Z_Param_InValue);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(int32*)Z_Param__Result=USIOJLibrary::Conv_JsonValueToInt(Z_Param_InValue);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execConv_BoolToJsonValue)
+	{
+		P_GET_UBOOL(Z_Param_InBool);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJsonValue**)Z_Param__Result=USIOJLibrary::Conv_BoolToJsonValue(Z_Param_InBool);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execConv_FloatToJsonValue)
+	{
+		P_GET_PROPERTY(FFloatProperty,Z_Param_InFloat);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJsonValue**)Z_Param__Result=USIOJLibrary::Conv_FloatToJsonValue(Z_Param_InFloat);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execConv_IntToJsonValue)
+	{
+		P_GET_PROPERTY(FIntProperty,Z_Param_InInt);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJsonValue**)Z_Param__Result=USIOJLibrary::Conv_IntToJsonValue(Z_Param_InInt);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execConv_StringToJsonValue)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_InString);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJsonValue**)Z_Param__Result=USIOJLibrary::Conv_StringToJsonValue(Z_Param_InString);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execConv_BytesToJsonValue)
+	{
+		P_GET_TARRAY_REF(uint8,Z_Param_Out_InBytes);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJsonValue**)Z_Param__Result=USIOJLibrary::Conv_BytesToJsonValue(Z_Param_Out_InBytes);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execConv_JsonObjectToJsonValue)
+	{
+		P_GET_OBJECT(USIOJsonObject,Z_Param_InObject);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJsonValue**)Z_Param__Result=USIOJLibrary::Conv_JsonObjectToJsonValue(Z_Param_InObject);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execConv_ArrayToJsonValue)
+	{
+		P_GET_TARRAY_REF(USIOJsonValue*,Z_Param_Out_InArray);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJsonValue**)Z_Param__Result=USIOJLibrary::Conv_ArrayToJsonValue(Z_Param_Out_InArray);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execStringToJsonValueArray)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_JsonString);
+		P_GET_TARRAY_REF(USIOJsonValue*,Z_Param_Out_OutJsonValueArray);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=USIOJLibrary::StringToJsonValueArray(Z_Param_JsonString,Z_Param_Out_OutJsonValueArray);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execBase64Decode)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_Source);
+		P_GET_PROPERTY_REF(FStrProperty,Z_Param_Out_Dest);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=USIOJLibrary::Base64Decode(Z_Param_Source,Z_Param_Out_Dest);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execBase64Encode)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_Source);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(FString*)Z_Param__Result=USIOJLibrary::Base64Encode(Z_Param_Source);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJLibrary::execPercentEncode)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_Source);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(FString*)Z_Param__Result=USIOJLibrary::PercentEncode(Z_Param_Source);
+		P_NATIVE_END;
+	}
 	void USIOJLibrary::StaticRegisterNativesUSIOJLibrary()
 	{
 		UClass* Class = USIOJLibrary::StaticClass();
@@ -422,7 +551,7 @@ static struct FScriptStruct_SIOJson_StaticRegisterNativesFSIOJCallResponse
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJLibrary_Conv_ArrayToJsonValue_Statics::NewProp_InArray = { "InArray", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJLibrary_eventConv_ArrayToJsonValue_Parms, InArray), METADATA_PARAMS(Z_Construct_UFunction_USIOJLibrary_Conv_ArrayToJsonValue_Statics::NewProp_InArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJLibrary_Conv_ArrayToJsonValue_Statics::NewProp_InArray_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJLibrary_Conv_ArrayToJsonValue_Statics::NewProp_InArray = { "InArray", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJLibrary_eventConv_ArrayToJsonValue_Parms, InArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_USIOJLibrary_Conv_ArrayToJsonValue_Statics::NewProp_InArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJLibrary_Conv_ArrayToJsonValue_Statics::NewProp_InArray_MetaData)) };
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_USIOJLibrary_Conv_ArrayToJsonValue_Statics::NewProp_InArray_Inner = { "InArray", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_USIOJsonValue_NoRegister, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_USIOJLibrary_Conv_ArrayToJsonValue_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USIOJLibrary_Conv_ArrayToJsonValue_Statics::NewProp_ReturnValue,
@@ -518,7 +647,7 @@ static struct FScriptStruct_SIOJson_StaticRegisterNativesFSIOJCallResponse
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJLibrary_Conv_BytesToJsonValue_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJLibrary_eventConv_BytesToJsonValue_Parms, InBytes), METADATA_PARAMS(Z_Construct_UFunction_USIOJLibrary_Conv_BytesToJsonValue_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJLibrary_Conv_BytesToJsonValue_Statics::NewProp_InBytes_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJLibrary_Conv_BytesToJsonValue_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJLibrary_eventConv_BytesToJsonValue_Parms, InBytes), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_USIOJLibrary_Conv_BytesToJsonValue_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJLibrary_Conv_BytesToJsonValue_Statics::NewProp_InBytes_MetaData)) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_USIOJLibrary_Conv_BytesToJsonValue_Statics::NewProp_InBytes_Inner = { "InBytes", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_USIOJLibrary_Conv_BytesToJsonValue_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USIOJLibrary_Conv_BytesToJsonValue_Statics::NewProp_ReturnValue,
@@ -762,7 +891,7 @@ static struct FScriptStruct_SIOJson_StaticRegisterNativesFSIOJCallResponse
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToBytes_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJLibrary_eventConv_JsonValueToBytes_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToBytes_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJLibrary_eventConv_JsonValueToBytes_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToBytes_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToBytes_Statics::NewProp_InValue = { "InValue", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJLibrary_eventConv_JsonValueToBytes_Parms, InValue), Z_Construct_UClass_USIOJsonValue_NoRegister, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToBytes_Statics::PropPointers[] = {
@@ -1192,7 +1321,7 @@ static struct FScriptStruct_SIOJson_StaticRegisterNativesFSIOJCallResponse
 		((SIOJLibrary_eventStringToJsonValueArray_Parms*)Obj)->ReturnValue = 1;
 	}
 	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_USIOJLibrary_StringToJsonValueArray_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(SIOJLibrary_eventStringToJsonValueArray_Parms), &Z_Construct_UFunction_USIOJLibrary_StringToJsonValueArray_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJLibrary_StringToJsonValueArray_Statics::NewProp_OutJsonValueArray = { "OutJsonValueArray", nullptr, (EPropertyFlags)0x0010000000000180, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJLibrary_eventStringToJsonValueArray_Parms, OutJsonValueArray), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJLibrary_StringToJsonValueArray_Statics::NewProp_OutJsonValueArray = { "OutJsonValueArray", nullptr, (EPropertyFlags)0x0010000000000180, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJLibrary_eventStringToJsonValueArray_Parms, OutJsonValueArray), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_USIOJLibrary_StringToJsonValueArray_Statics::NewProp_OutJsonValueArray_Inner = { "OutJsonValueArray", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_USIOJsonValue_NoRegister, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJLibrary_StringToJsonValueArray_Statics::NewProp_JsonString_MetaData[] = {
@@ -1287,15 +1416,15 @@ static struct FScriptStruct_SIOJson_StaticRegisterNativesFSIOJCallResponse
 		{ &Z_Construct_UFunction_USIOJLibrary_Base64Decode, "Base64Decode" }, // 4140143790
 		{ &Z_Construct_UFunction_USIOJLibrary_Base64Encode, "Base64Encode" }, // 3147030453
 		{ &Z_Construct_UFunction_USIOJLibrary_CallURL, "CallURL" }, // 316683299
-		{ &Z_Construct_UFunction_USIOJLibrary_Conv_ArrayToJsonValue, "Conv_ArrayToJsonValue" }, // 2578102888
+		{ &Z_Construct_UFunction_USIOJLibrary_Conv_ArrayToJsonValue, "Conv_ArrayToJsonValue" }, // 1603866133
 		{ &Z_Construct_UFunction_USIOJLibrary_Conv_BoolToJsonValue, "Conv_BoolToJsonValue" }, // 1260241954
-		{ &Z_Construct_UFunction_USIOJLibrary_Conv_BytesToJsonValue, "Conv_BytesToJsonValue" }, // 4013207483
+		{ &Z_Construct_UFunction_USIOJLibrary_Conv_BytesToJsonValue, "Conv_BytesToJsonValue" }, // 3248633428
 		{ &Z_Construct_UFunction_USIOJLibrary_Conv_FloatToJsonValue, "Conv_FloatToJsonValue" }, // 4081625699
 		{ &Z_Construct_UFunction_USIOJLibrary_Conv_IntToJsonValue, "Conv_IntToJsonValue" }, // 2791783932
 		{ &Z_Construct_UFunction_USIOJLibrary_Conv_JsonObjectToJsonValue, "Conv_JsonObjectToJsonValue" }, // 2244650809
 		{ &Z_Construct_UFunction_USIOJLibrary_Conv_JsonObjectToString, "Conv_JsonObjectToString" }, // 868586366
 		{ &Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToBool, "Conv_JsonValueToBool" }, // 1583228173
-		{ &Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToBytes, "Conv_JsonValueToBytes" }, // 2539906715
+		{ &Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToBytes, "Conv_JsonValueToBytes" }, // 2202613387
 		{ &Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToFloat, "Conv_JsonValueToFloat" }, // 2268631583
 		{ &Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToInt, "Conv_JsonValueToInt" }, // 4052851194
 		{ &Z_Construct_UFunction_USIOJLibrary_Conv_JsonValueToJsonObject, "Conv_JsonValueToJsonObject" }, // 831723777
@@ -1304,7 +1433,7 @@ static struct FScriptStruct_SIOJson_StaticRegisterNativesFSIOJCallResponse
 		{ &Z_Construct_UFunction_USIOJLibrary_LoadJsonFileToStruct, "LoadJsonFileToStruct" }, // 1658143651
 		{ &Z_Construct_UFunction_USIOJLibrary_PercentEncode, "PercentEncode" }, // 1309363022
 		{ &Z_Construct_UFunction_USIOJLibrary_SaveStructToJsonFile, "SaveStructToJsonFile" }, // 1686065529
-		{ &Z_Construct_UFunction_USIOJLibrary_StringToJsonValueArray, "StringToJsonValueArray" }, // 3328494759
+		{ &Z_Construct_UFunction_USIOJLibrary_StringToJsonValueArray, "StringToJsonValueArray" }, // 3266760599
 		{ &Z_Construct_UFunction_USIOJLibrary_StructToJsonObject, "StructToJsonObject" }, // 650437935
 	};
 #if WITH_METADATA
@@ -1342,7 +1471,7 @@ static struct FScriptStruct_SIOJson_StaticRegisterNativesFSIOJCallResponse
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USIOJLibrary, 1710301004);
+	IMPLEMENT_CLASS(USIOJLibrary, 1461726806);
 	template<> SIOJSON_API UClass* StaticClass<USIOJLibrary>()
 	{
 		return USIOJLibrary::StaticClass();

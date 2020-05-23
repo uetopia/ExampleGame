@@ -327,7 +327,7 @@ void FOnlineIdentityUEtopia::TickRefreshToken(float DeltaTime)
 		{
 			//UE_LOG_ONLINE(Display, TEXT("FOnlineIdentityUEtopia::TickRefreshToken : RefreshTokenTotalCheckElapsedTime > RefreshTokenMaxCheckElapsedTime"));
 			// space out requests to allow time for completion
-			if (RefreshTokenLastCheckElapsedTime > 10.0f)
+			if (RefreshTokenLastCheckElapsedTime > 5.0f)
 			{
 				UE_LOG_ONLINE(Display, TEXT("FOnlineIdentityUEtopia::TickRefreshToken : REFRESHING"));
 				RefreshTokenLastCheckElapsedTime = 0.f;

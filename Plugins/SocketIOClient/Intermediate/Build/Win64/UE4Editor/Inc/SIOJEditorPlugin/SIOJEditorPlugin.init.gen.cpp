@@ -1,4 +1,4 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Copyright Epic Games, Inc. All Rights Reserved.
 /*===========================================================================
 	Generated code exported from UnrealHeaderTool.
 	DO NOT modify this manually! Edit the corresponding .h files instead!
@@ -21,7 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJEditorPlugin_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000080,
-				0x7F3C817E,
+				0x29FA22F6,
 				0xCDD5F1CC,
 				METADATA_PARAMS(nullptr, 0)
 			};

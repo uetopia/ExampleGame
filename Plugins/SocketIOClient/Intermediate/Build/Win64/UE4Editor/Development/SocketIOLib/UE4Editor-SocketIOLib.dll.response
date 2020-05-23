@@ -1,4 +1,5 @@
-/MANIFEST:NO
+/MANIFEST:EMBED
+/MANIFESTINPUT:C:\UE425\Engine\Build\Windows\Resources\Default-Win64.manifest
 /NOLOGO
 /DEBUG
 /errorReport:prompt
@@ -32,9 +33,9 @@
 /NODEFAULTLIB:"LIBCD"
 /NODEFAULTLIB:"LIBCPD"
 /FUNCTIONPADMIN
-"C:\UE424_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.RTTI.h.obj"
-"C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SocketIOLib\Module.SocketIOLib.cpp.obj"
-"C:\UE424_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Default.rc2.res"
+"C:\UE425\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.RTTI.h.obj"
+"C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SocketIOLib\Module.SocketIOLib.cpp.obj"
+"C:\UE425\Engine\Intermediate\Build\Win64\UE4Editor\Development\Default.rc2.res"
 "delayimp.lib"
 "wininet.lib"
 "rpcrt4.lib"
@@ -59,11 +60,11 @@
 "setupapi.lib"
 "dwmapi.lib"
 "imm32.lib"
-"C:\UE424_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\CoreUObject\UE4Editor-CoreUObject.lib"
-"C:\UE424_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\UE4Editor-Engine.lib"
-"C:\UE424_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Core\UE4Editor-Core.lib"
-/OUT:"C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Binaries\Win64\UE4Editor-SocketIOLib.dll"
-/IMPLIB:"C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SocketIOLib\UE4Editor-SocketIOLib.suppressed.lib"
-/PDB:"C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Binaries\Win64\UE4Editor-SocketIOLib.pdb"
+"C:\UE425\Engine\Intermediate\Build\Win64\UE4Editor\Development\CoreUObject\UE4Editor-CoreUObject.lib"
+"C:\UE425\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\UE4Editor-Engine.lib"
+"C:\UE425\Engine\Intermediate\Build\Win64\UE4Editor\Development\Core\UE4Editor-Core.lib"
+/OUT:"C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Binaries\Win64\UE4Editor-SocketIOLib.dll"
+/IMPLIB:"C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SocketIOLib\UE4Editor-SocketIOLib.suppressed.lib"
+/PDB:"C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Binaries\Win64\UE4Editor-SocketIOLib.pdb"
 /ignore:4078
 /INCLUDE:IMPLEMENT_MODULE_SocketIOLib

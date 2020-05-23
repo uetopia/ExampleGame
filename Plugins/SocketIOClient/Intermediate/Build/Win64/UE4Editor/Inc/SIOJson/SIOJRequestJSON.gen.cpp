@@ -1,4 +1,4 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Copyright Epic Games, Inc. All Rights Reserved.
 /*===========================================================================
 	Generated code exported from UnrealHeaderTool.
 	DO NOT modify this manually! Edit the corresponding .h files instead!
@@ -19,38 +19,12 @@ void EmptyLinkFunctionForGeneratedCodeSIOJRequestJSON() {}
 	SIOJSON_API UFunction* Z_Construct_UDelegateFunction_SIOJson_OnRequestComplete__DelegateSignature();
 	SIOJSON_API UClass* Z_Construct_UClass_USIOJRequestJSON();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UObject();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_AddTag();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_ApplyURL();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FLatentActionInfo();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
 	SIOJSON_API UClass* Z_Construct_UClass_USIOJsonObject_NoRegister();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_Cancel();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_ConstructRequest();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_ConstructRequestExt();
 	SIOJSON_API UEnum* Z_Construct_UEnum_SIOJson_ESIORequestContentType();
 	SIOJSON_API UEnum* Z_Construct_UEnum_SIOJson_ESIORequestVerb();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_GetAllResponseHeaders();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_GetRequestObject();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_GetResponseCode();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_GetResponseHeader();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_GetResponseObject();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_GetStatus();
 	SIOJSON_API UEnum* Z_Construct_UEnum_SIOJson_ESIORequestStatus();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_GetURL();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_HasTag();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_ProcessURL();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_RemoveTag();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_ResetData();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_ResetRequestData();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_ResetResponseData();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_SetBinaryContentType();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_SetBinaryRequestContent();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_SetContentType();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_SetCustomVerb();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_SetHeader();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_SetRequestObject();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_SetResponseObject();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJRequestJSON_SetVerb();
 // End Cross Module References
 	struct Z_Construct_UDelegateFunction_SIOJson_OnRequestFail__DelegateSignature_Statics
 	{
@@ -117,6 +91,210 @@ void EmptyLinkFunctionForGeneratedCodeSIOJRequestJSON() {}
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UDelegateFunction_SIOJson_OnRequestComplete__DelegateSignature_Statics::FuncParams);
 		}
 		return ReturnFunction;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execHasTag)
+	{
+		P_GET_PROPERTY(FNameProperty,Z_Param_Tag);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->HasTag(Z_Param_Tag);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execRemoveTag)
+	{
+		P_GET_PROPERTY(FNameProperty,Z_Param_Tag);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(int32*)Z_Param__Result=P_THIS->RemoveTag(Z_Param_Tag);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execAddTag)
+	{
+		P_GET_PROPERTY(FNameProperty,Z_Param_Tag);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->AddTag(Z_Param_Tag);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execApplyURL)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_Url);
+		P_GET_OBJECT_REF(USIOJsonObject,Z_Param_Out_Result);
+		P_GET_OBJECT(UObject,Z_Param_WorldContextObject);
+		P_GET_STRUCT(FLatentActionInfo,Z_Param_LatentInfo);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->ApplyURL(Z_Param_Url,Z_Param_Out_Result,Z_Param_WorldContextObject,Z_Param_LatentInfo);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execProcessURL)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_Url);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->ProcessURL(Z_Param_Url);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execGetAllResponseHeaders)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<FString>*)Z_Param__Result=P_THIS->GetAllResponseHeaders();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execGetResponseHeader)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_HeaderName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(FString*)Z_Param__Result=P_THIS->GetResponseHeader(Z_Param_HeaderName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execGetResponseCode)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(int32*)Z_Param__Result=P_THIS->GetResponseCode();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execGetStatus)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(ESIORequestStatus*)Z_Param__Result=P_THIS->GetStatus();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execGetURL)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(FString*)Z_Param__Result=P_THIS->GetURL();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execSetResponseObject)
+	{
+		P_GET_OBJECT(USIOJsonObject,Z_Param_JsonObject);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetResponseObject(Z_Param_JsonObject);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execGetResponseObject)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJsonObject**)Z_Param__Result=P_THIS->GetResponseObject();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execSetRequestObject)
+	{
+		P_GET_OBJECT(USIOJsonObject,Z_Param_JsonObject);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetRequestObject(Z_Param_JsonObject);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execGetRequestObject)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJsonObject**)Z_Param__Result=P_THIS->GetRequestObject();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execCancel)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Cancel();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execResetResponseData)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->ResetResponseData();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execResetRequestData)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->ResetRequestData();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execResetData)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->ResetData();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execSetHeader)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_HeaderName);
+		P_GET_PROPERTY(FStrProperty,Z_Param_HeaderValue);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetHeader(Z_Param_HeaderName,Z_Param_HeaderValue);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execSetBinaryRequestContent)
+	{
+		P_GET_TARRAY_REF(uint8,Z_Param_Out_Content);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetBinaryRequestContent(Z_Param_Out_Content);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execSetBinaryContentType)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_ContentType);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetBinaryContentType(Z_Param_ContentType);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execSetContentType)
+	{
+		P_GET_ENUM(ESIORequestContentType,Z_Param_ContentType);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetContentType(ESIORequestContentType(Z_Param_ContentType));
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execSetCustomVerb)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_Verb);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetCustomVerb(Z_Param_Verb);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execSetVerb)
+	{
+		P_GET_ENUM(ESIORequestVerb,Z_Param_Verb);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetVerb(ESIORequestVerb(Z_Param_Verb));
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execConstructRequestExt)
+	{
+		P_GET_OBJECT(UObject,Z_Param_WorldContextObject);
+		P_GET_ENUM(ESIORequestVerb,Z_Param_Verb);
+		P_GET_ENUM(ESIORequestContentType,Z_Param_ContentType);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJRequestJSON**)Z_Param__Result=USIOJRequestJSON::ConstructRequestExt(Z_Param_WorldContextObject,ESIORequestVerb(Z_Param_Verb),ESIORequestContentType(Z_Param_ContentType));
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJRequestJSON::execConstructRequest)
+	{
+		P_GET_OBJECT(UObject,Z_Param_WorldContextObject);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJRequestJSON**)Z_Param__Result=USIOJRequestJSON::ConstructRequest(Z_Param_WorldContextObject);
+		P_NATIVE_END;
 	}
 	void USIOJRequestJSON::StaticRegisterNativesUSIOJRequestJSON()
 	{
@@ -382,7 +560,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJRequestJSON() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJRequestJSON_GetAllResponseHeaders_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJRequestJSON_eventGetAllResponseHeaders_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJRequestJSON_GetAllResponseHeaders_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJRequestJSON_eventGetAllResponseHeaders_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_USIOJRequestJSON_GetAllResponseHeaders_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_USIOJRequestJSON_GetAllResponseHeaders_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USIOJRequestJSON_GetAllResponseHeaders_Statics::NewProp_ReturnValue,
@@ -898,7 +1076,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJRequestJSON() {}
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJRequestJSON_SetBinaryRequestContent_Statics::NewProp_Content = { "Content", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJRequestJSON_eventSetBinaryRequestContent_Parms, Content), METADATA_PARAMS(Z_Construct_UFunction_USIOJRequestJSON_SetBinaryRequestContent_Statics::NewProp_Content_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJRequestJSON_SetBinaryRequestContent_Statics::NewProp_Content_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJRequestJSON_SetBinaryRequestContent_Statics::NewProp_Content = { "Content", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJRequestJSON_eventSetBinaryRequestContent_Parms, Content), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_USIOJRequestJSON_SetBinaryRequestContent_Statics::NewProp_Content_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJRequestJSON_SetBinaryRequestContent_Statics::NewProp_Content_MetaData)) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_USIOJRequestJSON_SetBinaryRequestContent_Statics::NewProp_Content_Inner = { "Content", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_USIOJRequestJSON_SetBinaryRequestContent_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USIOJRequestJSON_SetBinaryRequestContent_Statics::NewProp_Content,
@@ -1217,7 +1395,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJRequestJSON() {}
 		{ &Z_Construct_UFunction_USIOJRequestJSON_Cancel, "Cancel" }, // 2493565230
 		{ &Z_Construct_UFunction_USIOJRequestJSON_ConstructRequest, "ConstructRequest" }, // 1245167637
 		{ &Z_Construct_UFunction_USIOJRequestJSON_ConstructRequestExt, "ConstructRequestExt" }, // 4172112499
-		{ &Z_Construct_UFunction_USIOJRequestJSON_GetAllResponseHeaders, "GetAllResponseHeaders" }, // 2434240780
+		{ &Z_Construct_UFunction_USIOJRequestJSON_GetAllResponseHeaders, "GetAllResponseHeaders" }, // 1643331308
 		{ &Z_Construct_UFunction_USIOJRequestJSON_GetRequestObject, "GetRequestObject" }, // 2355232417
 		{ &Z_Construct_UFunction_USIOJRequestJSON_GetResponseCode, "GetResponseCode" }, // 2007580753
 		{ &Z_Construct_UFunction_USIOJRequestJSON_GetResponseHeader, "GetResponseHeader" }, // 3668475648
@@ -1231,7 +1409,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJRequestJSON() {}
 		{ &Z_Construct_UFunction_USIOJRequestJSON_ResetRequestData, "ResetRequestData" }, // 1206656452
 		{ &Z_Construct_UFunction_USIOJRequestJSON_ResetResponseData, "ResetResponseData" }, // 2406944038
 		{ &Z_Construct_UFunction_USIOJRequestJSON_SetBinaryContentType, "SetBinaryContentType" }, // 3756785598
-		{ &Z_Construct_UFunction_USIOJRequestJSON_SetBinaryRequestContent, "SetBinaryRequestContent" }, // 1851258817
+		{ &Z_Construct_UFunction_USIOJRequestJSON_SetBinaryRequestContent, "SetBinaryRequestContent" }, // 3477422204
 		{ &Z_Construct_UFunction_USIOJRequestJSON_SetContentType, "SetContentType" }, // 1129786737
 		{ &Z_Construct_UFunction_USIOJRequestJSON_SetCustomVerb, "SetCustomVerb" }, // 641860953
 		{ &Z_Construct_UFunction_USIOJRequestJSON_SetHeader, "SetHeader" }, // 2803378172
@@ -1268,7 +1446,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJRequestJSON() {}
 		{ "ModuleRelativePath", "Public/SIOJRequestJSON.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_USIOJRequestJSON_Statics::NewProp_RequestBytes = { "RequestBytes", nullptr, (EPropertyFlags)0x0020080000000000, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USIOJRequestJSON, RequestBytes), METADATA_PARAMS(Z_Construct_UClass_USIOJRequestJSON_Statics::NewProp_RequestBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_USIOJRequestJSON_Statics::NewProp_RequestBytes_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_USIOJRequestJSON_Statics::NewProp_RequestBytes = { "RequestBytes", nullptr, (EPropertyFlags)0x0020080000000000, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USIOJRequestJSON, RequestBytes), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_USIOJRequestJSON_Statics::NewProp_RequestBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_USIOJRequestJSON_Statics::NewProp_RequestBytes_MetaData)) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UClass_USIOJRequestJSON_Statics::NewProp_RequestBytes_Inner = { "RequestBytes", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USIOJRequestJSON_Statics::NewProp_RequestJsonObj_MetaData[] = {
@@ -1356,7 +1534,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJRequestJSON() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USIOJRequestJSON, 3691050632);
+	IMPLEMENT_CLASS(USIOJRequestJSON, 2695951792);
 	template<> SIOJSON_API UClass* StaticClass<USIOJRequestJSON>()
 	{
 		return USIOJRequestJSON::StaticClass();

@@ -1,4 +1,4 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Copyright Epic Games, Inc. All Rights Reserved.
 /*===========================================================================
 	Generated code exported from UnrealHeaderTool.
 	DO NOT modify this manually! Edit the corresponding .h files instead!
@@ -17,10 +17,17 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOFunctionLibrary() {}
 	SOCKETIOCLIENT_API UClass* Z_Construct_UClass_USocketIOFunctionLibrary();
 	ENGINE_API UClass* Z_Construct_UClass_UBlueprintFunctionLibrary();
 	UPackage* Z_Construct_UPackage__Script_SocketIOClient();
-	SOCKETIOCLIENT_API UFunction* Z_Construct_UFunction_USocketIOFunctionLibrary_ConstructSocketIOComponent();
 	SOCKETIOCLIENT_API UClass* Z_Construct_UClass_USocketIOClientComponent_NoRegister();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
 // End Cross Module References
+	DEFINE_FUNCTION(USocketIOFunctionLibrary::execConstructSocketIOComponent)
+	{
+		P_GET_OBJECT(UObject,Z_Param_WorldContextObject);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USocketIOClientComponent**)Z_Param__Result=USocketIOFunctionLibrary::ConstructSocketIOComponent(Z_Param_WorldContextObject);
+		P_NATIVE_END;
+	}
 	void USocketIOFunctionLibrary::StaticRegisterNativesUSocketIOFunctionLibrary()
 	{
 		UClass* Class = USocketIOFunctionLibrary::StaticClass();

@@ -28,7 +28,7 @@ This project uses Rama Save System to persist server state across downtime.  Cop
 This project uses UETOPIA engine modifications.  You must use the patched engine with this project.
 
 # Branches
-This is the Master branch, and is compatible with the current Unreal Engine branch:  4.23
+This is the 4.25 branch, and is compatible with Unreal Engine:  4.25_UETOPIA
 
 # Disclaimer
 This code, and the backend are in Beta, and are under active development.

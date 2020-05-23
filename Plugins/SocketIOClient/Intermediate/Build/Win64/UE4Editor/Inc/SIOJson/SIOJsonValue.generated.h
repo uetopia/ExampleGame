@@ -1,4 +1,4 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Copyright Epic Games, Inc. All Rights Reserved.
 /*===========================================================================
 	Generated code exported from UnrealHeaderTool.
 	DO NOT modify this manually! Edit the corresponding .h files instead!
@@ -16,314 +16,50 @@ class UObject;
 #endif
 #define SIOJSON_SIOJsonValue_generated_h
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_SPARSE_DATA
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_SPARSE_DATA
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS \
  \
-	DECLARE_FUNCTION(execEncodeJson) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(FString*)Z_Param__Result=P_THIS->EncodeJson(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execAsBinary) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(TArray<uint8>*)Z_Param__Result=P_THIS->AsBinary(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execAsObject) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonObject**)Z_Param__Result=P_THIS->AsObject(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execAsArray) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(TArray<USIOJsonValue*>*)Z_Param__Result=P_THIS->AsArray(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execAsBool) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(bool*)Z_Param__Result=P_THIS->AsBool(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execAsString) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(FString*)Z_Param__Result=P_THIS->AsString(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execAsNumber) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(float*)Z_Param__Result=P_THIS->AsNumber(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execIsNull) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(bool*)Z_Param__Result=P_THIS->IsNull(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execGetTypeString) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(FString*)Z_Param__Result=P_THIS->GetTypeString(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execGetType) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(TEnumAsByte<ESIOJson::Type>*)Z_Param__Result=P_THIS->GetType(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execValueFromJsonString) \
-	{ \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_StringValue); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ValueFromJsonString(Z_Param_WorldContextObject,Z_Param_StringValue); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConstructJsonValueBinary) \
-	{ \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_GET_TARRAY(uint8,Z_Param_ByteArray); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ConstructJsonValueBinary(Z_Param_WorldContextObject,Z_Param_ByteArray); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConstructJsonValueObject) \
-	{ \
-		P_GET_OBJECT(USIOJsonObject,Z_Param_JsonObject); \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ConstructJsonValueObject(Z_Param_JsonObject,Z_Param_WorldContextObject); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConstructJsonValueArray) \
-	{ \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_GET_TARRAY_REF(USIOJsonValue*,Z_Param_Out_InArray); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ConstructJsonValueArray(Z_Param_WorldContextObject,Z_Param_Out_InArray); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConstructJsonValueBool) \
-	{ \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_GET_UBOOL(Z_Param_InValue); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ConstructJsonValueBool(Z_Param_WorldContextObject,Z_Param_InValue); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConstructJsonValueString) \
-	{ \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_StringValue); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ConstructJsonValueString(Z_Param_WorldContextObject,Z_Param_StringValue); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConstructJsonValueNumber) \
-	{ \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_GET_PROPERTY(UFloatProperty,Z_Param_Number); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ConstructJsonValueNumber(Z_Param_WorldContextObject,Z_Param_Number); \
-		P_NATIVE_END; \
-	}
+	DECLARE_FUNCTION(execEncodeJson); \
+	DECLARE_FUNCTION(execAsBinary); \
+	DECLARE_FUNCTION(execAsObject); \
+	DECLARE_FUNCTION(execAsArray); \
+	DECLARE_FUNCTION(execAsBool); \
+	DECLARE_FUNCTION(execAsString); \
+	DECLARE_FUNCTION(execAsNumber); \
+	DECLARE_FUNCTION(execIsNull); \
+	DECLARE_FUNCTION(execGetTypeString); \
+	DECLARE_FUNCTION(execGetType); \
+	DECLARE_FUNCTION(execValueFromJsonString); \
+	DECLARE_FUNCTION(execConstructJsonValueBinary); \
+	DECLARE_FUNCTION(execConstructJsonValueObject); \
+	DECLARE_FUNCTION(execConstructJsonValueArray); \
+	DECLARE_FUNCTION(execConstructJsonValueBool); \
+	DECLARE_FUNCTION(execConstructJsonValueString); \
+	DECLARE_FUNCTION(execConstructJsonValueNumber);
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS_NO_PURE_DECLS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS_NO_PURE_DECLS \
  \
-	DECLARE_FUNCTION(execEncodeJson) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(FString*)Z_Param__Result=P_THIS->EncodeJson(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execAsBinary) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(TArray<uint8>*)Z_Param__Result=P_THIS->AsBinary(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execAsObject) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonObject**)Z_Param__Result=P_THIS->AsObject(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execAsArray) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(TArray<USIOJsonValue*>*)Z_Param__Result=P_THIS->AsArray(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execAsBool) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(bool*)Z_Param__Result=P_THIS->AsBool(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execAsString) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(FString*)Z_Param__Result=P_THIS->AsString(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execAsNumber) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(float*)Z_Param__Result=P_THIS->AsNumber(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execIsNull) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(bool*)Z_Param__Result=P_THIS->IsNull(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execGetTypeString) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(FString*)Z_Param__Result=P_THIS->GetTypeString(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execGetType) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(TEnumAsByte<ESIOJson::Type>*)Z_Param__Result=P_THIS->GetType(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execValueFromJsonString) \
-	{ \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_StringValue); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ValueFromJsonString(Z_Param_WorldContextObject,Z_Param_StringValue); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConstructJsonValueBinary) \
-	{ \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_GET_TARRAY(uint8,Z_Param_ByteArray); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ConstructJsonValueBinary(Z_Param_WorldContextObject,Z_Param_ByteArray); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConstructJsonValueObject) \
-	{ \
-		P_GET_OBJECT(USIOJsonObject,Z_Param_JsonObject); \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ConstructJsonValueObject(Z_Param_JsonObject,Z_Param_WorldContextObject); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConstructJsonValueArray) \
-	{ \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_GET_TARRAY_REF(USIOJsonValue*,Z_Param_Out_InArray); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ConstructJsonValueArray(Z_Param_WorldContextObject,Z_Param_Out_InArray); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConstructJsonValueBool) \
-	{ \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_GET_UBOOL(Z_Param_InValue); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ConstructJsonValueBool(Z_Param_WorldContextObject,Z_Param_InValue); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConstructJsonValueString) \
-	{ \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_GET_PROPERTY(UStrProperty,Z_Param_StringValue); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ConstructJsonValueString(Z_Param_WorldContextObject,Z_Param_StringValue); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execConstructJsonValueNumber) \
-	{ \
-		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
-		P_GET_PROPERTY(UFloatProperty,Z_Param_Number); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		*(USIOJsonValue**)Z_Param__Result=USIOJsonValue::ConstructJsonValueNumber(Z_Param_WorldContextObject,Z_Param_Number); \
-		P_NATIVE_END; \
-	}
+	DECLARE_FUNCTION(execEncodeJson); \
+	DECLARE_FUNCTION(execAsBinary); \
+	DECLARE_FUNCTION(execAsObject); \
+	DECLARE_FUNCTION(execAsArray); \
+	DECLARE_FUNCTION(execAsBool); \
+	DECLARE_FUNCTION(execAsString); \
+	DECLARE_FUNCTION(execAsNumber); \
+	DECLARE_FUNCTION(execIsNull); \
+	DECLARE_FUNCTION(execGetTypeString); \
+	DECLARE_FUNCTION(execGetType); \
+	DECLARE_FUNCTION(execValueFromJsonString); \
+	DECLARE_FUNCTION(execConstructJsonValueBinary); \
+	DECLARE_FUNCTION(execConstructJsonValueObject); \
+	DECLARE_FUNCTION(execConstructJsonValueArray); \
+	DECLARE_FUNCTION(execConstructJsonValueBool); \
+	DECLARE_FUNCTION(execConstructJsonValueString); \
+	DECLARE_FUNCTION(execConstructJsonValueNumber);
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS_NO_PURE_DECLS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUSIOJsonValue(); \
 	friend struct Z_Construct_UClass_USIOJsonValue_Statics; \
@@ -332,7 +68,7 @@ public: \
 	DECLARE_SERIALIZER(USIOJsonValue)
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS \
 private: \
 	static void StaticRegisterNativesUSIOJsonValue(); \
 	friend struct Z_Construct_UClass_USIOJsonValue_Statics; \
@@ -341,7 +77,7 @@ public: \
 	DECLARE_SERIALIZER(USIOJsonValue)
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_STANDARD_CONSTRUCTORS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API USIOJsonValue(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USIOJsonValue) \
@@ -354,7 +90,7 @@ private: \
 public:
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_ENHANCED_CONSTRUCTORS \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API USIOJsonValue(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -367,28 +103,28 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(USIOJsonValue); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USIOJsonValue)
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_PRIVATE_PROPERTY_OFFSET
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_70_PROLOG
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_GENERATED_BODY_LEGACY \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_PRIVATE_PROPERTY_OFFSET
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_70_PROLOG
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_PRIVATE_PROPERTY_OFFSET \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_SPARSE_DATA \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_STANDARD_CONSTRUCTORS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_PRIVATE_PROPERTY_OFFSET \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_SPARSE_DATA \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_GENERATED_BODY \
+#define ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_PRIVATE_PROPERTY_OFFSET \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_SPARSE_DATA \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS_NO_PURE_DECLS \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS_NO_PURE_DECLS \
-	ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_ENHANCED_CONSTRUCTORS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_PRIVATE_PROPERTY_OFFSET \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_SPARSE_DATA \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_RPC_WRAPPERS_NO_PURE_DECLS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_INCLASS_NO_PURE_DECLS \
+	ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h_73_ENHANCED_CONSTRUCTORS \
 static_assert(false, "Unknown access specifier for GENERATED_BODY() macro in class SIOJsonValue."); \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -396,7 +132,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> SIOJSON_API UClass* StaticClass<class USIOJsonValue>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID ExampleGame_4_24_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h
+#define CURRENT_FILE_ID ExampleGame_425_Plugins_SocketIOClient_Source_SIOJson_Public_SIOJsonValue_h
 
 
 #define FOREACH_ENUM_ESIOJSON(op) \

@@ -6,9 +6,9 @@
 /NAME:"UE4Editor-SIOJson.dll"
 /IGNORE:4221
 /NODEFAULTLIB
-"C:\UE424_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
-"C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJson\Module.SIOJson.cpp.obj"
-"C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJson\Module.SIOJson.gen.cpp.obj"
-"C:\UE424_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Default.rc2.res"
-/OUT:"C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJson\UE4Editor-SIOJson.lib"
+"C:\UE425\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
+"C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJson\Module.SIOJson.cpp.obj"
+"C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJson\Module.SIOJson.gen.cpp.obj"
+"C:\UE425\Engine\Intermediate\Build\Win64\UE4Editor\Development\Default.rc2.res"
+/OUT:"C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SIOJson\UE4Editor-SIOJson.lib"
 /INCLUDE:IMPLEMENT_MODULE_SIOJson

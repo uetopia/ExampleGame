@@ -1,4 +1,4 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Copyright Epic Games, Inc. All Rights Reserved.
 /*===========================================================================
 	Generated code exported from UnrealHeaderTool.
 	DO NOT modify this manually! Edit the corresponding .h files instead!
@@ -19,21 +19,9 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 	COREUTILITY_API UClass* Z_Construct_UClass_UCoreUtilityBPLibrary_NoRegister();
 	COREUTILITY_API UClass* Z_Construct_UClass_UCoreUtilityBPLibrary();
 	ENGINE_API UClass* Z_Construct_UClass_UBlueprintFunctionLibrary();
-	COREUTILITY_API UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_CallFunctionOnThread();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
-	COREUTILITY_API UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString();
-	COREUTILITY_API UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture();
 	ENGINE_API UClass* Z_Construct_UClass_UTexture2D_NoRegister();
-	COREUTILITY_API UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav();
-	COREUTILITY_API UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_SoundWaveToWavBytes();
 	ENGINE_API UClass* Z_Construct_UClass_USoundWave_NoRegister();
-	COREUTILITY_API UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes();
-	COREUTILITY_API UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes();
-	COREUTILITY_API UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus();
-	COREUTILITY_API UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToSoundWave();
-	COREUTILITY_API UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId();
-	COREUTILITY_API UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString();
-	COREUTILITY_API UFunction* Z_Construct_UFunction_UCoreUtilityBPLibrary_SetSoundWaveFromWavBytes();
 	ENGINE_API UClass* Z_Construct_UClass_USoundWaveProcedural_NoRegister();
 // End Cross Module References
 	static UEnum* ESIOCallbackType_StaticEnum()
@@ -173,6 +161,105 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 		}
 		return ReturnEnum;
 	}
+	DEFINE_FUNCTION(UCoreUtilityBPLibrary::execCallFunctionOnThread)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_Function);
+		P_GET_PROPERTY(FByteProperty,Z_Param_ThreadType);
+		P_GET_OBJECT(UObject,Z_Param_WorldContextObject);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		UCoreUtilityBPLibrary::CallFunctionOnThread(Z_Param_Function,ESIOCallbackType(Z_Param_ThreadType),Z_Param_WorldContextObject);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UCoreUtilityBPLibrary::execGetLoginId)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(FString*)Z_Param__Result=UCoreUtilityBPLibrary::GetLoginId();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UCoreUtilityBPLibrary::execNowUTCString)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(FString*)Z_Param__Result=UCoreUtilityBPLibrary::NowUTCString();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UCoreUtilityBPLibrary::execConv_TextureToBytes)
+	{
+		P_GET_OBJECT(UTexture2D,Z_Param_Texture);
+		P_GET_TARRAY_REF(uint8,Z_Param_Out_OutBuffer);
+		P_GET_ENUM(EImageFormatBPType,Z_Param_Format);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=UCoreUtilityBPLibrary::Conv_TextureToBytes(Z_Param_Texture,Z_Param_Out_OutBuffer,EImageFormatBPType(Z_Param_Format));
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UCoreUtilityBPLibrary::execSetSoundWaveFromWavBytes)
+	{
+		P_GET_OBJECT(USoundWaveProcedural,Z_Param_InSoundWave);
+		P_GET_TARRAY_REF(uint8,Z_Param_Out_InBytes);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		UCoreUtilityBPLibrary::SetSoundWaveFromWavBytes(Z_Param_InSoundWave,Z_Param_Out_InBytes);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UCoreUtilityBPLibrary::execConv_SoundWaveToWavBytes)
+	{
+		P_GET_OBJECT(USoundWave,Z_Param_SoundWave);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<uint8>*)Z_Param__Result=UCoreUtilityBPLibrary::Conv_SoundWaveToWavBytes(Z_Param_SoundWave);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UCoreUtilityBPLibrary::execConv_WavBytesToSoundWave)
+	{
+		P_GET_TARRAY_REF(uint8,Z_Param_Out_InBytes);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USoundWave**)Z_Param__Result=UCoreUtilityBPLibrary::Conv_WavBytesToSoundWave(Z_Param_Out_InBytes);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UCoreUtilityBPLibrary::execConv_WavBytesToOpus)
+	{
+		P_GET_TARRAY_REF(uint8,Z_Param_Out_InBytes);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<uint8>*)Z_Param__Result=UCoreUtilityBPLibrary::Conv_WavBytesToOpus(Z_Param_Out_InBytes);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UCoreUtilityBPLibrary::execConv_OpusBytesToWav)
+	{
+		P_GET_TARRAY_REF(uint8,Z_Param_Out_InBytes);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<uint8>*)Z_Param__Result=UCoreUtilityBPLibrary::Conv_OpusBytesToWav(Z_Param_Out_InBytes);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UCoreUtilityBPLibrary::execConv_BytesToTexture)
+	{
+		P_GET_TARRAY_REF(uint8,Z_Param_Out_InBytes);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(UTexture2D**)Z_Param__Result=UCoreUtilityBPLibrary::Conv_BytesToTexture(Z_Param_Out_InBytes);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UCoreUtilityBPLibrary::execConv_StringToBytes)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_InString);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<uint8>*)Z_Param__Result=UCoreUtilityBPLibrary::Conv_StringToBytes(Z_Param_InString);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UCoreUtilityBPLibrary::execConv_BytesToString)
+	{
+		P_GET_TARRAY_REF(uint8,Z_Param_Out_InBytes);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(FString*)Z_Param__Result=UCoreUtilityBPLibrary::Conv_BytesToString(Z_Param_Out_InBytes);
+		P_NATIVE_END;
+	}
 	void UCoreUtilityBPLibrary::StaticRegisterNativesUCoreUtilityBPLibrary()
 	{
 		UClass* Class = UCoreUtilityBPLibrary::StaticClass();
@@ -268,7 +355,7 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_BytesToString_Parms, InBytes), METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::NewProp_InBytes_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_BytesToString_Parms, InBytes), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::NewProp_InBytes_MetaData)) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::NewProp_InBytes_Inner = { "InBytes", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString_Statics::NewProp_ReturnValue,
@@ -320,7 +407,7 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_BytesToTexture_Parms, InBytes), METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::NewProp_InBytes_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_BytesToTexture_Parms, InBytes), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::NewProp_InBytes_MetaData)) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::NewProp_InBytes_Inner = { "InBytes", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture_Statics::NewProp_ReturnValue,
@@ -367,14 +454,14 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_OpusBytesToWav_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_OpusBytesToWav_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav_Statics::NewProp_InBytes_MetaData[] = {
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_OpusBytesToWav_Parms, InBytes), METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav_Statics::NewProp_InBytes_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_OpusBytesToWav_Parms, InBytes), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav_Statics::NewProp_InBytes_MetaData)) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav_Statics::NewProp_InBytes_Inner = { "InBytes", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav_Statics::NewProp_ReturnValue,
@@ -418,7 +505,7 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_SoundWaveToWavBytes_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_SoundWaveToWavBytes_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_SoundWaveToWavBytes_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_SoundWaveToWavBytes_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_SoundWaveToWavBytes_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_SoundWaveToWavBytes_Statics::NewProp_SoundWave = { "SoundWave", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_SoundWaveToWavBytes_Parms, SoundWave), Z_Construct_UClass_USoundWave_NoRegister, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_SoundWaveToWavBytes_Statics::PropPointers[] = {
@@ -462,7 +549,7 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_StringToBytes_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_StringToBytes_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::NewProp_InString = { "InString", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_StringToBytes_Parms, InString), METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes_Statics::PropPointers[] = {
@@ -519,7 +606,7 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(CoreUtilityBPLibrary_eventConv_TextureToBytes_Parms), &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::NewProp_Format = { "Format", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_TextureToBytes_Parms, Format), Z_Construct_UEnum_CoreUtility_EImageFormatBPType, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::NewProp_Format_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::NewProp_OutBuffer = { "OutBuffer", nullptr, (EPropertyFlags)0x0010000000000180, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_TextureToBytes_Parms, OutBuffer), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::NewProp_OutBuffer = { "OutBuffer", nullptr, (EPropertyFlags)0x0010000000000180, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_TextureToBytes_Parms, OutBuffer), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::NewProp_OutBuffer_Inner = { "OutBuffer", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::NewProp_Texture = { "Texture", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_TextureToBytes_Parms, Texture), Z_Construct_UClass_UTexture2D_NoRegister, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes_Statics::PropPointers[] = {
@@ -571,14 +658,14 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_WavBytesToOpus_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_WavBytesToOpus_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus_Statics::NewProp_InBytes_MetaData[] = {
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_WavBytesToOpus_Parms, InBytes), METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus_Statics::NewProp_InBytes_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_WavBytesToOpus_Parms, InBytes), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus_Statics::NewProp_InBytes_MetaData)) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus_Statics::NewProp_InBytes_Inner = { "InBytes", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus_Statics::NewProp_ReturnValue,
@@ -631,7 +718,7 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToSoundWave_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_WavBytesToSoundWave_Parms, InBytes), METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToSoundWave_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToSoundWave_Statics::NewProp_InBytes_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToSoundWave_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventConv_WavBytesToSoundWave_Parms, InBytes), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToSoundWave_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToSoundWave_Statics::NewProp_InBytes_MetaData)) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToSoundWave_Statics::NewProp_InBytes_Inner = { "InBytes", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToSoundWave_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToSoundWave_Statics::NewProp_ReturnValue,
@@ -752,7 +839,7 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_SetSoundWaveFromWavBytes_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventSetSoundWaveFromWavBytes_Parms, InBytes), METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_SetSoundWaveFromWavBytes_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_SetSoundWaveFromWavBytes_Statics::NewProp_InBytes_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_SetSoundWaveFromWavBytes_Statics::NewProp_InBytes = { "InBytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventSetSoundWaveFromWavBytes_Parms, InBytes), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_UCoreUtilityBPLibrary_SetSoundWaveFromWavBytes_Statics::NewProp_InBytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UCoreUtilityBPLibrary_SetSoundWaveFromWavBytes_Statics::NewProp_InBytes_MetaData)) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_SetSoundWaveFromWavBytes_Statics::NewProp_InBytes_Inner = { "InBytes", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UCoreUtilityBPLibrary_SetSoundWaveFromWavBytes_Statics::NewProp_InSoundWave = { "InSoundWave", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(CoreUtilityBPLibrary_eventSetSoundWaveFromWavBytes_Parms, InSoundWave), Z_Construct_UClass_USoundWaveProcedural_NoRegister, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UCoreUtilityBPLibrary_SetSoundWaveFromWavBytes_Statics::PropPointers[] = {
@@ -798,17 +885,17 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_UCoreUtilityBPLibrary_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_CallFunctionOnThread, "CallFunctionOnThread" }, // 3216109113
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString, "Conv_BytesToString" }, // 2079079439
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture, "Conv_BytesToTexture" }, // 3210873557
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav, "Conv_OpusBytesToWav" }, // 137982997
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_SoundWaveToWavBytes, "Conv_SoundWaveToWavBytes" }, // 294568788
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes, "Conv_StringToBytes" }, // 151470914
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes, "Conv_TextureToBytes" }, // 2916620397
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus, "Conv_WavBytesToOpus" }, // 1529945890
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToSoundWave, "Conv_WavBytesToSoundWave" }, // 3268346350
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToString, "Conv_BytesToString" }, // 3192908820
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_BytesToTexture, "Conv_BytesToTexture" }, // 1139110122
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_OpusBytesToWav, "Conv_OpusBytesToWav" }, // 2217086879
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_SoundWaveToWavBytes, "Conv_SoundWaveToWavBytes" }, // 2060338637
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_StringToBytes, "Conv_StringToBytes" }, // 593864182
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_TextureToBytes, "Conv_TextureToBytes" }, // 3831222042
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToOpus, "Conv_WavBytesToOpus" }, // 1650009666
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_Conv_WavBytesToSoundWave, "Conv_WavBytesToSoundWave" }, // 225026817
 		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_GetLoginId, "GetLoginId" }, // 2578788024
 		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_NowUTCString, "NowUTCString" }, // 2068528857
-		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_SetSoundWaveFromWavBytes, "SetSoundWaveFromWavBytes" }, // 3857256061
+		{ &Z_Construct_UFunction_UCoreUtilityBPLibrary_SetSoundWaveFromWavBytes, "SetSoundWaveFromWavBytes" }, // 3600149624
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UCoreUtilityBPLibrary_Statics::Class_MetaDataParams[] = {
@@ -845,7 +932,7 @@ void EmptyLinkFunctionForGeneratedCodeCoreUtilityBPLibrary() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UCoreUtilityBPLibrary, 2584116275);
+	IMPLEMENT_CLASS(UCoreUtilityBPLibrary, 1827867473);
 	template<> COREUTILITY_API UClass* StaticClass<UCoreUtilityBPLibrary>()
 	{
 		return UCoreUtilityBPLibrary::StaticClass();

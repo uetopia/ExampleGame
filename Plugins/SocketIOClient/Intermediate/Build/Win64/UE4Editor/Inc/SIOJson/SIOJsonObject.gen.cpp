@@ -1,4 +1,4 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Copyright Epic Games, Inc. All Rights Reserved.
 /*===========================================================================
 	Generated code exported from UnrealHeaderTool.
 	DO NOT modify this manually! Edit the corresponding .h files instead!
@@ -17,40 +17,265 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 	SIOJSON_API UClass* Z_Construct_UClass_USIOJsonObject();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UObject();
 	UPackage* Z_Construct_UPackage__Script_SIOJson();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_ConstructJsonObject();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_DecodeJson();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_EncodeJson();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_GetArrayField();
 	SIOJSON_API UClass* Z_Construct_UClass_USIOJsonValue_NoRegister();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_GetBinaryField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_GetBoolField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_GetField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_GetFieldNames();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_GetNumberField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_GetObjectField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_GetStringArrayField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_GetStringField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_HasField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_MergeJsonObject();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_RemoveField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_Reset();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_SetArrayField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_SetBinaryField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_SetBoolField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_SetField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_SetNumberField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_SetObjectField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_SetStringArrayField();
-	SIOJSON_API UFunction* Z_Construct_UFunction_USIOJsonObject_SetStringField();
 // End Cross Module References
+	DEFINE_FUNCTION(USIOJsonObject::execSetObjectArrayField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_GET_TARRAY_REF(USIOJsonObject*,Z_Param_Out_ObjectArray);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetObjectArrayField(Z_Param_FieldName,Z_Param_Out_ObjectArray);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execGetObjectArrayField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<USIOJsonObject*>*)Z_Param__Result=P_THIS->GetObjectArrayField(Z_Param_FieldName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execSetBoolArrayField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_GET_TARRAY_REF(bool,Z_Param_Out_BoolArray);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetBoolArrayField(Z_Param_FieldName,Z_Param_Out_BoolArray);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execGetBoolArrayField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<bool>*)Z_Param__Result=P_THIS->GetBoolArrayField(Z_Param_FieldName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execSetStringArrayField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_GET_TARRAY_REF(FString,Z_Param_Out_StringArray);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetStringArrayField(Z_Param_FieldName,Z_Param_Out_StringArray);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execGetStringArrayField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<FString>*)Z_Param__Result=P_THIS->GetStringArrayField(Z_Param_FieldName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execSetNumberArrayField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_GET_TARRAY_REF(float,Z_Param_Out_NumberArray);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetNumberArrayField(Z_Param_FieldName,Z_Param_Out_NumberArray);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execGetNumberArrayField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<float>*)Z_Param__Result=P_THIS->GetNumberArrayField(Z_Param_FieldName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execSetBinaryField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_GET_TARRAY_REF(uint8,Z_Param_Out_Bytes);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetBinaryField(Z_Param_FieldName,Z_Param_Out_Bytes);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execGetBinaryField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<uint8>*)Z_Param__Result=P_THIS->GetBinaryField(Z_Param_FieldName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execSetObjectField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_GET_OBJECT(USIOJsonObject,Z_Param_JsonObject);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetObjectField(Z_Param_FieldName,Z_Param_JsonObject);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execGetObjectField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJsonObject**)Z_Param__Result=P_THIS->GetObjectField(Z_Param_FieldName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execSetBoolField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_GET_UBOOL(Z_Param_InValue);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetBoolField(Z_Param_FieldName,Z_Param_InValue);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execGetBoolField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->GetBoolField(Z_Param_FieldName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execSetStringField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_GET_PROPERTY(FStrProperty,Z_Param_StringValue);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetStringField(Z_Param_FieldName,Z_Param_StringValue);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execGetStringField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(FString*)Z_Param__Result=P_THIS->GetStringField(Z_Param_FieldName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execSetNumberField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_GET_PROPERTY(FFloatProperty,Z_Param_Number);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetNumberField(Z_Param_FieldName,Z_Param_Number);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execGetNumberField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(float*)Z_Param__Result=P_THIS->GetNumberField(Z_Param_FieldName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execMergeJsonObject)
+	{
+		P_GET_OBJECT(USIOJsonObject,Z_Param_InJsonObject);
+		P_GET_UBOOL(Z_Param_Overwrite);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->MergeJsonObject(Z_Param_InJsonObject,Z_Param_Overwrite);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execSetArrayField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_GET_TARRAY_REF(USIOJsonValue*,Z_Param_Out_InArray);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetArrayField(Z_Param_FieldName,Z_Param_Out_InArray);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execGetArrayField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<USIOJsonValue*>*)Z_Param__Result=P_THIS->GetArrayField(Z_Param_FieldName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execSetField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_GET_OBJECT(USIOJsonValue,Z_Param_JsonValue);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetField(Z_Param_FieldName,Z_Param_JsonValue);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execGetField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJsonValue**)Z_Param__Result=P_THIS->GetField(Z_Param_FieldName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execRemoveField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->RemoveField(Z_Param_FieldName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execHasField)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_FieldName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->HasField(Z_Param_FieldName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execGetFieldNames)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<FString>*)Z_Param__Result=P_THIS->GetFieldNames();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execDecodeJson)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_JsonString);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->DecodeJson(Z_Param_JsonString);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execEncodeJsonToSingleString)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(FString*)Z_Param__Result=P_THIS->EncodeJsonToSingleString();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execEncodeJson)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(FString*)Z_Param__Result=P_THIS->EncodeJson();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execReset)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Reset();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USIOJsonObject::execConstructJsonObject)
+	{
+		P_GET_OBJECT(UObject,Z_Param_WorldContextObject);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(USIOJsonObject**)Z_Param__Result=USIOJsonObject::ConstructJsonObject(Z_Param_WorldContextObject);
+		P_NATIVE_END;
+	}
 	void USIOJsonObject::StaticRegisterNativesUSIOJsonObject()
 	{
 		UClass* Class = USIOJsonObject::StaticClass();
@@ -272,7 +497,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetArrayField_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetArrayField_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_USIOJsonValue_NoRegister, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetArrayField_Statics::NewProp_FieldName_MetaData[] = {
@@ -322,7 +547,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetBinaryField_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetBinaryField_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetBinaryField_Statics::NewProp_FieldName_MetaData[] = {
@@ -372,7 +597,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetBoolArrayField_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetBoolArrayField_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField_Statics::NewProp_FieldName_MetaData[] = {
@@ -516,7 +741,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetFieldNames_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetFieldNames_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USIOJsonObject_GetFieldNames_Statics::NewProp_ReturnValue,
@@ -559,7 +784,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetNumberArrayField_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetNumberArrayField_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField_Statics::NewProp_FieldName_MetaData[] = {
@@ -656,7 +881,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetObjectArrayField_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetObjectArrayField_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_USIOJsonObject_NoRegister, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField_Statics::NewProp_FieldName_MetaData[] = {
@@ -753,7 +978,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetStringArrayField_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventGetStringArrayField_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_GetStringArrayField_Statics::NewProp_FieldName_MetaData[] = {
@@ -1022,7 +1247,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::NewProp_InArray = { "InArray", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventSetArrayField_Parms, InArray), METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::NewProp_InArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::NewProp_InArray_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::NewProp_InArray = { "InArray", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventSetArrayField_Parms, InArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::NewProp_InArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::NewProp_InArray_MetaData)) };
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::NewProp_InArray_Inner = { "InArray", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_USIOJsonValue_NoRegister, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetArrayField_Statics::NewProp_FieldName_MetaData[] = {
@@ -1080,7 +1305,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::NewProp_Bytes = { "Bytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventSetBinaryField_Parms, Bytes), METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::NewProp_Bytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::NewProp_Bytes_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::NewProp_Bytes = { "Bytes", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventSetBinaryField_Parms, Bytes), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::NewProp_Bytes_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::NewProp_Bytes_MetaData)) };
 	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::NewProp_Bytes_Inner = { "Bytes", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetBinaryField_Statics::NewProp_FieldName_MetaData[] = {
@@ -1138,7 +1363,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::NewProp_BoolArray = { "BoolArray", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventSetBoolArrayField_Parms, BoolArray), METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::NewProp_BoolArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::NewProp_BoolArray_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::NewProp_BoolArray = { "BoolArray", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventSetBoolArrayField_Parms, BoolArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::NewProp_BoolArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::NewProp_BoolArray_MetaData)) };
 	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::NewProp_BoolArray_Inner = { "BoolArray", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField_Statics::NewProp_FieldName_MetaData[] = {
@@ -1295,7 +1520,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::NewProp_NumberArray = { "NumberArray", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventSetNumberArrayField_Parms, NumberArray), METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::NewProp_NumberArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::NewProp_NumberArray_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::NewProp_NumberArray = { "NumberArray", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventSetNumberArrayField_Parms, NumberArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::NewProp_NumberArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::NewProp_NumberArray_MetaData)) };
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::NewProp_NumberArray_Inner = { "NumberArray", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField_Statics::NewProp_FieldName_MetaData[] = {
@@ -1400,7 +1625,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::NewProp_ObjectArray = { "ObjectArray", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventSetObjectArrayField_Parms, ObjectArray), METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::NewProp_ObjectArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::NewProp_ObjectArray_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::NewProp_ObjectArray = { "ObjectArray", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventSetObjectArrayField_Parms, ObjectArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::NewProp_ObjectArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::NewProp_ObjectArray_MetaData)) };
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::NewProp_ObjectArray_Inner = { "ObjectArray", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_USIOJsonObject_NoRegister, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField_Statics::NewProp_FieldName_MetaData[] = {
@@ -1505,7 +1730,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 		{ "NativeConst", "" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::NewProp_StringArray = { "StringArray", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventSetStringArrayField_Parms, StringArray), METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::NewProp_StringArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::NewProp_StringArray_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::NewProp_StringArray = { "StringArray", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SIOJsonObject_eventSetStringArrayField_Parms, StringArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::NewProp_StringArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::NewProp_StringArray_MetaData)) };
 	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::NewProp_StringArray_Inner = { "StringArray", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USIOJsonObject_SetStringArrayField_Statics::NewProp_FieldName_MetaData[] = {
@@ -1614,32 +1839,32 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 		{ &Z_Construct_UFunction_USIOJsonObject_DecodeJson, "DecodeJson" }, // 1880932230
 		{ &Z_Construct_UFunction_USIOJsonObject_EncodeJson, "EncodeJson" }, // 3006685419
 		{ &Z_Construct_UFunction_USIOJsonObject_EncodeJsonToSingleString, "EncodeJsonToSingleString" }, // 2898997273
-		{ &Z_Construct_UFunction_USIOJsonObject_GetArrayField, "GetArrayField" }, // 2489224167
-		{ &Z_Construct_UFunction_USIOJsonObject_GetBinaryField, "GetBinaryField" }, // 1413050307
-		{ &Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField, "GetBoolArrayField" }, // 2382886680
+		{ &Z_Construct_UFunction_USIOJsonObject_GetArrayField, "GetArrayField" }, // 864927296
+		{ &Z_Construct_UFunction_USIOJsonObject_GetBinaryField, "GetBinaryField" }, // 2075425838
+		{ &Z_Construct_UFunction_USIOJsonObject_GetBoolArrayField, "GetBoolArrayField" }, // 840143735
 		{ &Z_Construct_UFunction_USIOJsonObject_GetBoolField, "GetBoolField" }, // 2524430992
 		{ &Z_Construct_UFunction_USIOJsonObject_GetField, "GetField" }, // 2869241457
-		{ &Z_Construct_UFunction_USIOJsonObject_GetFieldNames, "GetFieldNames" }, // 2857727134
-		{ &Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField, "GetNumberArrayField" }, // 306788361
+		{ &Z_Construct_UFunction_USIOJsonObject_GetFieldNames, "GetFieldNames" }, // 259770025
+		{ &Z_Construct_UFunction_USIOJsonObject_GetNumberArrayField, "GetNumberArrayField" }, // 214649633
 		{ &Z_Construct_UFunction_USIOJsonObject_GetNumberField, "GetNumberField" }, // 1872354133
-		{ &Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField, "GetObjectArrayField" }, // 1558109913
+		{ &Z_Construct_UFunction_USIOJsonObject_GetObjectArrayField, "GetObjectArrayField" }, // 3991453252
 		{ &Z_Construct_UFunction_USIOJsonObject_GetObjectField, "GetObjectField" }, // 213964191
-		{ &Z_Construct_UFunction_USIOJsonObject_GetStringArrayField, "GetStringArrayField" }, // 2319791574
+		{ &Z_Construct_UFunction_USIOJsonObject_GetStringArrayField, "GetStringArrayField" }, // 2540995040
 		{ &Z_Construct_UFunction_USIOJsonObject_GetStringField, "GetStringField" }, // 869434672
 		{ &Z_Construct_UFunction_USIOJsonObject_HasField, "HasField" }, // 2663019015
 		{ &Z_Construct_UFunction_USIOJsonObject_MergeJsonObject, "MergeJsonObject" }, // 2451365381
 		{ &Z_Construct_UFunction_USIOJsonObject_RemoveField, "RemoveField" }, // 249383932
 		{ &Z_Construct_UFunction_USIOJsonObject_Reset, "Reset" }, // 1440101248
-		{ &Z_Construct_UFunction_USIOJsonObject_SetArrayField, "SetArrayField" }, // 3450556285
-		{ &Z_Construct_UFunction_USIOJsonObject_SetBinaryField, "SetBinaryField" }, // 756475090
-		{ &Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField, "SetBoolArrayField" }, // 1558778443
+		{ &Z_Construct_UFunction_USIOJsonObject_SetArrayField, "SetArrayField" }, // 959397595
+		{ &Z_Construct_UFunction_USIOJsonObject_SetBinaryField, "SetBinaryField" }, // 1684411599
+		{ &Z_Construct_UFunction_USIOJsonObject_SetBoolArrayField, "SetBoolArrayField" }, // 71828752
 		{ &Z_Construct_UFunction_USIOJsonObject_SetBoolField, "SetBoolField" }, // 2004887931
 		{ &Z_Construct_UFunction_USIOJsonObject_SetField, "SetField" }, // 2736556901
-		{ &Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField, "SetNumberArrayField" }, // 3014424576
+		{ &Z_Construct_UFunction_USIOJsonObject_SetNumberArrayField, "SetNumberArrayField" }, // 456572633
 		{ &Z_Construct_UFunction_USIOJsonObject_SetNumberField, "SetNumberField" }, // 1951384273
-		{ &Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField, "SetObjectArrayField" }, // 1781591330
+		{ &Z_Construct_UFunction_USIOJsonObject_SetObjectArrayField, "SetObjectArrayField" }, // 2034519358
 		{ &Z_Construct_UFunction_USIOJsonObject_SetObjectField, "SetObjectField" }, // 1305795845
-		{ &Z_Construct_UFunction_USIOJsonObject_SetStringArrayField, "SetStringArrayField" }, // 2166230899
+		{ &Z_Construct_UFunction_USIOJsonObject_SetStringArrayField, "SetStringArrayField" }, // 539734360
 		{ &Z_Construct_UFunction_USIOJsonObject_SetStringField, "SetStringField" }, // 242685019
 	};
 #if WITH_METADATA
@@ -1679,7 +1904,7 @@ void EmptyLinkFunctionForGeneratedCodeSIOJsonObject() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USIOJsonObject, 3871475217);
+	IMPLEMENT_CLASS(USIOJsonObject, 2264944918);
 	template<> SIOJSON_API UClass* StaticClass<USIOJsonObject>()
 	{
 		return USIOJsonObject::StaticClass();

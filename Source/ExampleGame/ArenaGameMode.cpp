@@ -41,10 +41,10 @@ void AArenaGameMode::RestartPlayer(AController* NewPlayer)
 		if (myPlayerState)
 		{
 
-			static UProperty* MaxHealthProperty = FindFieldChecked<UProperty>(UMyAttributeSet::StaticClass(), GET_MEMBER_NAME_CHECKED(UMyAttributeSet, MaxHealth));
+			static FProperty* MaxHealthProperty = FindFieldChecked<FProperty>(UMyAttributeSet::StaticClass(), GET_MEMBER_NAME_CHECKED(UMyAttributeSet, MaxHealth));
 			float maxHealthValue = myPlayerState->GetAbilitySystemComponent()->GetNumericAttributeBase(FGameplayAttribute(MaxHealthProperty));
 
-			static UProperty* HealthProperty = FindFieldChecked<UProperty>(UMyAttributeSet::StaticClass(), GET_MEMBER_NAME_CHECKED(UMyAttributeSet, Health));
+			static FProperty* HealthProperty = FindFieldChecked<FProperty>(UMyAttributeSet::StaticClass(), GET_MEMBER_NAME_CHECKED(UMyAttributeSet, Health));
 			myPlayerState->GetAbilitySystemComponent()->SetNumericAttributeBase(FGameplayAttribute(HealthProperty), maxHealthValue);
 		}
 

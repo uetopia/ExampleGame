@@ -22,9 +22,10 @@ class EXAMPLEGAME_API UMyAttributeSet : public UAttributeSet
 	UPROPERTY(Category = "Attribute", EditAnywhere, ReplicatedUsing = OnRep_Health, BlueprintReadWrite)
 		float Health;
 	UFUNCTION()
-		void OnRep_Health()
+		void OnRep_Health(float OldHealth)
 	{
-		GAMEPLAYATTRIBUTE_REPNOTIFY(UMyAttributeSet, Health);
+		// changed in 4.25 takes 3 args now with the "old" value
+		GAMEPLAYATTRIBUTE_REPNOTIFY(UMyAttributeSet, Health, OldHealth);
 	}
 
 	//UPROPERTY(Replicated)
@@ -33,9 +34,10 @@ class EXAMPLEGAME_API UMyAttributeSet : public UAttributeSet
 	UPROPERTY(Category = "Attribute", EditAnywhere, ReplicatedUsing = OnRep_MaxHealth, BlueprintReadWrite)
 		float MaxHealth;
 	UFUNCTION()
-		void OnRep_MaxHealth()
+		void OnRep_MaxHealth(float OldMaxHealth)
 	{
-		GAMEPLAYATTRIBUTE_REPNOTIFY(UMyAttributeSet, MaxHealth);
+		// changed in 4.25 takes 3 args now with the "old" value
+		GAMEPLAYATTRIBUTE_REPNOTIFY(UMyAttributeSet, MaxHealth, OldMaxHealth);
 	}
 
 	//UPROPERTY(Replicated)
@@ -44,9 +46,10 @@ class EXAMPLEGAME_API UMyAttributeSet : public UAttributeSet
 	UPROPERTY(Category = "Attribute", EditAnywhere, ReplicatedUsing = OnRep_AttackPower, BlueprintReadWrite)
 		float AttackPower;
 	UFUNCTION()
-		void OnRep_AttackPower()
+		void OnRep_AttackPower(float OldAttackPower)
 	{
-		GAMEPLAYATTRIBUTE_REPNOTIFY(UMyAttributeSet, AttackPower);
+		// changed in 4.25 takes 3 args now with the "old" value
+		GAMEPLAYATTRIBUTE_REPNOTIFY(UMyAttributeSet, AttackPower, OldAttackPower);
 	}
 
 	void PreAttributeBaseChange(const FGameplayAttribute& Attribute, float& NewValue) const override;

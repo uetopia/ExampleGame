@@ -1,4 +1,4 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Copyright Epic Games, Inc. All Rights Reserved.
 /*===========================================================================
 	Generated code exported from UnrealHeaderTool.
 	DO NOT modify this manually! Edit the corresponding .h files instead!
@@ -239,7 +239,7 @@ static struct FScriptStruct_SIOJEditorPlugin_StaticRegisterNativesFSIOJ_NamedTyp
 		{ "ModuleRelativePath", "Public/SIOJ_BreakJson.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_USIOJ_BreakJson_Statics::NewProp_Outputs = { "Outputs", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USIOJ_BreakJson, Outputs), METADATA_PARAMS(Z_Construct_UClass_USIOJ_BreakJson_Statics::NewProp_Outputs_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_USIOJ_BreakJson_Statics::NewProp_Outputs_MetaData)) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_USIOJ_BreakJson_Statics::NewProp_Outputs = { "Outputs", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USIOJ_BreakJson, Outputs), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_USIOJ_BreakJson_Statics::NewProp_Outputs_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_USIOJ_BreakJson_Statics::NewProp_Outputs_MetaData)) };
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_USIOJ_BreakJson_Statics::NewProp_Outputs_Inner = { "Outputs", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UScriptStruct_FSIOJ_NamedType, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_USIOJ_BreakJson_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USIOJ_BreakJson_Statics::NewProp_Outputs,
@@ -272,7 +272,7 @@ static struct FScriptStruct_SIOJEditorPlugin_StaticRegisterNativesFSIOJ_NamedTyp
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USIOJ_BreakJson, 713006419);
+	IMPLEMENT_CLASS(USIOJ_BreakJson, 3110172855);
 	template<> SIOJEDITORPLUGIN_API UClass* StaticClass<USIOJ_BreakJson>()
 	{
 		return USIOJ_BreakJson::StaticClass();

@@ -1,4 +1,4 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Copyright Epic Games, Inc. All Rights Reserved.
 /*===========================================================================
 	Generated code exported from UnrealHeaderTool.
 	DO NOT modify this manually! Edit the corresponding .h files instead!
@@ -25,16 +25,9 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 	SOCKETIOCLIENT_API UClass* Z_Construct_UClass_USocketIOClientComponent_NoRegister();
 	SOCKETIOCLIENT_API UClass* Z_Construct_UClass_USocketIOClientComponent();
 	ENGINE_API UClass* Z_Construct_UClass_UActorComponent();
-	SOCKETIOCLIENT_API UFunction* Z_Construct_UFunction_USocketIOClientComponent_BindEvent();
-	SOCKETIOCLIENT_API UFunction* Z_Construct_UFunction_USocketIOClientComponent_BindEventToFunction();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
 	SOCKETIOCLIENT_API UEnum* Z_Construct_UEnum_SocketIOClient_ESIOThreadOverrideOption();
-	SOCKETIOCLIENT_API UFunction* Z_Construct_UFunction_USocketIOClientComponent_Connect();
 	SIOJSON_API UClass* Z_Construct_UClass_USIOJsonObject_NoRegister();
-	SOCKETIOCLIENT_API UFunction* Z_Construct_UFunction_USocketIOClientComponent_Disconnect();
-	SOCKETIOCLIENT_API UFunction* Z_Construct_UFunction_USocketIOClientComponent_Emit();
-	SOCKETIOCLIENT_API UFunction* Z_Construct_UFunction_USocketIOClientComponent_EmitWithCallBack();
-	SOCKETIOCLIENT_API UFunction* Z_Construct_UFunction_USocketIOClientComponent_EmitWithGraphCallBack();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FLatentActionInfo();
 // End Cross Module References
 	struct Z_Construct_UDelegateFunction_SocketIOClient_SIOConnectionProblemSignature__DelegateSignature_Statics
@@ -239,6 +232,80 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UDelegateFunction_SocketIOClient_SIOCEventSignature__DelegateSignature_Statics::FuncParams);
 		}
 		return ReturnFunction;
+	}
+	DEFINE_FUNCTION(USocketIOClientComponent::execBindEventToFunction)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_EventName);
+		P_GET_PROPERTY(FStrProperty,Z_Param_FunctionName);
+		P_GET_OBJECT(UObject,Z_Param_Target);
+		P_GET_PROPERTY(FStrProperty,Z_Param_Namespace);
+		P_GET_PROPERTY(FByteProperty,Z_Param_ThreadOverride);
+		P_GET_OBJECT(UObject,Z_Param_WorldContextObject);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->BindEventToFunction(Z_Param_EventName,Z_Param_FunctionName,Z_Param_Target,Z_Param_Namespace,ESIOThreadOverrideOption(Z_Param_ThreadOverride),Z_Param_WorldContextObject);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USocketIOClientComponent::execBindEvent)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_EventName);
+		P_GET_PROPERTY(FStrProperty,Z_Param_Namespace);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->BindEvent(Z_Param_EventName,Z_Param_Namespace);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USocketIOClientComponent::execEmitWithGraphCallBack)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_EventName);
+		P_GET_STRUCT(FLatentActionInfo,Z_Param_LatentInfo);
+		P_GET_OBJECT_REF(USIOJsonValue,Z_Param_Out_Result);
+		P_GET_OBJECT(USIOJsonValue,Z_Param_Message);
+		P_GET_PROPERTY(FStrProperty,Z_Param_Namespace);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->EmitWithGraphCallBack(Z_Param_EventName,Z_Param_LatentInfo,Z_Param_Out_Result,Z_Param_Message,Z_Param_Namespace);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USocketIOClientComponent::execEmitWithCallBack)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_EventName);
+		P_GET_OBJECT(USIOJsonValue,Z_Param_Message);
+		P_GET_PROPERTY(FStrProperty,Z_Param_CallbackFunctionName);
+		P_GET_OBJECT(UObject,Z_Param_Target);
+		P_GET_PROPERTY(FStrProperty,Z_Param_Namespace);
+		P_GET_OBJECT(UObject,Z_Param_WorldContextObject);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->EmitWithCallBack(Z_Param_EventName,Z_Param_Message,Z_Param_CallbackFunctionName,Z_Param_Target,Z_Param_Namespace,Z_Param_WorldContextObject);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USocketIOClientComponent::execEmit)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_EventName);
+		P_GET_OBJECT(USIOJsonValue,Z_Param_Message);
+		P_GET_PROPERTY(FStrProperty,Z_Param_Namespace);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Emit(Z_Param_EventName,Z_Param_Message,Z_Param_Namespace);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USocketIOClientComponent::execDisconnect)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Disconnect();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(USocketIOClientComponent::execConnect)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_InAddressAndPort);
+		P_GET_OBJECT(USIOJsonObject,Z_Param_Query);
+		P_GET_OBJECT(USIOJsonObject,Z_Param_Headers);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Connect(Z_Param_InAddressAndPort,Z_Param_Query,Z_Param_Headers);
+		P_NATIVE_END;
 	}
 	void USocketIOClientComponent::StaticRegisterNativesUSocketIOClientComponent()
 	{
@@ -1061,7 +1128,7 @@ void EmptyLinkFunctionForGeneratedCodeSocketIOClientComponent() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USocketIOClientComponent, 1634465444);
+	IMPLEMENT_CLASS(USocketIOClientComponent, 1751888883);
 	template<> SOCKETIOCLIENT_API UClass* StaticClass<USocketIOClientComponent>()
 	{
 		return USocketIOClientComponent::StaticClass();

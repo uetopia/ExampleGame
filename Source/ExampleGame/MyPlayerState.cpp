@@ -337,7 +337,10 @@ void AMyPlayerState::ReadCustomTexture_HttpRequestComplete(FHttpRequestPtr HttpR
 				if (ImageWrapper.IsValid() && ImageWrapper->SetCompressed(FileData.GetData(), FileData.Num()))
 				{
 					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] ReadCustomTexture_HttpRequestComplete. ImageWrapper->SetCompressed "));
-					const TArray<uint8>* UncompressedBGRA = NULL;
+					//changed in 4.25
+					// const TArray<uint8>* UncompressedBGRA = NULL;
+					TArray<uint8> UncompressedBGRA;
+					
 					if (ImageWrapper->GetRaw(ERGBFormat::BGRA, 8, UncompressedBGRA))
 					{
 						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] ReadCustomTexture_HttpRequestComplete. ImageWrapper->GetRaw "));
@@ -348,7 +351,11 @@ void AMyPlayerState::ReadCustomTexture_HttpRequestComplete(FHttpRequestPtr HttpR
 						LoadedTextures[LoadedTextureIndex]->PlatformData->SetNumSlices(1);
 						LoadedTextures[LoadedTextureIndex]->NeverStream = true;
 						void* TextureData = LoadedTextures[LoadedTextureIndex]->PlatformData->Mips[0].BulkData.Lock(LOCK_READ_WRITE);
-						FMemory::Memcpy(TextureData, UncompressedBGRA->GetData(), UncompressedBGRA->Num());
+
+						//changed in 4.25
+						//FMemory::Memcpy(TextureData, UncompressedBGRA->GetData(), UncompressedBGRA->Num());
+						FMemory::Memcpy(TextureData, UncompressedBGRA.GetData(), UncompressedBGRA.Num());
+
 						LoadedTextures[LoadedTextureIndex]->PlatformData->Mips[0].BulkData.Unlock();
 						LoadedTextures[LoadedTextureIndex]->UpdateResource();
 					}

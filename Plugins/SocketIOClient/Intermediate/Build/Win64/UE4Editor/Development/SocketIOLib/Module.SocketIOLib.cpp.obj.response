@@ -25,14 +25,15 @@
 /Zo
 /Zp8
 /wd4463
-/wd4838
 /we4668
+/wd4244
+/wd4838
 /I .
-/I C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\SocketIOLib\Private
-/I C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\SocketIOLib\Private\internal
-/I C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\websocketpp
-/I C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include
-/I C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include
+/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\SocketIOLib\Private
+/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\SocketIOLib\Private\internal
+/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\ThirdParty\websocketpp
+/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\ThirdParty\asio\asio\include
+/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\ThirdParty\rapidjson\include
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\CoreUObject
 /I Runtime
 /I Runtime\CoreUObject\Public
@@ -51,10 +52,14 @@
 /I Runtime\Core\Public\Algo\Impl
 /I Runtime\Core\Public\Async
 /I Runtime\Core\Public\Clang
+/I Runtime\Core\Public\Compression
 /I Runtime\Core\Public\Concepts
 /I Runtime\Core\Public\Containers
 /I Runtime\Core\Public\Delegates
+/I Runtime\Core\Public\Experimental
+/I Runtime\Core\Public\Experimental\Containers
 /I Runtime\Core\Public\Features
+/I Runtime\Core\Public\FileCache
 /I Runtime\Core\Public\FramePro
 /I Runtime\Core\Public\GenericPlatform
 /I Runtime\Core\Public\HAL
@@ -75,6 +80,7 @@
 /I Runtime\Core\Public\Serialization\Csv
 /I Runtime\Core\Public\Serialization\Formatters
 /I Runtime\Core\Public\Stats
+/I Runtime\Core\Public\String
 /I Runtime\Core\Public\Templates
 /I Runtime\Core\Public\Traits
 /I Runtime\Core\Public\UObject
@@ -82,6 +88,7 @@
 /I Runtime\TraceLog
 /I Runtime\TraceLog\Public\Trace
 /I Runtime\TraceLog\Public\Trace\Detail
+/I Runtime\TraceLog\Public\Trace\Detail\Protocols
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\Engine
 /I Runtime\Engine\Classes
 /I Runtime\Engine\Public
@@ -109,6 +116,7 @@
 /I Runtime\Engine\Public\ProfilingDebugging
 /I Runtime\Engine\Public\Rendering
 /I Runtime\Engine\Public\Slate
+/I Runtime\Engine\Public\Streaming
 /I Runtime\Engine\Public\Subsystems
 /I Runtime\Engine\Public\Tests
 /I Runtime\Engine\Public\VisualLogger
@@ -122,9 +130,13 @@
 /I Runtime\Net\Core\Public\Net\Core
 /I Runtime\Net\Core\Public\Net\Core\Analytics
 /I Runtime\Net\Core\Public\Net\Core\Misc
+/I Runtime\Net\Core\Public\Net\Core\PushModel
+/I Runtime\Net\Core\Public\Net\Core\Trace
+/I Runtime\Net\Core\Public\Net\Core\Trace\Private
 /I Runtime\ApplicationCore\Public
 /I Runtime\ApplicationCore
 /I Runtime\ApplicationCore\Public\GenericPlatform
+/I Runtime\ApplicationCore\Public\GenericPlatform\Accessibility
 /I Runtime\ApplicationCore\Public\HAL
 /I Runtime\ApplicationCore\Public\Windows
 /I Runtime\ApplicationCore\Public\Windows\Accessibility
@@ -198,6 +210,12 @@
 /I Runtime\RenderCore\Public
 /I Runtime\RenderCore
 /I Runtime\RenderCore\Public\ProfilingDebugging
+/I Runtime\Analytics
+/I Runtime\Analytics\AnalyticsET\Public
+/I Runtime\Analytics\AnalyticsET
+/I Runtime\Analytics\Analytics\Public
+/I Runtime\Analytics\Analytics
+/I Runtime\Analytics\Analytics\Public\Interfaces
 /I Runtime\Sockets\Public
 /I Runtime\Sockets
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\AssetRegistry
@@ -250,7 +268,11 @@
 /I Runtime\Experimental\Chaos\Public
 /I Runtime\Experimental\Chaos
 /I Runtime\Experimental\Chaos\Public\Chaos
+/I Runtime\Experimental\Chaos\Public\Chaos\Collision
+/I Runtime\Experimental\Chaos\Public\Chaos\Evolution
 /I Runtime\Experimental\Chaos\Public\Chaos\Framework
+/I Runtime\Experimental\Chaos\Public\Chaos\Joint
+/I Runtime\Experimental\Chaos\Public\Chaos\Particle
 /I Runtime\Experimental\ChaosCore\Public
 /I Runtime\Experimental\ChaosCore
 /I Runtime\Experimental\ChaosCore\Public\Chaos
@@ -267,6 +289,11 @@
 /I Runtime\SignalProcessing
 /I Runtime\SignalProcessing\Public\DSP
 /I Runtime\SignalProcessing\Public\DSP\Encoders
+/I ..\Intermediate\Build\Win64\UE4Editor\Inc\AudioExtensions
+/I Runtime\AudioExtensions\Public
+/I Runtime\AudioExtensions
+/I Runtime\AudioMixerCore\Public
+/I Runtime\AudioMixerCore
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\UnrealEd
 /I Editor
 /I Programs\UnrealLightmass\Public
@@ -287,8 +314,6 @@
 /I Editor\UnrealEd\Public\Tests
 /I Editor\UnrealEd\Public\Toolkits
 /I Editor\UnrealEd\Public\Tools
-/I Editor\BspMode\Public
-/I Editor\BspMode
 /I Developer
 /I Developer\DirectoryWatcher\Public
 /I Developer\DirectoryWatcher
@@ -347,19 +372,15 @@
 /I Editor\AudioEditor
 /I Editor\AudioEditor\Public\AssetTypeActions
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\AudioMixer
-/I Runtime\AudioMixer\Private
 /I Runtime\AudioMixer\Classes
 /I Runtime\AudioMixer\Public
 /I Runtime\AudioMixer
 /I Runtime\AudioMixer\Public\Components
-/I Runtime\AudioMixer\Public\DSP
 /I Runtime\AudioMixer\Public\SoundFileIO
 /I Developer\TargetPlatform\Public
 /I Developer\TargetPlatform
 /I Developer\TargetPlatform\Public\Common
 /I Developer\TargetPlatform\Public\Interfaces
-/I ThirdParty\libSampleRate\Public
-/I ThirdParty\libSampleRate
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\LevelEditor
 /I Editor\LevelEditor\Public
 /I Editor\LevelEditor
@@ -406,6 +427,8 @@
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\ContentBrowser
 /I Editor\ContentBrowser\Public
 /I Editor\ContentBrowser
+/I ThirdParty\libSampleRate\Public
+/I ThirdParty\libSampleRate
 /I Runtime\NetworkFileSystem\Public
 /I Runtime\NetworkFileSystem
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\UMG
@@ -451,9 +474,6 @@
 /I Runtime\NavigationSystem\Public\NavFilters
 /I Runtime\NavigationSystem\Public\NavGraph
 /I Runtime\NavigationSystem\Public\NavMesh
-/I ..\Intermediate\Build\Win64\UE4Editor\Inc\MeshDescriptionOperations
-/I Developer\MeshDescriptionOperations\Public
-/I Developer\MeshDescriptionOperations
 /I Developer\MeshBuilder\Public
 /I Developer\MeshBuilder
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\MaterialShaderQualitySettings
@@ -507,7 +527,6 @@
 /I Editor\Kismet\Classes
 /I Editor\Kismet\Public
 /I Editor\Kismet
-/I Editor\Kismet\Public\Nodes
 /I Editor\Kismet\Public\WorkflowOrientedApp
 /I Runtime\PhysicsSQ\Public
 /I Runtime\PhysicsSQ
@@ -527,11 +546,9 @@
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\ClothingSystemRuntimeInterface
 /I Runtime\ClothingSystemRuntimeInterface\Public
 /I Runtime\ClothingSystemRuntimeInterface
-/I Runtime\AudioMixerCore\Public
-/I Runtime\AudioMixerCore
-/I C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source
-/I C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\SocketIOLib\Public
-/I C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Source\SocketIOLib
+/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source
+/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\SocketIOLib\Public
+/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\SocketIOLib
 /I ThirdParty\PhysX3\PxShared\include
 /I ThirdParty\PhysX3\PxShared\include\cudamanager
 /I ThirdParty\PhysX3\PxShared\include\filebuf
@@ -561,12 +578,12 @@
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"
-/FI"C:\UE424_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.RTTI.h"
-/Yu"C:\UE424_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.RTTI.h"
-/Fp"C:\UE424_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.RTTI.h.pch"
-"C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SocketIOLib\Module.SocketIOLib.cpp"
-/FI"C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SocketIOLib\Definitions.SocketIOLib.h"
-/Fo"C:\ue_project_build_tests\ExampleGame-4.24\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SocketIOLib\Module.SocketIOLib.cpp.obj"
+/FI"C:\UE425\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.RTTI.h"
+/Yu"C:\UE425\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.RTTI.h"
+/Fp"C:\UE425\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.RTTI.h.pch"
+"C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SocketIOLib\Module.SocketIOLib.cpp"
+/FI"C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SocketIOLib\Definitions.SocketIOLib.h"
+/Fo"C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Development\SocketIOLib\Module.SocketIOLib.cpp.obj"
 /TP
 /GR
 /W4
