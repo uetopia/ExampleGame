@@ -71,7 +71,9 @@ AMyPlayerController::AMyPlayerController()
 	PartyInterface->AddOnPartyJoinedDelegate_Handle(FOnPartyJoinedDelegate::CreateUObject(this, &AMyPlayerController::OnPartyJoinedComplete));
 	PartyInterface->AddOnPartyInviteReceivedDelegate_Handle(FOnPartyInviteReceivedDelegate::CreateUObject(this, &AMyPlayerController::OnPartyInviteReceivedComplete));
 	PartyInterface->AddOnPartyInviteResponseReceivedDelegate_Handle(FOnPartyInviteResponseReceivedDelegate::CreateUObject(this, &AMyPlayerController::OnPartyInviteResponseReceivedComplete));
+
 	PartyInterface->AddOnPartyDataReceivedDelegate_Handle(FOnPartyDataReceivedDelegate::CreateUObject(this, &AMyPlayerController::OnPartyDataReceivedComplete));
+
 
 	ChatInterface->AddOnChatRoomMessageReceivedDelegate_Handle(FOnChatRoomMessageReceivedDelegate::CreateUObject(this, &AMyPlayerController::OnChatRoomMessageReceivedComplete));
 	ChatInterface->AddOnChatPrivateMessageReceivedDelegate_Handle(FOnChatPrivateMessageReceivedDelegate::CreateUObject(this, &AMyPlayerController::OnChatPrivateMessageReceivedComplete));
@@ -3092,7 +3094,10 @@ void AMyPlayerController::ServerAttemptShardSwitch_Implementation(const FString&
 		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [ServerAttemptTravel_Implementation] Requesting Transfer  "));
 		UMyGameInstance* gameInstance = Cast<UMyGameInstance>(World->GetGameInstance());
 		AMyPlayerState* myPlayerState = Cast<AMyPlayerState>(PlayerState);
-		gameInstance->TransferPlayer(ShardKeyId, PlayerState->PlayerId, false, true);
+
+		// changed in 4.25
+		//gameInstance->TransferPlayer(ShardKeyId, PlayerState->PlayerId, false, true);
+		gameInstance->TransferPlayer(ShardKeyId, PlayerState->GetPlayerId(), false, true);
 	}
 }
 

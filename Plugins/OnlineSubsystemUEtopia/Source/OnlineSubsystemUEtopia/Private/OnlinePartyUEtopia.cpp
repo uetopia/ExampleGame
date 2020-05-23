@@ -341,6 +341,7 @@ bool FOnlinePartyUEtopia::UpdateParty(const FUniqueNetId& LocalUserId, const FOn
 bool FOnlinePartyUEtopia::JoinParty(const FUniqueNetId& LocalUserId, const IOnlinePartyJoinInfo& OnlinePartyJoinInfo, const FOnJoinPartyComplete& Delegate /*= FOnJoinPartyComplete() */)
 {
 	//Delegate.ExecuteIfBound(LocalUserNum, false, ListName, FString(TEXT("DeleteFriendsList() is not supported")));
+
 	return false;
 }
 

@@ -51,7 +51,9 @@ AMyRewardItemActor::AMyRewardItemActor(const FObjectInitializer& ObjectInitializ
 	bReplicates = true;
 	PrimaryActorTick.bCanEverTick = true;
 
-	bReplicateMovement = true;
+	// changed in 4.25
+	//bReplicateMovement = true;
+	SetReplicateMovement(true);
 	RotationSpeed = 115.0f;
 }
 

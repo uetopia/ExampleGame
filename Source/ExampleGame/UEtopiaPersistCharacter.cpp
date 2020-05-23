@@ -53,7 +53,11 @@ AUEtopiaPersistCharacter::AUEtopiaPersistCharacter(const FObjectInitializer& Obj
 
 
 	bReplicates = true;
-	bReplicateMovement = true;
+
+	// changed in 4.25
+	// bReplicateMovement = true;
+	SetReplicateMovement(true);
+	
 
 	// mouse showing default true
 	bMouseShowing = true;
@@ -202,8 +206,8 @@ void AUEtopiaPersistCharacter::Restart()
 	{
 		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaCompetitiveCharacter] [Restart] - Server "));
 
-		static UProperty* HealthProperty = FindFieldChecked<UProperty>(UMyAttributeSet::StaticClass(), GET_MEMBER_NAME_CHECKED(UMyAttributeSet, Health));
-		static UProperty* MaxHealthProperty = FindFieldChecked<UProperty>(UMyAttributeSet::StaticClass(), GET_MEMBER_NAME_CHECKED(UMyAttributeSet, MaxHealth));
+		static FProperty* HealthProperty = FindFieldChecked<FProperty>(UMyAttributeSet::StaticClass(), GET_MEMBER_NAME_CHECKED(UMyAttributeSet, Health));
+		static FProperty* MaxHealthProperty = FindFieldChecked<FProperty>(UMyAttributeSet::StaticClass(), GET_MEMBER_NAME_CHECKED(UMyAttributeSet, MaxHealth));
 		float maxHealth = GetAbilitySystemComponent()->GetNumericAttributeBase(MaxHealthProperty);
 		GetAbilitySystemComponent()->SetNumericAttributeBase(FGameplayAttribute(HealthProperty), maxHealth);
 
@@ -539,7 +543,10 @@ void AUEtopiaPersistCharacter::ServerAttemptTravel_Implementation(bool checkOnly
 			if (World) {
 				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [ServerAttemptTravel_Implementation] Requesting Transfer  "));
 				UMyGameInstance* gameInstance = Cast<UMyGameInstance>(World->GetGameInstance());
-				gameInstance->TransferPlayer(ObjectInFocus->serverKeyId, GetPlayerState()->PlayerId, checkOnly, false);
+
+				//changed in 4.25
+				// gameInstance->TransferPlayer(ObjectInFocus->serverKeyId, GetPlayerState()->PlayerId, checkOnly, false);
+				gameInstance->TransferPlayer(ObjectInFocus->serverKeyId, GetPlayerState()->GetPlayerId(), checkOnly, false);
 
 			}
 		}
@@ -994,7 +1001,9 @@ void AUEtopiaPersistCharacter::Die(AController* Killer, AActor* DamageCauser, co
 			AMyPlayerState* PlayerS = Cast<AMyPlayerState>(this->GetPlayerState());
 			AMyPlayerState* KillerPlayerS = Cast<AMyPlayerState>(Killer->PlayerState);
 
-			gameInstance->RecordKill(KillerPlayerS->PlayerId, PlayerS->PlayerId);
+			// changed in 4.25
+			//gameInstance->RecordKill(KillerPlayerS->PlayerId, PlayerS->PlayerId);
+			gameInstance->RecordKill(KillerPlayerS->GetPlayerId(), PlayerS->GetPlayerId());
 		}
 	}
 
@@ -1020,7 +1029,10 @@ void AUEtopiaPersistCharacter::PlayDying_Implementation()
 	TearOff();
 	bIsDying = true;
 	//bTearOff = true;
-	bReplicateMovement = false;
+	
+	// changed in 4.25
+	//bReplicateMovement = false;
+	SetReplicateMovement(false);
 
 	SetLifeSpan(5.0f);
 

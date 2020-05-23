@@ -298,6 +298,11 @@ void FOnlineFriendsUEtopia::SetFriendAlias(int32 LocalUserNum, const FUniqueNetI
 	return;
 }
 
+void FOnlineFriendsUEtopia::DeleteFriendAlias(int32 LocalUserNum, const FUniqueNetId& FriendId, const FString& ListName, const FOnDeleteFriendAliasComplete& Delegate /*= FOnDeleteFriendAliasComplete() */)
+{
+	return;
+}
+
 bool FOnlineFriendsUEtopia::DeleteFriend(int32 LocalUserNum, const FUniqueNetId& FriendId, const FString& ListName)
 {
 	TriggerOnDeleteFriendCompleteDelegates(LocalUserNum, false, FriendId, ListName, FString(TEXT("DeleteFriend() is not supported")));

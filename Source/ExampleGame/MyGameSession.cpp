@@ -582,11 +582,17 @@ void AMyGameSession::RegisterPlayer(APlayerController* NewPlayer, const TSharedP
 	{
 		// Set the player's ID.
 		check(NewPlayer->PlayerState);
-		NewPlayer->PlayerState->PlayerId = GetNextPlayerID();
+
+		// changed in 4.25
+		//NewPlayer->PlayerState->PlayerId = GetNextPlayerID();
+		NewPlayer->PlayerState->SetPlayerId(GetNextPlayerID());
 		NewPlayer->PlayerState->SetUniqueId(UniqueId);
 		NewPlayer->PlayerState->RegisterPlayerWithSession(bWasFromInvite);
 
-		int32 playerId = NewPlayer->PlayerState->PlayerId;
+		// changed in 4.25
+		//int32 playerId = NewPlayer->PlayerState->PlayerId;
+		int32 playerId = NewPlayer->PlayerState->GetPlayerId();
+
 		//FString playerUniqueId = UniqueId->ToString(); // assertion fail
 
 		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyGameSession] RegisterPlayer playerId: %d"), playerId);

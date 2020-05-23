@@ -75,7 +75,10 @@ AMySpawnableObject::AMySpawnableObject(const FObjectInitializer& ObjectInitializ
 	//Cube1->SetupAttachment(RootComponent);
 
 	bReplicates = true;
-	bReplicateMovement = true;
+
+	// changed in 4.25
+	//bReplicateMovement = true;
+	SetReplicateMovement(true);
 
 	// Rama Save
 	OurSaveComponent = CreateDefaultSubobject<URamaSaveComponent>(TEXT("Save System"));

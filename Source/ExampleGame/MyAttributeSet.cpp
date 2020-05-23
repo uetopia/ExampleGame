@@ -89,13 +89,13 @@ void UMyAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectModC
 
 FGameplayAttribute UMyAttributeSet::HealthAttribute()
 {
-	static UProperty* Property = FindFieldChecked<UProperty>(UMyAttributeSet::StaticClass(), GET_MEMBER_NAME_CHECKED(UMyAttributeSet, Health));
+	static FProperty* Property = FindFieldChecked<FProperty>(UMyAttributeSet::StaticClass(), GET_MEMBER_NAME_CHECKED(UMyAttributeSet, Health));
 	return FGameplayAttribute(Property);
 }
 
 FGameplayAttribute UMyAttributeSet::MaxHealthAttribute()
 {
-	static UProperty* Property = FindFieldChecked<UProperty>(UMyAttributeSet::StaticClass(), GET_MEMBER_NAME_CHECKED(UMyAttributeSet, MaxHealth));
+	static FProperty* Property = FindFieldChecked<FProperty>(UMyAttributeSet::StaticClass(), GET_MEMBER_NAME_CHECKED(UMyAttributeSet, MaxHealth));
 	return FGameplayAttribute(Property);
 }
 
