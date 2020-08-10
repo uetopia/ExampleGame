@@ -43,6 +43,10 @@ AMyPlayerController::AMyPlayerController()
 	APlayerController()
 {
 	//... custom defaults ...
+
+	// Testing 8/6/20 - this should only run on the client.
+
+#if !UE_EDITOR
 	const auto OnlineSub = IOnlineSubsystem::Get();
 	check(OnlineSub);
 
@@ -85,6 +89,8 @@ AMyPlayerController::AMyPlayerController()
 	// Bind delegates into the OSS
 	OnReadFriendsListCompleteDelegate = FOnReadFriendsListComplete::CreateUObject(this, &AMyPlayerController::OnReadFriendsComplete);
 	OnCreatePartyCompleteDelegate = FOnCreatePartyComplete::CreateUObject(this, &AMyPlayerController::OnCreatePartyComplete);
+
+#endif
 
 	// Start a player as captain so they can join matchmaker queue without being in a party first
 	IAmCaptain = true;

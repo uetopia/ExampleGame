@@ -140,6 +140,10 @@ void UMyGameInstance::Init()
 
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] GAME INSTANCE INIT"));
 
+	// Testing 8/6/20 - this should only run on the client.
+
+#if UE_GAME
+
 	//IgnorePairingChangeForControllerId = -1;
 	CurrentConnectionStatus = EOnlineServerConnectionStatus::Connected;
 
@@ -175,7 +179,7 @@ void UMyGameInstance::Init()
 		GetWorld()->GetTimerManager().SetTimer(SubmitReportTimerHandle, this, &UMyGameInstance::SubmitReport, 60.0f, true);
 	}
 	
-
+#endif
 
 	MatchStarted = false;
 

@@ -97,8 +97,13 @@ void AUEtopiaPersistCharacter::PossessedBy(AController* NewController)
 	AMyPlayerController* playerC = Cast<AMyPlayerController>(Controller);
 	playerC->GrantCachedAbilities();
 	RemapAbilities();
+
+	// Testing 8/6/20 - this should only run on the client.
+
+#if !UE_EDITOR
 	playerC->ClientRequestChatChannelRefresh();
 	playerC->OnReadFriendsComplete(0, true, "default", "Success");
+#endif
 
 	//playerC->OnReadRecentPlayersComplete(&playerC->UniqueId.GetUniqueNetId(), "default", true, "Success");
 }
