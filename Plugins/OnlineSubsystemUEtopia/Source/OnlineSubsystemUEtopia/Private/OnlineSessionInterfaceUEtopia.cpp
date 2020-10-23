@@ -1455,7 +1455,12 @@ bool FOnlineSessionUEtopia::GetResolvedConnectString(FName SessionName, FString&
 	if (Session != NULL)
 	{
 		TSharedPtr<FOnlineSessionInfoUEtopia> SessionInfo = StaticCastSharedPtr<FOnlineSessionInfoUEtopia>(Session->SessionInfo);
-		bSuccess = GetConnectStringFromSessionInfo(SessionInfo, ConnectInfo);
+		//ok...  something is wrong in this 4.25 version
+		// the port is getting lost and set to zero.
+		// As a workaround, hardcode it to 7777 here.
+		// TODO remove this once Epic fixes it.
+		// bSuccess = GetConnectStringFromSessionInfo(SessionInfo, ConnectInfo);
+		bSuccess = GetConnectStringFromSessionInfo(SessionInfo, ConnectInfo, 7777);
 		if (!bSuccess)
 		{
 			UE_LOG_ONLINE(Warning, TEXT("Invalid session info for session %s in GetResolvedConnectString()"), *SessionName.ToString());
