@@ -79,6 +79,15 @@ public:
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "UETOPIA")
 	TArray<FMyServerShard> ServerShards;
 
+	/** Is loot VIA drops enabled this game mode?  */
+	UPROPERTY(EditDefaultsOnly, Replicated, BlueprintReadWrite, Category = "UEtopia")
+		bool bLootDropsEnabled;
+
+	/** Is the party leader allowed to change the loot settings in this game mode?  */
+	UPROPERTY(EditDefaultsOnly, Replicated, BlueprintReadWrite, Category = "UEtopia")
+		bool bPartyLeaderCanChangeLootSettings;
+
+
 	
 
 };

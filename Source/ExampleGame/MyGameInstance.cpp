@@ -401,6 +401,13 @@ void UMyGameInstance::GetServerInfoComplete(FHttpRequestPtr HttpRequest, FHttpRe
 
 						ConfigurationParseSuccess = ConfigurationJsonParsed->TryGetNumberField("maxPickupItemCount", maxPickupItemCount);
 						ConfigurationParseSuccess = ConfigurationJsonParsed->TryGetBoolField("combatEnabled", combatEnabled);
+
+						ConfigurationParseSuccess = ConfigurationJsonParsed->TryGetBoolField("bLootDropsEnabled", bLootDropsEnabled);
+						ConfigurationParseSuccess = ConfigurationJsonParsed->TryGetBoolField("bPartyLeaderCanChangeLootSettings", bPartyLeaderCanChangeLootSettings);
+
+						uetopiaGameState->bCombatEnabled = combatEnabled;
+						uetopiaGameState->bLootDropsEnabled = bLootDropsEnabled;
+						uetopiaGameState->bPartyLeaderCanChangeLootSettings = bPartyLeaderCanChangeLootSettings;
 					}
 
 				}
@@ -2041,6 +2048,10 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 
 				// set loaded state
 				PlayerController->PlayerDataLoaded = true;
+
+				// Set loot variables in playerState
+				playerS->bLootDropsEnabled = bLootDropsEnabled;
+				playerS->bPartyLeaderCanChangeLootSettings = bPartyLeaderCanChangeLootSettings;
 
 				// Only do this if competitive
 				if (UEtopiaMode == "competitive")
@@ -4789,6 +4800,126 @@ void UMyGameInstance::ClaimPlayerDropRequestComplete(FHttpRequestPtr HttpRequest
 }
 
 
+bool UMyGameInstance::CreatePlayerDrop(FString playerKeyId, FMyInventorySlot LootItem)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] CreatePlayerDrop"));
+
+	// This should only ever run on the server.  It is authenticated with the server key/secret.
+
+	FString nonceString = "10951350917635";
+	FString encryption = "off";  // Allowing unencrypted on sandbox for now.  
+
+	TSharedPtr<FJsonObject> PlayerJsonObj = MakeShareable(new FJsonObject);
+	PlayerJsonObj->SetStringField("nonce", "nonceString");
+	PlayerJsonObj->SetStringField("encryption", encryption);
+
+	// TODO set up the json for the drop
+
+	//TSharedPtr< FJsonObject > SlotObj = MakeShareable(new FJsonObject);
+	PlayerJsonObj->SetStringField("title", LootItem.itemTitle);
+	PlayerJsonObj->SetStringField("description", LootItem.itemDescription);
+	PlayerJsonObj->SetStringField("uiIcon", "Gear");
+	PlayerJsonObj->SetNumberField("Tier", LootItem.Tier);
+
+	// all of these other fields go inside a field called "data" which is just a json formatted string
+	// TODO - build up the data json first, then render it to text.
+
+	TSharedPtr<FJsonObject> DataJsonObj = MakeShareable(new FJsonObject);
+
+	DataJsonObj->SetNumberField("Quantity", 1);
+	DataJsonObj->SetNumberField("DTID", LootItem.DataTableId);
+	DataJsonObj->SetNumberField("Tier", LootItem.Tier);
+
+	// Deal with attributes
+	FString AttributesOutputString;
+	// Convert to json friendly array
+	TSharedPtr<FJsonObject> AttributesJsonObject = MakeShareable(new FJsonObject);
+	TArray< TSharedPtr<FJsonValue> > AttributesArray;
+
+	for (int attributeIndex = 0; attributeIndex < LootItem.Attributes.Num(); attributeIndex++)
+	{
+		//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [SaveGamePlayer] Found attribute"));
+
+		TSharedPtr< FJsonObject > AttributeObj = MakeShareable(new FJsonObject);
+		AttributeObj->SetNumberField(FString::FromInt(attributeIndex), LootItem.Attributes[attributeIndex]);
+		TSharedRef< FJsonValueObject > JsonValue = MakeShareable(new FJsonValueObject(AttributeObj));
+		AttributesArray.Add(JsonValue);
+	}
+
+	DataJsonObj->SetArrayField("attributes", AttributesArray);
+
+	FString DataOutputString;
+	TSharedRef< TJsonWriter<> > DataWriter = TJsonWriterFactory<>::Create(&DataOutputString);
+	FJsonSerializer::Serialize(DataJsonObj.ToSharedRef(), DataWriter);
+
+	PlayerJsonObj->SetStringField("data", DataOutputString);
+
+	FString JsonOutputString;
+	TSharedRef< TJsonWriter<> > Writer = TJsonWriterFactory<>::Create(&JsonOutputString);
+	FJsonSerializer::Serialize(PlayerJsonObj.ToSharedRef(), Writer);
+
+	// This is looking for GamePlayerKeyId, not PlayerKeyId - get it first
+	FMyActivePlayer* ActivePlayer = getPlayerByPlayerKey(playerKeyId);
+
+	if (ActivePlayer)
+	{
+
+		FString APIURI = "/api/v1/game/player/" + ActivePlayer->gamePlayerKeyId + "/drops/create";
+
+		// no access token required.  Server key/secret auth
+
+		bool requestSuccess = PerformJsonHttpRequest(&UMyGameInstance::ClaimPlayerDropRequestComplete, APIURI, JsonOutputString, "");
+		return requestSuccess;
+	}
+
+	return false;
+}
+
+void UMyGameInstance::CreatePlayerDropRequestComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded)
+{
+	if (!HttpResponse.IsValid())
+	{
+		UE_LOG(LogTemp, Log, TEXT("Test failed. NULL response"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Log, TEXT("Completed test [%s] Url=[%s] Response=[%d] [%s]"),
+			*HttpRequest->GetVerb(),
+			*HttpRequest->GetURL(),
+			HttpResponse->GetResponseCode(),
+			*HttpResponse->GetContentAsString());
+		FString JsonRaw = *HttpResponse->GetContentAsString();
+		TSharedPtr<FJsonObject> JsonParsed;
+		TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(JsonRaw);
+		if (FJsonSerializer::Deserialize(JsonReader, JsonParsed))
+		{
+			bool Authorization = JsonParsed->GetBoolField("authorization");
+			UE_LOG(LogTemp, Log, TEXT("Authorization"));
+			if (Authorization)
+			{
+				UE_LOG(LogTemp, Log, TEXT("Authorization True"));
+				bool Success = JsonParsed->GetBoolField("success");
+				if (Success) {
+					UE_LOG(LogTemp, Log, TEXT("Success True"));
+					FString userKeyId = JsonParsed->GetStringField("userKeyId");
+
+					FMyActivePlayer* playerRecord = getPlayerByPlayerKey(userKeyId);
+					if (playerRecord)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] CreatePlayerDropRequestComplete Player found by Key"));
+
+						// refresh the drop list
+						GetPlayerDrops(JsonParsed->GetStringField("userKeyId"));
+
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
 bool UMyGameInstance::QueryGameDataList(FString cursor)
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] QueryGameDataList"));
@@ -4920,6 +5051,482 @@ void UMyGameInstance::RequestBeginPlay()
 	GetWorld()->GetAuthGameMode()->bUseSeamlessTravel = true;
 	GetWorld()->ServerTravel(UrlString);
 	bRequestBeginPlayStarted = true;
+}
+
+
+
+bool UMyGameInstance::BackendRequestPartyMembers(class AActor* OtherActor, TArray<FMyInventorySlot> Contents)
+{
+
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] BackendRequestPartyMembers"));
+
+	FString nonceString = "10951350917635";
+	FString encryption = "off";  // Allowing unencrypted on sandbox for now.  
+
+	TSharedPtr<FJsonObject> JsonObj = MakeShareable(new FJsonObject);
+	JsonObj->SetStringField("nonce", "nonceString");
+	JsonObj->SetStringField("encryption", encryption);
+
+	APawn* PlayerPawn = Cast<APawn>(OtherActor);
+
+	if (PlayerPawn)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] BackendRequestPartyMembers - got active PlayerPawn"));
+
+		AMyPlayerController* PlayerController = Cast<AMyPlayerController>(PlayerPawn->GetController());
+		if (PlayerController)
+		{
+			PlayerController->TempContents = Contents;
+
+			JsonObj->SetStringField("userKeyId", PlayerController->playerKeyId);
+
+			FString JsonOutputString;
+			TSharedRef< TJsonWriter<> > Writer = TJsonWriterFactory<>::Create(&JsonOutputString);
+			FJsonSerializer::Serialize(JsonObj.ToSharedRef(), Writer);
+
+			FString APIURI = "/api/v1/server/team/getUserTeam";
+
+			FString access_token = PlayerController->CurrentAccessTokenFromOSS;
+			bool requestSuccess = PerformJsonHttpRequest(&UMyGameInstance::BackendRequestPartyMembersComplete, APIURI, JsonOutputString, access_token);
+			return requestSuccess;
+		}
+
+	}
+
+	return false;
+}
+
+void UMyGameInstance::BackendRequestPartyMembersComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded)
+{
+	if (!HttpResponse.IsValid())
+	{
+		UE_LOG(LogTemp, Log, TEXT("Test failed. NULL response"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Log, TEXT("Completed test [%s] Url=[%s] Response=[%d] [%s]"),
+			*HttpRequest->GetVerb(),
+			*HttpRequest->GetURL(),
+			HttpResponse->GetResponseCode(),
+			*HttpResponse->GetContentAsString());
+
+		FString JsonRaw = *HttpResponse->GetContentAsString();
+		TSharedPtr<FJsonObject> JsonParsed;
+		TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(JsonRaw);
+		if (FJsonSerializer::Deserialize(JsonReader, JsonParsed))
+		{
+			bool Authorization = JsonParsed->GetBoolField("authorization");
+
+			UE_LOG(LogTemp, Log, TEXT("Authorization"));
+			if (Authorization)
+			{
+				UE_LOG(LogTemp, Log, TEXT("Authorization True"));
+
+				if (JsonParsed->GetBoolField("success"))
+				{
+					UE_LOG(LogTemp, Log, TEXT("SUCCESS!"));
+					//UE_LOG(LogTemp, Log, TEXT(JsonParsed->GetStringField("error_message")) );
+
+					// This userKeyId is the person who approached the loot container.
+					// it may or may not be the captain.
+					// we need the party info on EVERY member of the team.
+					// so just ignore this userKeyId, and loop through the team_members
+					// with an inner loop adding all of the team_members to each.
+
+					// outer loop - looking for all party members
+					const JsonValPtrArray* TeamMembersJson;
+
+					JsonParsed->TryGetArrayField("team_members", TeamMembersJson);
+
+					// loop over group_raid_members
+					for (auto TeamMemberSlot : *TeamMembersJson) {
+						UE_LOG(LogTemp, Log, TEXT("Found TeamMemberSlot"));
+
+						auto teamMemberSlotObj = TeamMemberSlot->AsObject();
+						if (teamMemberSlotObj.IsValid())
+						{
+							UE_LOG(LogTemp, Log, TEXT("teamMemberSlotObj.IsValid()"));
+
+							FMyActivePlayer* activePartyPlayer = getPlayerByPlayerKey(teamMemberSlotObj->GetStringField("userKeyIdStr"));
+
+							if (activePartyPlayer)
+							{
+								UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayerRequestComplete] - Found activePartyPlayer"));
+
+								// empty out the array first
+								activePartyPlayer->PlayerController->PartyMemberUserKeyIds.Empty();
+
+								// INNER LOOP.  Add all of the party_members to the current member in the outer loop
+
+								for (auto TeamMemberInnerSlot : *TeamMembersJson) {
+									UE_LOG(LogTemp, Log, TEXT("Found TeamMemberInnerSlot"));
+
+									auto teamMemberInnerSlotObj = TeamMemberInnerSlot->AsObject();
+									if (teamMemberInnerSlotObj.IsValid())
+									{
+										UE_LOG(LogTemp, Log, TEXT("teamMemberInnerSlotObj.IsValid()"));
+
+										activePartyPlayer->PlayerController->PartyMemberUserKeyIds.Add(teamMemberInnerSlotObj->GetStringField("userKeyIdStr"));
+									}
+								}
+
+								// call distribute loot - only if tempcontents exists
+								if (activePartyPlayer->PlayerController->TempContents.Num() > 0)
+								{
+									activePartyPlayer->PlayerController->DistributeLoot(activePartyPlayer->PlayerController->TempContents);
+								}
+
+
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+bool UMyGameInstance::BackendRequestGKPStart(const FString& playerKeyId, const FString& title, const FString& description, bool vettingEnabled)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] BackendRequestGKPStart"));
+
+	FString nonceString = "10951350917635";
+	FString encryption = "off";  // Allowing unencrypted on sandbox for now.  
+
+	TSharedPtr<FJsonObject> JsonObj = MakeShareable(new FJsonObject);
+	JsonObj->SetStringField("nonce", "nonceString");
+	JsonObj->SetStringField("encryption", encryption);
+
+	// TODO set up the json for the drop
+
+	//TSharedPtr< FJsonObject > SlotObj = MakeShareable(new FJsonObject);
+	JsonObj->SetStringField("playerKeyId", playerKeyId);
+	JsonObj->SetStringField("description", description);
+	JsonObj->SetStringField("title", title);
+	JsonObj->SetBoolField("vettingEnabled", vettingEnabled);
+
+
+	FString JsonOutputString;
+	TSharedRef< TJsonWriter<> > Writer = TJsonWriterFactory<>::Create(&JsonOutputString);
+	FJsonSerializer::Serialize(JsonObj.ToSharedRef(), Writer);
+
+	FString APIURI = "/api/v1/server/groups/gkp/start";
+
+	FMyActivePlayer* ActivePlayer = getPlayerByPlayerKey(playerKeyId);
+	if (ActivePlayer)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] BackendRequestGKPStart - got active player"));
+		FString access_token = ActivePlayer->PlayerController->CurrentAccessTokenFromOSS;
+		bool requestSuccess = PerformJsonHttpRequest(&UMyGameInstance::BackendRequestGKPStartComplete, APIURI, JsonOutputString, access_token);
+		return requestSuccess;
+	}
+
+	return false;
+}
+
+void UMyGameInstance::BackendRequestGKPStartComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded)
+{
+	if (!HttpResponse.IsValid())
+	{
+		UE_LOG(LogTemp, Log, TEXT("Test failed. NULL response"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Log, TEXT("Completed test [%s] Url=[%s] Response=[%d] [%s]"),
+			*HttpRequest->GetVerb(),
+			*HttpRequest->GetURL(),
+			HttpResponse->GetResponseCode(),
+			*HttpResponse->GetContentAsString());
+
+		FString JsonRaw = *HttpResponse->GetContentAsString();
+		TSharedPtr<FJsonObject> JsonParsed;
+		TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(JsonRaw);
+		if (FJsonSerializer::Deserialize(JsonReader, JsonParsed))
+		{
+			bool Authorization = JsonParsed->GetBoolField("authorization");
+
+			UE_LOG(LogTemp, Log, TEXT("Authorization"));
+			if (Authorization)
+			{
+				UE_LOG(LogTemp, Log, TEXT("Authorization True"));
+
+				if (!JsonParsed->GetBoolField("success"))
+				{
+					UE_LOG(LogTemp, Log, TEXT("ERROR!"));
+					//UE_LOG(LogTemp, Log, TEXT(JsonParsed->GetStringField("error_message")) );
+
+					// TODO - send this to the user as a chat.
+
+					FString UserKeyIdStr;
+					JsonParsed->TryGetStringField("userKeyId", UserKeyIdStr);
+
+					FMyActivePlayer* activePlayer = getPlayerByPlayerKey(UserKeyIdStr);
+
+					if (activePlayer)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayerRequestComplete] - Found activePlayer"));
+
+
+						AMyPlayerController* PlayerController = Cast<AMyPlayerController>(activePlayer->PlayerController);
+						if (PlayerController)
+						{
+							PlayerController->SendLocalChatMessage(JsonParsed->GetStringField("error_message"));
+						}
+					}
+					return;
+				}
+
+				// loop over group_raid_members
+				const JsonValPtrArray* RaidMembersJson;
+
+				JsonParsed->TryGetArrayField("group_raid_members", RaidMembersJson);
+
+				for (auto RaidMemberSlot : *RaidMembersJson) {
+					UE_LOG(LogTemp, Log, TEXT("Found RaidMemberSlot"));
+
+					auto raidMemberSlotObj = RaidMemberSlot->AsObject();
+					if (raidMemberSlotObj.IsValid())
+					{
+						UE_LOG(LogTemp, Log, TEXT("raidMemberSlotObj.IsValid()"));
+
+						// look up this user in active players
+						// what to do if not found...  
+						// - Maybe create an empty entry for them so they can arrive later?
+
+
+						FMyActivePlayer* activePlayer = getPlayerByPlayerKey(raidMemberSlotObj->GetStringField("userKeyId"));
+
+						if (activePlayer)
+						{
+							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayerRequestComplete] - Found activeMatchPlayer"));
+
+
+							AMyPlayerController* PlayerController = Cast<AMyPlayerController>(activePlayer->PlayerController);
+							if (PlayerController)
+							{
+								UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayerRequestComplete] - Found PlayerController"));
+
+								if (PlayerController->PlayerState)
+								{
+									UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayerRequestComplete] - Found PlayerState"));
+
+									AMyPlayerState* playerS = Cast<AMyPlayerState>(PlayerController->PlayerState);
+									if (playerS)
+									{
+										UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetGamePlayerRequestComplete] - Found playerS"));
+
+										// Set the Loot mode
+										playerS->LootSetting = ELootSetting::GKP;
+										//save player gkp values, and vetting status
+										playerS->bCanBidOnLoot = true;
+										playerS->gkpAmount = raidMemberSlotObj->GetNumberField("gkpAmount");
+										playerS->gkpVettingThisRaid = raidMemberSlotObj->GetNumberField("gkpVettingThisRaid");
+										playerS->gkpVettingRemaining = raidMemberSlotObj->GetNumberField("gkpVettingRemaining");
+
+										// send a text chat
+										PlayerController->SendLocalChatMessage("GKP raid started.");
+									}
+								}
+
+
+							}
+						}
+
+
+					}
+				}
+
+			}
+			else
+			{
+				UE_LOG(LogTemp, Log, TEXT("Authorization False"));
+			}
+		}
+	}
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [BackendRequestGKPStartComplete] Done!"));
+}
+
+
+bool UMyGameInstance::BackendRequestGKPEnd(const FString& playerKeyId, bool processAsValid)
+{
+
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] BackendRequestGKPEnd"));
+
+	FString nonceString = "10951350917635";
+	FString encryption = "off";  // Allowing unencrypted on sandbox for now.  
+
+	TSharedPtr<FJsonObject> JsonObj = MakeShareable(new FJsonObject);
+	JsonObj->SetStringField("nonce", "nonceString");
+	JsonObj->SetStringField("encryption", encryption);
+
+	//  set up the json 
+
+	JsonObj->SetStringField("playerKeyId", playerKeyId);
+	JsonObj->SetBoolField("processAsValid", processAsValid);
+
+	// set up the group_raid_members json array.
+
+	// here we want the captain
+	// but this should be the captain anyway...  nobody else can click the end raid button.
+
+	FMyActivePlayer* CaptainPlayer = GetCaptainPlayer(playerKeyId);
+
+	TSharedPtr<FJsonObject> GroupRaidMembersJsonObject = MakeShareable(new FJsonObject);
+	TArray< TSharedPtr<FJsonValue> > GroupRaidMembersArray;
+
+	if (CaptainPlayer)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [BackendRequestGKPEnd] Found CaptainPlayer"));
+		AMyPlayerState* captainMyPlayerState = Cast<AMyPlayerState>(CaptainPlayer->PlayerController->PlayerState);
+
+		if (captainMyPlayerState)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [BackendRequestGKPEnd] Found captainMyPlayerState"));
+
+			// loop over the party members
+			for (int32 partymemberi = 0; partymemberi < CaptainPlayer->PlayerController->PartyMemberUserKeyIds.Num(); partymemberi++)
+			{
+				FMyActivePlayer* activePartyPlayer = getPlayerByPlayerKey(CaptainPlayer->PlayerController->PartyMemberUserKeyIds[partymemberi]);
+
+				if (activePartyPlayer)
+				{
+					//AMyPlayerController* thisMyPlayerController = Cast<AMyPlayerController>(thisController);
+
+					if (activePartyPlayer->PlayerController)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [BackendRequestGKPEnd] got activePartyPlayer"));
+
+						APlayerState* thisPlayerState = activePartyPlayer->PlayerController->PlayerState;
+
+						if (thisPlayerState)
+						{
+							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [BackendRequestGKPEnd] got thisPlayerState"));
+
+							AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(thisPlayerState);
+
+							if (thisMyPlayerState)
+							{
+								UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [BackendRequestGKPEnd] got thisMyPlayerState"));
+
+								TSharedPtr< FJsonObject > GroupRaidMemberObj = MakeShareable(new FJsonObject);
+								GroupRaidMemberObj->SetNumberField("gkpAmount", thisMyPlayerState->gkpAmount);
+								GroupRaidMemberObj->SetNumberField("gkpVettingRemaining", thisMyPlayerState->gkpVettingRemaining);
+								GroupRaidMemberObj->SetStringField("userKeyId", thisMyPlayerState->playerKeyId);
+								TSharedRef< FJsonValueObject > JsonValue = MakeShareable(new FJsonValueObject(GroupRaidMemberObj));
+								GroupRaidMembersArray.Add(JsonValue);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	JsonObj->SetArrayField("group_raid_members", GroupRaidMembersArray);
+
+	FString JsonOutputString;
+	TSharedRef< TJsonWriter<> > Writer = TJsonWriterFactory<>::Create(&JsonOutputString);
+	FJsonSerializer::Serialize(JsonObj.ToSharedRef(), Writer);
+
+	FString APIURI = "/api/v1/server/groups/gkp/end";
+
+	FMyActivePlayer* ActivePlayer = getPlayerByPlayerKey(playerKeyId);
+	if (ActivePlayer)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] BackendRequestGKPEnd - got active player"));
+		FString access_token = ActivePlayer->PlayerController->CurrentAccessTokenFromOSS;
+		bool requestSuccess = PerformJsonHttpRequest(&UMyGameInstance::BackendRequestGKPEndComplete, APIURI, JsonOutputString, access_token);
+		return requestSuccess;
+	}
+
+
+	return false;
+
+
+}
+
+void UMyGameInstance::BackendRequestGKPEndComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded)
+{
+	if (!HttpResponse.IsValid())
+	{
+		UE_LOG(LogTemp, Log, TEXT("Test failed. NULL response"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Log, TEXT("Completed test [%s] Url=[%s] Response=[%d] [%s]"),
+			*HttpRequest->GetVerb(),
+			*HttpRequest->GetURL(),
+			HttpResponse->GetResponseCode(),
+			*HttpResponse->GetContentAsString());
+
+		FString JsonRaw = *HttpResponse->GetContentAsString();
+		TSharedPtr<FJsonObject> JsonParsed;
+		TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(JsonRaw);
+		if (FJsonSerializer::Deserialize(JsonReader, JsonParsed))
+		{
+			bool Authorization = JsonParsed->GetBoolField("authorization");
+
+			UE_LOG(LogTemp, Log, TEXT("Authorization"));
+			if (Authorization)
+			{
+				UE_LOG(LogTemp, Log, TEXT("Authorization True"));
+
+				if (!JsonParsed->GetBoolField("success"))
+				{
+					UE_LOG(LogTemp, Log, TEXT("ERROR!"));
+					//UE_LOG(LogTemp, Log, TEXT(JsonParsed->GetStringField("error_message")) );
+
+					// send users as a chat.
+
+					// get userKeyId from json here
+					FMyActivePlayer* activePlayer = getPlayerByPlayerKey(JsonParsed->GetStringField("userKeyId"));
+
+					if (activePlayer)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [BackendRequestGKPEndComplete] - Found activePlayer"));
+
+
+						AMyPlayerController* PlayerController = Cast<AMyPlayerController>(activePlayer->PlayerController);
+						if (PlayerController)
+						{
+							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [BackendRequestGKPEndComplete] - Found PlayerController"));
+
+							PlayerController->SendLocalChatMessage(JsonParsed->GetStringField("error_message"));
+						}
+					}
+
+					return;
+				}
+
+				// using controller - party members instead.
+
+				FMyActivePlayer* activePlayer = getPlayerByPlayerKey(JsonParsed->GetStringField("userKeyId"));
+
+				if (activePlayer)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [BackendRequestGKPEndComplete] - Found activePlayer"));
+
+
+					AMyPlayerController* PlayerController = Cast<AMyPlayerController>(activePlayer->PlayerController);
+					if (PlayerController)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [BackendRequestGKPEndComplete] - Found PlayerController"));
+
+						for (int32 i = 0; i < PlayerController->PartyMemberUserKeyIds.Num(); i++)
+						{
+							FMyActivePlayer* activePartyPlayer = getPlayerByPlayerKey(PlayerController->PartyMemberUserKeyIds[i]);
+
+							if (activePartyPlayer)
+							{
+								activePartyPlayer->PlayerController->SendLocalChatMessage(JsonParsed->GetStringField("error_message"));
+							}
+						}
+
+					}
+				}
+			}
+		}
+	}
 }
 
 
@@ -5918,6 +6525,694 @@ bool UMyGameInstance::RecordEvent(int32 playerID, FString eventSummary, FString 
 	return true;
 }
 
+FMyActivePlayer* UMyGameInstance::GetCaptainPlayer(const FString& UserKeyId)
+{
+	FMyActivePlayer* activePlayer = getPlayerByPlayerKey(UserKeyId);
+
+	if (activePlayer)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [StartLootMasterLooter] - Found activeMatchPlayer"));
+
+		AMyPlayerController* PlayerController = Cast<AMyPlayerController>(activePlayer->PlayerController);
+		if (PlayerController)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [StartLootMasterLooter] - Found PlayerController"));
+
+			for (int32 i = 0; i < PlayerController->PartyMemberUserKeyIds.Num(); i++)
+			{
+				FMyActivePlayer* activePartyPlayer = getPlayerByPlayerKey(PlayerController->PartyMemberUserKeyIds[i]);
+
+				if (activePartyPlayer)
+				{
+					if (activePartyPlayer->PlayerController->IAmCaptain)
+					{
+						return activePartyPlayer;
+					}
+				}
+			}
+		}
+	}
+	return nullptr;
+}
+
+bool UMyGameInstance::AssignLootRandomly(FMyInventorySlot LootItem, TArray<FMyActivePlayer> PartyMembers)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootRandomly] "));
+
+
+	float randomChoice = FMath::FRandRange(0.0f, (float)PartyMembers.Num());
+
+	// Assign the loot to the choice.
+
+	if (PartyMembers[(int32)randomChoice].PlayerController)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootRandomly] got thisMyPlayerController"));
+
+		int32 emptySlotIndex = PartyMembers[(int32)randomChoice].PlayerController->SearchEmptySlot();
+
+		if (emptySlotIndex > 0)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootRandomly] found empty slot"));
+			// found empty slot.
+			// Controller->Additem is looking for a bp_myBasePickup
+			// Instead of converting to that, then just converting back anyway...  Just add it directly.
+
+			APlayerState* thisPlayerState = PartyMembers[(int32)randomChoice].PlayerController->PlayerState; // ->GetPlayerState();
+
+			if (thisPlayerState)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootRandomly] got thisPlayerState"));
+
+				AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(thisPlayerState);
+
+				if (thisMyPlayerState)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootRandomly] got thisMyPlayerState"));
+
+					thisMyPlayerState->InventorySlots[emptySlotIndex] = LootItem;
+
+					// and send them a message notifying them of the new loot.
+
+					PartyMembers[(int32)randomChoice].PlayerController->SendLocalChatMessage(LootItem.itemTitle + " placed in your inventory.");
+
+					return true;
+				}
+			}
+
+		}
+		else
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootRandomly] No empty slot found"));
+
+			// Do it as a drop instead.!!
+			CreatePlayerDrop(PartyMembers[(int32)randomChoice].PlayerController->playerKeyId, LootItem);
+
+			// and send them a message notifying them of the new loot.
+
+			PartyMembers[(int32)randomChoice].PlayerController->SendLocalChatMessage(LootItem.itemTitle + " was sent as a drop, due to insufficient inventory space.");
+		}
+	}
+
+	return false;
+}
+
+void UMyGameInstance::StartLootMasterLooter(const FString& UserKeyId)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [StartLootMasterLooter] "));
+
+	FMyActivePlayer* activePlayer = getPlayerByPlayerKey(UserKeyId);
+
+	if (activePlayer)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [StartLootMasterLooter] - Found activeMatchPlayer"));
+
+		AMyPlayerController* PlayerController = Cast<AMyPlayerController>(activePlayer->PlayerController);
+		if (PlayerController)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [StartLootMasterLooter] - Found PlayerController"));
+
+			for (int32 i = 0; i < PlayerController->PartyMemberUserKeyIds.Num(); i++)
+			{
+				FMyActivePlayer* activePartyPlayer = getPlayerByPlayerKey(PlayerController->PartyMemberUserKeyIds[i]);
+
+				if (activePartyPlayer)
+				{
+					activePartyPlayer->PlayerController->SendClientShowMasterLooterUI();
+				}
+			}
+
+			PlayerController->MasterLooterTimeoutTimerDel.BindUFunction(PlayerController, FName("FinalizeMasterLooter"));
+			GetWorld()->GetTimerManager().SetTimer(PlayerController->MasterLooterTimeoutDelayHandle, PlayerController->MasterLooterTimeoutTimerDel, 30.0f, false);
+		}
+	}
+}
+
+bool UMyGameInstance::AssignLootMasterLooter(int32 LootIndex, const FString& UserKeyId)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootMasterLooter] "));
+
+	FMyActivePlayer* thisplayer = getPlayerByPlayerKey(UserKeyId);
+
+	if (thisplayer)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootMasterLooter] got thisplayer"));
+		AMyPlayerController* thisMyPlayerController = thisplayer->PlayerController;
+		if (thisMyPlayerController)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootMasterLooter] got thisMyPlayerController"));
+
+			int32 emptySlotIndex = thisMyPlayerController->SearchEmptySlot();
+
+			if (emptySlotIndex > 0)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootMasterLooter] found empty slot"));
+				// found empty slot.
+				// Controller->Additem is looking for a bp_myBasePickup
+				// Instead of converting to that, then just converting back anyway...  Just add it directly.
+
+				APlayerState* thisPlayerState = thisMyPlayerController->PlayerState;
+
+				if (thisPlayerState)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootMasterLooter] got thisPlayerState"));
+
+					AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(thisPlayerState);
+
+					if (thisMyPlayerState)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootMasterLooter] got thisMyPlayerState"));
+
+						thisMyPlayerState->InventorySlots[emptySlotIndex] = thisMyPlayerState->LootData.Items[LootIndex].Item;
+
+						// and send them a message notifying them of the new loot.
+
+						thisMyPlayerController->SendLocalChatMessage(thisMyPlayerState->LootData.Items[LootIndex].Item.itemTitle + " placed in your inventory.");
+
+						return true;
+					}
+				}
+
+			}
+			else
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootRandomly] No empty slot found"));
+
+				APlayerState* thisPlayerState = thisMyPlayerController->PlayerState;
+
+				if (thisPlayerState)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [AssignLootMasterLooter] got thisPlayerState"));
+
+					AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(thisPlayerState);
+
+					if (thisMyPlayerState)
+					{
+
+						// Do it as a drop instead.!!
+						CreatePlayerDrop(thisMyPlayerController->playerKeyId, thisMyPlayerState->LootData.Items[LootIndex].Item);
+
+						// and send them a message notifying them of the new loot.
+
+						thisMyPlayerController->SendLocalChatMessage(thisMyPlayerState->LootData.Items[LootIndex].Item.itemTitle + " was sent as a drop, due to insufficient inventory space.");
+
+					}
+				}
+			}
+		}
+	}
+
+	return true;
+}
+
+void UMyGameInstance::FinalizeMasterLooter(const FString& UserKeyId)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeMasterLooter] "));
+
+	FMyActivePlayer* activePlayer = getPlayerByPlayerKey(UserKeyId);
+
+	if (activePlayer)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeMasterLooter] - Found activeMatchPlayer"));
+
+		AMyPlayerController* PlayerController = Cast<AMyPlayerController>(activePlayer->PlayerController);
+		if (PlayerController)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeMasterLooter] - Found PlayerController"));
+
+			for (int32 i = 0; i < PlayerController->PartyMemberUserKeyIds.Num(); i++)
+			{
+				FMyActivePlayer* activePartyPlayer = getPlayerByPlayerKey(PlayerController->PartyMemberUserKeyIds[i]);
+
+				if (activePartyPlayer)
+				{
+					AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(activePartyPlayer->PlayerController->PlayerState);
+
+					if (thisMyPlayerState)
+					{
+						thisMyPlayerState->LootData.Items.Empty();
+					}
+				}
+			}
+		}
+	}
+}
+
+void UMyGameInstance::StartLootNeedVGreed(const FString& UserKeyId)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [StartLootNeedVGreed] "));
+
+	FMyActivePlayer* activePlayer = getPlayerByPlayerKey(UserKeyId);
+
+	if (activePlayer)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [StartLootNeedVGreed] - Found activeMatchPlayer"));
+
+		AMyPlayerController* PlayerController = Cast<AMyPlayerController>(activePlayer->PlayerController);
+		if (PlayerController)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [StartLootNeedVGreed] - Found PlayerController"));
+
+			for (int32 i = 0; i < PlayerController->PartyMemberUserKeyIds.Num(); i++)
+			{
+				FMyActivePlayer* activePartyPlayer = getPlayerByPlayerKey(PlayerController->PartyMemberUserKeyIds[i]);
+
+				if (activePartyPlayer)
+				{
+					activePartyPlayer->PlayerController->SendClientShowNeedVGreedUI();
+				}
+			}
+
+			PlayerController->NeedVGreedTimeoutTimerDel.BindUFunction(PlayerController, FName("FinalizeNeedVGreed"));
+
+			GetWorld()->GetTimerManager().SetTimer(PlayerController->NeedVGreedTimeoutDelayHandle, PlayerController->NeedVGreedTimeoutTimerDel, 30.0f, false);
+		}
+	}
+}
+
+void UMyGameInstance::ServerAttemptNeedVGreedRoll(int32 LootIndex, bool NeedPressed, const FString& UserKeyId)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptNeedVGreedRoll] "));
+
+	//Check to make sure that this player has not already rolled for this item.
+	// we need an authority location to store these rolls... 
+	// currently they are just on each player's state
+	// But we need one of them to hold all of the bids/rolls
+	// putting them on the captain's state for now.
+	// TODO - rethink this...  Do we need a serverside party record or soemthing?
+
+	// This is the player making the roll
+	FMyActivePlayer* activePlayer = getPlayerByPlayerKey(UserKeyId);
+
+	if (activePlayer)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptNeedVGreedRoll] Found activePlayer"));
+		// get the captain, so we can record the value there
+		// fuck it, just record it everywhere.
+		FMyActivePlayer* CaptainPlayer = GetCaptainPlayer(UserKeyId);
+
+		if (CaptainPlayer)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptNeedVGreedRoll] Found CaptainPlayer"));
+			AMyPlayerState* captainMyPlayerState = Cast<AMyPlayerState>(CaptainPlayer->PlayerController->PlayerState);
+
+			if (captainMyPlayerState)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptNeedVGreedRoll] Found captainMyPlayerState"));
+				for (int32 i = 0; i < captainMyPlayerState->LootData.Items[LootIndex].GreedBids.Num(); i++)
+				{
+					if (captainMyPlayerState->LootData.Items[LootIndex].GreedBids[i].UserKeyId == UserKeyId)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptNeedVGreedRoll] Found duplicate"));
+						return;
+					}
+				}
+
+				for (int32 i = 0; i < captainMyPlayerState->LootData.Items[LootIndex].NeedBids.Num(); i++)
+				{
+					if (captainMyPlayerState->LootData.Items[LootIndex].NeedBids[i].UserKeyId == UserKeyId)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptNeedVGreedRoll] Found duplicate"));
+						return;
+					}
+				}
+
+				// Random int 0-99
+				int32 RandomRoll = FMath::RandRange(0, 99);
+
+				// Create the struct and add it
+				FLootRoll LootRoll;
+				LootRoll.RollValue = RandomRoll;
+				LootRoll.UserKeyId = UserKeyId;
+
+				FString RollType; // to send for the chat message
+
+				if (NeedPressed)
+				{
+					captainMyPlayerState->LootData.Items[LootIndex].NeedBids.Add(LootRoll);
+					RollType = "Need";
+				}
+				else
+				{
+					captainMyPlayerState->LootData.Items[LootIndex].GreedBids.Add(LootRoll);
+					RollType = "Greed";
+				}
+
+				// Send out a chat message
+				// To the player only
+				FString RandomRollAsString = FString::FromInt(RandomRoll);
+
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptNeedVGreedRoll] got thisplayer"));
+				AMyPlayerController* thisMyPlayerController = activePlayer->PlayerController;
+				if (thisMyPlayerController)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptNeedVGreedRoll] got thisMyPlayerController"));
+
+					thisMyPlayerController->SendLocalChatMessage("You rolled " + RollType + " : " + RandomRollAsString + " on " + captainMyPlayerState->LootData.Items[LootIndex].Item.itemTitle);
+				}
+			}
+		}
+	}
+}
+
+void UMyGameInstance::FinalizeNeedVGreed(const FString& UserKeyId)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeNeedVGreed] "));
+
+	// here we want the captain
+
+	FMyActivePlayer* CaptainPlayer = GetCaptainPlayer(UserKeyId);
+
+	if (CaptainPlayer)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeNeedVGreed] Found CaptainPlayer"));
+		AMyPlayerState* captainMyPlayerState = Cast<AMyPlayerState>(CaptainPlayer->PlayerController->PlayerState);
+
+		if (captainMyPlayerState)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeNeedVGreed] Found captainMyPlayerState"));
+
+			for (int32 i = 0; i < captainMyPlayerState->LootData.Items.Num(); i++)
+			{
+				// FOr each item, check need  rolls first.
+
+				int32 highestIndex = -1;
+				int32 highestValue = -1;
+
+				for (int32 needi = 0; needi < captainMyPlayerState->LootData.Items[i].NeedBids.Num(); needi++)
+				{
+					if (captainMyPlayerState->LootData.Items[i].NeedBids[needi].RollValue > highestValue)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeNeedVGreed] found Need Roll higher"));
+						highestValue = captainMyPlayerState->LootData.Items[i].NeedBids[needi].RollValue;
+						highestIndex = needi;
+					}
+				}
+
+				if (highestValue > -1)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeNeedVGreed] Highest need Roll Wins"));
+
+					AssignLootMasterLooter(i, captainMyPlayerState->LootData.Items[i].NeedBids[highestIndex].UserKeyId);
+				}
+
+				else
+				{
+					// If no need roll, check greed rolls
+					for (int32 greedi = 0; greedi < captainMyPlayerState->LootData.Items[i].GreedBids.Num(); greedi++)
+					{
+						if (captainMyPlayerState->LootData.Items[i].GreedBids[greedi].RollValue > highestValue)
+						{
+							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeNeedVGreed] found Greed Roll higher"));
+							highestValue = captainMyPlayerState->LootData.Items[i].GreedBids[greedi].RollValue;
+							highestIndex = greedi;
+						}
+					}
+
+					if (highestValue > -1)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeNeedVGreed] Highest Greed Roll Wins"));
+
+						AssignLootMasterLooter(i, captainMyPlayerState->LootData.Items[i].GreedBids[highestIndex].UserKeyId);
+					}
+				}
+				// Nobody bid for the item, just trash it.
+			}
+			// clean it out at the end
+
+			captainMyPlayerState->LootData.Items.Empty();
+
+		}
+	}
+}
+
+
+
+void UMyGameInstance::StartLootGKP(const FString& UserKeyId)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [StartLootGKP] "));
+
+	FMyActivePlayer* activePlayer = getPlayerByPlayerKey(UserKeyId);
+
+	if (activePlayer)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [StartLootGKP] - Found activePlayer"));
+
+		AMyPlayerController* PlayerController = Cast<AMyPlayerController>(activePlayer->PlayerController);
+		if (PlayerController)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [StartLootGKP] - Found PlayerController"));
+
+			for (int32 i = 0; i < PlayerController->PartyMemberUserKeyIds.Num(); i++)
+			{
+				FMyActivePlayer* activePartyPlayer = getPlayerByPlayerKey(PlayerController->PartyMemberUserKeyIds[i]);
+
+				if (activePartyPlayer)
+				{
+					activePartyPlayer->PlayerController->SendClientShowGKPUI();
+				}
+			}
+
+			PlayerController->GKPLootTimeoutTimerDel.BindUFunction(PlayerController, FName("FinalizeGKPLoot"), UserKeyId);
+
+			GetWorld()->GetTimerManager().SetTimer(PlayerController->GKPLootTimeoutDelayHandle, PlayerController->GKPLootTimeoutTimerDel, 30.0f, false);
+		}
+	}
+}
+
+void UMyGameInstance::ServerAttemptGKPBid(int32 LootIndex, float Bid, const FString& UserKeyId)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptGKPBid] "));
+
+	// This is the player making the roll
+	FMyActivePlayer* activePlayer = getPlayerByPlayerKey(UserKeyId);
+
+	if (activePlayer)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptGKPBid] Found activeMatchPlayer"));
+		// get the captain, so we can record the value there
+		// fuck it, just record it everywhere.
+		FMyActivePlayer* CaptainPlayer = GetCaptainPlayer(UserKeyId);
+
+		if (CaptainPlayer)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptGKPBid] Found CaptainPlayer"));
+			AMyPlayerState* captainMyPlayerState = Cast<AMyPlayerState>(CaptainPlayer->PlayerController->PlayerState);
+
+			if (captainMyPlayerState)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptGKPBid] Found captainMyPlayerState"));
+
+				if (captainMyPlayerState->LootData.Items.IsValidIndex(LootIndex))
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptGKPBid] valid index"));
+
+					// check to see if the user has enough gkp to even make this bid
+					
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptGKPBid] got thisplayer"));
+					AMyPlayerController* thisMyPlayerController = activePlayer->PlayerController;
+					if (thisMyPlayerController)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptGKPBid] got thisMyPlayerController"));
+
+						//int32 emptySlotIndex = thisMyPlayerController->SearchEmptySlot();
+
+						APlayerState* thisPlayerState = thisMyPlayerController->PlayerState;
+
+						if (thisPlayerState)
+						{
+							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptGKPBid] got thisPlayerState"));
+
+							AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(thisPlayerState);
+
+							if (thisMyPlayerState)
+							{
+								UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptGKPBid] got thisMyPlayerState"));
+
+								if (thisMyPlayerState->gkpAmount >= Bid)
+								{
+									UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptGKPBid] player has enough gkp balance"));
+
+									// check to see if this user has already placed a bid
+									bool placedBid = false;
+
+									for (int32 i = 0; i < captainMyPlayerState->LootData.Items[LootIndex].GKPBids.Num(); i++)
+									{
+										if (captainMyPlayerState->LootData.Items[LootIndex].GKPBids[i].UserKeyId == UserKeyId)
+										{
+											UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptGKPBid] player already bid"));
+											placedBid = true;
+											thisMyPlayerController->SendLocalChatMessage("You have already bid on this loot.");
+										}
+									}
+
+									// if not, record it in the bids
+									if (!placedBid)
+									{
+										FLootRoll newBid;
+										newBid.RollValue = Bid;
+										newBid.UserKeyId = UserKeyId;
+										captainMyPlayerState->LootData.Items[LootIndex].GKPBids.Add(newBid);
+
+										thisMyPlayerController->SendLocalChatMessage("You bid " + FString::SanitizeFloat(Bid) + " on " + captainMyPlayerState->LootData.Items[LootIndex].Item.itemTitle);
+									}
+
+
+									// deduct the gkp - which can be refunded if the player does not have the high bid.
+									thisMyPlayerState->gkpAmount = thisMyPlayerState->gkpAmount - Bid;
+
+								}
+								else
+								{
+									UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ServerAttemptGKPBid] player DOES NOT have enough gkp balance"));
+
+									// TODO - send a chat or something
+									thisMyPlayerController->SendLocalChatMessage("Your GKP balance is: " + FString::SanitizeFloat(thisMyPlayerState->gkpAmount) + ".  This bid was too high");
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+void UMyGameInstance::FinalizeGKPLoot(const FString& UserKeyId)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeGKPLoot] "));
+
+	// Loop through the loot
+	// loop through the bids
+	// find the highest bid (default to first if exactly the same)
+	// award loot
+	// divide and update the gkp back to the players
+
+	// here we want the captain
+
+	FMyActivePlayer* CaptainPlayer = GetCaptainPlayer(UserKeyId);
+
+	if (CaptainPlayer)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeNeedVGreed] Found CaptainPlayer"));
+		AMyPlayerState* captainMyPlayerState = Cast<AMyPlayerState>(CaptainPlayer->PlayerController->PlayerState);
+
+		if (captainMyPlayerState)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeNeedVGreed] Found captainMyPlayerState"));
+
+			for (int32 i = 0; i < captainMyPlayerState->LootData.Items.Num(); i++)
+			{
+				// FOr each item, check bids
+
+				int32 highestIndex = -1;
+				float highestValue = 0.0f;
+
+				for (int32 bidi = 0; bidi < captainMyPlayerState->LootData.Items[i].GKPBids.Num(); bidi++)
+				{
+					if (captainMyPlayerState->LootData.Items[i].GKPBids[bidi].RollValue > highestValue)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeGKPLoot] found bid higher"));
+						highestValue = captainMyPlayerState->LootData.Items[i].GKPBids[bidi].RollValue;
+						highestIndex = bidi;
+					}
+				}
+
+				if (highestValue > 0.0f)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeGKPLoot] Highest bid Wins"));
+
+					AssignLootMasterLooter(i, captainMyPlayerState->LootData.Items[i].GKPBids[highestIndex].UserKeyId);
+				}
+				// Nobody bid for the item, just trash it.
+
+				//return the unused gkp bids back to the players
+
+				for (int32 bidi = 0; bidi < captainMyPlayerState->LootData.Items[i].GKPBids.Num(); bidi++)
+				{
+					if (bidi != highestIndex)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeGKPLoot] Returning unused gkp bid"));
+
+						FMyActivePlayer* thisplayer = getPlayerByPlayerKey(captainMyPlayerState->LootData.Items[i].GKPBids[bidi].UserKeyId);
+
+						if (thisplayer)
+						{
+							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeGKPLoot] got thisplayer"));
+							AMyPlayerController* thisMyPlayerController = thisplayer->PlayerController;
+							if (thisMyPlayerController)
+							{
+								UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeGKPLoot] got thisMyPlayerController"));
+
+								APlayerState* thisPlayerState = thisMyPlayerController->PlayerState;
+
+								if (thisPlayerState)
+								{
+									UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeGKPLoot] got thisPlayerState"));
+
+									AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(thisPlayerState);
+
+									if (thisMyPlayerState)
+									{
+										UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeGKPLoot] got thisMyPlayerState"));
+
+										thisMyPlayerState->gkpAmount = thisMyPlayerState->gkpAmount + captainMyPlayerState->LootData.Items[i].GKPBids[bidi].RollValue;
+
+										thisMyPlayerController->SendLocalChatMessage("Your losing bid " + FString::SanitizeFloat(captainMyPlayerState->LootData.Items[i].GKPBids[bidi].RollValue) + " was returned");
+
+									}
+								}
+							}
+						}
+					}
+
+				}
+
+				// get all of the players and divide up the final bid evenly among them.
+
+				float AmountToReturnToEachPlayer = highestValue / float(CaptainPlayer->PlayerController->PartyMemberUserKeyIds.Num());
+				UE_LOG(LogTemp, Log, TEXT("AmountToReturnToEachPlayer: %f"), AmountToReturnToEachPlayer);
+
+
+				for (int32 partymemberi = 0; partymemberi < CaptainPlayer->PlayerController->PartyMemberUserKeyIds.Num(); partymemberi++)
+				{
+					FMyActivePlayer* activePartyPlayer = getPlayerByPlayerKey(CaptainPlayer->PlayerController->PartyMemberUserKeyIds[partymemberi]);
+
+					if (activePartyPlayer)
+					{
+						//AMyPlayerController* thisMyPlayerController = Cast<AMyPlayerController>(thisController);
+
+						if (activePartyPlayer->PlayerController)
+						{
+							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [StartLootGKP] got thisMyPlayerController"));
+
+							APlayerState* thisPlayerState = activePartyPlayer->PlayerController->PlayerState;
+
+							if (thisPlayerState)
+							{
+								UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeGKPLoot] got thisPlayerState"));
+
+								AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(thisPlayerState);
+
+								if (thisMyPlayerState)
+								{
+									UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [FinalizeGKPLoot] got thisMyPlayerState"));
+
+									thisMyPlayerState->gkpAmount = thisMyPlayerState->gkpAmount + AmountToReturnToEachPlayer;
+
+									activePartyPlayer->PlayerController->SendLocalChatMessage("Earned winning bid split:  " + FString::SanitizeFloat(AmountToReturnToEachPlayer));
+								}
+							}
+						}
+					}
+				}
+			}
+
+			// clean it out at the end
+
+			captainMyPlayerState->LootData.Items.Empty();
+		}
+	}
+}
 
 void UMyGameInstance::SpawnServerPortals()
 {
@@ -6435,7 +7730,8 @@ bool UMyGameInstance::NotifyDownReady()
 	FString ConfigurationOutputString;
 	TSharedPtr<FJsonObject> ConfigurationJsonObject = MakeShareable(new FJsonObject);
 	ConfigurationJsonObject->SetNumberField("maxPickupItemCount", maxPickupItemCount);
-
+	ConfigurationJsonObject->SetBoolField("bLootDropsEnabled", bLootDropsEnabled);
+	ConfigurationJsonObject->SetBoolField("bPartyLeaderCanChangeLootSettings", bPartyLeaderCanChangeLootSettings);
 
 	TSharedRef< TJsonWriter<> > ConfigurationWriter = TJsonWriterFactory<>::Create(&ConfigurationOutputString);
 	FJsonSerializer::Serialize(ConfigurationJsonObject.ToSharedRef(), ConfigurationWriter);

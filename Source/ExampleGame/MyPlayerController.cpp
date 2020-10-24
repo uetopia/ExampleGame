@@ -10,6 +10,7 @@
 #include "UEtopiaPersistCharacter.h"
 #include "Net/UnrealNetwork.h"
 #include "MyTravelApprovedActor.h"
+#include "MyGameState.h"
 #include "MyPlayerState.h"
 
 typedef TSharedPtr<FJsonValue> JsonValPtr;
@@ -3199,6 +3200,543 @@ void AMyPlayerController::ClientChangeUIState_Implementation(EConnectUIState New
 	CurrentUIState = NewState;
 	OnUIStateChange(NewState);
 	return;
+}
+
+
+void AMyPlayerController::AttemptChangeLootSettings(ELootThreshold LootThreshold, ELootSetting LootSetting)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::AttemptChangeLootSettings"));
+
+	// check to see if bPartyLeaderCanChangeLootSettings is true and I am the leader
+	if (IAmCaptain)
+	{
+		AGameStateBase* ActiveGameState = GetWorld()->GetGameState();
+		if (ActiveGameState)
+		{
+			AMyGameState* thisMyGameState = Cast<AMyGameState>(ActiveGameState);
+
+			if (thisMyGameState)
+			{
+				if (thisMyGameState->bPartyLeaderCanChangeLootSettings)
+				{
+					ServerAttemptChangeLootSettings(LootThreshold, LootSetting);
+				}
+			}
+		}
+	}
+}
+
+bool AMyPlayerController::ServerAttemptChangeLootSettings_Validate(ELootThreshold LootThreshold, ELootSetting LootSetting)
+{
+	//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [ServerAttemptSpawnActor_Validate]  "));
+	return true;
+}
+
+void AMyPlayerController::ServerAttemptChangeLootSettings_Implementation(ELootThreshold LootThreshold, ELootSetting LootSetting)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerAttemptChangeLootSettings_Implementation"));
+
+	// special handling for GKP - show confirm dialog to the owner
+
+	if (LootSetting == ELootSetting::GKP)
+	{
+		SendClientShowGKPConfirmUI();
+	}
+	else
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [ServerAttemptChangeLootSettings_Implementation] NOT GKP"));
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [ServerAttemptChangeLootSettings_Implementation] got TheGameInstance"));
+			for (int32 i = 0; i < PartyMemberUserKeyIds.Num(); i++)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [ServerAttemptChangeLootSettings_Implementation] checking PartyMemberUserKeyIds"));
+				FMyActivePlayer* activePartyPlayer = TheGameInstance->getPlayerByPlayerKey(PartyMemberUserKeyIds[i]);
+
+				if (activePartyPlayer)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [ServerAttemptChangeLootSettings_Implementation] got activeMatchPartyPlayer"));
+					if (activePartyPlayer->PlayerController)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [ServerAttemptChangeLootSettings_Implementation] got thisMyPlayerController"));
+
+						AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(activePartyPlayer->PlayerController->PlayerState);
+
+						if (thisMyPlayerState)
+						{
+							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [ServerAttemptChangeLootSettings_Implementation] got thisMyPlayerState"));
+							thisMyPlayerState->LootSetting = LootSetting;
+							thisMyPlayerState->LootThreshold = LootThreshold;
+						}
+					}
+				}
+			}
+
+
+			// it is possible that we don't have any party members yet...
+			// so update self!
+			AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(PlayerState);
+
+			if (thisMyPlayerState)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [ServerAttemptChangeLootSettings_Implementation] got self MyPlayerState"));
+				thisMyPlayerState->LootSetting = LootSetting;
+				thisMyPlayerState->LootThreshold = LootThreshold;
+			}
+
+		}
+	}
+}
+
+
+void AMyPlayerController::OnLootSettingsChangedBP_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::OnLootSettingsChangedBP_Implementation"));
+}
+
+
+bool AMyPlayerController::DistributeLoot(TArray<FMyInventorySlot> Contents)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [DistributeLoot] "));
+
+	// Only run this on the server
+	if (IsRunningDedicatedServer())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::DistributeLoot Server"));
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			TArray< FMyActivePlayer> PartyMembers;
+			TArray< AMyPlayerState*> PartyMemberPlayerStates;
+
+			for (int32 i = 0; i < PartyMemberUserKeyIds.Num(); i++)
+			{
+				FMyActivePlayer* activeMatchPartyPlayer = TheGameInstance->getPlayerByPlayerKey(PartyMemberUserKeyIds[i]);
+
+				if (activeMatchPartyPlayer)
+				{
+					PartyMembers.Add(*activeMatchPartyPlayer);
+				}
+			}
+
+			// determine the loot configuration - items below the threshold, and loot setting random - handle automatically
+
+			// While we're at it, keep track of items we still need to process, and populate them in PlayerState
+			FLootUIData LootData;
+
+			AMyPlayerState* myPlayerState = Cast<AMyPlayerState>(PlayerState); // the player state of this controller
+
+			if (myPlayerState)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] AMyPlayerController::DistributeLoot got playerState"));
+
+				for (int32 i = 0; i < Contents.Num(); i++)
+				{
+					// if below the loot threshold, just randomly assign it to a member of the party
+					if (Contents[i].Tier < (uint8)myPlayerState->LootThreshold)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [DistributeLoot] Loot is below threshold. Assigning randomly"));
+
+						TheGameInstance->AssignLootRandomly(Contents[i], PartyMembers);
+					}
+					else
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [DistributeLoot] Loot is above the threshold."));
+
+						if (myPlayerState->LootSetting == ELootSetting::RANDOM)
+						{
+							UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [DistributeLoot] Loot is set to random. Assigning randomly"));
+
+							TheGameInstance->AssignLootRandomly(Contents[i], PartyMembers);
+						}
+						else
+						{
+							FLootUIDataItem LootDataItem;
+							LootDataItem.Item = Contents[i];
+							LootData.Items.Add(LootDataItem);
+						}
+					}
+				}
+
+
+				TArray <FString> PlayerTitles;
+				TArray <FString> PlayerKeyIds;
+
+				// build out the player array.  
+				for (int32 i = 0; i < PartyMembers.Num(); i++)
+				{
+					if (PartyMembers[i].PlayerController)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [DistributeLoot] got thisMyPlayerController"));
+
+						AMyPlayerState* thisMyPlayerState = Cast<AMyPlayerState>(PartyMembers[i].PlayerController->PlayerState);
+
+						if (thisMyPlayerState)
+						{
+							PlayerTitles.Add(thisMyPlayerState->playerTitle);
+							PlayerKeyIds.Add(thisMyPlayerState->playerKeyId);
+
+							PartyMemberPlayerStates.Add(thisMyPlayerState);
+						}
+
+
+					}
+				}
+
+				// save data out to all playerstates
+				for (int32 i = 0; i < PartyMemberPlayerStates.Num(); i++)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [DistributeLoot] Saving players and loot data to player states. "));
+					PartyMemberPlayerStates[i]->PlayerTitles = PlayerTitles;
+					PartyMemberPlayerStates[i]->PlayerKeyIds = PlayerKeyIds;
+					PartyMemberPlayerStates[i]->LootData = LootData;
+				}
+
+				// other loot settings require a UI and timer 
+				// and want to see LootData which is saved in GameState
+				if (myPlayerState->LootSetting == ELootSetting::NEEDGREED)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyPlayerController] [DistributeLoot] Loot is set to Need Greed. "));
+
+					NeedVGreedStartTimerDel.BindUFunction(this, FName("StartLootNeedVGreed"));
+					GetWorld()->GetTimerManager().SetTimer(NeedVGreedStartDelayHandle, NeedVGreedStartTimerDel, 2.0f, false);
+
+				}
+				else if (myPlayerState->LootSetting == ELootSetting::MASTER)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [DistributeLoot] Loot is set to Master Looter. "));
+
+					MasterLooterStartTimerDel.BindUFunction(this, FName("StartLootMasterLooter"));
+					GetWorld()->GetTimerManager().SetTimer(MasterLooterStartDelayHandle, MasterLooterStartTimerDel, 2.0f, false);
+
+				}
+				else if (myPlayerState->LootSetting == ELootSetting::GKP)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [DistributeLoot] Loot is set to GKP. "));
+
+					GKPLootStarttTimerDel.BindUFunction(this, FName("StartLootGKP"));
+					GetWorld()->GetTimerManager().SetTimer(GKPLootStartDelayHandle, GKPLootStarttTimerDel, 2.0f, false);
+
+				}
+			}
+		}
+	}
+
+	return true;
+}
+
+
+void AMyPlayerController::StartLootMasterLooter()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::StartLootMasterLooter"));
+
+	// Only run this on the server
+	if (IsRunningDedicatedServer())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::StartLootMasterLooter - Server"));
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			TheGameInstance->StartLootMasterLooter(playerKeyId);
+		}
+	}
+}
+
+void AMyPlayerController::FinalizeMasterLooter()
+{
+	// Only run this on the server
+	if (IsRunningDedicatedServer())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::FinalizeMasterLooter"));
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			TheGameInstance->FinalizeMasterLooter(playerKeyId);
+		}
+	}
+}
+
+void AMyPlayerController::StartLootNeedVGreed()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::StartLootNeedVGreed"));
+
+	// Only run this on the server
+	if (IsRunningDedicatedServer())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::StartLootNeedVGreed"));
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			TheGameInstance->StartLootNeedVGreed(playerKeyId);
+		}
+	}
+}
+
+void AMyPlayerController::FinalizeNeedVGreed()
+{
+	// Only run this on the server
+	if (IsRunningDedicatedServer())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerAttemptNeedVGreedRoll_Implementation"));
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			TheGameInstance->FinalizeNeedVGreed(playerKeyId);
+		}
+	}
+}
+
+void AMyPlayerController::StartLootGKP()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::StartLootGKP"));
+
+	// Only run this on the server
+	if (IsRunningDedicatedServer())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::StartLootGKP"));
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			TheGameInstance->StartLootGKP(playerKeyId);
+		}
+	}
+}
+
+void AMyPlayerController::FinalizeGKPLoot()
+{
+	// Only run this on the server
+	if (IsRunningDedicatedServer())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerAttemptNeedVGreedRoll_Implementation"));
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			TheGameInstance->FinalizeGKPLoot(playerKeyId);
+		}
+	}
+}
+
+
+void AMyPlayerController::OnShowNeedVGreedUIBP_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::OnShowNeedVGreedUIBP_Implementation"));
+}
+
+void AMyPlayerController::SendClientShowNeedVGreedUI_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::SendClientShowNeedVGreedUI_Implementation"));
+	OnShowNeedVGreedUIBP();
+}
+
+void AMyPlayerController::AttemptNeedVGreedRoll(int32 LootIndex, bool NeedPressed)
+{
+	// Just run it on the server.
+	ServerAttemptNeedVGreedRoll(LootIndex, NeedPressed);
+}
+
+bool AMyPlayerController::ServerAttemptNeedVGreedRoll_Validate(int32 LootIndex, bool NeedPressed)
+{
+	//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [ServerAttemptSpawnActor_Validate]  "));
+	return true;
+}
+
+void AMyPlayerController::ServerAttemptNeedVGreedRoll_Implementation(int32 LootIndex, bool NeedPressed)
+{
+	// Only run this on the server
+	if (IsRunningDedicatedServer())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerAttemptNeedVGreedRoll_Implementation"));
+
+		// do the work in instance
+
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			TheGameInstance->ServerAttemptNeedVGreedRoll(LootIndex, NeedPressed, playerKeyId);
+
+		}
+
+
+
+	}
+}
+
+void AMyPlayerController::OnShowMasterLooterUIBP_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::OnShowMasterLooterUIBP_Implementation"));
+}
+
+void AMyPlayerController::SendClientShowMasterLooterUI_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::SendClientShowMasterLooterUI_Implementation"));
+	OnShowMasterLooterUIBP();
+}
+
+
+void AMyPlayerController::AttemptAssignLootMasterLooter(int32 LootIndex, const FString& UserKeyId)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::AttemptAssignLootMasterLooter"));
+
+	if (IAmCaptain)
+	{
+		ServerAttemptAssignLootMasterLooter(LootIndex, UserKeyId);
+	}
+}
+
+bool AMyPlayerController::ServerAttemptAssignLootMasterLooter_Validate(int32 LootIndex, const FString& UserKey)
+{
+	//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [ServerAttemptSpawnActor_Validate]  "));
+	return true;
+}
+
+void AMyPlayerController::ServerAttemptAssignLootMasterLooter_Implementation(int32 LootIndex, const FString& UserKey)
+{
+	// Only run this on the server
+	if (IsRunningDedicatedServer())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerAttemptAssignLootMasterLooter_Implementation"));
+
+		// do the work in game instance
+
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			TheGameInstance->AssignLootMasterLooter(LootIndex, UserKey);
+		}
+	}
+}
+
+void AMyPlayerController::OnShowGKPConfirmUIBP_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::OnShowGKPUIBP_Implementation"));
+}
+
+void AMyPlayerController::SendClientShowGKPConfirmUI_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::SendClientShowGKPUI_Implementation"));
+	OnShowGKPConfirmUIBP();
+}
+
+
+void AMyPlayerController::OnShowGKPUIBP_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::OnShowGKPUIBP_Implementation"));
+}
+
+void AMyPlayerController::SendClientShowGKPUI_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::SendClientShowGKPUI_Implementation"));
+	OnShowGKPUIBP();
+}
+
+
+void AMyPlayerController::ConfirmGKPStart(const FString& title, const FString& description, bool vettingEnabled)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ConfirmGKPStart"));
+
+	ServerConfirmGKPStart(title, description, vettingEnabled);
+}
+
+
+bool AMyPlayerController::ServerConfirmGKPStart_Validate(const FString& title, const FString& description, bool vettingEnabled)
+{
+	return true;
+}
+
+void AMyPlayerController::ServerConfirmGKPStart_Implementation(const FString& title, const FString& description, bool vettingEnabled)
+{
+	// Only run this on the server
+	if (IsRunningDedicatedServer())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerConfirmGKPStart_Implementatione"));
+
+		//Run the http request...  do this in gameinstance probably....  
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			TheGameInstance->BackendRequestGKPStart(playerKeyId, title, description, vettingEnabled);
+		}
+
+	}
+}
+
+
+void AMyPlayerController::AttemptGKPBid(int32 LootIndex, float Bid)
+{
+	// preliminary test to see if we have the gkp amount first, but this is validated server side anyway so its safe to skip it
+
+	// Just run it on the server.
+	ServerAttemptGKPBid(LootIndex, Bid);
+}
+
+bool AMyPlayerController::ServerAttemptGKPBid_Validate(int32 LootIndex, float Bid)
+{
+	//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [ServerAttemptSpawnActor_Validate]  "));
+	return true;
+}
+
+void AMyPlayerController::ServerAttemptGKPBid_Implementation(int32 LootIndex, float Bid)
+{
+	// Only run this on the server
+	if (IsRunningDedicatedServer())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerAttemptGKPBidl_Implementation"));
+
+		// do the work in instance
+
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			TheGameInstance->ServerAttemptGKPBid(LootIndex, Bid, playerKeyId);
+
+		}
+
+
+
+	}
+}
+
+void AMyPlayerController::OnShowGKPConfirmEndUIBP_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::OnShowGKPConfirmEndUIBP_Implementation"));
+}
+
+void AMyPlayerController::SendClientShowGKPConfirmEndUI_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::SendClientShowGKPConfirmEndUI_Implementation"));
+	OnShowGKPConfirmEndUIBP();
+}
+
+
+void AMyPlayerController::ConfirmGKPEnd(bool processAsValid)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ConfirmGKPStart"));
+
+	ServerConfirmGKPEnd(processAsValid);
+}
+
+
+bool AMyPlayerController::ServerConfirmGKPEnd_Validate(bool processAsValid)
+{
+	return true;
+}
+
+void AMyPlayerController::ServerConfirmGKPEnd_Implementation(bool processAsValid)
+{
+	// Only run this on the server
+	if (IsRunningDedicatedServer())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerConfirmGKPEnd_Implementation"));
+
+		//Run the http request...  do this in gameinstance probably....  
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			TheGameInstance->BackendRequestGKPEnd(playerKeyId, processAsValid);
+		}
+
+	}
 }
 
 

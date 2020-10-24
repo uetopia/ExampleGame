@@ -143,6 +143,53 @@ public:
 	UPROPERTY(Replicated, BlueprintReadOnly)
 		bool bCombatEnabled = true;
 
+	/** Is loot VIA drops enabled this game mode?  */
+	UPROPERTY(EditDefaultsOnly, Replicated, BlueprintReadWrite, Category = "UEtopia")
+		bool bLootDropsEnabled;
+
+	/** Is the party leader allowed to change the loot settings in this game mode?  */
+	UPROPERTY(EditDefaultsOnly, Replicated, BlueprintReadWrite, Category = "UEtopia")
+		bool bPartyLeaderCanChangeLootSettings;
+
+
+	// We need to update the UI when these are modified, so we need a repnotify.
+	UPROPERTY(EditDefaultsOnly, ReplicatedUsing = OnRep_OnLootSettingsChange, BlueprintReadWrite, Category = "UEtopia")
+		ELootThreshold LootThreshold = ELootThreshold::TIER1;
+
+	UPROPERTY(EditDefaultsOnly, ReplicatedUsing = OnRep_OnLootSettingsChange, BlueprintReadWrite, Category = "UEtopia")
+		ELootSetting LootSetting = ELootSetting::RANDOM;
+
+	// this function just calls the playerController function.
+	UFUNCTION()
+		void OnRep_OnLootSettingsChange();
+
+	// Keep track of this player's GKP 
+	// this is populated from  gameInstance->BackendRequestGKPStartComplete
+	// also replicate it down to the owner so it can be shown on the gkp UI
+	UPROPERTY(Replicated, BlueprintReadOnly)
+		bool bCanBidOnLoot;
+
+	UPROPERTY(Replicated, BlueprintReadOnly)
+		float gkpAmount;
+
+	UPROPERTY(Replicated, BlueprintReadOnly)
+		float gkpVettingThisRaid;
+
+	UPROPERTY(Replicated, BlueprintReadOnly)
+		float gkpVettingRemaining;
+
+	// moved in from gameState
+	UPROPERTY(EditDefaultsOnly, Replicated, BlueprintReadWrite, Category = "UEtopia")
+		FLootUIData LootData;
+
+	// Hold on to the array which has the player names and keys
+	UPROPERTY(Replicated, BlueprintReadOnly)
+		TArray<FString> PlayerTitles;
+
+	// Hold on to the array which has the player names and keys
+	UPROPERTY(Replicated, BlueprintReadOnly)
+		TArray<FString> PlayerKeyIds;
+
 	// Variables set via get game player api call
 
 	// doubles are not supported.

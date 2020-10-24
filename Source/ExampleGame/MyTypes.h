@@ -31,6 +31,26 @@ enum class EConnectUIState : uint8
 	Lobby 	UMETA(DisplayName = "Lobby")
 };
 
+/** Structure to store the different loot settings - only applies to loot at or above the threshold */
+UENUM(BlueprintType)
+enum class ELootSetting : uint8
+{
+	RANDOM 	UMETA(DisplayName = "RANDOM"),
+	NEEDGREED 	UMETA(DisplayName = "NEED VS GREED"),
+	MASTER 	UMETA(DisplayName = "MASTER LOOTER"),
+	GKP  	UMETA(DisplayName = "GUILD KILL PARTICIPATION"),
+};
+
+/** Structure to store the loot threshold */
+UENUM(BlueprintType)
+enum class ELootThreshold : uint8
+{
+	TIER1 	UMETA(DisplayName = "TIER 1"),
+	TIER2 	UMETA(DisplayName = "TIER 2"),
+	TIER3 	UMETA(DisplayName = "TIER 3"),
+	TIER4  	UMETA(DisplayName = "TIER 4"),
+};
+
 USTRUCT(BlueprintType)
 struct FMyActorFilter
 {
@@ -329,6 +349,8 @@ struct FMyInventorySlot {
 		int32 MaxStackSize;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		TArray<float> Attributes;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		int32 Tier;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		int32 DataTableId;
@@ -361,6 +383,47 @@ struct FMyInventorySlot {
 	*/
 };
 
+
+USTRUCT(BlueprintType)
+struct FLootRoll {
+
+	GENERATED_USTRUCT_BODY()
+		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString  UserKeyId;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		float RollValue;
+
+};
+
+
+USTRUCT(BlueprintType)
+struct FLootUIDataItem {
+
+	GENERATED_USTRUCT_BODY()
+		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FMyInventorySlot Item;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		TArray< FLootRoll>  NeedBids;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		TArray< FLootRoll>  GreedBids;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		TArray< FLootRoll>  GKPBids;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString AssignedToUserKeyId;
+};
+
+USTRUCT(BlueprintType)
+struct FLootUIData {
+
+	GENERATED_USTRUCT_BODY()
+		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		TArray< FLootUIDataItem>  Items;
+};
 
 USTRUCT(BlueprintType)
 struct FMyVendorItem {

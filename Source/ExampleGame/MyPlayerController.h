@@ -268,6 +268,149 @@ public:
 	UFUNCTION(Client, Reliable)
 		void SendLocalChatMessage(const FString& ChatMessageIn);
 
+	//////////////////////////////
+	// Loot
+	//////////////////////////////
+
+	// Loot stuff
+	// WE need a temporary place to store party data.
+	// The online subsystem handles party for the client side
+	// But we also need a way for the server to query the backend to get party state and party members
+
+	// when a loot box is opened, a request goes out for the party data.
+	// when that request comes back, the process to begin loot assignment can continue
+
+	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
+		void AttemptChangeLootSettings(ELootThreshold LootThreshold, ELootSetting LootSetting);
+
+	// This is the function that gets called on the server
+	UFUNCTION(Server, Reliable, WithValidation)
+		void ServerAttemptChangeLootSettings(ELootThreshold LootThreshold, ELootSetting LootSetting);
+
+	UFUNCTION(BlueprintNativeEvent)
+		void OnLootSettingsChangedBP();
+
+	UFUNCTION()
+		bool DistributeLoot(TArray<FMyInventorySlot> Contents);
+
+	// all we really need is an array of strings with the player ids inside.
+	// this does not need to replicate or anything, just lives serverside.
+	TArray<FString> PartyMemberUserKeyIds;
+
+	// we also need a temporary place to put the contents of the loot item.
+	// Server side only, not replicated.
+	TArray<FMyInventorySlot> TempContents;
+
+	// This is a little bit confusing because we are switching back and forth beween controller and game instance.
+	// The reason for this is that we need the delegates to originate from the controller, but run on the game instance.
+	// We need delgate for each player basically.  If it's on instance we'd only have one.
+
+	FTimerHandle MasterLooterStartDelayHandle;
+	FTimerDelegate MasterLooterStartTimerDel;
+	FTimerHandle MasterLooterTimeoutDelayHandle;
+	FTimerDelegate MasterLooterTimeoutTimerDel;
+
+	UFUNCTION()
+		void StartLootMasterLooter();
+
+	UFUNCTION()
+		void FinalizeMasterLooter();
+
+	FTimerHandle NeedVGreedStartDelayHandle;
+	FTimerDelegate NeedVGreedStartTimerDel;
+	FTimerHandle NeedVGreedTimeoutDelayHandle;
+	FTimerDelegate NeedVGreedTimeoutTimerDel;
+
+	UFUNCTION()
+		void StartLootNeedVGreed();
+
+	UFUNCTION()
+		void FinalizeNeedVGreed();
+
+	FTimerHandle GKPLootStartDelayHandle;
+	FTimerDelegate GKPLootStarttTimerDel;
+	FTimerHandle GKPLootTimeoutDelayHandle;
+	FTimerDelegate GKPLootTimeoutTimerDel;
+
+	UFUNCTION()
+		void StartLootGKP();
+
+	UFUNCTION()
+		void FinalizeGKPLoot();
+
+
+	UFUNCTION(BlueprintNativeEvent)
+		void OnShowNeedVGreedUIBP(); // running client side
+
+	// this just calls the BP native function on the client
+	UFUNCTION(Client, Reliable, Category = "UETOPIA")
+		void SendClientShowNeedVGreedUI();
+
+	// Register a Roll on an item
+	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
+		void AttemptNeedVGreedRoll(int32 LootIndex, bool NeedPressed);
+
+	// This is the function that gets called on the server
+	UFUNCTION(Server, Reliable, WithValidation)
+		void ServerAttemptNeedVGreedRoll(int32 LootIndex, bool NeedPressed);
+
+	UFUNCTION(BlueprintNativeEvent)
+		void OnShowMasterLooterUIBP(); // running client side
+
+	// this just calls the BP native function on the client
+	UFUNCTION(Client, Reliable, Category = "UETOPIA")
+		void SendClientShowMasterLooterUI();
+
+	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
+		void AttemptAssignLootMasterLooter(int32 LootIndex, const FString& UserKeyId);
+
+	// This is the function that gets called on the server
+	UFUNCTION(Server, Reliable, WithValidation)
+		void ServerAttemptAssignLootMasterLooter(int32 LootIndex, const FString& UserKeyId);
+
+	UFUNCTION(BlueprintNativeEvent)
+		void OnShowGKPConfirmUIBP(); // running client side
+
+	// this just calls the BP native function on the client
+	UFUNCTION(Client, Reliable, Category = "UETOPIA")
+		void SendClientShowGKPConfirmUI();
+
+	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
+		void ConfirmGKPStart(const FString& title, const FString& description, bool vettingEnabled);
+
+	// This is the function that gets called on the server
+	UFUNCTION(Server, Reliable, WithValidation)
+		void ServerConfirmGKPStart(const FString& title, const FString& description, bool vettingEnabled);
+
+	UFUNCTION(BlueprintNativeEvent)
+		void OnShowGKPUIBP(); // running client side
+
+	// this just calls the BP native function on the client
+	UFUNCTION(Client, Reliable, Category = "UETOPIA")
+		void SendClientShowGKPUI();
+
+	// Register a Roll on an item
+	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
+		void AttemptGKPBid(int32 LootIndex, float Bid);
+
+	// This is the function that gets called on the server
+	UFUNCTION(Server, Reliable, WithValidation)
+		void ServerAttemptGKPBid(int32 LootIndex, float Bid);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+		void OnShowGKPConfirmEndUIBP(); // running client side
+
+	// this just calls the BP native function on the client
+	UFUNCTION(Client, Reliable, Category = "UETOPIA")
+		void SendClientShowGKPConfirmEndUI();
+
+	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
+		void ConfirmGKPEnd(bool processAsValid);
+
+	// This is the function that gets called on the server
+	UFUNCTION(Server, Reliable, WithValidation)
+		void ServerConfirmGKPEnd(bool processAsValid);
+
 	UFUNCTION(Client, Reliable, BlueprintCallable, Category = "UETOPIA")
 		void ClientRequestChatChannelRefresh();
 

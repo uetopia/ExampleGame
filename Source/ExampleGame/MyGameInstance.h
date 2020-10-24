@@ -412,6 +412,50 @@ public:
 	//bool OutgoingChat(int32 playerID, FText message);
 	//void OutgoingChatComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
 
+	// Loot!
+	// Helper functions
+	FMyActivePlayer* GetCaptainPlayer(const FString& UserKeyId);
+
+	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
+		bool AssignLootRandomly(FMyInventorySlot LootItem, TArray<FMyActivePlayer> PartyMembers);
+
+	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
+		void StartLootMasterLooter(const FString& UserKeyId);
+
+	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
+		bool AssignLootMasterLooter(int32 LootIndex, const FString& UserKeyId);
+
+	UFUNCTION()
+		void FinalizeMasterLooter(const FString& UserKeyId);
+
+	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
+		void StartLootNeedVGreed(const FString& UserKeyId);
+
+	void ServerAttemptNeedVGreedRoll(int32 LootIndex, bool NeedPressed, const FString& UserKeyId);
+
+	UFUNCTION()
+		void FinalizeNeedVGreed(const FString& UserKeyId);
+
+	UFUNCTION(BlueprintCallable, Category = "UETOPIA")
+		void StartLootGKP(const FString& UserKeyId);
+
+	void ServerAttemptGKPBid(int32 LootIndex, float Bid, const FString& UserKeyId);
+
+	UFUNCTION()
+		void FinalizeGKPLoot(const FString& UserKeyId);
+
+	// this gets the party members....  And also sets up the contents in the controller
+	bool BackendRequestPartyMembers(class AActor* OtherActor, TArray<FMyInventorySlot> Contents);
+	void BackendRequestPartyMembersComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
+
+	/* BackendRequestGKPStart - Attempt to start a new GKP session */
+	bool BackendRequestGKPStart(const FString& playerKeyId, const FString& title, const FString& description, bool vettingEnabled);
+	void BackendRequestGKPStartComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
+
+	/* BackendRequestGKPStart - Attempt to end a new GKP session */
+	bool BackendRequestGKPEnd(const FString& playerKeyId, bool processAsValid);
+	void BackendRequestGKPEndComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
+
 	void SubmitReport();
 	void SubmitReportComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
 
@@ -500,6 +544,9 @@ public:
 	bool ClaimPlayerDrop(FString playerKeyId, FString dropKeyId);
 	void ClaimPlayerDropRequestComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
 
+	bool CreatePlayerDrop(FString playerKeyId, FMyInventorySlot LootItem);
+	void CreatePlayerDropRequestComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
+
 
 	// Game data access
 	// set these up on the backend
@@ -575,6 +622,9 @@ public:
 
 	// Is combat enabled on this server?
 	bool combatEnabled = true;
+	// Loot settings for this server
+	bool bLootDropsEnabled;
+	bool bPartyLeaderCanChangeLootSettings = true;
 
 	void CalculateNewRank(int32 WinnerPlayerIndex, int32 LoserPlayerIndex, bool penalizeLoser);
 

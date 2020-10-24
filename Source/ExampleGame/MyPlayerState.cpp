@@ -570,21 +570,36 @@ void AMyPlayerState::OnRep_OnAbilitiesChange_Implementation()
 	}
 }
 
+void AMyPlayerState::OnRep_OnLootSettingsChange()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerState::OnRep_OnLootSettingsChange"));
+
+	AActor* ActorOwner = GetOwner();
+	AMyPlayerController* playerController = Cast<AMyPlayerController>(ActorOwner);
+	if (playerController)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerState::OnRep_OnLootSettingsChange Got Controller"));
+		playerController->OnLootSettingsChangedBP();
+	}
+}
+
 void AMyPlayerState::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	DOREPLIFETIME(AMyPlayerState, playerTitle);
-	DOREPLIFETIME(AMyPlayerState, serverTitle);
-	DOREPLIFETIME(AMyPlayerState, Currency);
-	DOREPLIFETIME(AMyPlayerState, playerKeyId);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, serverTitle, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, playerKeyId, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, Currency, COND_OwnerOnly);
 	//DOREPLIFETIME(AMyPlayerState, ServerPortalKeyIdsAuthorized);
-	DOREPLIFETIME(AMyPlayerState, TeamId);
-	DOREPLIFETIME(AMyPlayerState, TeamPlayerIndex);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, TeamId, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, TeamPlayerIndex, COND_OwnerOnly);
 
-	DOREPLIFETIME(AMyPlayerState, customTextures);
-	DOREPLIFETIME(AMyPlayerState, playerLoginFlowCompleted);
-	DOREPLIFETIME(AMyPlayerState, winningTeamTitle);
-	DOREPLIFETIME(AMyPlayerState, InventorySlots);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, customTextures, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, playerLoginFlowCompleted, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, winningTeamTitle, COND_OwnerOnly);
+
+	DOREPLIFETIME_CONDITION(AMyPlayerState, InventorySlots, COND_OwnerOnly);
+
 	DOREPLIFETIME(AMyPlayerState, MyEquipment);
 	DOREPLIFETIME(AMyPlayerState, Level);
 	DOREPLIFETIME(AMyPlayerState, Experience);
@@ -592,15 +607,28 @@ void AMyPlayerState::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & Ou
 	DOREPLIFETIME(AMyPlayerState, MyAbilitySlots);
 	DOREPLIFETIME(AMyPlayerState, AbilitySlotsPerRow);
 
-	DOREPLIFETIME(AMyPlayerState, ServerLinksAuthorized);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, ServerLinksAuthorized, COND_OwnerOnly);
 	
-	DOREPLIFETIME(AMyPlayerState, allowPickup);
-	DOREPLIFETIME(AMyPlayerState, allowDrop);
-	DOREPLIFETIME(AMyPlayerState, MyDrops);
-	DOREPLIFETIME(AMyPlayerState, bCombatEnabled);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, allowPickup, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, allowDrop, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, MyDrops, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, bCombatEnabled, COND_OwnerOnly);
 	DOREPLIFETIME(AMyPlayerState, GrantedAbilities);
 	
-	
+	DOREPLIFETIME_CONDITION(AMyPlayerState, bLootDropsEnabled, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, bPartyLeaderCanChangeLootSettings, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, LootThreshold, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, LootSetting, COND_OwnerOnly);
+
+	DOREPLIFETIME_CONDITION(AMyPlayerState, bCanBidOnLoot, COND_OwnerOnly); // replicate only to the owner
+	DOREPLIFETIME_CONDITION(AMyPlayerState, gkpAmount, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, gkpVettingThisRaid, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, gkpVettingRemaining, COND_OwnerOnly);
+
+	DOREPLIFETIME_CONDITION(AMyPlayerState, LootData, COND_OwnerOnly);
+
+	DOREPLIFETIME_CONDITION(AMyPlayerState, PlayerTitles, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AMyPlayerState, PlayerKeyIds, COND_OwnerOnly);
 }
 
 /* handles copying properties when we do seamless travel */
@@ -636,6 +664,16 @@ void AMyPlayerState::CopyProperties(class APlayerState* PlayerState)
 		MyPlayerState->bCombatEnabled = bCombatEnabled;
 		MyPlayerState->GrantedAbilities = GrantedAbilities;
 		MyPlayerState->CachedAbilities = CachedAbilities;
+
+		MyPlayerState->bLootDropsEnabled = bLootDropsEnabled;
+		MyPlayerState->bPartyLeaderCanChangeLootSettings = bPartyLeaderCanChangeLootSettings;
+		MyPlayerState->LootThreshold = LootThreshold;
+		MyPlayerState->LootSetting = LootSetting;
+
+		MyPlayerState->bCanBidOnLoot = bCanBidOnLoot;
+		MyPlayerState->gkpAmount = gkpAmount;
+		MyPlayerState->gkpVettingThisRaid = gkpVettingThisRaid;
+		MyPlayerState->gkpVettingRemaining = gkpVettingRemaining;
 	}
 
 }

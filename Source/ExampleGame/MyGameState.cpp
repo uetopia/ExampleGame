@@ -29,6 +29,12 @@ AMyGameState::AMyGameState(const FObjectInitializer& ObjectInitializer) : Super(
 		{
 			ZoneDetail = TheGameInstance->ZoneDetail;
 			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyGameState] Copied ZoneInfo From GameInstance"));
+
+			bCombatEnabled = TheGameInstance->combatEnabled;
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyGameState] Copied combatEnabled From GameInstance"));
+
+			bPartyLeaderCanChangeLootSettings = TheGameInstance->bPartyLeaderCanChangeLootSettings;
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AMyGameState] Copied bPartyLeaderCanChangeLootSettings From GameInstance"));
 		}
 	}
 
@@ -49,6 +55,8 @@ void AMyGameState::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutL
 	DOREPLIFETIME(AMyGameState, bCombatEnabled);
 	//DOREPLIFETIME(AMyGameState, bIsShardedServer);
 	DOREPLIFETIME(AMyGameState, MatchTitle);
+	DOREPLIFETIME(AMyGameState, bLootDropsEnabled);
+	DOREPLIFETIME(AMyGameState, bPartyLeaderCanChangeLootSettings);
 
 }
 
