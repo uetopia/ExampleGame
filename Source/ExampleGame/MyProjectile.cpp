@@ -33,8 +33,10 @@ AMyProjectile::AMyProjectile(const FObjectInitializer& ObjectInitializer)
 
 	MovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileComp0"));
 	MovementComponent->UpdatedComponent = RootComponent;
+	MovementComponent->SetIsReplicated(true);
 
 	bReplicates = true;
+	
 }
 
 void AMyProjectile::BeginPlay()
@@ -44,7 +46,7 @@ void AMyProjectile::BeginPlay()
 	// changed in 4.25
 	//if (Role == ROLE_Authority)
 	
-	if (GetRemoteRole() == ROLE_Authority)
+	if (GetLocalRole() == ROLE_Authority)
 	{
 		//changed in 4.25
 		//if (Instigator)

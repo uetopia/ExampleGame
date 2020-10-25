@@ -170,16 +170,19 @@ void UMyGameInstance::Init()
 
 	OnEndSessionCompleteDelegate = FOnEndSessionCompleteDelegate::CreateUObject(this, &UMyGameInstance::OnEndSessionComplete);
 
-	GetWorld()->GetTimerManager().SetTimer(ServerLinksTimerHandle, this, &UMyGameInstance::GetServerLinks, 20.0f, true);
+	
+
+	
+	
+#endif
 
 	// Set up a timer to submit kills and stats to the backend if this is a continuous server
 	// This should be anywhere from a minute to 15 minutes, depending on game load.
 	if (UEtopiaMode == "continuous")
 	{
 		GetWorld()->GetTimerManager().SetTimer(SubmitReportTimerHandle, this, &UMyGameInstance::SubmitReport, 60.0f, true);
+		GetWorld()->GetTimerManager().SetTimer(ServerLinksTimerHandle, this, &UMyGameInstance::GetServerLinks, 20.0f, true);
 	}
-	
-#endif
 
 	MatchStarted = false;
 
