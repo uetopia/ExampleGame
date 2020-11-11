@@ -3476,7 +3476,7 @@ void UMyGameInstance::PurchaseRequestComplete(FHttpRequestPtr HttpRequest, FHttp
 }
 
 
-bool UMyGameInstance::VendorCreate(FString userKeyId, FString VendorTypeKeyId, float coordLocationX, float coordLocationY, float coordLocationZ, float forwardVecX, float forwardVecY, float forwardVecZ)
+bool UMyGameInstance::VendorCreate(FString userKeyId, FString VendorTypeKeyId, float coordLocationX, float coordLocationY, float coordLocationZ, float forwardVecX, float forwardVecY, float forwardVecZ, int32 DataTableId)
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] VendorCreate"));
 
@@ -3495,6 +3495,7 @@ bool UMyGameInstance::VendorCreate(FString userKeyId, FString VendorTypeKeyId, f
 	PlayerJsonObj->SetNumberField("forwardVecX", forwardVecX);
 	PlayerJsonObj->SetNumberField("forwardVecY", forwardVecY);
 	PlayerJsonObj->SetNumberField("forwardVecZ", forwardVecZ);
+	PlayerJsonObj->SetNumberField("DTID", DataTableId);
 
 	FString JsonOutputString;
 	TSharedRef< TJsonWriter<> > Writer = TJsonWriterFactory<>::Create(&JsonOutputString);

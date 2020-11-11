@@ -124,7 +124,7 @@ void AMyBaseVendor::ServerAttemptUse_Implementation(FTransform SpawnTransform, c
 		float forwardVecX = SpawnTransform.GetRotation().GetForwardVector().X;
 		float forwardVecY = SpawnTransform.GetRotation().GetForwardVector().Y;
 		float forwardVecZ = SpawnTransform.GetRotation().GetForwardVector().Z;
-		TheGameInstance->VendorCreate(UserKeyId, VendorTypeKeyId, coordLocationX, coordLocationY, coordLocationZ, forwardVecX, forwardVecY, forwardVecZ);
+		TheGameInstance->VendorCreate(UserKeyId, VendorTypeKeyId, coordLocationX, coordLocationY, coordLocationZ, forwardVecX, forwardVecY, forwardVecZ, DataTableId);
 	}
 	// somehow set a temporary key so we can get back to it later
 	// Run the http create vendor request
