@@ -525,6 +525,9 @@ public:
 	bool VendorItemClaim(AMyPlayerController* playerController, FString VendorKeyId, FString VendorItemKeyId);
 	void VendorItemClaimRequestComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
 
+	bool AttemptRemoveVendor(FString VendorKeyId);
+	void VendorAttemptRemovalComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
+
 	// GAME STORE
 	bool GameStorePurchase(AMyPlayerController* playerController, AMyGameStore* GameStoreRef, int32 itemIndex, int32 quantity);
 	void GameStorePurchaseRequestComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);

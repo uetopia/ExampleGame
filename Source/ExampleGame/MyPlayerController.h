@@ -580,6 +580,11 @@ public:
 	UFUNCTION(Server, Reliable, WithValidation)
 		void ServerClaimItemFromVendor(const FString& vendorKeyId, const FString& vendorItemKeyId);
 
+	// Stale vendors can be deleted from the backend, which results in vendors in-game not being found when looked up
+	// Ask the server to verify this, and delete the actor if it is really gone.
+	UFUNCTION(Server, Reliable, WithValidation)
+		void ServerAttemptVendorRemoval(const FString& vendorKeyId);
+
 	///////////////////////////
 	// GAME STORE RELATED FUNCTIONS
 	///////////////////////////

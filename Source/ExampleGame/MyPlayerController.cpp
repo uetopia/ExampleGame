@@ -2193,6 +2193,27 @@ void AMyPlayerController::GetVendorInfoComplete(FHttpRequestPtr HttpRequest, FHt
 		{
 			UE_LOG(LogTemp, Log, TEXT("Parsed JSON response successfully."));
 
+			// check to see if the vendor was returned.  It is possible that it was deleted and no longer exists on the backend
+			bool response_successful = false;
+
+			JsonParsed->TryGetBoolField("response_successful", response_successful);
+
+			if (!response_successful)
+			{
+				UE_LOG(LogTemp, Log, TEXT("Response was not successful."));
+
+				// Tell the server to delete this vendor.
+				// We get back the key_id parameter as a string
+				if (JsonParsed->HasField("vendorKeyIdStr"))
+				{
+					FString returned_key_id = JsonParsed->GetStringField("vendorKeyIdStr");
+
+					// tell the server to deal with it
+					ServerAttemptVendorRemoval(returned_key_id);
+					return;
+				}
+			}
+
 			JsonParsed->TryGetStringField("title", MyCurrentVendorTitle);
 			JsonParsed->TryGetStringField("description", MyCurrentVendorDescription);
 			JsonParsed->TryGetStringField("discordWebhook", MyCurrentVendorDiscordWebhook);
@@ -2324,6 +2345,25 @@ void AMyPlayerController::GetVendorInfoComplete(FHttpRequestPtr HttpRequest, FHt
 
 			FOnVendorInfoComplete.Broadcast();
 
+		}
+	}
+}
+
+bool AMyPlayerController::ServerAttemptVendorRemoval_Validate(const FString& vendorKeyId)
+{
+	//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [AUEtopiaPersistCharacter] [ServerAttemptSpawnActor_Validate]  "));
+	return true;
+}
+
+void AMyPlayerController::ServerAttemptVendorRemoval_Implementation(const FString& vendorKeyId)
+{
+	// Only run this on the server!
+	if (IsRunningDedicatedServer())
+	{
+		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+		if (TheGameInstance)
+		{
+			TheGameInstance->AttemptRemoveVendor(vendorKeyId);
 		}
 	}
 }
