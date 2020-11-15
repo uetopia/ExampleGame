@@ -7962,6 +7962,7 @@ FMyInventorySlot UMyGameInstance::GetInventorySlotByDTID(int32 DTID)
 				InventorySlot.MaxStackSize = basePickupBP->MaxStackSize;
 				InventorySlot.UseText = basePickupBP->UseText;
 				InventorySlot.itemClassTitle = basePickupBP->GetName();
+				InventorySlot.itemClassPath = GOLookupRow->ClassPath;
 			}
 		}
 	}
