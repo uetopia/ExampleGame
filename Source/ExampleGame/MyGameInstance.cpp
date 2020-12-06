@@ -220,7 +220,8 @@ bool UMyGameInstance::PerformHttpRequest(void(UMyGameInstance::*delegateCallback
 	//UE_LOG(LogTemp, Log, TEXT("ServerAPIKey: %s"), *ServerAPIKey);
 	//UE_LOG(LogTemp, Log, TEXT("ServerAPISecret: %s"), *ServerAPISecret);
 
-	TSharedRef < IHttpRequest > Request = Http->CreateRequest();
+	// this changed in 4.26
+	TSharedRef < IHttpRequest, ESPMode::ThreadSafe > Request = Http->CreateRequest();
 	Request->SetVerb("POST");
 	Request->SetURL(TargetHost);
 	Request->SetHeader("User-Agent", "UETOPIA_UE4_API_CLIENT/1.0");
@@ -256,7 +257,8 @@ bool UMyGameInstance::PerformJsonHttpRequest(void(UMyGameInstance::*delegateCall
 	//UE_LOG(LogTemp, Log, TEXT("ServerAPIKey: %s"), *ServerAPIKey);
 	//UE_LOG(LogTemp, Log, TEXT("ServerAPISecret: %s"), *ServerAPISecret);
 
-	TSharedRef < IHttpRequest > Request = Http->CreateRequest();
+	// this changed in 4.26
+	TSharedRef < IHttpRequest, ESPMode::ThreadSafe > Request = Http->CreateRequest();
 	Request->SetVerb("POST");
 	Request->SetURL(TargetHost);
 	Request->SetHeader("User-Agent", "UETOPIA_UE4_API_CLIENT/1.0");

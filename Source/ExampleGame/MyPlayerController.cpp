@@ -93,6 +93,8 @@ AMyPlayerController::AMyPlayerController()
 
 #endif
 
+
+
 	// Start a player as captain so they can join matchmaker queue without being in a party first
 	IAmCaptain = true;
 
@@ -554,7 +556,28 @@ void AMyPlayerController::AcceptPartyInvite(const FString& senderUserKeyId)
 	// Fabricate a new FUniqueNetId by the userKeyId
 	const TSharedPtr<const FUniqueNetId> SenderUserId = OnlineSub->GetIdentityInterface()->CreateUniquePlayerId(senderUserKeyId);
 
-	OnlineSub->GetPartyInterface()->AcceptInvitation(*UserId, *SenderUserId);
+	// 4.26 We need an IOnlinePartyJoinInfo now.
+	// TODO - implement this
+
+	for (int32 Index = 0; Index < PendingInvitesArray.Num(); Index++)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::AcceptPartyInvite - found an invite"));
+		IOnlinePartyJoinInfo& PartyInfo = *PendingInvitesArray[Index];
+
+		if (PartyInfo.GetSourceUserId().Get().ToString() == senderUserKeyId)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::AcceptPartyInvite - Invite user match"));
+
+			OnlineSub->GetPartyInterface()->JoinParty(*UserId, PartyInfo);
+		}
+	}
+
+
+	// this changed in 4.26
+	//OnlineSub->GetPartyInterface()->AcceptInvitation(*UserId, *SenderUserId);
+
+	//  Now it's above because we need the party info first.
+	
 }
 
 void AMyPlayerController::OnCreatePartyComplete(const FUniqueNetId& UserId, const TSharedPtr<const FOnlinePartyId>&, const ECreatePartyCompletionResult)
@@ -600,23 +623,25 @@ void AMyPlayerController::OnPartyInviteReceivedComplete(const FUniqueNetId& Loca
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::OnPartyInviteReceivedComplete"));
 	// get the array from the OSS party interface
 
+	// this changed in 4.26
 	const auto OnlineSub = IOnlineSubsystem::Get();
-	OnlineSub->GetPartyInterface()->GetPendingInvites(LocalUserId, PendingInvitesArray);
+	TArray<IOnlinePartyJoinInfoConstRef> PendingInvitesArrayConstRef;
+	OnlineSub->GetPartyInterface()->GetPendingInvites(LocalUserId, PendingInvitesArrayConstRef);
 
 	MyCachedPartyInvitations.Empty();
 
-	for (int32 Index = 0; Index < PendingInvitesArray.Num(); Index++)
+	for (int32 Index = 0; Index < PendingInvitesArrayConstRef.Num(); Index++)
 	{
 		UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::OnPartyInviteReceivedComplete - adding invite to struct"));
-		IOnlinePartyJoinInfo& PartyInfo = *PendingInvitesArray[Index];
+		IOnlinePartyJoinInfoConstRef& PartyInfo = PendingInvitesArrayConstRef[Index];
 
 		FMyPartyInvitation ThisPartyInvitation;
 
 		ThisPartyInvitation.partyKeyId = PartyId.ToString();
 		// Is there some other way to get the party title now?
-		ThisPartyInvitation.partyTitle = PartyInfo.GetSourceDisplayName();
-		ThisPartyInvitation.senderUserKeyId = PartyInfo.GetSourceUserId()->ToString();
-		ThisPartyInvitation.senderUserTitle = PartyInfo.GetSourceDisplayName();
+		ThisPartyInvitation.partyTitle = PartyInfo.Get().GetSourceDisplayName();
+		ThisPartyInvitation.senderUserKeyId = PartyInfo.Get().GetSourceUserId()->ToString();
+		ThisPartyInvitation.senderUserTitle = PartyInfo.Get().GetSourceDisplayName();
 
 		MyCachedPartyInvitations.Add(ThisPartyInvitation);
 
@@ -673,7 +698,7 @@ void AMyPlayerController::LeaveParty(const FString& PartyKeyId)
 	OnlineSub->GetPartyInterface()->LeaveParty(*UserId, PartyId);
 }
 
-void AMyPlayerController::OnPartyDataReceivedComplete(const FUniqueNetId& LocalUserId, const FOnlinePartyId& PartyId, const TSharedRef<FOnlinePartyData>& PartyData)
+void AMyPlayerController::OnPartyDataReceivedComplete(const FUniqueNetId& LocalUserId, const FOnlinePartyId& PartyId, const FName& Namespace, const FOnlinePartyData& PartyData)
 {
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::OnPartyDataReceivedComplete"));
 
@@ -689,11 +714,11 @@ void AMyPlayerController::OnPartyDataReceivedComplete(const FUniqueNetId& LocalU
 	FVariantData partySizeCurrent;
 	FVariantData userIsCaptain;
 
-	PartyData->GetAttribute("title", partyTitle);
-	PartyData->GetAttribute("key_id", partyKeyId);
-	PartyData->GetAttribute("size_max", partySizeMax);
-	PartyData->GetAttribute("size_current", partySizeCurrent);
-	PartyData->GetAttribute("userIsCaptain", userIsCaptain);
+	PartyData.GetAttribute("title", partyTitle);
+	PartyData.GetAttribute("key_id", partyKeyId);
+	PartyData.GetAttribute("size_max", partySizeMax);
+	PartyData.GetAttribute("size_current", partySizeCurrent);
+	PartyData.GetAttribute("userIsCaptain", userIsCaptain);
 
 	FString partySizeMaxTemp = partySizeMax.ToString();
 	UE_LOG_ONLINE(Log, TEXT("partySizeMax: %s"), *partySizeMaxTemp);
@@ -730,9 +755,9 @@ void AMyPlayerController::OnPartyDataReceivedComplete(const FUniqueNetId& LocalU
 		FVariantData captain;
 		FMyFriend ThisPartyMember;
 
-		PartyData->GetAttribute(AttributePrefix + "title", userTitle);
-		PartyData->GetAttribute(AttributePrefix + "key_id", userKeyId);
-		PartyData->GetAttribute(AttributePrefix + "captain", captain);
+		PartyData.GetAttribute(AttributePrefix + "title", userTitle);
+		PartyData.GetAttribute(AttributePrefix + "key_id", userKeyId);
+		PartyData.GetAttribute(AttributePrefix + "captain", captain);
 
 		ThisPartyMember.playerTitle = userTitle.ToString();
 		ThisPartyMember.playerKeyId = userKeyId.ToString();
@@ -1783,7 +1808,8 @@ bool AMyPlayerController::PerformJsonHttpRequest(void(AMyPlayerController::*dele
 
 	UE_LOG(LogTemp, Log, TEXT("TargetHost: %s"), *TargetHost);
 
-	TSharedRef < IHttpRequest > Request = Http->CreateRequest();
+	// this changed in 4.26
+	TSharedRef < IHttpRequest, ESPMode::ThreadSafe > Request = Http->CreateRequest();
 
 
 	// Get the access token

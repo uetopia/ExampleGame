@@ -240,7 +240,8 @@ void AMyPlayerState::OnRep_OnCustomTextureChange_Implementation()
 			if (!Http) { return; }
 			if (!Http->IsHttpEnabled()) { return; }
 
-			TSharedRef < IHttpRequest > Request = Http->CreateRequest();
+			// this changed in 4.26
+			TSharedRef < IHttpRequest, ESPMode::ThreadSafe > Request = Http->CreateRequest();
 			Request->SetVerb("GET");
 			Request->SetURL(customTextures[b]);
 			Request->SetHeader("User-Agent", "UETOPIA_UE4_API_CLIENT/1.0");

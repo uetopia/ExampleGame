@@ -1096,7 +1096,8 @@ private:
 	// This is fired by the online subsystem when it receives new party data
 	// DECLARE_MULTICAST_DELEGATE_ThreeParams(F_PREFIX(OnPartyDataReceived), const FUniqueNetId& /*LocalUserId*/, const FOnlinePartyId& /*PartyId*/, const TSharedRef<FOnlinePartyData>& /*PartyData*/);
 
-	void OnPartyDataReceivedComplete(const FUniqueNetId& LocalUserId, const FOnlinePartyId& PartyId, const TSharedRef<FOnlinePartyData>& PartyData);
+	// this changed in 4.26
+	void OnPartyDataReceivedComplete(const FUniqueNetId& LocalUserId, const FOnlinePartyId& PartyId, const FName& Namespace, const FOnlinePartyData& PartyData);
 
 	// THis is fired by the online subsystem when it receives notification that the user's chat room list has changed.
 	// ADD THIS TO /Engine/Plugins/Online/OnlineSubsystem/Source/Public/Interfaces/OnlineChatInterface.h
@@ -1123,8 +1124,13 @@ private:
 	void OnLoginStatusChanged(int32 LocalUserNum, ELoginStatus::Type OldStatus, ELoginStatus::Type NewStatus, const FUniqueNetId& NewId);
 	void HandleUserLoginComplete(int32 LocalUserNum, bool bWasSuccessful, const FUniqueNetId& UserId, const FString& Error);
 
+	// this changed in 4.26
+	//TArray<TSharedRef<IOnlinePartyJoinInfo>> PendingInvitesArray;
+	TArray<TSharedRef<IOnlinePartyJoinInfo, ESPMode::NotThreadSafe>> PendingInvitesArray;
 
-	TArray<TSharedRef<IOnlinePartyJoinInfo>> PendingInvitesArray;
+	// 4.26 also introduced a similar but different array:
+	// just using this inside the function itself
+	//TArray<IOnlinePartyJoinInfoConstRef>& PendingInvitesArrayConstRef = {};
 
 
 };

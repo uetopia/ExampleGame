@@ -147,7 +147,7 @@ void ALootContainer::GenerateContents(int32 contentsCount)
 			TempAttributes.Add(0.0f);
 			TempAttributes.Add(AttributeSumMaximum);
 
-			for (int i = 0; i < 2; i++) {
+			for (int ii = 0; ii < 2; ii++) {
 				float atributeRandom = FMath::RandRange(0.0f, AttributeSumMaximum);
 				TempAttributes.Add(atributeRandom);
 				AttributesTotal = AttributesTotal + atributeRandom;
@@ -157,9 +157,9 @@ void ALootContainer::GenerateContents(int32 contentsCount)
 
 			TArray<float> AttributeDiffs;
 
-			for (int i = 1; i < 3; i++) {
+			for (int ii = 1; ii < 3; ii++) {
 				// Subtract the current from the previous
-				AttributeDiffs.Add(TempAttributes[i] - TempAttributes[i - 1]);
+				AttributeDiffs.Add(TempAttributes[ii] - TempAttributes[ii - 1]);
 			}
 
 			// assign them
