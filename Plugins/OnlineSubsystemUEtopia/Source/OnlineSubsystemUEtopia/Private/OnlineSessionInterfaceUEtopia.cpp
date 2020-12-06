@@ -526,8 +526,8 @@ bool FOnlineSessionUEtopia::StartMatchmaking(const TArray< TSharedRef<const FUni
 	if (!Http) { return false; }
 	if (!Http->IsHttpEnabled()) { return false; }
 
-
-	TSharedRef < IHttpRequest > Request = Http->CreateRequest();
+	// this changed in 4.26
+	TSharedRef < IHttpRequest, ESPMode::ThreadSafe > Request = Http->CreateRequest();
 	Request->SetVerb("POST");
 	Request->SetURL(SessionQueryUrl);
 	Request->SetHeader("User-Agent", "UETOPIA_UE4_API_CLIENT/1.0");
@@ -660,8 +660,8 @@ bool FOnlineSessionUEtopia::CancelMatchmaking(const FUniqueNetId& SearchingPlaye
 	if (!Http) { return false; }
 	if (!Http->IsHttpEnabled()) { return false; }
 
-
-	TSharedRef < IHttpRequest > Request = Http->CreateRequest();
+	// this changed in 4.26
+	TSharedRef < IHttpRequest, ESPMode::ThreadSafe > Request = Http->CreateRequest();
 	Request->SetVerb("POST");
 	Request->SetURL(SessionQueryUrl);
 	Request->SetHeader("User-Agent", "UETOPIA_UE4_API_CLIENT/1.0");
@@ -772,8 +772,8 @@ void FOnlineSessionUEtopia::CheckMatchmaking()
 	if (!Http) { return; }
 	if (!Http->IsHttpEnabled()) { return; }
 
-
-	TSharedRef < IHttpRequest > Request = Http->CreateRequest();
+	// this changed in 4.26
+	TSharedRef < IHttpRequest, ESPMode::ThreadSafe > Request = Http->CreateRequest();
 	Request->SetVerb("POST");
 	Request->SetURL(SessionQueryUrl);
 	Request->SetHeader("User-Agent", "UETOPIA_UE4_API_CLIENT/1.0");
@@ -986,7 +986,8 @@ uint32 FOnlineSessionUEtopia::FindOnlineSession(FString UserKeyId)
 	uint32 Return = ONLINE_IO_PENDING;
 
 	// looking at online subsystem facebook friends to get this
-	TSharedRef<class IHttpRequest> HttpRequest = FHttpModule::Get().CreateRequest();
+	// this changed in 4.26
+	TSharedRef<class IHttpRequest, ESPMode::ThreadSafe> HttpRequest = FHttpModule::Get().CreateRequest();
 	FString GameKey = UEtopiaSubsystem->GetGameKey();
 	FString APIURL = UEtopiaSubsystem->GetAPIURL();
 	FString SessionQueryUrl = "http://" + APIURL + "/api/v1/game/" + GameKey + "/servers/" + UserKeyId;

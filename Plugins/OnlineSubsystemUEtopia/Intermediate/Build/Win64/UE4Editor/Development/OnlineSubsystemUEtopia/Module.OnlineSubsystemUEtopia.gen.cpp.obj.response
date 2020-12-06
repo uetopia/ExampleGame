@@ -12,10 +12,10 @@
 /D_DISABLE_EXTENDED_ALIGNED_STORAGE
 /source-charset:utf-8
 /execution-charset:utf-8
+/Ob2
 /Ox
 /Ot
 /GF
-/Ob2
 /errorReport:prompt
 /EHsc
 /Z7
@@ -25,11 +25,10 @@
 /Zo
 /Zp8
 /wd4463
-/we4668
 /wd4244
 /wd4838
 /I .
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\OnlineSubsystemUEtopia\Source\OnlineSubsystemUEtopia\Private
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\OnlineSubsystemUEtopia\Source\OnlineSubsystemUEtopia\Private
 /I Runtime
 /I Runtime\TraceLog\Public
 /I Runtime\Core\Public
@@ -78,6 +77,7 @@
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\CoreUObject
 /I Runtime\CoreUObject\Public
 /I Runtime\CoreUObject
+/I Runtime\CoreUObject\Public\AssetRegistry
 /I Runtime\CoreUObject\Public\Blueprint
 /I Runtime\CoreUObject\Public\Internationalization
 /I Runtime\CoreUObject\Public\Misc
@@ -97,6 +97,7 @@
 /I Runtime\Engine\Public\Blueprint
 /I Runtime\Engine\Public\Curves
 /I Runtime\Engine\Public\EdGraph
+/I Runtime\Engine\Public\HLOD
 /I Runtime\Engine\Public\Internationalization
 /I Runtime\Engine\Public\Net
 /I Runtime\Engine\Public\Net\Util
@@ -138,6 +139,7 @@
 /I Runtime\ApplicationCore\Public\Windows\Accessibility
 /I Runtime\RHI\Public
 /I Runtime\RHI
+/I Runtime\RHI\Public\Tests
 /I Runtime\Json\Public
 /I Runtime\Json
 /I Runtime\Json\Public\Dom
@@ -158,6 +160,7 @@
 /I Runtime\SlateCore\Public\Sound
 /I Runtime\SlateCore\Public\Styling
 /I Runtime\SlateCore\Public\Textures
+/I Runtime\SlateCore\Public\Trace
 /I Runtime\SlateCore\Public\Types
 /I Runtime\SlateCore\Public\Widgets
 /I Runtime\SlateCore\Public\Widgets\Accessibility
@@ -214,9 +217,16 @@
 /I Runtime\Analytics\Analytics\Public\Interfaces
 /I Runtime\Sockets\Public
 /I Runtime\Sockets
+/I Runtime\Net\Common\Public
+/I Runtime\Net\Common
+/I Runtime\Net\Common\Public\Net
+/I Runtime\Net\Common\Public\Net\Common
+/I Runtime\Net\Common\Public\Net\Common\Packets
+/I Runtime\Net\Common\Public\Net\Common\Sockets
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\AssetRegistry
 /I Runtime\AssetRegistry\Public
 /I Runtime\AssetRegistry
+/I Runtime\AssetRegistry\Public\AssetRegistry
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\EngineMessages
 /I Runtime\EngineMessages\Public
 /I Runtime\EngineMessages
@@ -260,6 +270,13 @@
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\PhysicsCore
 /I Runtime\PhysicsCore\Public
 /I Runtime\PhysicsCore
+/I Runtime\PhysicsCore\Public\Chaos
+/I Runtime\PhysicsCore\Public\PhysicalMaterials
+/I ..\Intermediate\Build\Win64\UE4Editor\Inc\DeveloperSettings
+/I Runtime\DeveloperSettings\Public
+/I Runtime\DeveloperSettings
+/I Runtime\DeveloperSettings\Public\Engine
+/I ..\Intermediate\Build\Win64\UE4Editor\Inc\Chaos
 /I Runtime\Experimental
 /I Runtime\Experimental\Chaos\Public
 /I Runtime\Experimental\Chaos
@@ -269,18 +286,19 @@
 /I Runtime\Experimental\Chaos\Public\Chaos\Framework
 /I Runtime\Experimental\Chaos\Public\Chaos\Joint
 /I Runtime\Experimental\Chaos\Public\Chaos\Particle
+/I Runtime\Experimental\Chaos\Public\ChaosVisualDebugger
+/I Runtime\Experimental\Chaos\Public\Field
+/I Runtime\Experimental\Chaos\Public\Framework
+/I Runtime\Experimental\Chaos\Public\GeometryCollection
+/I Runtime\Experimental\Chaos\Public\PhysicsProxy
 /I Runtime\Experimental\ChaosCore\Public
 /I Runtime\Experimental\ChaosCore
 /I Runtime\Experimental\ChaosCore\Public\Chaos
-/I ThirdParty
+/I ThirdParty\Intel
 /I Runtime\Experimental\Voronoi\Public
 /I Runtime\Experimental\Voronoi
 /I Runtime\Experimental\Voronoi\Public\Voronoi
-/I ..\Intermediate\Build\Win64\UE4Editor\Inc\FieldSystemCore
-/I Runtime\Experimental\FieldSystem\Source
-/I Runtime\Experimental\FieldSystem\Source\FieldSystemCore\Public
-/I Runtime\Experimental\FieldSystem\Source\FieldSystemCore
-/I Runtime\Experimental\FieldSystem\Source\FieldSystemCore\Public\Field
+/I ThirdParty
 /I Runtime\SignalProcessing\Public
 /I Runtime\SignalProcessing
 /I Runtime\SignalProcessing\Public\DSP
@@ -290,6 +308,9 @@
 /I Runtime\AudioExtensions
 /I Runtime\AudioMixerCore\Public
 /I Runtime\AudioMixerCore
+/I ..\Intermediate\Build\Win64\UE4Editor\Inc\PropertyAccess
+/I Runtime\PropertyAccess\Public
+/I Runtime\PropertyAccess
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\UnrealEd
 /I Editor
 /I Programs\UnrealLightmass\Public
@@ -372,6 +393,7 @@
 /I Runtime\AudioMixer\Public
 /I Runtime\AudioMixer
 /I Runtime\AudioMixer\Public\Components
+/I Runtime\AudioMixer\Public\Quartz
 /I Runtime\AudioMixer\Public\SoundFileIO
 /I Developer\TargetPlatform\Public
 /I Developer\TargetPlatform
@@ -423,6 +445,11 @@
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\ContentBrowser
 /I Editor\ContentBrowser\Public
 /I Editor\ContentBrowser
+/I ..\Intermediate\Build\Win64\UE4Editor\Inc\ContentBrowserData
+/I Editor\ContentBrowserData\Public
+/I Editor\ContentBrowserData
+/I Developer\CollectionManager\Public
+/I Developer\CollectionManager
 /I ThirdParty\libSampleRate\Public
 /I ThirdParty\libSampleRate
 /I Runtime\NetworkFileSystem\Public
@@ -441,6 +468,8 @@
 /I Runtime\MovieScene
 /I Runtime\MovieScene\Public\Channels
 /I Runtime\MovieScene\Public\Compilation
+/I Runtime\MovieScene\Public\EntitySystem
+/I Runtime\MovieScene\Public\EntitySystem\TrackInstance
 /I Runtime\MovieScene\Public\Evaluation
 /I Runtime\MovieScene\Public\Evaluation\Blending
 /I Runtime\MovieScene\Public\Generators
@@ -454,8 +483,11 @@
 /I Runtime\MovieSceneTracks\Public
 /I Runtime\MovieSceneTracks
 /I Runtime\MovieSceneTracks\Public\Channels
+/I Runtime\MovieSceneTracks\Public\EntitySystem
+/I Runtime\MovieSceneTracks\Public\EntitySystem\Interrogation
 /I Runtime\MovieSceneTracks\Public\Evaluation
 /I Runtime\MovieSceneTracks\Public\Sections
+/I Runtime\MovieSceneTracks\Public\Systems
 /I Runtime\MovieSceneTracks\Public\Tracks
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\AnimationCore
 /I Runtime\AnimationCore\Public
@@ -485,18 +517,19 @@
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\ToolMenusEditor
 /I Editor\ToolMenusEditor\Public
 /I Editor\ToolMenusEditor
+/I ..\Intermediate\Build\Win64\UE4Editor\Inc\ToolMenus
+/I Developer\ToolMenus\Public
+/I Developer\ToolMenus
 /I Runtime\Windows
 /I Runtime\Windows\XAudio2\Public
 /I Runtime\Windows\XAudio2
 /I Runtime\Windows\AudioMixerXAudio2
 /I Editor\AssetTagsEditor\Public
 /I Editor\AssetTagsEditor
-/I Developer\CollectionManager\Public
-/I Developer\CollectionManager
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\AddContentDialog
 /I Editor\AddContentDialog\Public
 /I Editor\AddContentDialog
-/I ThirdParty\IntelEmbree\Embree2140\Win64\include
+/I ThirdParty\Intel\Embree\Embree2140\Win64\include
 /I Developer\MeshUtilities\Public
 /I Developer\MeshUtilities
 /I Developer\MeshMergeUtilities\Public
@@ -524,21 +557,6 @@
 /I Editor\Kismet\Public
 /I Editor\Kismet
 /I Editor\Kismet\Public\WorkflowOrientedApp
-/I Runtime\PhysicsSQ\Public
-/I Runtime\PhysicsSQ
-/I ..\Intermediate\Build\Win64\UE4Editor\Inc\ChaosSolvers
-/I Runtime\Experimental\ChaosSolvers\Public
-/I Runtime\Experimental\ChaosSolvers
-/I Runtime\Experimental\ChaosSolvers\Public\Framework
-/I Runtime\Experimental\ChaosSolvers\Public\PhysicsProxy
-/I ..\Intermediate\Build\Win64\UE4Editor\Inc\GeometryCollectionCore
-/I Runtime\Experimental\GeometryCollectionCore\Public
-/I Runtime\Experimental\GeometryCollectionCore
-/I Runtime\Experimental\GeometryCollectionCore\Public\GeometryCollection
-/I ..\Intermediate\Build\Win64\UE4Editor\Inc\GeometryCollectionSimulationCore
-/I Runtime\Experimental\GeometryCollectionSimulationCore\Public
-/I Runtime\Experimental\GeometryCollectionSimulationCore
-/I Runtime\Experimental\GeometryCollectionSimulationCore\Public\GeometryCollection
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\ClothingSystemRuntimeInterface
 /I Runtime\ClothingSystemRuntimeInterface\Public
 /I Runtime\ClothingSystemRuntimeInterface
@@ -558,25 +576,25 @@
 /I Runtime\Networking\Public\Interfaces
 /I Runtime\Networking\Public\Interfaces\IPv4
 /I Runtime\Networking\Public\Interfaces\Steam
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\SocketIOLib\Public
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\SocketIOLib
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UE4Editor\Inc\OnlineSubsystemUEtopia
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\OnlineSubsystemUEtopia\Source
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\OnlineSubsystemUEtopia\Source\OnlineSubsystemUEtopia\Public
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\OnlineSubsystemUEtopia\Source\OnlineSubsystemUEtopia
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\SocketIOClient\Plugins\socketio-client-ue4\Source
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\SocketIOClient\Plugins\socketio-client-ue4\Source\SocketIOLib\Public
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\SocketIOClient\Plugins\socketio-client-ue4\Source\SocketIOLib
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UE4Editor\Inc\OnlineSubsystemUEtopia
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\OnlineSubsystemUEtopia\Source
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\OnlineSubsystemUEtopia\Source\OnlineSubsystemUEtopia\Public
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\OnlineSubsystemUEtopia\Source\OnlineSubsystemUEtopia
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\JsonUtilities
 /I Runtime\JsonUtilities\Public
 /I Runtime\JsonUtilities
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Inc\SocketIOClient
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\SocketIOClient\Public
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\SocketIOClient
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Inc\SIOJson
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\SIOJson\Public
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\SIOJson
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Intermediate\Build\Win64\UE4Editor\Inc\CoreUtility
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\CoreUtility\Public
-/I C:\ue_project_build_tests\ExampleGame-425\Plugins\SocketIOClient\Source\CoreUtility
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\SocketIOClient\Plugins\socketio-client-ue4\Intermediate\Build\Win64\UE4Editor\Inc\SocketIOClient
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\SocketIOClient\Plugins\socketio-client-ue4\Source\SocketIOClient\Public
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\SocketIOClient\Plugins\socketio-client-ue4\Source\SocketIOClient
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\SocketIOClient\Plugins\socketio-client-ue4\Intermediate\Build\Win64\UE4Editor\Inc\SIOJson
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\SocketIOClient\Plugins\socketio-client-ue4\Source\SIOJson\Public
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\SocketIOClient\Plugins\socketio-client-ue4\Source\SIOJson
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\SocketIOClient\Plugins\socketio-client-ue4\Intermediate\Build\Win64\UE4Editor\Inc\CoreUtility
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\SocketIOClient\Plugins\socketio-client-ue4\Source\CoreUtility\Public
+/I D:\ue_project_build_tests\ExampleGame426\Plugins\SocketIOClient\Plugins\socketio-client-ue4\Source\CoreUtility
 /I ThirdParty\PhysX3\PxShared\include
 /I ThirdParty\PhysX3\PxShared\include\cudamanager
 /I ThirdParty\PhysX3\PxShared\include\filebuf
@@ -606,12 +624,12 @@
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"
-/FI"C:\UE425\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
-/Yu"C:\UE425\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
-/Fp"C:\UE425\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.pch"
-"C:\ue_project_build_tests\ExampleGame-425\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UE4Editor\Development\OnlineSubsystemUEtopia\Module.OnlineSubsystemUEtopia.gen.cpp"
-/FI"C:\ue_project_build_tests\ExampleGame-425\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UE4Editor\Development\OnlineSubsystemUEtopia\Definitions.OnlineSubsystemUEtopia.h"
-/Fo"C:\ue_project_build_tests\ExampleGame-425\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UE4Editor\Development\OnlineSubsystemUEtopia\Module.OnlineSubsystemUEtopia.gen.cpp.obj"
+/FI"C:\UE426_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
+/Yu"C:\UE426_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
+/Fp"C:\UE426_UETOPIA\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.pch"
+"D:\ue_project_build_tests\ExampleGame426\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UE4Editor\Development\OnlineSubsystemUEtopia\Module.OnlineSubsystemUEtopia.gen.cpp"
+/FI"D:\ue_project_build_tests\ExampleGame426\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UE4Editor\Development\OnlineSubsystemUEtopia\Definitions.OnlineSubsystemUEtopia.h"
+/Fo"D:\ue_project_build_tests\ExampleGame426\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UE4Editor\Development\OnlineSubsystemUEtopia\Module.OnlineSubsystemUEtopia.gen.cpp.obj"
 /TP
 /GR-
 /W4
