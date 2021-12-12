@@ -31,7 +31,7 @@
 #include <cstdarg>
 #include <functional>
 
-#if DEBUG || _DEBUG
+#if defined(DEBUG) && DEBUG
 #define LOG(x) std::cout << x
 #else
 #define LOG(x)
