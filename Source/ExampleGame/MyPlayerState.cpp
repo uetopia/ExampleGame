@@ -594,6 +594,7 @@ void AMyPlayerState::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & Ou
 	//DOREPLIFETIME(AMyPlayerState, ServerPortalKeyIdsAuthorized);
 	DOREPLIFETIME_CONDITION(AMyPlayerState, TeamId, COND_OwnerOnly);
 	DOREPLIFETIME_CONDITION(AMyPlayerState, TeamPlayerIndex, COND_OwnerOnly);
+	DOREPLIFETIME(AMyPlayerState, teamTitle);
 
 	DOREPLIFETIME_CONDITION(AMyPlayerState, customTextures, COND_OwnerOnly);
 	DOREPLIFETIME_CONDITION(AMyPlayerState, playerLoginFlowCompleted, COND_OwnerOnly);

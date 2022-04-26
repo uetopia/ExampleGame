@@ -1,0 +1,11 @@
+{
+	"BuildId": "19505902",
+	"Modules": 
+	{
+		"CoreUtility": "UnrealEditor-CoreUtility.dll",
+		"SIOJEditorPlugin": "UnrealEditor-SIOJEditorPlugin.dll",
+		"SIOJson": "UnrealEditor-SIOJson.dll",
+		"SocketIOClient": "UnrealEditor-SocketIOClient.dll",
+		"SocketIOLib": "UnrealEditor-SocketIOLib.dll"
+	}
+}

@@ -29,7 +29,7 @@ struct FMyActivePlayer {
 
 	GENERATED_USTRUCT_BODY()
 		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 playerID;
+		int32 playerID = 0;
 	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 	//	FString platformID;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")

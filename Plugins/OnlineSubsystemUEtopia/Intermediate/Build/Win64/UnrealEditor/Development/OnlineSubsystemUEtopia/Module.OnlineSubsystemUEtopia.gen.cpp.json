@@ -1,0 +1,25 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\examplegame_50\\plugins\\onlinesubsystemuetopia\\intermediate\\build\\win64\\unrealeditor\\development\\onlinesubsystemuetopia\\module.onlinesubsystemuetopia.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\ue5_uetopia\\engine\\intermediate\\build\\win64\\unrealeditor\\development\\engine\\sharedpch.engine.h.pch",
+        "Includes": [
+            "d:\\examplegame_50\\plugins\\onlinesubsystemuetopia\\intermediate\\build\\win64\\unrealeditor\\development\\onlinesubsystemuetopia\\definitions.onlinesubsystemuetopia.h",
+            "d:\\examplegame_50\\plugins\\onlinesubsystemuetopia\\intermediate\\build\\win64\\unrealeditor\\inc\\onlinesubsystemuetopia\\onlinesubsystemuetopia.init.gen.cpp",
+            "d:\\examplegame_50\\plugins\\onlinesubsystemuetopia\\intermediate\\build\\win64\\unrealeditor\\inc\\onlinesubsystemuetopia\\siomessageconvertuetopia.gen.cpp",
+            "d:\\examplegame_50\\plugins\\onlinesubsystemuetopia\\source\\onlinesubsystemuetopia\\public\\siomessageconvertuetopia.h",
+            "d:\\examplegame_50\\plugins\\socketioclient\\source\\socketiolib\\public\\sio_client.h",
+            "c:\\program files (x86)\\microsoft visual studio\\2019\\community\\vc\\tools\\msvc\\14.29.30133\\include\\string",
+            "d:\\examplegame_50\\plugins\\socketioclient\\source\\socketiolib\\public\\sio_message.h",
+            "c:\\program files (x86)\\microsoft visual studio\\2019\\community\\vc\\tools\\msvc\\14.29.30133\\include\\map",
+            "c:\\program files (x86)\\microsoft visual studio\\2019\\community\\vc\\tools\\msvc\\14.29.30133\\include\\xtree",
+            "c:\\program files (x86)\\microsoft visual studio\\2019\\community\\vc\\tools\\msvc\\14.29.30133\\include\\cassert",
+            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.18362.0\\ucrt\\assert.h",
+            "d:\\examplegame_50\\plugins\\socketioclient\\source\\socketiolib\\public\\sio_socket.h",
+            "d:\\examplegame_50\\plugins\\onlinesubsystemuetopia\\intermediate\\build\\win64\\unrealeditor\\inc\\onlinesubsystemuetopia\\siomessageconvertuetopia.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

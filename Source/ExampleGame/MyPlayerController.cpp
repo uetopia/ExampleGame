@@ -3823,6 +3823,7 @@ void AMyPlayerController::GetLifetimeReplicatedProps(TArray< FLifetimeProperty >
 	DOREPLIFETIME(AMyPlayerController, bInteractingWithVendor);
 	DOREPLIFETIME(AMyPlayerController, InteractingWithVendorKeyId);
 	DOREPLIFETIME(AMyPlayerController, InteractingWithGameStore);
+	DOREPLIFETIME(AMyPlayerController, bInteractingWithGameStore);
 	
 	//DOREPLIFETIME(AMyPlayerController, Experience);
 	//DOREPLIFETIME(AMyPlayerController, ExperienceThisLevel);

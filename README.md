@@ -1,5 +1,5 @@
 # EXAMPLE GAME
-Unreal Engine 4 project demonstrating how to use the uetopia.com backend.
+Unreal Engine project demonstrating how to use the uetopia.com backend.
 
 # PLAYER PERSISTENCE FEATURES
 Characters  
@@ -38,7 +38,7 @@ This project uses Rama Save System to persist server state across downtime.  Cop
 This project uses UETOPIA engine modifications.  You must use the patched engine with this project.
 
 # Branches
-This is the 4.27 branch, and is compatible with Unreal Engine:  4.27_UETOPIA
+This is the 5.0.0 branch, and is compatible with Unreal Engine:  5.0.0_UETOPIA
 
 # Disclaimer
 This code, and the backend are in Beta, and are under active development.
