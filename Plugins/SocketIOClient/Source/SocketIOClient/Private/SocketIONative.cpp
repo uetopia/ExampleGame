@@ -9,56 +9,49 @@
 #include "sio_message.h"
 #include "sio_socket.h"
 
-FSocketIONative::FSocketIONative(const bool bForceTLS, const bool bShouldVerifyTLSCertificate)
+FSocketIONative::FSocketIONative(const bool bShouldUseTlsLibraries, const bool bShouldSkipCertificateVerification)
 {
 	PrivateClient = nullptr;
+	AddressAndPort = TEXT("http://localhost:3000");	//default to 127.0.0.1
 	SessionId = TEXT("Invalid");
 	LastSessionId = TEXT("None");
 	bIsConnected = false;
 	MaxReconnectionAttempts = -1;
 	ReconnectionDelay = 5000;
 	bCallbackOnGameThread = true;
-	bUnbindEventsOnDisconnect = false;
-	bForceTLSUse = bForceTLS;
-	InitPrivateClient(bForceTLS, bShouldVerifyTLSCertificate);
 
-	ClearAllCallbacks();
+	PrivateClient = MakeShareable(new sio::client(bShouldUseTlsLibraries, bShouldSkipCertificateVerification));
+
+	ClearCallbacks();
 }
 
-
-void FSocketIONative::InitPrivateClient(const bool bShouldUseTlsLibraries /*= false*/, const bool bShouldVerifyTLSCertificate /*= false*/)
+void FSocketIONative::Connect(const FString& InAddressAndPort, const TSharedPtr<FJsonObject>& Query /*= nullptr*/, const TSharedPtr<FJsonObject>& Headers /*= nullptr*/, const FString& Path)
 {
-	bIsSetupForTLS = bShouldUseTlsLibraries;
-	bUsingTLSCertVerification = bShouldVerifyTLSCertificate;
-	PrivateClient = MakeShareable(new sio::client(bShouldUseTlsLibraries, bUsingTLSCertVerification));
-}
-
-void FSocketIONative::Connect(const FSIOConnectParams& InConnectParams)
-{
-	//Special case: reconnect on current settings if address is empty
-	if (!InConnectParams.AddressAndPort.IsEmpty())
+	std::string StdAddressString = USIOMessageConvert::StdString(InAddressAndPort);
+	if (InAddressAndPort.IsEmpty())
 	{
-		URLParams = InConnectParams;
+		StdAddressString = USIOMessageConvert::StdString(AddressAndPort);
 	}
 
-	SyncPrivateClientToTLSMode(URLParams.AddressAndPort);
-	
-	//Fill std types before going to background thread.
-
-	std::string StdAddressString = USIOMessageConvert::StdString(URLParams.AddressAndPort);
-	std::string StdPathString = USIOMessageConvert::StdString(URLParams.Path);
-	std::map<std::string, std::string> QueryMap = {};
-	std::map<std::string, std::string> HeadersMap = {};
-
-	QueryMap = USIOMessageConvert::FStringMapToStdStringMap(URLParams.Query);
-	HeadersMap = USIOMessageConvert::FStringMapToStdStringMap(URLParams.Headers);
-
 	//Connect to the server on a background thread so it never blocks
-	FCULambdaRunnable::RunLambdaOnBackGroundThread([&, StdAddressString, StdPathString, QueryMap, HeadersMap]
+	FCULambdaRunnable::RunLambdaOnBackGroundThread([&, StdAddressString, Query, Headers]
 	{
+		std::map<std::string, std::string> QueryMap = {};
+		std::map<std::string, std::string> HeadersMap = {};
+
+		//fill the headers and query if they're not null
+		if (Headers.IsValid())
+		{
+			HeadersMap = USIOMessageConvert::JsonObjectToStdStringMap(Headers);
+		}
+
+		if (Query.IsValid())
+		{
+			QueryMap = USIOMessageConvert::JsonObjectToStdStringMap(Query);
+		}
+
 		PrivateClient->set_reconnect_attempts(MaxReconnectionAttempts);
 		PrivateClient->set_reconnect_delay(ReconnectionDelay);
-		PrivateClient->set_path(StdPathString);
 
 		//close and reconnect if different url
 		if(PrivateClient->opened())
@@ -77,14 +70,15 @@ void FSocketIONative::Connect(const FSIOConnectParams& InConnectParams)
 		}
 		PrivateClient->connect(StdAddressString, QueryMap, HeadersMap);
 	});
+
 }
 
 void FSocketIONative::Connect(const FString& InAddressAndPort)
 {
-	FSIOConnectParams Params;
-	Params.AddressAndPort = InAddressAndPort;
+	TSharedPtr<FJsonObject> Query = MakeShareable(new FJsonObject);
+	TSharedPtr<FJsonObject> Headers = MakeShareable(new FJsonObject);
 
-	Connect(Params);
+	Connect(InAddressAndPort, Query, Headers);
 }
 
 void FSocketIONative::JoinNamespace(const FString& Namespace)
@@ -100,53 +94,27 @@ void FSocketIONative::LeaveNamespace(const FString& Namespace)
 
 void FSocketIONative::Disconnect()
 {	
-	//Ensure disconnected callback is called first because we 
-	//clear all callbacks for stability.
 	if (OnDisconnectedCallback)
 	{
 		OnDisconnectedCallback(ESIOConnectionCloseReason::CLOSE_REASON_NORMAL);
 	}
 	bIsConnected = false;
-
-	if (bUnbindEventsOnDisconnect)
-	{
-		ClearAllCallbacks();
-		PrivateClient->close();
-	}
-	else
-	{
-		//Clear and re-init map
-		ClearInternalCallbacks();
-		PrivateClient->close();
-		RebindCurrentEventMap();
-	}
+	ClearCallbacks();
+	PrivateClient->close();
 }
 
 void FSocketIONative::SyncDisconnect()
 {
-	//Ensure disconnected callback is called first because we 
-	//clear all callbacks for stability.
 	if (OnDisconnectedCallback)
 	{
 		OnDisconnectedCallback(ESIOConnectionCloseReason::CLOSE_REASON_NORMAL);
 	}
 	bIsConnected = false;
-
-	if (bUnbindEventsOnDisconnect)
-	{
-		ClearAllCallbacks();
-		PrivateClient->sync_close();
-	}
-	else
-	{
-		//Clear and re-init map
-		ClearInternalCallbacks();
-		PrivateClient->sync_close();
-		RebindCurrentEventMap();
-	}
+	ClearCallbacks();
+	PrivateClient->sync_close();
 }
 
-void FSocketIONative::ClearAllCallbacks()
+void FSocketIONative::ClearCallbacks()
 {
 	PrivateClient->clear_socket_listeners();
 	SetupInternalCallbacks();					//if clear socket listeners cleared our internal callbacks. reset them
@@ -286,7 +254,6 @@ void FSocketIONative::OnEvent(const FString& EventName,
 	FSIOBoundEvent BoundEvent;
 	BoundEvent.Function = CallbackFunction;
 	BoundEvent.Namespace = Namespace;
-	BoundEvent.ThreadOption = CallbackThread;
 	EventFunctionMap.Add(EventName, BoundEvent);
 
 	OnRawEvent(EventName, [&, CallbackFunction](const FString& Event, const sio::message::ptr& RawMessage) {
@@ -346,9 +313,11 @@ void FSocketIONative::OnRawEvent(const FString& EventName,
 				}
 			}));
 	}
+
+	
 }
 
-void FSocketIONative::OnRawBinaryEvent(const FString& EventName, TFunction< void(const FString&, const TArray<uint8>&)> CallbackFunction, const FString& Namespace /*= FString(TEXT("/"))*/)
+void FSocketIONative::OnBinaryEvent(const FString& EventName, TFunction< void(const FString&, const TArray<uint8>&)> CallbackFunction, const FString& Namespace /*= FString(TEXT("/"))*/)
 {
 	const TFunction< void(const FString&, const TArray<uint8>&)> SafeFunction = CallbackFunction;	//copy the function so it remains in context
 
@@ -392,11 +361,6 @@ void FSocketIONative::UnbindEvent(const FString& EventName, const FString& Names
 	EventFunctionMap.Remove(EventName);
 }
 
-void FSocketIONative::ClearInternalCallbacks()
-{
-	PrivateClient->clear_socket_listeners();
-}
-
 void FSocketIONative::SetupInternalCallbacks()
 {
 	PrivateClient->set_open_listener(sio::client::con_listener([&]() 
@@ -433,6 +397,7 @@ void FSocketIONative::SetupInternalCallbacks()
 			{
 				OnDisconnectedCallback(DisconnectReason);
 			}
+			
 		}
 	}));
 
@@ -579,61 +544,5 @@ void FSocketIONative::SetupInternalCallbacks()
 			}
 		}
 	}));
-}
-
-void FSocketIONative::RebindCurrentEventMap()
-{
-	ClearInternalCallbacks();
-
-	for (auto& EventPair : EventFunctionMap)
-	{
-		const FString& EventName = EventPair.Key;
-		const FSIOBoundEvent EventBind = EventPair.Value;
-
-		OnRawEvent(EventName, [&, EventBind](const FString& Event, const sio::message::ptr& RawMessage) {
-			EventBind.Function(Event, USIOMessageConvert::ToJsonValue(RawMessage));
-		}, EventBind.Namespace, EventBind.ThreadOption);
-	}
-
-	SetupInternalCallbacks();
-}
-
-bool FSocketIONative::IsTLSURL(const FString& URL)
-{
-	return URL.StartsWith(TEXT("https://")) || URL.StartsWith(TEXT("wss://"));
-}
-
-void FSocketIONative::SyncPrivateClientToTLSMode(const FString& URL)
-{
-	//Should be in TLS mode?
-	if (IsTLSURL(URL) || bForceTLSUse)
-	{
-		//needs to swap to TLS
-		if (!bIsSetupForTLS)
-		{
-			if (PrivateClient->opened())
-			{
-				PrivateClient->sync_close();
-			}
-			ClearInternalCallbacks();
-			InitPrivateClient(true, bUsingTLSCertVerification);
-			RebindCurrentEventMap();
-		}
-	}
-	//Should not be in TLS mode
-	else
-	{
-		//URL is not TLS, but we are setup for it
-		if (bIsSetupForTLS)
-		{
-			if (PrivateClient->opened())
-			{
-				PrivateClient->sync_close();
-			}
-			ClearInternalCallbacks();
-			InitPrivateClient(false, bUsingTLSCertVerification);
-			RebindCurrentEventMap();
-		}
-	}
 }
 

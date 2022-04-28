@@ -165,54 +165,18 @@ FString USIOMessageConvert::FStringFromStd(std::string StdString)
 
 std::map<std::string, std::string> USIOMessageConvert::JsonObjectToStdStringMap(TSharedPtr<FJsonObject> InObject)
 {
-	std::map<std::string, std::string> ParamMap;
+	std::map<std::string, std::string> HeadersMap;
 
-	if (InObject.IsValid())
+	for (auto Pair : InObject->Values)
 	{
-		for (auto Pair : InObject->Values)
-		{
-			TSharedPtr<FJsonValue> Value = Pair.Value;
+		TSharedPtr<FJsonValue> Value = Pair.Value;
 
-			//If it's a string value, add it to the std map
-			if (Value->Type == EJson::String)
-			{
-				ParamMap[USIOMessageConvert::StdString(Pair.Key)] = USIOMessageConvert::StdString(Value->AsString());
-			}
+		//If it's a string value, add it to the std map
+		if (Value->Type == EJson::String)
+		{
+			HeadersMap[USIOMessageConvert::StdString(Pair.Key)] = USIOMessageConvert::StdString(Value->AsString());
 		}
 	}
 
-	return ParamMap;
-}
-
-TMap<FString, FString> USIOMessageConvert::JsonObjectToFStringMap(TSharedPtr<FJsonObject> InObject)
-{
-	TMap<FString, FString> ParamMap;
-
-	if (InObject.IsValid())
-	{
-		for (auto Pair : InObject->Values)
-		{
-			TSharedPtr<FJsonValue> Value = Pair.Value;
-
-			//If it's a string value, add it to the std map
-			if (Value->Type == EJson::String)
-			{
-				ParamMap[Pair.Key] = Value->AsString();
-			}
-		}
-	}
-
-	return ParamMap;
-}
-
-std::map<std::string, std::string> USIOMessageConvert::FStringMapToStdStringMap(const TMap<FString, FString>& InMap)
-{
-	std::map<std::string, std::string> ParamMap;
-
-	for (auto Pair : InMap)
-	{
-		ParamMap[USIOMessageConvert::StdString(Pair.Key)] = USIOMessageConvert::StdString(Pair.Value);
-	}
-
-	return ParamMap;
+	return HeadersMap;
 }

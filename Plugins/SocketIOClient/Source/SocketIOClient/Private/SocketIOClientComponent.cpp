@@ -14,13 +14,13 @@ USocketIOClientComponent::USocketIOClientComponent(const FObjectInitializer &ini
 	bWantsInitializeComponent = true;
 	bAutoActivate = true;
 
-	bForceTLS = false;
-	bUnbindEventsOnDisconnect = false;
-	bShouldVerifyTLSCertificate = false;	//Until verification feature is implemented, this should default to false
+	bShouldUseTLS = false;
+	bShouldSkipCertificateVerification = true;	//until verification is implemented, this should default to true
 	bShouldAutoConnect = true;
 	NativeClient = nullptr;
 	bLimitConnectionToGameWorld = true;
-	SessionId = TEXT("Invalid");
+	AddressAndPort = FString(TEXT("http://localhost:3000"));	//default to 127.0.0.1
+	SessionId = FString(TEXT("Invalid"));
 	
 	//Plugin scoped utilities
 	bPluginScopedConnection = false;
@@ -66,14 +66,14 @@ void USocketIOClientComponent::InitializeNative()
 {
 	if (bPluginScopedConnection)
 	{
-		NativeClient = ISocketIOClientModule::Get().ValidSharedNativePointer(PluginScopedId, bForceTLS, bShouldVerifyTLSCertificate);
+		NativeClient = ISocketIOClientModule::Get().ValidSharedNativePointer(PluginScopedId, bShouldUseTLS, bShouldSkipCertificateVerification);
 
 		//Enforcement: This is the default FSocketIONative option value, but this component depends on it being true.
 		NativeClient->bCallbackOnGameThread = true;
 	}
 	else
 	{
-		NativeClient = ISocketIOClientModule::Get().NewValidNativePointer(bForceTLS, bShouldVerifyTLSCertificate);
+		NativeClient = ISocketIOClientModule::Get().NewValidNativePointer(bShouldUseTLS, bShouldSkipCertificateVerification);
 	}
 
 	SetupCallbacks();
@@ -86,7 +86,7 @@ void USocketIOClientComponent::BeginPlay()
 	//Auto-connect to default address if supported and not already connected
 	if (bShouldAutoConnect && !bIsConnected)
 	{
-		ConnectWithParams(URLParams);
+		Connect(AddressAndPort);
 	}
 }
 
@@ -127,7 +127,7 @@ void USocketIOClientComponent::SetupCallbacks()
 	if (bIsConnected)
 	{
 		SessionId = NativeClient->SessionId;
-		URLParams = NativeClient->URLParams;
+		AddressAndPort = NativeClient->AddressAndPort;
 	}
 
 	NativeClient->OnConnectedCallback = [this](const FString& InSessionId)
@@ -191,6 +191,7 @@ void USocketIOClientComponent::SetupCallbacks()
 				//Let's stop trying and disconnect if we're using timeouts
 				Disconnect();
 			}
+
 			OnConnectionProblems.Broadcast(AttemptCount, DelayInMs, ElapsedInSec);
 		}
 	};
@@ -208,9 +209,10 @@ void USocketIOClientComponent::ClearCallbacks()
 {
 	if (NativeClient.IsValid())
 	{
-		NativeClient->ClearAllCallbacks();
+		NativeClient->ClearCallbacks();
 	}
 }
+
 
 
 bool USocketIOClientComponent::CallBPFunctionWithResponse(UObject* Target, const FString& FunctionName, TArray<TSharedPtr<FJsonValue>> Response)
@@ -362,7 +364,7 @@ bool USocketIOClientComponent::CallBPFunctionWithMessage(UObject* Target, const 
 #pragma region Connect
 #endif
 
-void USocketIOClientComponent::Connect(const FString& InAddressAndPort, const FString& InPath, USIOJsonObject* Query /*= nullptr*/, USIOJsonObject* Headers /*= nullptr*/)
+void USocketIOClientComponent::Connect(const FString& InAddressAndPort, const FString& Path, USIOJsonObject* Query /*= nullptr*/, USIOJsonObject* Headers /*= nullptr*/)
 {
 	//Check if we're limiting this component
 	if (bLimitConnectionToGameWorld)
@@ -383,9 +385,6 @@ void USocketIOClientComponent::Connect(const FString& InAddressAndPort, const FS
 			return;
 		}
 	}
-
-	URLParams.AddressAndPort = InAddressAndPort;
-
 	TSharedPtr<FJsonObject> QueryFJson;
 	TSharedPtr<FJsonObject> HeadersFJson;
 
@@ -399,38 +398,17 @@ void USocketIOClientComponent::Connect(const FString& InAddressAndPort, const FS
 		HeadersFJson = Headers->GetRootObject();
 	}
 
-	URLParams.Query = USIOMessageConvert::JsonObjectToFStringMap(QueryFJson);
-	URLParams.Headers = USIOMessageConvert::JsonObjectToFStringMap(HeadersFJson);
-	URLParams.Path = InPath;
-
 	//Ensure we sync our native max/reconnection attempts before connecting
 	NativeClient->MaxReconnectionAttempts = MaxReconnectionAttempts;
 	NativeClient->ReconnectionDelay = ReconnectionDelayInMs;
 	NativeClient->VerboseLog = bVerboseConnectionLog;
-	NativeClient->bUnbindEventsOnDisconnect = bUnbindEventsOnDisconnect;
-	NativeClient->bForceTLSUse = bForceTLS;
 
-	ConnectWithParams(URLParams);
+	ConnectNative(InAddressAndPort, Path, QueryFJson, HeadersFJson);
 }
 
-void USocketIOClientComponent::ConnectWithParams(const FSIOConnectParams& InURLParams)
+void USocketIOClientComponent::ConnectNative(const FString& InAddressAndPort, const FString& Path, const TSharedPtr<FJsonObject>& Query /*= nullptr*/, const TSharedPtr<FJsonObject>& Headers /*= nullptr*/)
 {
-	NativeClient->Connect(InURLParams);
-}
-
-void USocketIOClientComponent::ConnectNative(const FString& InAddressAndPort, 
-	const FString& InPath, 
-	const TSharedPtr<FJsonObject>& Query /*= nullptr*/, 
-	const TSharedPtr<FJsonObject>& Headers /*= nullptr*/)
-{
-	FSIOConnectParams Params;
-	Params.AddressAndPort = InAddressAndPort;
-	Params.Path = InPath;
-
-	Params.Query = USIOMessageConvert::JsonObjectToFStringMap(Query);
-	Params.Headers = USIOMessageConvert::JsonObjectToFStringMap(Headers);
-
-	ConnectWithParams(Params);
+	NativeClient->Connect(InAddressAndPort, Query, Headers, Path);
 }
 
 void USocketIOClientComponent::Disconnect()
@@ -598,23 +576,10 @@ void USocketIOClientComponent::BindEventToGenericEvent(const FString& EventName,
 	}, Namespace);
 }
 
-void USocketIOClientComponent::BindEventToDelegate(const FString& EventName, 
-	const FSIOJsonValueSignature& CallbackDelegate, 
-	const FString& Namespace /*= TEXT("/")*/,
-	ESIOThreadOverrideOption ThreadOverride /*= USE_DEFAULT*/)
+void USocketIOClientComponent::UnbindEvent(const FString& EventName, const FString& Namespace/* = TEXT("/")*/)
 {
-	const FSIOJsonValueSignature SafeCallback = CallbackDelegate;	//copy for lambda ref
-	OnNativeEvent(EventName, [&, SafeCallback](const FString& Event, const TSharedPtr<FJsonValue>& Message)
-	{
-		USIOJsonValue* Value = NewObject<USIOJsonValue>();
-		TSharedPtr<FJsonValue> NonConstValue = Message;
-		Value->SetRootValue(NonConstValue);
-
-		SafeCallback.ExecuteIfBound(Value);
-	}, Namespace, ThreadOverride);
+	NativeClient->UnbindEvent(EventName, Namespace);
 }
-
-
 
 void USocketIOClientComponent::BindEventToFunction(const FString& EventName,
 	const FString& FunctionName,
@@ -639,11 +604,6 @@ void USocketIOClientComponent::BindEventToFunction(const FString& EventName,
 		//if we forgot our function name, fallback to regular bind event
 		BindEventToGenericEvent(EventName, Namespace);
 	}
-}
-
-void USocketIOClientComponent::UnbindEvent(const FString& EventName, const FString& Namespace/* = TEXT("/")*/)
-{
-	NativeClient->UnbindEvent(EventName, Namespace);
 }
 
 void USocketIOClientComponent::OnNativeEvent(const FString& EventName,

@@ -83,9 +83,9 @@ Add the SocketIO Client Component to your blueprint actor of choice
 
 ![IMG](http://i.imgur.com/lSkfHQ2.png)
 
-By default the component will auto connect *on begin play* to your default address and port [http://localhost:3000](http://localhost:3000). You can change this default address to connect to your service instead as well as add any query/header or other URL parameters you need.
+By default the component will auto connect *on begin play* to your default address and port [http://localhost:3000](http://localhost:3000). You can change this default address to connect to your service instead.
 
-![IMG](https://i.imgur.com/qInVfuK.png)
+![IMG](https://i.imgur.com/LOC1ehw.png)
 
 If you want to connect at your own time, you change the default variable *Should Auto Connect* to false and then call *Connect* with your address
 
@@ -104,14 +104,6 @@ Keep in mind that you can have this be a proper function instead of a custom eve
 For the receiving type, if it's known, you can specify the exact type (like String in the example above see https://github.com/getnamo/SocketIOClient-Unreal#emit-with-callback for supported signatures), or if you're not sure or it's a complex type (e.g. a struct) you set it to a SIOJsonValue and use functions to decode it (see https://github.com/getnamo/SocketIOClient-Unreal#decoding-responses for details)
 
 ![IMG](https://i.imgur.com/nNQTZ6j.png)
-
-#### Receive To Delegate
-
-The other recommended way (available since v2.2.0) is to bind your event directly to a delegate.
-
-![IMG](https://i.imgur.com/3DWxDi1.png)
-
-See https://github.com/getnamo/SocketIOClient-Unreal#decoding-responses for data conversion nodes from SIOJsonValues.
 
 #### Receive To Generic Event
 
@@ -343,10 +335,6 @@ The input type for both fields is a _SIOJsonObject_ with purely string fields or
 Here's an example of constructing a single header  _X-Forwarded-Host: qnova.io_ and then connecting.
 
 ![connectwithheader](https://cloud.githubusercontent.com/assets/542365/25309683/63bfe26e-27cb-11e7-877e-0590e40605f3.PNG)
-
-Since v2.3.0 you can also connect using a `SIOConnectParams` struct
-
-![connectwithparams](https://user-images.githubusercontent.com/542365/164123044-88af7b36-36b2-4364-abe6-75c133d21e8a.png)
 
 ### Plugin Scoped Connection
 
@@ -821,9 +809,9 @@ These request functions are available globally.
 
 ## TLS / SSL
 
-TLS is supported for both C++ and BP if your platform supports OpenSSL (see https://github.com/getnamo/SocketIOClient-Unreal/blob/master/Source/SocketIOLib/SocketIOLib.Build.cs#L64 for currently supported platforms). Simply use a `https` or `wss` URL for host target and it will use TLS by default. You can also force TLS on different URLs by using `bForceTLS` set to true. 
+TLS is supported for both C++ and BP without recompiling the plugin to switch between no TLS and TLS. To use it, you must enable the `bShouldUseTlsLibraries` flag on the `SocketIOClientComponent` **and** specify a `https` or `wss` URL as the host.
 
-Certificate verification is currently not implemented; `bShouldVerifyTLSCertificate` is set to false by default, setting it to true will cause connections to fail. See [issue 303](https://github.com/getnamo/SocketIOClient-Unreal/issues/303).
+Currently, certification verification is not implemented, so you must have `bShouldSkipCertificateVerification` enabled (currently the default). See [issue 303](https://github.com/getnamo/SocketIOClient-Unreal/issues/303).
 
 ## Packaging
 
