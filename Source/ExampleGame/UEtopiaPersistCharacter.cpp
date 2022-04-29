@@ -987,7 +987,11 @@ void AUEtopiaPersistCharacter::Die(AController* Killer, AActor* DamageCauser, co
 	// start the ragdoll and cancel abilities after a very brief delay.
 	GetWorldTimerManager().SetTimer(PlayDyingTimerHandle, this, &AUEtopiaPersistCharacter::PlayDying, 0.1f, false);
 
-	AController* const DyingController = (Controller != NULL) ? Controller : Cast<AController>(GetOwner());
+	if (Controller != NULL)
+	{
+		AController* const DyingController = Cast<AController>(GetOwner());
+	}
+	
 
 	TearOff();
 	//bTearOff = true;
