@@ -42,7 +42,7 @@ struct FMyObjectLookupTable : public FTableRowBase
 
 	/** Subcategory of GamePlay Object */
 	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
-		bool bCanBeUsed;
+		bool bCanBeUsed = false;
 
 	/** Text to show in UI hover before use */
 	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
@@ -50,9 +50,9 @@ struct FMyObjectLookupTable : public FTableRowBase
 
 	/** Can these objects stack in the inventory */
 	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
-		bool bCanBeStacked;
+		bool bCanBeStacked = false;
 
 	/** Scriptable Use Code */
 	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
-	int32 StackSize;
+	int32 StackSize = 0;
 };

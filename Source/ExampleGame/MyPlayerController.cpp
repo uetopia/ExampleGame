@@ -1913,7 +1913,7 @@ void AMyPlayerController::ServerAttemptSetGameStoreInteract_Implementation(AMyGa
 	UE_LOG(LogTemp, Log, TEXT("[UETOPIA]AMyPlayerController::ServerAttemptSetGameStoreInteract_Implementation"));
 
 	bInteractingWithGameStore = true;
-	InteractingWithGameStore = GameStoreRef;
+	InteractingWithGameStoreRef = GameStoreRef;
 }
 
 void AMyPlayerController::AttemptGameStoreInteract(AMyGameStore* GameStoreRef)
@@ -3822,8 +3822,10 @@ void AMyPlayerController::GetLifetimeReplicatedProps(TArray< FLifetimeProperty >
 	//DOREPLIFETIME(AMyPlayerController, CurrencyAvailable);
 	DOREPLIFETIME(AMyPlayerController, bInteractingWithVendor);
 	DOREPLIFETIME(AMyPlayerController, InteractingWithVendorKeyId);
-	DOREPLIFETIME(AMyPlayerController, InteractingWithGameStore);
+	DOREPLIFETIME(AMyPlayerController, InteractingWithGameStoreRef);
 	DOREPLIFETIME(AMyPlayerController, bInteractingWithGameStore);
+	DOREPLIFETIME(AMyPlayerController, MyCurrentVendorRef);
+	
 	
 	//DOREPLIFETIME(AMyPlayerController, Experience);
 	//DOREPLIFETIME(AMyPlayerController, ExperienceThisLevel);

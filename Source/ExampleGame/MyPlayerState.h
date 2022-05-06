@@ -30,7 +30,7 @@ struct FMyApprovedServerLink {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString hostConnectionLink;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool targetInstanced;
+		bool targetInstanced = false;
 };
 
 

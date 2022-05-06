@@ -57,7 +57,7 @@ struct FMyActorFilter
 	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere)
-	EMyActorFilterMatchType AllowSelf;
+	EMyActorFilterMatchType AllowSelf = EMyActorFilterMatchType::Skip;
 
 	bool PassesFilter(UAbilitySystemComponent* Source, UAbilitySystemComponent* Target);
 };
@@ -110,7 +110,7 @@ struct FMyEffectApplicationContainer
 
 	/** Cached source when specs are generated */
 	UPROPERTY(BlueprintReadWrite)
-	UAbilitySystemComponent* SourceAbilitySystemComponent;
+	UAbilitySystemComponent* SourceAbilitySystemComponent = nullptr;
 
 	void GenerateEffectSpecs(AActor* Source, float LevelOverride=0.f, int32 StackOverride=0);
 
@@ -125,15 +125,15 @@ struct FMyFriend {
 
 	GENERATED_USTRUCT_BODY()
 		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 playerID;
+		int32 playerID = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString playerKeyId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString playerTitle;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bIsOnline;
+		bool bIsOnline = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bIsPlayingThisGame;
+		bool bIsPlayingThisGame = false;
 };
 
 USTRUCT(BlueprintType)
@@ -177,9 +177,9 @@ struct FMyPartyInvitation {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString senderUserKeyId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bIsInvited;
+		bool bIsInvited = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bIsInviteAccepted;
+		bool bIsInviteAccepted = false;
 };
 
 USTRUCT(BlueprintType)
@@ -232,17 +232,17 @@ struct FMyTournamentRoundMatch {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString Team1KeyId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool Team1Winner;
+		bool Team1Winner = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool Team1Loser;
+		bool Team1Loser = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString Team2Title;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString Team2KeyId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool Team2Winner;
+		bool Team2Winner = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool Team2Loser;
+		bool Team2Loser = false;
 
 };
 
@@ -251,7 +251,7 @@ struct FMyTournamentRound {
 
 	GENERATED_USTRUCT_BODY()
 		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 RoundIndex;
+		int32 RoundIndex = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		TArray<FMyTournamentRoundMatch> RoundMatchList;
 
@@ -276,13 +276,13 @@ struct FMyTournament {
 
 	GENERATED_USTRUCT_BODY()
 		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 tournamentId;
+		int32 tournamentId = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString tournamentKeyId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString tournamentTitle;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bIsGroupTournament;
+		bool bIsGroupTournament = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString groupTitle;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
@@ -292,9 +292,9 @@ struct FMyTournament {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString GameMode;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 donationAmount;
+		int32 donationAmount = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 playerBuyIn;
+		int32 playerBuyIn = 0;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		TArray<FMyTournamentTeam> TeamList;
@@ -317,7 +317,7 @@ struct FMyInventoryItemStat {
 		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString itemStatKey;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 itemStatValue;
+		int32 itemStatValue = 0;
 
 };
 
@@ -326,7 +326,7 @@ struct FMyInventorySlot {
 
 	GENERATED_USTRUCT_BODY()
 		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA", meta = (MakeStructureDefaultValue = 0))
-		int32 quantity;
+		int32 quantity = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString itemId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
@@ -338,22 +338,22 @@ struct FMyInventorySlot {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA", meta = (MakeStructureDefaultValue = "Empty"))
 		FString itemClassPath;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		UTexture2D* Icon;
+		UTexture2D* Icon = nullptr;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bCanBeUsed;
+		bool bCanBeUsed = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FText UseText;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bCanBeStacked;
+		bool bCanBeStacked = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 MaxStackSize;
+		int32 MaxStackSize = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		TArray<float> Attributes;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 Tier;
+		int32 Tier = 0;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 DataTableId;
+		int32 DataTableId = 0;
 
 	// Other things you might want to include in your Inventory slot data:
 	/*
@@ -392,7 +392,7 @@ struct FLootRoll {
 		FString  UserKeyId;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		float RollValue;
+		float RollValue = 0.0f;
 
 };
 
@@ -430,7 +430,7 @@ struct FMyVendorItem {
 
 	GENERATED_USTRUCT_BODY()
 		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA", meta = (MakeStructureDefaultValue = 0))
-		int32 quantity;
+		int32 quantity = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString itemId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
@@ -442,19 +442,19 @@ struct FMyVendorItem {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA", meta = (MakeStructureDefaultValue = "Empty"))
 		FString itemClassPath;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		UTexture2D* Icon;
+		UTexture2D* Icon = nullptr;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 PricePerUnit;
+		int32 PricePerUnit = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString itemKeyId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString buyingOfferExpires;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool buyingOffer;
+		bool buyingOffer = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool selling;
+		bool selling = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool claimable;
+		bool claimable = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		TArray<float> Attributes;
 };
@@ -473,7 +473,7 @@ struct FMyGrantedAbility {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString description;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		UTexture2D* Icon;
+		UTexture2D* Icon = nullptr;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		TSubclassOf<UGameplayAbility> Ability;
 };
@@ -490,15 +490,15 @@ struct FMyAbilitySlot {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA", meta = (MakeStructureDefaultValue = "Empty"))
 		FString classPath;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		UTexture2D* Icon;
+		UTexture2D* Icon = nullptr;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bCanBeUsed;
+		bool bCanBeUsed = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FText UseText;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FKey Key;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bIsValid; // true is a ability slot that is in use.  False is empty.
+		bool bIsValid = false; // true is a ability slot that is in use.  False is empty.
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FMyGrantedAbility GrantedAbility;
 };
@@ -518,24 +518,24 @@ struct FMyCharacterRecord {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString characterState; // creating, sleeping, etc
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool characterAlive; // Permadeath.  Character can't be selected or used.
+		bool characterAlive = false; // Permadeath.  Character can't be selected or used.
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool currentlySelectedActive;
+		bool currentlySelectedActive = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		UTexture2D* Icon;
+		UTexture2D* Icon = nullptr;
 
 	// These are just used for UI - Add whatever you need.
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 gender;
+		int32 gender = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 mesh;
+		int32 mesh = 0;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 rank;
+		int32 rank = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 score;
+		int32 score = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 level;
+		int32 level = 0;
 
 };
 
@@ -554,7 +554,7 @@ struct FMySessionSearchResult {
 		FString ServerKey;
 
 	UPROPERTY(BlueprintReadWrite)
-		int32 SearchIdx;
+		int32 SearchIdx = 0;
 };
 
 USTRUCT(BlueprintType)
@@ -578,41 +578,41 @@ struct FMyServerLink {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString targetServerKeyId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool targetStatusIsContinuous;
+		bool targetStatusIsContinuous = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool targetStatusCreating;
+		bool targetStatusCreating = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool targetStatusProvisioned;
+		bool targetStatusProvisioned = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool targetStatusOnline;
+		bool targetStatusOnline = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool targetStatusFull;
+		bool targetStatusFull = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool targetStatusDead;
+		bool targetStatusDead = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool permissionCanMount;
+		bool permissionCanMount = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool permissionCanUserTravel;
+		bool permissionCanUserTravel = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool permissionCanDismount;
+		bool permissionCanDismount = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString resourcesUsedToTravel;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString resourceAmountsUsedToTravel;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 currencyCostToTravel;
+		int32 currencyCostToTravel = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		float coordLocationX;
+		float coordLocationX = 0.0f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		float coordLocationY;
+		float coordLocationY = 0.0f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		float coordLocationZ;
+		float coordLocationZ = 0.0f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		float rotationX;
+		float rotationX = 0.0f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		float rotationY;
+		float rotationY = 0.0f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		float rotationZ;
+		float rotationZ = 0.0f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString hostConnectionLink;
 	// Testing to see if this will work
@@ -621,11 +621,11 @@ struct FMyServerLink {
 
 	// Additions to support parallel/instanced servers
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool targetInstanced;
+		bool targetInstanced = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString targetInstanceConfiguration;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 targetInstancePartySizeMaximum;
+		int32 targetInstancePartySizeMaximum = 0;
 };
 
 // KEY ID is actually an INT, but we'll keep it as a string for now.
@@ -635,15 +635,15 @@ struct FMyServerShard {
 		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString targetServerKeyId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool online;
+		bool online = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString hostConnectionLink;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 shardId;
+		int32 shardId = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 playerCount;
+		int32 playerCount = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 playerCapacityMaximum;
+		int32 playerCapacityMaximum = 0;
 };
 
 USTRUCT(BlueprintType)
@@ -669,7 +669,7 @@ struct FMyServerClusterSearchResult {
 	UPROPERTY(BlueprintReadWrite)
 		FString key_id_str; // previous engine versions would always add .0 to int keys, so we pass them as strings as well.
 	UPROPERTY(BlueprintReadWrite)
-		int32 key_id;
+		int32 key_id = 0;
 	UPROPERTY(BlueprintReadWrite)
 		FString travelMode; // "free" or "restricted"
 	// There are more fields avaialble here if you need them.  Cheack the API docs
@@ -695,9 +695,9 @@ struct FMyServerSearchResult {
 	UPROPERTY(BlueprintReadWrite)
 		FString key_id_str; // previous engine versions would always add .0 to int keys, so we pass them as strings as well.
 	UPROPERTY(BlueprintReadWrite)
-		int32 key_id; 
+		int32 key_id = 0; 
 	UPROPERTY(BlueprintReadWrite)
-		bool continuous_server_provisioned;
+		bool continuous_server_provisioned = false;
 	// There are more fields avaialble here if you need them.  Cheack the API docs
 };
 
@@ -733,11 +733,11 @@ struct FZoneDetails {
 	GENERATED_USTRUCT_BODY()
 
 		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 control;
+		int32 control = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 energy;
+		int32 energy = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 materials;
+		int32 materials = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString title;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
@@ -748,14 +748,14 @@ struct FZoneDetails {
 		FString mapTitle;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool validZone;
+		bool validZone = false;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 regionKeyId;
+		int32 regionKeyId = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 mapKeyId;
+		int32 mapKeyId = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 key_id;
+		int32 key_id = 0;
 };
 
 
@@ -774,9 +774,9 @@ struct FScoreboardKOTH {
 
 	GENERATED_USTRUCT_BODY()
 		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		float ClaimPercentageSpeed;
+		float ClaimPercentageSpeed = 0.0f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		float CapturePercentageSpeed;
+		float CapturePercentageSpeed = 0.0f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString Team1Title;
@@ -784,27 +784,27 @@ struct FScoreboardKOTH {
 		FString Team2Title;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		float Team1Percentage;
+		float Team1Percentage = 0.0f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		float Team2Percentage;
+		float Team2Percentage = 0.0f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		float Team1ClaimPercentage;
+		float Team1ClaimPercentage = 0.0f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		float Team2ClaimPercentage;
+		float Team2ClaimPercentage = 0.0f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bTeam1HasControl;
+		bool bTeam1HasControl = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bTeam2HasControl;
+		bool bTeam2HasControl = false;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bTeam1Claiming;
+		bool bTeam1Claiming = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bTeam2Claiming;
+		bool bTeam2Claiming = false;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bIsContested;
+		bool bIsContested = false;
 
 };
 
@@ -823,25 +823,25 @@ struct FStoreItem {
 		FString PrerequisiteDescription;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool bAutoActivate;
+		bool bAutoActivate = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 credPrice;
+		int32 credPrice = 0;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 gameCurrencyPrice;
+		int32 gameCurrencyPrice = 0;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 DataTableId;
+		int32 DataTableId = 0;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 Quantity;
+		int32 Quantity = 0;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		TArray<float> Attributes;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		UTexture2D* Icon;
+		UTexture2D* Icon = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString consignmentId;
@@ -864,7 +864,7 @@ struct FIngredientsTable : public FTableRowBase
 		FString ClassPath;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		TAssetPtr<UTexture2D> Icon;
+		TSoftObjectPtr<UTexture2D> Icon;
 
 	//UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
 	//	FString Category;
@@ -873,16 +873,16 @@ struct FIngredientsTable : public FTableRowBase
 	//	FString Subcategory;
 
 	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
-		bool bCanBeUsed;
+		bool bCanBeUsed = false;
 
 	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
 		FString UseText;
 
 	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
-		bool bCanBeStacked;
+		bool bCanBeStacked = false;
 
 	UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")
-		int32 MaxStackSize;
+		int32 MaxStackSize = 0;
 
 	// Might want to use this for crafting
 	//UPROPERTY(BlueprintReadOnly, Category = "UETOPIA")

@@ -599,7 +599,7 @@ public:
 		bool bInteractingWithGameStore;
 
 	UPROPERTY(BlueprintReadWrite, Replicated, Category = "UETOPIA")
-		AMyGameStore* InteractingWithGameStore;
+		AMyGameStore* InteractingWithGameStoreRef;
 
 	// This is the blueprint function used to buy an item from a game store
 	// It will ultimately perform the function on the server, and replicate the data back to the client(s)

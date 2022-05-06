@@ -514,7 +514,7 @@ void AMyGameSession::RegisterServer() {
 	Settings.bIsDedicated = true;
 
 	OnCreateSessionCompleteDelegateHandle = SessionInt->AddOnCreateSessionCompleteDelegate_Handle(OnCreateSessionCompleteDelegate);
-	SessionInt->CreateSession(0, GameSessionName, Settings);
+	SessionInt->CreateSession(0, NAME_GameSession, Settings);
 
 	// We want to get a session list built for server links.
 	// Doing it here for now until a better place is found.
@@ -586,7 +586,12 @@ void AMyGameSession::RegisterPlayer(APlayerController* NewPlayer, const TSharedP
 		// changed in 4.25
 		//NewPlayer->PlayerState->PlayerId = GetNextPlayerID();
 		NewPlayer->PlayerState->SetPlayerId(GetNextPlayerID());
-		NewPlayer->PlayerState->SetUniqueId(UniqueId);
+
+		// changed in 5.0
+		const FUniqueNetIdRepl& NewUniqueId = UniqueId;
+		
+
+		NewPlayer->PlayerState->SetUniqueId(NewUniqueId);
 		NewPlayer->PlayerState->RegisterPlayerWithSession(bWasFromInvite);
 
 		// changed in 4.25

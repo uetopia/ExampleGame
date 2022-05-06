@@ -349,15 +349,15 @@ void AMyPlayerState::ReadCustomTexture_HttpRequestComplete(FHttpRequestPtr HttpR
 						LoadedTextureIndex = LoadedTextures.Add(UTexture2D::CreateTransient(ImageWrapper->GetWidth(), ImageWrapper->GetHeight(), PF_B8G8R8A8));
 						// Changed in 4.24
 						//LoadedTextures[LoadedTextureIndex]->PlatformData->NumSlices = 1;
-						LoadedTextures[LoadedTextureIndex]->PlatformData->SetNumSlices(1);
+						LoadedTextures[LoadedTextureIndex]->GetPlatformData()->SetNumSlices(1);
 						LoadedTextures[LoadedTextureIndex]->NeverStream = true;
-						void* TextureData = LoadedTextures[LoadedTextureIndex]->PlatformData->Mips[0].BulkData.Lock(LOCK_READ_WRITE);
+						void* TextureData = LoadedTextures[LoadedTextureIndex]->GetPlatformData()->Mips[0].BulkData.Lock(LOCK_READ_WRITE);
 
 						//changed in 4.25
 						//FMemory::Memcpy(TextureData, UncompressedBGRA->GetData(), UncompressedBGRA->Num());
 						FMemory::Memcpy(TextureData, UncompressedBGRA.GetData(), UncompressedBGRA.Num());
 
-						LoadedTextures[LoadedTextureIndex]->PlatformData->Mips[0].BulkData.Unlock();
+						LoadedTextures[LoadedTextureIndex]->GetPlatformData()->Mips[0].BulkData.Unlock();
 						LoadedTextures[LoadedTextureIndex]->UpdateResource();
 					}
 				}

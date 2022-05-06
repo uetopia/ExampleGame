@@ -93,9 +93,11 @@ FString AMyGameMode::InitNewPlayer(APlayerController* NewPlayerController, const
 		UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
 		AMyPlayerController* playerC = Cast<AMyPlayerController>(NewPlayerController);
 
-		// Register the player with the session
-		const TSharedPtr<const FUniqueNetId> UniqueIdTemp = UniqueId.GetUniqueNetId();
-		GameSession->RegisterPlayer(NewPlayerController, UniqueIdTemp, UGameplayStatics::HasOption(Options, TEXT("bIsFromInvite")));
+		// changed in 5.0
+		//const TSharedPtr<const FUniqueNetId> UniqueIdTemp = UniqueId.GetUniqueNetId();
+		const FUniqueNetIdRepl& NewUniqueId = UniqueId;
+
+		GameSession->RegisterPlayer(NewPlayerController, NewUniqueId, UGameplayStatics::HasOption(Options, TEXT("bIsFromInvite")));
 
 		// Moving the activate routine below register allows us to use the actual UE playerID instead of 0
 
