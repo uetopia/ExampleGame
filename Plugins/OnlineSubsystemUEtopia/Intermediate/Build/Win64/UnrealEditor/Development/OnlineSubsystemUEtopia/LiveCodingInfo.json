@@ -2,6 +2,8 @@
 	"RemapUnityFiles": 
 	{
 		"Module.OnlineSubsystemUEtopia.cpp.obj": [
+			"OnlineSubsystemUEtopia.init.gen.cpp.obj",
+			"SIOMessageConvertUEtopia.gen.cpp.obj",
 			"OnlineAchievementsInterfaceUEtopia.cpp.obj",
 			"OnlineAsyncTaskManagerUEtopia.cpp.obj",
 			"OnlineChatUEtopia.cpp.obj",
@@ -19,10 +21,6 @@
 			"OnlineTournamentsUEtopia.cpp.obj",
 			"SIOLambdaRunnableUEtopia.cpp.obj",
 			"SIOMessageConvertUEtopia.cpp.obj"
-		],
-		"Module.OnlineSubsystemUEtopia.gen.cpp.obj": [
-			"OnlineSubsystemUEtopia.init.gen.cpp.obj",
-			"SIOMessageConvertUEtopia.gen.cpp.obj"
 		]
 	}
 }

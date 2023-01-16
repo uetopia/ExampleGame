@@ -37,54 +37,54 @@ struct FMyActivePlayer {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString userTitle;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool authorized;
+		bool authorized = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool deactivateStarted; // the deactivation process has started - don't start it again.
+		bool deactivateStarted = false; // the deactivation process has started - don't start it again.
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool joined;
+		bool joined = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 teamId;
+		int32 teamId = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 teamPlayerIndex;
+		int32 teamPlayerIndex = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString teamKeyId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString teamTitle;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool win;
+		bool win = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 roundKills;
+		int32 roundKills = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 roundDeaths;
+		int32 roundDeaths = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		TArray<FString> killed;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		TArray<FUserEvent> events;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool currentRoundAlive;
+		bool currentRoundAlive = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 rank;
+		int32 rank = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 experience;
+		int32 experience = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 experienceThisLevel;
+		int32 experienceThisLevel = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 score;
+		int32 score = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 level;
+		int32 level = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 currencyCurrent;
+		int32 currencyCurrent = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString gamePlayerKeyId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FUniqueNetIdRepl UniqueId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool characterCustomized;
+		bool characterCustomized = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool gamePlayerDataLoaded;
+		bool gamePlayerDataLoaded = false;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool twitchCurrentlyStreaming;
+		bool twitchCurrentlyStreaming = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString twitchChannelId;
 
@@ -132,13 +132,13 @@ struct FMyMatchInfo {
 		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		TArray<FMyActivePlayer> players;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 admissionFee;
+		int32 admissionFee = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString title;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 api_version;
+		int32 api_version = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		bool authorization;
+		bool authorization = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString encryption;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
@@ -146,7 +146,7 @@ struct FMyMatchInfo {
 	// Keep track of which game mode this match should be using
 	// The keyId is the unique identifier, and the title is the Subsystem reference
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 gameModeKeyId;
+		int32 gameModeKeyId = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString gameModeTitle;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
@@ -164,11 +164,11 @@ struct FMyTeamInfo {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString title;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 number;
+		int32 number = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 roundWinCount;
+		int32 roundWinCount = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		int32 averageRank;
+		int32 averageRank = 0;
 };
 
 USTRUCT(BlueprintType)
@@ -766,7 +766,7 @@ void FindAllActors(UWorld* World, TArray<T*>& Out)
 	for (TActorIterator<AActor> It(World, T::StaticClass()); It; ++It)
 	{
 		T* Actor = Cast<T>(*It);
-		if (Actor && !Actor->IsPendingKill())
+		if (Actor && IsValidChecked(Actor))
 		{
 			Out.Add(Actor);
 		}

@@ -11,6 +11,7 @@
 /DELAY:UNLOAD
 /DLL
 /PDBALTPATH:%_PDB%
+/fastfail
 /OPT:NOREF
 /OPT:NOICF
 /INCREMENTAL:NO
@@ -19,9 +20,8 @@
 /DELAYLOAD:"d3d12.dll"
 /DELAYLOAD:"DBGHELP.DLL"
 /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x64"
-/LIBPATH:"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.2\lib\um\x64"
-/LIBPATH:"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x64"
-/LIBPATH:"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64"
+/LIBPATH:"C:\Program Files (x86)\Windows Kits\10\lib\10.0.22621.0\ucrt\x64"
+/LIBPATH:"C:\Program Files (x86)\Windows Kits\10\lib\10.0.22621.0\um\x64"
 /NODEFAULTLIB:"LIBCMT"
 /NODEFAULTLIB:"LIBCPMT"
 /NODEFAULTLIB:"LIBCMTD"
@@ -32,10 +32,9 @@
 /NODEFAULTLIB:"LIBCP"
 /NODEFAULTLIB:"LIBCD"
 /NODEFAULTLIB:"LIBCPD"
-/FUNCTIONPADMIN
-"..\Intermediate\Build\Win64\UnrealEditor\Development\Engine\SharedPCH.Engine.h.obj"
-"D:\ExampleGame_50\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UnrealEditor\Development\OnlineSubsystemUEtopia\Module.OnlineSubsystemUEtopia.cpp.obj"
-"D:\ExampleGame_50\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UnrealEditor\Development\OnlineSubsystemUEtopia\Module.OnlineSubsystemUEtopia.gen.cpp.obj"
+/FUNCTIONPADMIN:6
+"..\Intermediate\Build\Win64\UnrealEditor\Development\Engine\SharedPCH.Engine.InclOrderUnreal5_0.h.obj"
+"C:\ExampleGame-5.1.0\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UnrealEditor\Development\OnlineSubsystemUEtopia\Module.OnlineSubsystemUEtopia.cpp.obj"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\Default.rc2.res"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\Core\UnrealEditor-Core.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\CoreUObject\UnrealEditor-CoreUObject.lib"
@@ -46,11 +45,11 @@
 "..\Intermediate\Build\Win64\UnrealEditor\Development\Json\UnrealEditor-Json.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\HTTP\UnrealEditor-HTTP.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\Networking\UnrealEditor-Networking.lib"
-"D:\ExampleGame_50\Plugins\SocketIOClient\Intermediate\Build\Win64\UnrealEditor\Development\SocketIOLib\UnrealEditor-SocketIOLib.lib"
+"C:\ExampleGame-5.1.0\Plugins\SocketIOClient\Intermediate\Build\Win64\UnrealEditor\Development\SocketIOLib\UnrealEditor-SocketIOLib.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\JsonUtilities\UnrealEditor-JsonUtilities.lib"
-"D:\ExampleGame_50\Plugins\SocketIOClient\Intermediate\Build\Win64\UnrealEditor\Development\SocketIOClient\UnrealEditor-SocketIOClient.lib"
-"D:\ExampleGame_50\Plugins\SocketIOClient\Intermediate\Build\Win64\UnrealEditor\Development\SIOJson\UnrealEditor-SIOJson.lib"
-"D:\ExampleGame_50\Plugins\SocketIOClient\Intermediate\Build\Win64\UnrealEditor\Development\CoreUtility\UnrealEditor-CoreUtility.lib"
+"C:\ExampleGame-5.1.0\Plugins\SocketIOClient\Intermediate\Build\Win64\UnrealEditor\Development\SocketIOClient\UnrealEditor-SocketIOClient.lib"
+"C:\ExampleGame-5.1.0\Plugins\SocketIOClient\Intermediate\Build\Win64\UnrealEditor\Development\SIOJson\UnrealEditor-SIOJson.lib"
+"C:\ExampleGame-5.1.0\Plugins\SocketIOClient\Intermediate\Build\Win64\UnrealEditor\Development\CoreUtility\UnrealEditor-CoreUtility.lib"
 "delayimp.lib"
 "wininet.lib"
 "rpcrt4.lib"
@@ -75,7 +74,7 @@
 "setupapi.lib"
 "dwmapi.lib"
 "imm32.lib"
-/OUT:"D:\ExampleGame_50\Plugins\OnlineSubsystemUEtopia\Binaries\Win64\UnrealEditor-OnlineSubsystemUEtopia.dll"
-/IMPLIB:"D:\ExampleGame_50\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UnrealEditor\Development\OnlineSubsystemUEtopia\UnrealEditor-OnlineSubsystemUEtopia.suppressed.lib"
-/PDB:"D:\ExampleGame_50\Plugins\OnlineSubsystemUEtopia\Binaries\Win64\UnrealEditor-OnlineSubsystemUEtopia.pdb"
+/OUT:"C:\ExampleGame-5.1.0\Plugins\OnlineSubsystemUEtopia\Binaries\Win64\UnrealEditor-OnlineSubsystemUEtopia.dll"
+/IMPLIB:"C:\ExampleGame-5.1.0\Plugins\OnlineSubsystemUEtopia\Intermediate\Build\Win64\UnrealEditor\Development\OnlineSubsystemUEtopia\UnrealEditor-OnlineSubsystemUEtopia.suppressed.lib"
+/PDB:"C:\ExampleGame-5.1.0\Plugins\OnlineSubsystemUEtopia\Binaries\Win64\UnrealEditor-OnlineSubsystemUEtopia.pdb"
 /ignore:4078

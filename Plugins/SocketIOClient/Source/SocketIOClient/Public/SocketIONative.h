@@ -46,7 +46,7 @@ public:
 	FSocketIONative(const bool bForceTLSMode = false, const bool bShouldVerifyTLSCertificate = false);
 
 	//Native Callbacks
-	TFunction<void(const FString& SessionId)> OnConnectedCallback;					//TFunction<void(const FString& SessionId)>
+	TFunction<void(const FString& SocketId, const FString& SessionId)> OnConnectedCallback;					//TFunction<void(const FString& SessionId)>
 	TFunction<void(const ESIOConnectionCloseReason Reason)> OnDisconnectedCallback;	//TFunction<void(const ESIOConnectionCloseReason Reason)>
 	TFunction<void(const FString& Namespace)> OnNamespaceConnectedCallback;			//TFunction<void(const FString& Namespace)>
 	TFunction<void(const FString& Namespace)> OnNamespaceDisconnectedCallback;		//TFunction<void(const FString& Namespace)>
@@ -56,7 +56,7 @@ public:
 	//Map for all native functions bound to this socket
 	TMap<FString, FSIOBoundEvent> EventFunctionMap;
 
-	/** Address& Port, Path, Query & Headers */
+	/** Address& Port, Path, Query, Headers, & Auth message */
 	FSIOConnectParams URLParams;
 
 	/** The number of attempts before giving up. 0 = infinity. Set before connecting*/
@@ -70,6 +70,9 @@ public:
 
 	/** When connected this session id will be valid and contain a unique Id. */
 	FString SessionId;
+
+	/** Each new connection is assigned a random 20-characters identifier. This identifier is synced with the value on the client-side. */
+	FString SocketId;
 
 	//This will remain valid even after we disconnect. Replaced on disconnect.
 	FString LastSessionId;
@@ -99,7 +102,7 @@ public:
 	* @param AddressAndPort	the address in URL format with port
 	*
 	*/
-	void Connect(const FString& InAddressAndPort);
+	void Connect(const FString& InAddressAndPort = TEXT(""));
 
 	/**
 	* Connect to a socket.io server, optional method if auto-connect is set to true.

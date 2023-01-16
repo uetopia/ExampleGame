@@ -5852,7 +5852,7 @@ bool UMyGameInstance::StartMatchmaking(ULocalPlayer* PlayerOwner, FString MatchT
 
 			// this chenged in 4.20 - it is not returning the same type anymore
 			FUniqueNetIdRepl playerNetId = PlayerOwner->GetPreferredUniqueNetId();
-			GameSession->StartMatchmaking(playerNetId.GetUniqueNetId(), GameSessionName, MatchType);
+			GameSession->StartMatchmaking(playerNetId.GetUniqueNetId(), NAME_GameSession, MatchType);
 
 			bResult = true;
 		}
@@ -5886,7 +5886,7 @@ bool UMyGameInstance::CancelMatchmaking(ULocalPlayer* PlayerOwner)
 
 			// this chenged in 4.20 - it is not returning the same type anymore
 			FUniqueNetIdRepl playerNetId = PlayerOwner->GetPreferredUniqueNetId();
-			GameSession->CancelMatchmaking(playerNetId.GetUniqueNetId(), GameSessionName);
+			GameSession->CancelMatchmaking(playerNetId.GetUniqueNetId(), NAME_GameSession);
 
 			bResult = true;
 		}
@@ -5920,7 +5920,7 @@ bool UMyGameInstance::FindSessions(ULocalPlayer* PlayerOwner, bool bFindLAN)
 
 			// this chenged in 4.20 - it is not returning the same type anymore
 			FUniqueNetIdRepl playerNetId = PlayerOwner->GetPreferredUniqueNetId();
-			GameSession->FindSessions(playerNetId.GetUniqueNetId(), GameSessionName, bFindLAN, true);
+			GameSession->FindSessions(playerNetId.GetUniqueNetId(), NAME_GameSession, bFindLAN, true);
 
 			bResult = true;
 		}
@@ -5950,7 +5950,7 @@ bool UMyGameInstance::FindSessions(bool bFindLAN)
 
 		//UE_LOG(LogTemp, Verbose, TEXT("FindSessions PlayerOwner->GetPreferredUniqueNetId(): %d"), PlayerOwner->GetPreferredUniqueNetId());
 
-		GameSession->FindSessions(GameSessionName, bFindLAN, true);
+		GameSession->FindSessions(NAME_GameSession, bFindLAN, true);
 
 		bResult = true;
 	}
@@ -6085,7 +6085,7 @@ bool UMyGameInstance::JoinSession(ULocalPlayer* LocalPlayer, int32 SessionIndexI
 
 		// this chenged in 4.20 - it is not returning the same type anymore
 		FUniqueNetIdRepl playerNetId = LocalPlayer->GetPreferredUniqueNetId();
-		if (GameSession->JoinSession(playerNetId.GetUniqueNetId(), GameSessionName, SessionIndexInSearchResults))
+		if (GameSession->JoinSession(playerNetId.GetUniqueNetId(), NAME_GameSession, SessionIndexInSearchResults))
 		{
 			// If any error occured in the above, pending state would be set
 			//if ((PendingState == CurrentState) || (PendingState == MyGameInstanceState::None))
@@ -6116,7 +6116,7 @@ bool UMyGameInstance::JoinSession(ULocalPlayer* LocalPlayer, const FOnlineSessio
 
 		// this chenged in 4.20 - it is not returning the same type anymore
 		FUniqueNetIdRepl playerNetId = LocalPlayer->GetPreferredUniqueNetId();
-		if (GameSession->JoinSession(playerNetId.GetUniqueNetId(), GameSessionName, SearchResult))
+		if (GameSession->JoinSession(playerNetId.GetUniqueNetId(), NAME_GameSession, SearchResult))
 		{
 			// If any error occured in the above, pending state would be set
 			if ((PendingState == CurrentState) || (PendingState == MyGameInstanceState::None))
@@ -6175,7 +6175,7 @@ void UMyGameInstance::FinishJoinSession(EOnJoinSessionCompleteResult::Type Resul
 		return;
 	}
 
-	InternalTravelToSession(GameSessionName);
+	InternalTravelToSession(NAME_GameSession);
 }
 
 void UMyGameInstance::InternalTravelToSession(const FName& SessionName)
@@ -6348,14 +6348,14 @@ void UMyGameInstance::CleanupSessionOnReturnToMenu()
 
 	if (Sessions.IsValid())
 	{
-		EOnlineSessionState::Type SessionState = Sessions->GetSessionState(GameSessionName);
+		EOnlineSessionState::Type SessionState = Sessions->GetSessionState(NAME_GameSession);
 		//UE_LOG(LogOnline, Log, TEXT("Session %s is '%s'"), *GameSessionName.ToString(), EOnlineSessionState::ToString(SessionState));
 
 		if (EOnlineSessionState::InProgress == SessionState)
 		{
 			//UE_LOG(LogOnline, Log, TEXT("Ending session %s on return to main menu"), *GameSessionName.ToString());
 			OnEndSessionCompleteDelegateHandle = Sessions->AddOnEndSessionCompleteDelegate_Handle(OnEndSessionCompleteDelegate);
-			Sessions->EndSession(GameSessionName);
+			Sessions->EndSession(NAME_GameSession);
 			bPendingOnlineOp = true;
 		}
 		else if (EOnlineSessionState::Ending == SessionState)
@@ -6368,7 +6368,7 @@ void UMyGameInstance::CleanupSessionOnReturnToMenu()
 		{
 			//UE_LOG(LogOnline, Log, TEXT("Destroying session %s on return to main menu"), *GameSessionName.ToString());
 			OnDestroySessionCompleteDelegateHandle = Sessions->AddOnDestroySessionCompleteDelegate_Handle(OnEndSessionCompleteDelegate);
-			Sessions->DestroySession(GameSessionName);
+			Sessions->DestroySession(NAME_GameSession);
 			bPendingOnlineOp = true;
 		}
 		else if (EOnlineSessionState::Starting == SessionState)
@@ -7922,7 +7922,6 @@ void UMyGameInstance::NotifyDownReadyComplete(FHttpRequestPtr HttpRequest, FHttp
 		}
 	}
 }
-
 
 FMyInventorySlot UMyGameInstance::GetInventorySlotByDTID(int32 DTID)
 {

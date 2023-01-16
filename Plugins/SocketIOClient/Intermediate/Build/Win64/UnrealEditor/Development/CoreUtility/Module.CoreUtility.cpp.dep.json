@@ -1,0 +1,41 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "c:\\examplegame-5.1.0\\plugins\\socketioclient\\intermediate\\build\\win64\\unrealeditor\\development\\coreutility\\module.coreutility.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\ue_5.1_uetopia\\engine\\intermediate\\build\\win64\\unrealeditor\\development\\engine\\sharedpch.engine.inclorderunreal5_0.h.pch",
+        "Includes": [
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\intermediate\\build\\win64\\unrealeditor\\development\\coreutility\\definitions.coreutility.h",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\intermediate\\build\\win64\\unrealeditor\\inc\\coreutility\\uht\\coreutility.init.gen.cpp",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\intermediate\\build\\win64\\unrealeditor\\inc\\coreutility\\uht\\cublueprintlibrary.gen.cpp",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\source\\coreutility\\public\\cublueprintlibrary.h",
+            "c:\\ue_5.1_uetopia\\engine\\source\\runtime\\engine\\classes\\sound\\soundwaveprocedural.h",
+            "c:\\ue_5.1_uetopia\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\soundwaveprocedural.generated.h",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\intermediate\\build\\win64\\unrealeditor\\inc\\coreutility\\uht\\cublueprintlibrary.generated.h",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\intermediate\\build\\win64\\unrealeditor\\inc\\coreutility\\uht\\cufilecomponent.gen.cpp",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\source\\coreutility\\public\\cufilecomponent.h",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\intermediate\\build\\win64\\unrealeditor\\inc\\coreutility\\uht\\cufilecomponent.generated.h",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\source\\coreutility\\private\\cublueprintlibrary.cpp",
+            "c:\\ue_5.1_uetopia\\engine\\source\\runtime\\imagewrapper\\public\\iimagewrapper.h",
+            "c:\\ue_5.1_uetopia\\engine\\source\\runtime\\imagewrapper\\public\\iimagewrappermodule.h",
+            "c:\\ue_5.1_uetopia\\engine\\source\\runtime\\engine\\public\\opusaudioinfo.h",
+            "c:\\ue_5.1_uetopia\\engine\\source\\runtime\\engine\\public\\audiodecompress.h",
+            "c:\\ue_5.1_uetopia\\engine\\source\\developer\\targetplatform\\public\\interfaces\\iaudioformat.h",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\source\\coreutility\\public\\culambdarunnable.h",
+            "c:\\ue_5.1_uetopia\\engine\\source\\runtime\\engine\\public\\latentactions.h",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\source\\coreutility\\public\\cuopuscoder.h",
+            "c:\\ue_5.1_uetopia\\engine\\source\\thirdparty\\libopus\\opus-1.3.1-12\\include\\opus.h",
+            "c:\\ue_5.1_uetopia\\engine\\source\\thirdparty\\libopus\\opus-1.3.1-12\\include\\opus_types.h",
+            "c:\\ue_5.1_uetopia\\engine\\source\\thirdparty\\libopus\\opus-1.3.1-12\\include\\opus_defines.h",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\source\\coreutility\\public\\cumeasuretimer.h",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\source\\coreutility\\private\\cufilecomponent.cpp",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\source\\coreutility\\private\\culambdarunnable.cpp",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\source\\coreutility\\private\\cumeasuretimer.cpp",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\source\\coreutility\\private\\cuopuscoder.cpp",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\source\\coreutility\\private\\fcoreutility.cpp",
+            "c:\\examplegame-5.1.0\\plugins\\socketioclient\\source\\coreutility\\public\\icoreutility.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

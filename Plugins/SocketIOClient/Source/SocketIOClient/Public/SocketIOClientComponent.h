@@ -10,7 +10,7 @@
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FSIOCEventSignature);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSIOCSocketEventSignature, FString, Namespace);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSIOCOpenEventSignature, FString, SessionId, bool, bIsReconnection);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FSIOCOpenEventSignature, FString, SocketId, FString, SessionId, bool, bIsReconnection);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSIOCCloseEventSignature, TEnumAsByte<ESIOConnectionCloseReason>, Reason);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSIOCEventJsonSignature, FString, EventName, class USIOJsonValue*, EventData);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FSIOConnectionProblemSignature, int32, Attempts, int32,  NextAttemptInMs, float, TimeSinceConnected);
@@ -141,6 +141,10 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "SocketIO Connection Properties")
 	FString SessionId;
 
+	/** Each new connection is assigned a random 20-characters identifier. This identifier is synced with the value on the client-side. */
+	UPROPERTY(BlueprintReadOnly, Category = "SocketIO Connection Properties")
+	FString SocketId;
+
 	UPROPERTY(BlueprintReadOnly, Category = "SocketIO Connection Properties")
 	bool bIsHavingConnectionProblems;
 
@@ -152,22 +156,25 @@ public:
 	* Connect to a socket.io server, optional method if auto-connect is set to true.
 	* Query and headers are defined by a {'stringKey':'stringValue'} SIOJson Object
 	*
-	* @param AddressAndPort	the address in URL format with port
+	* @param AddressAndPort	the address in URL format with port, if left empty it will
+	*						use current URLParams for all inputs.
 	* @param Path optional ws:// trailing path for socket.io connection
 	* @param Query http query as a SIOJsonObject with string keys and values
 	* @param Headers http header as a SIOJsonObject with string keys and values
+	* @param Auth socket.io authorization option as a SIOJsonObject with string keys and values
 	*
 	*/
 	UFUNCTION(BlueprintCallable, Category = "SocketIO Functions")
-	void Connect(	const FString& InAddressAndPort,
+	void Connect(	const FString& InAddressAndPort = TEXT(""),
 					const FString& InPath = TEXT("socket.io"),
+					const FString& InAuthToken = TEXT(""),
 					USIOJsonObject* Query = nullptr, 
 					USIOJsonObject* Headers = nullptr);
 
 	/**
 	* Connect to a socket.io server, optional method if auto-connect is set to true.
 	*
-	* @param InURLParams - A struct holding address&port, path, headers, and query params
+	* @param InURLParams - A struct holding address&port, path, headers, query, and auth params
 	*/
 	UFUNCTION(BlueprintCallable, Category = "SocketIO Functions")
 	void ConnectWithParams(const FSIOConnectParams& InURLParams);
@@ -315,6 +322,7 @@ public:
 	*/
 	void ConnectNative(	const FString& InAddressAndPort, 
 						const FString& InPath = TEXT("socket.io"),
+						const FString& InAuthToken = TEXT(""),
 						const TSharedPtr<FJsonObject>& Query = nullptr, 
 						const TSharedPtr<FJsonObject>& Headers = nullptr);
 

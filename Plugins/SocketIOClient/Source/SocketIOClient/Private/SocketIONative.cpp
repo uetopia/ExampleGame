@@ -49,12 +49,17 @@ void FSocketIONative::Connect(const FSIOConnectParams& InConnectParams)
 	std::string StdPathString = USIOMessageConvert::StdString(URLParams.Path);
 	std::map<std::string, std::string> QueryMap = {};
 	std::map<std::string, std::string> HeadersMap = {};
+	sio::message::ptr AuthMessage = sio::object_message::create();
+	if (!URLParams.AuthToken.IsEmpty())
+	{
+		AuthMessage->get_map()["token"] = sio::string_message::create(USIOMessageConvert::StdString(URLParams.AuthToken));
+	}
 
 	QueryMap = USIOMessageConvert::FStringMapToStdStringMap(URLParams.Query);
 	HeadersMap = USIOMessageConvert::FStringMapToStdStringMap(URLParams.Headers);
 
 	//Connect to the server on a background thread so it never blocks
-	FCULambdaRunnable::RunLambdaOnBackGroundThread([&, StdAddressString, StdPathString, QueryMap, HeadersMap]
+	FCULambdaRunnable::RunLambdaOnBackGroundThread([&, StdAddressString, StdPathString, QueryMap, HeadersMap, AuthMessage]
 	{
 		PrivateClient->set_reconnect_attempts(MaxReconnectionAttempts);
 		PrivateClient->set_reconnect_delay(ReconnectionDelay);
@@ -75,16 +80,18 @@ void FSocketIONative::Connect(const FSIOConnectParams& InConnectParams)
 				return;
 			}
 		}
-		PrivateClient->connect(StdAddressString, QueryMap, HeadersMap);
+		PrivateClient->connect(StdAddressString, QueryMap, HeadersMap, AuthMessage);
 	});
 }
 
 void FSocketIONative::Connect(const FString& InAddressAndPort)
 {
-	FSIOConnectParams Params;
-	Params.AddressAndPort = InAddressAndPort;
+	if (!InAddressAndPort.IsEmpty())
+	{
+		URLParams.AddressAndPort = InAddressAndPort;
+	}
 
-	Connect(Params);
+	Connect(URLParams);
 }
 
 void FSocketIONative::JoinNamespace(const FString& Namespace)
@@ -409,7 +416,7 @@ void FSocketIONative::SetupInternalCallbacks()
 		bIsConnected = false;
 
 		ESIOConnectionCloseReason DisconnectReason = (ESIOConnectionCloseReason)reason;
-		FString DisconnectReasonString = USIOJConvert::EnumToString(TEXT("ESIOConnectionCloseReason"), DisconnectReason);
+		FString DisconnectReasonString = UEnum::GetValueAsString<ESIOConnectionCloseReason>(DisconnectReason);
 		if (VerboseLog)
 		{
 			UE_LOG(SocketIO, Log, TEXT("SocketIO Disconnected %s reason: %s"), *SessionId, *DisconnectReasonString);
@@ -447,6 +454,7 @@ void FSocketIONative::SetupInternalCallbacks()
 		{
 			bIsConnected = true;
 			SessionId = USIOMessageConvert::FStringFromStd(PrivateClient->get_sessionid());
+			SocketId = USIOMessageConvert::FStringFromStd(PrivateClient->socket(nsp)->get_socket_id());
 
 			if (VerboseLog)
 			{
@@ -456,18 +464,17 @@ void FSocketIONative::SetupInternalCallbacks()
 			{
 				if (bCallbackOnGameThread)
 				{
-					const FString SafeSessionId = SessionId;
-					FCULambdaRunnable::RunShortLambdaOnGameThread([&, SafeSessionId]
+					FCULambdaRunnable::RunShortLambdaOnGameThread([&]
 					{
 						if (OnConnectedCallback)
 						{
-							OnConnectedCallback(SessionId);
+							OnConnectedCallback(SocketId, SessionId);
 						}
 					});
 				}
 				else
 				{
-					OnConnectedCallback(SessionId);
+					OnConnectedCallback(SocketId, SessionId);
 				}
 			}
 		}

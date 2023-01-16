@@ -19,12 +19,11 @@ Recommended socket.io server version: 3.0+
 
 Current platform issues:
 
-* Xbox/PS4 platform untested - see [issue 117](https://github.com/getnamo/SocketIOClient-Unreal/issues/117)
-* Lumin platform untested - see [issue 114](https://github.com/getnamo/SocketIOClient-Unreal/issues/114)
+* Xbox/PS platforms untested - see [issue 117](https://github.com/getnamo/SocketIOClient-Unreal/issues/117)
 
 Current TLS/SSL issues:
 
-* Certification verification is not implemented; setting `bShouldSkipCertificateVerification` will always fail - see [issue 303](https://github.com/getnamo/SocketIOClient-Unreal/issues/303)
+* Certificate verification is not implemented; setting `bShouldVerifyTLSCertificate` will always fail - see [issue 303](https://github.com/getnamo/SocketIOClient-Unreal/issues/303)
 
 ## Socket.IO Server Compatibility
 
@@ -73,6 +72,8 @@ Some features in later versions of this plugin are not supported by earlier vers
  
 ```git clone https://github.com/getnamo/SocketIOClient-Unreal.git --recurse-submodules```
 
+ 5. Build your project (needs to be c++/mixed) and then the plugin will get built with it.
+
 ## Example Project - Chat
 
 For an example project check out https://github.com/getnamo/SocketIOClient-Unreal-example which contains both server and client parts required to try out socket.io based chat, from Unreal to any other client and vice versa.
@@ -90,7 +91,7 @@ By default the component will auto connect *on begin play* to your default addre
 If you want to connect at your own time, you change the default variable *Should Auto Connect* to false and then call *Connect* with your address
 
 ### Receiving an Event
-There are two ways to receive socket.io events.
+There are three main ways to receive socket.io events.
 
 #### Receive To Function
 The recommended way is to bind an event directly to a function or custom event. E.g. receiving the event "chatMessage" with a String parameter.
@@ -328,7 +329,7 @@ Since v1.2.3 you can now also join and leave a namespace explicitly using ```Joi
 
 ### Rooms
 
-The Rooms functionality is solely based on server implementation, see Socket.IO api for details: https://socket.io/docs/rooms-and-namespaces/#Rooms.
+The Rooms functionality is solely based on server implementation, see Socket.IO api for details: https://socket.io/docs/v4/rooms/.
 
 Generally speaking you can have some kind of event to emit to your server specifying the unreal client wants to join or leave a room and then the server would handle that request for you. If you wanted to emit a message to a specific user in a room you'd need a way to get a list of possible users (e.g. get the list on joining the room or via a callback). Then selecting a user from the list and passing their id along with desired data in an emit call to the server which would forward the data to the user in the room you've joined.
 
@@ -372,13 +373,13 @@ Game Instances do *not* have actor owners and therefore cannot register and init
 
 Non actor-owners such as Game Instances cannot receive the graph callbacks due to invalid world context. This only affects this one callback method, other methods work as usual.
 
-## HTTPS/TLS/SSL Support
+## TLS / SSL
 
-For connections that require TLS use the toggle ```bShouldUseTLS``` on ```SocketIOClientComponent``` (or c++ native variants). Then on connect, your component will use TLS. 
-
-NB CertificateVerification does NOT currently work and  ```bShouldSkipCertificateVerification``` should be set to true or it will always fail to connect, see https://github.com/getnamo/SocketIOClient-Unreal/issues/303 for progress.
+TLS is supported for both C++ and BP if your platform supports OpenSSL (see https://github.com/getnamo/SocketIOClient-Unreal/blob/master/Source/SocketIOLib/SocketIOLib.Build.cs#L64 for currently supported platforms). Simply use a `https` or `wss` URL for host target and it will use TLS by default. You can also force TLS on any URL by using `bForceTLS` set to true. 
 
 Gist with example node.js TLS server and instructions for self signing certificate for testing purposes: https://gist.github.com/getnamo/fe6c9574dc971066813fd291c363ee04
+
+*NB: Certificate verification is currently not implemented; `bShouldVerifyTLSCertificate` is set to false by default, setting it to true will currently cause connections to fail. See [issue 303](https://github.com/getnamo/SocketIOClient-Unreal/issues/303).*
 
 ## CoreUtility
 
@@ -818,12 +819,6 @@ You can post simple JSON requests using the SIOJRequest (this is the same archit
 ![Sending a JSON post request](https://i.imgur.com/UOJHcP0.png)
 
 These request functions are available globally.
-
-## TLS / SSL
-
-TLS is supported for both C++ and BP if your platform supports OpenSSL (see https://github.com/getnamo/SocketIOClient-Unreal/blob/master/Source/SocketIOLib/SocketIOLib.Build.cs#L64 for currently supported platforms). Simply use a `https` or `wss` URL for host target and it will use TLS by default. You can also force TLS on different URLs by using `bForceTLS` set to true. 
-
-Certificate verification is currently not implemented; `bShouldVerifyTLSCertificate` is set to false by default, setting it to true will cause connections to fail. See [issue 303](https://github.com/getnamo/SocketIOClient-Unreal/issues/303).
 
 ## Packaging
 
