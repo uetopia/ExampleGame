@@ -6,6 +6,7 @@
 #include "AttributeSet.h"
 #include "AbilitySystemComponent.h"
 #include "UnrealNetwork.h"
+#include "MyTypes.h"
 #include "MyAttributeSet.generated.h"
 
 /**

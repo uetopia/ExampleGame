@@ -281,6 +281,46 @@ bool UMyGameInstance::PerformJsonHttpRequest(void(UMyGameInstance::*delegateCall
 	return true;
 }
 
+bool UMyGameInstance::PerformNonAPIJsonHttpRequest(void(UMyGameInstance::* delegateCallback)(FHttpRequestPtr, FHttpResponsePtr, bool), FString NONAPIURL, FString ArgumentString, FString AccessToken)
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] PerformNonAPIJsonHttpRequest"));
+
+	FHttpModule* Http = &FHttpModule::Get();
+	if (!Http) { return false; }
+	if (!Http->IsHttpEnabled()) { return false; }
+
+	FString TargetHost = "https://" + NONAPIURL;
+
+	UE_LOG(LogTemp, Log, TEXT("TargetHost: %s"), *TargetHost);
+	//UE_LOG(LogTemp, Log, TEXT("ServerAPIKey: %s"), *ServerAPIKey);
+	//UE_LOG(LogTemp, Log, TEXT("ServerAPISecret: %s"), *ServerAPISecret);
+
+	TSharedRef < IHttpRequest > Request = Http->CreateRequest();
+	Request->SetVerb("POST");
+	Request->SetURL(TargetHost);
+	Request->SetHeader("User-Agent", "UETOPIA_UE4_API_CLIENT/1.0");
+	//Request->SetHeader("Content-Type", "application/x-www-form-urlencoded");
+	Request->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+	// hardcoding this for now.
+	// TODO - put in config
+	Request->SetHeader("Key", "SfVERu-vz76JU-369uUW-o5Jd4t"); // this is uetopia assigned LIVE game API key
+	Request->SetHeader("Sign", "RealSignatureComingIn411");
+
+	if (!AccessToken.IsEmpty())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] PerformHttpRequest AccessToken: %s "), *AccessToken);
+		Request->SetHeader(TEXT("x-uetopia-auth"), AccessToken);
+	}
+
+	Request->SetContentAsString(ArgumentString);
+
+	Request->OnProcessRequestComplete().BindUObject(this, delegateCallback);
+	if (!Request->ProcessRequest()) { return false; }
+
+	return true;
+}
+
+
 bool UMyGameInstance::GetServerInfo()
 {
 
@@ -490,6 +530,14 @@ void UMyGameInstance::GetMatchInfoComplete(FHttpRequestPtr HttpRequest, FHttpRes
 					admissionFee = JsonParsed->GetIntegerField("admissionFee");
 				}
 
+				MatchInfo.matchKeyId = JsonParsed->GetStringField("matchKeyId");
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [GetMatchInfo] matchKeyId: %s"), *MatchInfo.matchKeyId);
+				//}
+
+				MatchInfo.region = JsonParsed->GetStringField("region");
+
+
+
 
 				// Put all of our player information in our MatchInfo TArray
 
@@ -584,6 +632,15 @@ void UMyGameInstance::GetMatchInfoComplete(FHttpRequestPtr HttpRequest, FHttpRes
 					metaMatchCustom, // TODO put the real one in!
 					&ZoneDetail,
 					0, 0);
+
+				// WE're getting some junk data in some of the player fields which are not sent from the backend.  
+				// Reset them here.
+				for (int32 playeri = 0; playeri < MatchInfo.players.Num(); playeri++)
+				{
+					MatchInfo.players[playeri].assists = 0;
+					MatchInfo.players[playeri].deaths = 0;
+					MatchInfo.players[playeri].kills = 0;
+				}
 
 			}
 			else
@@ -744,53 +801,6 @@ bool UMyGameInstance::ActivatePlayer(class AMyPlayerController* NewPlayerControl
 			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] AuthorizePlayer - playerKeyId NOT found in matchInfo- TODO kick"));
 		}
 
-		// old way
-		/*
-		for (int32 b = 0; b < MatchInfo.players.Num(); b++)
-		{
-
-			if (MatchInfo.players[b].playerKeyId == playerKeyId) {
-				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] AuthorizePlayer - FOUND MATCHING playerKeyId"));
-				playerKeyIdFound = true;
-				ActivePlayerIndex = b;
-
-				MatchInfo.players[b].PlayerController = NewPlayerController;
-
-				if (UEtopiaCharactersEnabled)
-				{
-					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] AuthorizePlayer - UEtopiaCharactersEnabled"));
-					MatchInfo.players[b].characterCustomized = false;
-					MatchInfo.players[b].gamePlayerDataLoaded = false;
-					MatchInfo.players[b].bIsConnected = true;
-				}
-				else
-				{
-					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] AuthorizePlayer - UEtopiaCharacters NOT Enabled "));
-					MatchInfo.players[b].characterCustomized = true;
-					MatchInfo.players[b].gamePlayerDataLoaded = false;
-					MatchInfo.players[b].bIsConnected = true;
-				}
-			}
-		}
-
-		if (playerKeyIdFound == false) {
-			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] AuthorizePlayer - playerKeyId NOT found in matchInfo- TODO kick"));
-		}
-		else {
-			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] AuthorizePlayer - playerKeyId found in matchInfo"));
-			FString access_token = NewPlayerController->CurrentAccessTokenFromOSS;
-			FString nonceString = "10951350917635";
-			FString encryption = "off";  // Allowing unencrypted on sandbox for now.
-			FString OutputString = "nonce=" + nonceString + "&encryption=" + encryption;
-
-			FString APIURI = "/api/v1/match/player/" + playerKeyId + "/activate";;
-
-			bool requestSuccess = PerformHttpRequest(&UMyGameInstance::ActivateMatchPlayerRequestComplete, APIURI, OutputString, access_token);
-
-			return requestSuccess;
-		}
-
-		*/
 
 	}
 	else {
@@ -811,35 +821,25 @@ bool UMyGameInstance::ActivatePlayer(class AMyPlayerController* NewPlayerControl
 			ActivePlayer->PlayerController = NewPlayerController;
 			ActivePlayer->bIsConnected = true;
 
-			// If it is already authorized, Don't resend the http request
-			// Just authorize regardless...  If we don't, it has strange edge cases when disconnecting and reconnecting to a server.
-			//if (ActivePlayer->authorized)
-			//{
-			//	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] AuthorizePlayer - update existing record - it is already authorized."));
-			//}
-			//else
-			//{
-				//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] AuthorizePlayer - update existing record - it is NOT already authorized."));
-				FString nonceString = "10951350917635";
-				FString encryption = "off";  // Allowing unencrypted on sandbox for now.
-				FString access_token = NewPlayerController->CurrentAccessTokenFromOSS;
+			FString nonceString = "10951350917635";
+			FString encryption = "off";  // Allowing unencrypted on sandbox for now.
+			FString access_token = NewPlayerController->CurrentAccessTokenFromOSS;
 
-				FString OutputString = "nonce=" + nonceString + "&encryption=" + encryption;
+			FString OutputString = "nonce=" + nonceString + "&encryption=" + encryption;
 
-				//UE_LOG(LogTemp, Log, TEXT("ServerSessionHostAddress: %s"), *ServerSessionHostAddress);
-				//UE_LOG(LogTemp, Log, TEXT("ServerSessionID: %s"), *ServerSessionID);
+			//UE_LOG(LogTemp, Log, TEXT("ServerSessionHostAddress: %s"), *ServerSessionHostAddress);
+			//UE_LOG(LogTemp, Log, TEXT("ServerSessionID: %s"), *ServerSessionID);
 
-				if (ServerSessionHostAddress.Len() > 1) {
-					OutputString = OutputString + "&session_host_address=" + ServerSessionHostAddress + "&session_id=" + ServerSessionID;
-				}
+			if (ServerSessionHostAddress.Len() > 1) {
+				OutputString = OutputString + "&session_host_address=" + ServerSessionHostAddress + "&session_id=" + ServerSessionID;
+			}
 
-				FString APIURI = "/api/v1/server/player/" + playerKeyId + "/activate";;
+			FString APIURI = "/api/v1/server/player/" + playerKeyId + "/activate";;
 
-				bool requestSuccess = PerformHttpRequest(&UMyGameInstance::ActivateRequestComplete, APIURI, OutputString, access_token);
+			bool requestSuccess = PerformHttpRequest(&UMyGameInstance::ActivateRequestComplete, APIURI, OutputString, access_token);
 
-				return requestSuccess;
-			//}
-			//return true;
+			return requestSuccess;
+
 
 		}
 		else
@@ -1040,7 +1040,8 @@ void UMyGameInstance::ActivateMatchPlayerRequestComplete(FHttpRequestPtr HttpReq
 						ActivePlayer->joined = true;
 						ActivePlayer->currentRoundAlive = true;
 						ActivePlayer->bIsConnected = true;
-						ActivePlayer->userTitle = JsonParsed->GetStringField("player_name");
+						// Testing without this.  It should already be set for matchmaker
+						//ActivePlayer->userTitle = JsonParsed->GetStringField("player_name");
 						ActivePlayer->gamePlayerKeyId = JsonParsed->GetStringField("game_player_key_id");
 
 						APlayerState* thisPlayerState = ActivePlayer->PlayerController->PlayerState;
@@ -1276,6 +1277,9 @@ void UMyGameInstance::GetGamePlayerRequestComplete(FHttpRequestPtr HttpRequest, 
 				JsonParsed->TryGetNumberField("level", activePlayer->level);
 				JsonParsed->TryGetNumberField("score", activePlayer->score);
 				JsonParsed->TryGetNumberField("rank", activePlayer->rank);
+
+				JsonParsed->TryGetStringField("characterCurrentKeyId", activePlayer->characterCurrentKeyId);
+				JsonParsed->TryGetStringField("characterCurrentTitle", activePlayer->characterCurrentTitle);
 
 				// Is this player is allowed to pickup and drop items on this server.
 				JsonParsed->TryGetBoolField("allowPickup", playerS->allowPickup);
@@ -5666,6 +5670,10 @@ bool UMyGameInstance::SubmitMatchMakerResults()
 	if (!MatchMakerResultsSubmitted)
 	{
 		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] SubmitMatchMakerResults"));
+
+		// first send to the metagame server.
+		SubmitMatchStatistics();
+
 		MatchInfo.encryption = "off";
 		MatchInfo.nonce = "10951350917635";
 		FString json_string;
@@ -7558,6 +7566,10 @@ bool UMyGameInstance::RecordMatchWin(int32 winnerTeamID) {
 	// calculate new ranks for all of the players
 	CalculateNewTeamRank(roundWinnerIndex, roundLoserIndex);
 
+	// keep track of winning and losing team names
+	FString winningTeamTitle;
+	FString losingTeamTitle;
+
 	//set winner for the winning team
 	for (int32 b = 0; b < MatchInfo.players.Num(); b++)
 	{
@@ -7566,6 +7578,8 @@ bool UMyGameInstance::RecordMatchWin(int32 winnerTeamID) {
 			MatchInfo.players[b].score = MatchInfo.players[b].score + 1;
 			MatchInfo.players[b].experience = MatchInfo.players[b].experience + 1;
 			MatchInfo.players[b].experienceThisLevel = MatchInfo.players[b].experienceThisLevel + 1;
+
+			winningTeamTitle = MatchInfo.players[b].teamTitle;
 
 			// DO level up - TODO move this to a function
 			//  level / 3 = exp required to level
@@ -7578,14 +7592,24 @@ bool UMyGameInstance::RecordMatchWin(int32 winnerTeamID) {
 				MatchInfo.players[b].level = MatchInfo.players[b].level + 1;
 			}
 		}
+		else
+		{
+			losingTeamTitle = MatchInfo.players[b].teamTitle;
+		}
 	}
 
-	// submit here?
+	// put the winning/losing in match info
+	MatchInfo.winningTeamTitle = winningTeamTitle;
+	MatchInfo.losingTeamTitle = losingTeamTitle;
+
+	ProcessMatchStory();
+
+	// submit here!
 	bool gamesubmitted = SubmitMatchMakerResults();
 
 	//Deauthorize everyone later.  first show results and loot screen.
-
 	ShowMatchResults();
+
 	return true;
 }
 
@@ -7676,6 +7700,9 @@ void UMyGameInstance::AttemptStartMatch()
 		}
 
 		// Or do some kind of map randomization
+
+		// Either way, set the map title and travel there
+		MatchInfo.mapTitle = "Default Map";
 
 		GetWorld()->GetAuthGameMode()->bUseSeamlessTravel = true;
 		GetWorld()->ServerTravel(UrlString);
@@ -8036,4 +8063,305 @@ void UMyGameInstance::EndMatchDelegatesAndTravel()
 	GetWorld()->GetTimerManager().SetTimer(KickPlayersDelayHandle, KickPlayersTimerDel, 30.f, false, 30.f);
 
 
+}
+
+
+bool UMyGameInstance::AddMatchStoryEvent(FMatchStoryEvent MatchStoryEventIn)
+{
+	//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] AddMatchStoryEvent"));
+	// get timestamp 
+	int32 Year, Month, Day, DayOfWeek;
+	int32 Hour, Minute, Second, Millisecond;
+	FPlatformTime::SystemTime(Year, Month, DayOfWeek, Day, Hour, Minute, Second, Millisecond);
+	MatchStoryEventIn.timestamp = FDateTime(Year, Month, Day, Hour, Minute, Second, Millisecond).ToUnixTimestamp();
+
+	MatchStoryRaw.Add(MatchStoryEventIn);
+	return true;
+}
+
+
+TArray<FMatchStoryEvent> UMyGameInstance::GetMatchStoryRaw()
+{
+	return MatchStoryRaw;
+}
+
+bool UMyGameInstance::ProcessMatchStory()
+{
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] ProcessMatchStory"));
+
+	// setup vars we will need
+	FMyActivePlayer* sourceMatchPlayer;
+	FMyActivePlayer* targetMatchPlayer;
+	FMyActivePlayer* assistMatchPlayer;
+
+	// so we can keep track of repeating events
+	FMatchStoryEvent previousMatchStoryEvent;
+
+	// loop over the match story Raw
+	for (int32 i = 0; i < MatchStoryRaw.Num(); i++)
+	{
+		//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] ProcessMatchStory - line execution "));
+
+
+
+		// Keep track of all of the player statistics
+
+		sourceMatchPlayer = getMatchPlayerByPlayerId(MatchStoryRaw[i].sourcePlayerId);
+		targetMatchPlayer = getMatchPlayerByPlayerId(MatchStoryRaw[i].targetPlayerId);
+
+		if (sourceMatchPlayer)
+		{
+			MatchStoryRaw[i].sourcePlayerKeyId = sourceMatchPlayer->userKeyId;
+			sourceMatchPlayer->damageDealt = sourceMatchPlayer->damageDealt + MatchStoryRaw[i].damageDone;
+			// TODO Add all your custom variables
+		}
+
+		if (targetMatchPlayer)
+		{
+			MatchStoryRaw[i].targetPlayerKeyId = targetMatchPlayer->userKeyId;
+			targetMatchPlayer->damageRecieved = targetMatchPlayer->damageRecieved + MatchStoryRaw[i].damageDone;
+			// TODO Add all your custom variables
+		}
+
+		if (sourceMatchPlayer && targetMatchPlayer)
+		{
+
+			if (MatchStoryRaw[i].targetKilled)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] ProcessMatchStory - found kill "));
+
+				// double counting here!!!  
+				// This is handled inside of GameMode
+				//  sourceMatchPlayer->kills = sourceMatchPlayer->kills + 1;
+				//  targetMatchPlayer->deaths = targetMatchPlayer->deaths + 1;
+
+				// check assists 
+				for (int32 assisti = 0; assisti < targetMatchPlayer->assist_playerid_list.Num(); assisti++)
+				{
+					if (targetMatchPlayer->assist_playerid_list[assisti] != sourceMatchPlayer->playerID)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] ProcessMatchStory - found kill assist "));
+						assistMatchPlayer = getMatchPlayerByPlayerId(targetMatchPlayer->assist_playerid_list[assisti]);
+						assistMatchPlayer->assists = assistMatchPlayer->assists + 1;
+					}
+				}
+
+
+				//  clear the assists
+				targetMatchPlayer->assist_playerid_list.Empty();
+
+				// empty the previous
+				previousMatchStoryEvent.targetPlayerKeyId = 0;
+				previousMatchStoryEvent.sourcePlayerId = 0;
+
+				// give extra importance
+				MatchStoryRaw[i].eventImportance = MatchStoryRaw[i].eventImportance + 0.5f;
+
+			}
+			else
+			{
+				// add to assits
+				targetMatchPlayer->assist_playerid_list.AddUnique(sourceMatchPlayer->playerID);
+			}
+		}
+
+
+
+		// create a new array with duplicates condensed and removed
+		//		duplicates in order will add a little bit of importance to the event
+		// 
+		if (previousMatchStoryEvent.sourcePlayerId)
+		{
+			// check to see if it is the same source/target
+			if (previousMatchStoryEvent.sourcePlayerId == MatchStoryRaw[i].sourcePlayerId)
+			{
+				if (previousMatchStoryEvent.targetPlayerId == MatchStoryRaw[i].targetPlayerId)
+				{
+					if (previousMatchStoryEvent.eventSummary == MatchStoryRaw[i].eventSummary)
+					{
+						//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] ProcessMatchStory - line repetition found - condensing "));
+
+						// add the previous values into this one.
+						MatchStoryRaw[i].damageDone = MatchStoryRaw[i].damageDone + previousMatchStoryEvent.damageDone;
+						// TODO add your custom variables here
+
+						MatchStoryRaw[i].hitCount = MatchStoryRaw[i].hitCount + previousMatchStoryEvent.hitCount;
+
+						// Do some special calculations if needed
+						if (MatchStoryRaw[i].eventSummary == "ControlTime")
+						{
+							MatchStoryRaw[i].eventImportance = previousMatchStoryEvent.eventImportance + 0.001f;
+						}
+						else
+						{
+							MatchStoryRaw[i].eventImportance = previousMatchStoryEvent.eventImportance + 0.01f;
+						}
+
+					}
+
+				}
+			}
+		}
+
+		//look ahead to check if the next event is the same
+		// if not, add it to the condensed array
+
+		bool addThisToCondensed = true;
+
+		if (MatchStoryRaw.IsValidIndex(i + 1))
+		{
+			if (MatchStoryRaw[i + 1].sourcePlayerId)
+			{
+				// check to see if it is the same source/target
+				if (MatchStoryRaw[i + 1].sourcePlayerId == MatchStoryRaw[i].sourcePlayerId)
+				{
+					if (MatchStoryRaw[i + 1].targetPlayerId == MatchStoryRaw[i].targetPlayerId)
+					{
+						if (MatchStoryRaw[i + 1].eventSummary == MatchStoryRaw[i].eventSummary)
+						{
+							//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] ProcessMatchStory - look ahead match. "));
+							addThisToCondensed = false;
+						}
+					}
+				}
+			}
+		}
+
+		if (addThisToCondensed)
+		{
+			MatchInfo.MatchStoryCondensed.Add(MatchStoryRaw[i]);
+		}
+
+		previousMatchStoryEvent = MatchStoryRaw[i];
+
+	}
+
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ProcessMatchStory] MatchStoryRaw: %i"), MatchStoryRaw.Num());
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ProcessMatchStory] MatchStoryCondensed: %i"), MatchInfo.MatchStoryCondensed.Num());
+
+	// create a final array of the most important events
+
+	MatchInfo.MatchStoryCondensed.Sort([](const FMatchStoryEvent& LHS, const FMatchStoryEvent& RHS) { return LHS.eventImportance > RHS.eventImportance;  });
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] ProcessMatchStory - Condensed array sorted by importance. "));
+
+	TArray<FMatchStoryEvent> MatchStoryCondensedTrimmed;
+	int32 MatchStoryMaxLength = 10;
+
+	for (int32 i = 0; i < MatchInfo.MatchStoryCondensed.Num(); i++)
+	{
+		//UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] ProcessMatchStoryCondensed - line execution "));
+		if (i < MatchStoryMaxLength)
+		{
+			MatchStoryCondensedTrimmed.Add(MatchInfo.MatchStoryCondensed[i]);
+		}
+	}
+
+	// Re-sort by timestamp
+	MatchStoryCondensedTrimmed.Sort([](const FMatchStoryEvent& LHS, const FMatchStoryEvent& RHS) { return LHS.timestamp < RHS.timestamp;  });
+
+	MatchInfo.MatchStoryCondensed = MatchStoryCondensedTrimmed;
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ProcessMatchStory] MatchStoryCondensedTrimmed: %i"), MatchStoryCondensedTrimmed.Num());
+
+
+	// convert the final array into a human readable array of strings
+	// 
+	FString readableEvent;
+	int32 capTime = 0;
+	int32 totalDamageThisEvent;
+
+
+	for (int32 i = 0; i < MatchInfo.MatchStoryCondensed.Num(); i++)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] MatchStoryCondensed - Converting line to human readable "));
+		sourceMatchPlayer = getMatchPlayerByPlayerId(MatchInfo.MatchStoryCondensed[i].sourcePlayerId);
+
+		if (sourceMatchPlayer)
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] MatchStoryCondensed - got sourceMatchPlayer"));
+			targetMatchPlayer = getMatchPlayerByPlayerId(MatchInfo.MatchStoryCondensed[i].targetPlayerId);
+			if (targetMatchPlayer)
+			{
+				totalDamageThisEvent = FMath::FloorToInt(MatchInfo.MatchStoryCondensed[i].damageDone);
+
+				UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] MatchStoryCondensed - got targetMatchPlayer"));
+				if (MatchInfo.MatchStoryCondensed[i].targetKilled)
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] MatchStoryCondensed - found kill event "));
+					readableEvent = FString::Printf(TEXT("%s killed %s with %i hits for %i damage."), *sourceMatchPlayer->userTitle, *targetMatchPlayer->userTitle, MatchInfo.MatchStoryCondensed[i].hitCount, totalDamageThisEvent);
+				}
+				else
+				{
+					UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] MatchStoryCondensed - defaulting to damage/healing event "));
+					if (MatchInfo.MatchStoryCondensed[i].hitCount)
+					{
+						UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] MatchStoryCondensed - found hitcount "));
+						readableEvent = FString::Printf(TEXT("%s did %i damage to %s in %i hits."), *sourceMatchPlayer->userTitle, totalDamageThisEvent, *targetMatchPlayer->userTitle, MatchInfo.MatchStoryCondensed[i].hitCount);
+
+
+					}
+				}
+			}
+		}
+		UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] [ProcessMatchStory] readableEvent: %s"), *readableEvent);
+
+		MatchInfo.MatchStoryReadable.Add(readableEvent);
+	}
+
+	// Dump the condensed story, so it doesn't get sent over json 
+	MatchInfo.MatchStoryCondensed.Empty();
+
+
+	// Send it to the AI to generate a story around it.  =)
+
+	return true;
+}
+
+
+
+bool UMyGameInstance::SubmitMatchStatistics()
+{
+
+	UE_LOG(LogTemp, Log, TEXT("[UETOPIA] [UMyGameInstance] SubmitMatchStatistics"));
+
+	FString NONAPIURL = "ue4topia-metagame.appspot.com/api/v1/matchmaker/match_results";
+	MatchInfo.encryption = "off";
+	FString json_string;
+	FJsonObjectConverter::UStructToJsonObjectString(MatchInfo.StaticStruct(), &MatchInfo, json_string, 0, 0);
+	UE_LOG(LogTemp, Log, TEXT("json_string: %s"), *json_string);
+
+	bool requestSuccess = PerformNonAPIJsonHttpRequest(&UMyGameInstance::SubmitMatchStatisticsComplete, NONAPIURL, json_string, "");  // NO AccessToken
+
+	return requestSuccess;
+
+}
+
+void UMyGameInstance::SubmitMatchStatisticsComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded)
+{
+	if (!HttpResponse.IsValid())
+	{
+		UE_LOG(LogTemp, Log, TEXT("Test failed. NULL response"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Log, TEXT("Completed test [%s] Url=[%s] Response=[%d] [%s]"),
+			*HttpRequest->GetVerb(),
+			*HttpRequest->GetURL(),
+			HttpResponse->GetResponseCode(),
+			*HttpResponse->GetContentAsString());
+
+		FString JsonRaw = *HttpResponse->GetContentAsString();
+		TSharedPtr<FJsonObject> JsonParsed;
+		TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(JsonRaw);
+		if (FJsonSerializer::Deserialize(JsonReader, JsonParsed))
+		{
+			bool Authorization = JsonParsed->GetBoolField("authorization");
+			UE_LOG(LogTemp, Log, TEXT("Authorization"));
+			if (Authorization)
+			{
+				UE_LOG(LogTemp, Log, TEXT("Authorization True"));
+				// we don't care about the results
+
+			}
+		}
+	}
 }

@@ -2,6 +2,7 @@
 
 #include "DamageExecution.h"
 #include "MyAttributeSet.h"
+#include "GameplayTagsManager.h"
 #include "AbilitySystemComponent.h"
 
 
@@ -79,5 +80,12 @@ void UDamageExecution::Execute_Implementation(const FGameplayEffectCustomExecuti
 	if (DamageDone > 0.f)
 	{
 		OutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(Damage().HealthProperty, EGameplayModOp::Additive, -DamageDone));
+
+		// Pass the calculation data back through the spec so that it can be captured by PostEffectExecution
+		FGameplayEffectSpec* MutableSpec = ExecutionParams.GetOwningSpecForPreExecuteMod();
+
+		UE_LOG(LogTemp, Log, TEXT("UDamageExecution DamageDone: %f"), DamageDone);
+
+		MutableSpec->SetSetByCallerMagnitude(FName(TEXT("DamageDone")), DamageDone);
 	}
 }

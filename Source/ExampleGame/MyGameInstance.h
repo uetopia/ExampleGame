@@ -37,6 +37,12 @@ struct FMyActivePlayer {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString userTitle;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString gamePlayerKeyId;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString characterCurrentKeyId;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString characterCurrentTitle;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		bool authorized = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		bool deactivateStarted = false; // the deactivation process has started - don't start it again.
@@ -74,8 +80,7 @@ struct FMyActivePlayer {
 		int32 level = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		int32 currencyCurrent = 0;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
-		FString gamePlayerKeyId;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FUniqueNetIdRepl UniqueId;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
@@ -109,6 +114,28 @@ struct FMyActivePlayer {
 	// Was the player connected previously?  Can we get the backed-up playerstate?
 	bool bWasConnected;
 
+	// Keep track of all of the statistics for a match
+	
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		int32 hitCount;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		int32 kills;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		int32 assists;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		TArray<int32> assist_playerid_list;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		int32 deaths;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		float captureTime;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		float damageDealt;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		float damageRecieved;
+	// TODO:  Add any extra variables you want to track here
+
 };
 
 USTRUCT(BlueprintType)
@@ -134,7 +161,11 @@ struct FMyMatchInfo {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		int32 admissionFee = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString matchKeyId;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString title;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString mapTitle;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		int32 api_version = 0;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
@@ -153,6 +184,22 @@ struct FMyMatchInfo {
 		TArray<FString> sponsors;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
 		FString metaMatchTravelUrl;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString winningTeamTitle;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString losingTeamTitle;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		FString region;
+
+	// A couple variables for matchData here.  These go back to the metagame server on submitMatchStatistics()
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		TArray<FMatchStoryEvent> MatchStoryCondensed;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UETOPIA")
+		TArray<FString> MatchStoryReadable;
+
 };
 
 USTRUCT(BlueprintType)
@@ -252,6 +299,9 @@ class EXAMPLEGAME_API UMyGameInstance : public UGameInstance
 
 	bool PerformHttpRequest(void(UMyGameInstance::*delegateCallback)(FHttpRequestPtr, FHttpResponsePtr, bool), FString APIURI, FString ArgumentString, FString AccessToken);
 	bool PerformJsonHttpRequest(void(UMyGameInstance::*delegateCallback)(FHttpRequestPtr, FHttpResponsePtr, bool), FString APIURI, FString ArgumentString, FString AccessToken);
+
+	// function for making JSON calls to non-api backend sources.  This is used for sending matchData to the metagame server for player statistics and achievements
+	bool PerformNonAPIJsonHttpRequest(void(UMyGameInstance::* delegateCallback)(FHttpRequestPtr, FHttpResponsePtr, bool), FString NONAPIURL, FString ArgumentString, FString AccessToken);
 
 	/* Handles to manage timers */
 	FTimerHandle ServerLinksTimerHandle;
@@ -559,6 +609,11 @@ public:
 	bool QueryGameData(FString gameDataKeyId);
 	void QueryGameDataRequestComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
 
+	bool SubmitMatchStatistics();
+	void SubmitMatchStatisticsComplete(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
+
+
+
 	void RequestBeginPlay();
 
 	// DEPRECATED as of 4.22.2
@@ -738,7 +793,15 @@ private:
 	// Data table for referencing inventory items.
 	UDataTable* ItemsDataTable;
 
+	// MatchStory array will hold a timeline of events
+	// Raw is the raw unprocessed dataflow.
+	TArray<FMatchStoryEvent> MatchStoryRaw;
 	
+public:
+	// Accesors to MatchStory
+	bool AddMatchStoryEvent(FMatchStoryEvent MatchStoryEventIn);
+	TArray<FMatchStoryEvent> GetMatchStoryRaw();
+	bool ProcessMatchStory();
 	
 
 protected:

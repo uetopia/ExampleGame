@@ -7,6 +7,7 @@
 #include "GameplayTagContainer.h"
 #include "UEtopiaPersistCharacter.h"
 
+class UMyGameInstance;
 
 UMyAttributeSet::UMyAttributeSet(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
@@ -36,32 +37,51 @@ void UMyAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectModC
 
 	if (HealthAttribute() == Data.EvaluatedData.Attribute)
 	{
+
 		// Get the Target actor
 		AActor* DamagedActor = nullptr;
+		AUEtopiaPersistCharacter* DamagedUEtopiaCompChar = nullptr;
 		AController* DamagedController = nullptr;
+		APlayerState* DamagedPlayerS = nullptr;
+		int32 DamagedPlayerId = 0;
+
 		if (Data.Target.AbilityActorInfo.IsValid() && Data.Target.AbilityActorInfo->AvatarActor.IsValid())
 		{
 			DamagedActor = Data.Target.AbilityActorInfo->AvatarActor.Get();
+			DamagedUEtopiaCompChar = Cast<AUEtopiaPersistCharacter>(DamagedActor);
 			DamagedController = Data.Target.AbilityActorInfo->PlayerController.Get();
+
+			if (DamagedUEtopiaCompChar)
+			{
+				DamagedPlayerS = DamagedUEtopiaCompChar->GetPlayerState();
+				DamagedPlayerId = DamagedPlayerS->PlayerId;
+			}
+
+
 		}
 
 		// Get the Source actor
 		AActor* AttackingActor = nullptr;
+		AUEtopiaPersistCharacter* AttackingUEtopiaCompChar = nullptr;
 		AController* AttackingController = nullptr;
-		AController* AttackingPlayerController = nullptr;
+		APlayerState* AttackingdPlayerS = nullptr;
+		int32 AttackingPlayerId = 0;
+
+
 		if (Source && Source->AbilityActorInfo.IsValid() && Source->AbilityActorInfo->AvatarActor.IsValid())
 		{
 			AttackingActor = Source->AbilityActorInfo->AvatarActor.Get();
+			AttackingUEtopiaCompChar = Cast<AUEtopiaPersistCharacter>(AttackingActor);
 			AttackingController = Source->AbilityActorInfo->PlayerController.Get();
-			AttackingPlayerController = Source->AbilityActorInfo->PlayerController.Get();
-			if (AttackingController == nullptr && AttackingActor != nullptr)
+			//AttackingPlayerController = Source->AbilityActorInfo->PlayerController.Get();
+			if (AttackingUEtopiaCompChar)
 			{
-				if (APawn* Pawn = Cast<APawn>(AttackingActor))
-				{
-					AttackingController = Pawn->GetController();
-				}
+				AttackingdPlayerS = AttackingUEtopiaCompChar->GetPlayerState();
+				AttackingPlayerId = AttackingdPlayerS->PlayerId;
 			}
 		}
+		// keep track of kill status
+		bool thisWasAKill = false;
 
 		// Clamp health
 		Health = FMath::Clamp(Health, 0.0f, MaxHealth);
@@ -79,6 +99,53 @@ void UMyAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectModC
 				Params.AggregatedTargetTags = *Data.EffectSpec.CapturedTargetTags.GetAggregatedTags();
 
 				GASChar->Die(AttackingController, AttackingActor, Data.EffectSpec, Params.RawMagnitude, Params.Normal);
+
+				thisWasAKill = true;
+			}
+		}
+
+		// save the damage to the instance gamestory struct for GameData submission
+		// only do this on server
+		// only do this if it was a hit (keep within the heath block
+
+
+
+		if (IsRunningDedicatedServer()) {
+			UMyGameInstance* TheGameInstance = Cast<UMyGameInstance>(GetWorld()->GetGameInstance());
+
+			if (TheGameInstance)
+			{
+				// only do this if we are in a matchmaker or metagame mode - skip if FFA 
+				if (TheGameInstance->UEtopiaMode == "competitive")
+				{
+					FMatchStoryEvent MatchStoryEvent;
+
+					// calculate importance
+					float importance = 0.01;
+
+					MatchStoryEvent.targetKilled = thisWasAKill;
+
+					// get it from the setbycallermagnitude, which we set within the calculation execution
+					MatchStoryEvent.eventSummary = "GameplayEffectExecution";
+					MatchStoryEvent.eventImportance = importance;
+
+					// Get the playerKeys here.  This is our last chance
+					// these are actually Unreal Engine playerID's  Like 256, 257
+					// Which is OK, we just need to get the correct Keys later.
+					// do this in gameInstance.processMatchStory
+					MatchStoryEvent.targetPlayerId = DamagedPlayerId;
+					MatchStoryEvent.sourcePlayerId = AttackingPlayerId;
+
+					MatchStoryEvent.hitCount = 1;
+
+					UE_LOG(LogTemp, Log, TEXT("PostGameplayEffectExecute DamageDone: %f"), Data.EffectSpec.GetSetByCallerMagnitude(FName(TEXT("DamageDone"))));
+
+					MatchStoryEvent.damageDone = Data.EffectSpec.GetSetByCallerMagnitude(FName(TEXT("DamageDone")));
+
+					// TODO Add all of your other variables here.
+
+					TheGameInstance->AddMatchStoryEvent(MatchStoryEvent);
+				}
 			}
 		}
 	}
