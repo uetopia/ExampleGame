@@ -1,3 +1,7 @@
+# DEPRECATED
+
+Use [unlockd ExampleGame](https://github.com/unlockd-gg/ExampleGame) instead.  
+
 # EXAMPLE GAME
 Unreal Engine project demonstrating how to use the uetopia.com backend.
 
